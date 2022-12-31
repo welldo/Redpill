@@ -72,9 +72,9 @@ ext              | ×    |-               | 请输入需要集成的扩展, 多�
 #### 关于 dtb 现在共3种形式：  
  \  | 参数 |     说明  
 ---|------|---------  
-1 | dtb参数 填写 dtb/dts 的下载链接 | 内部会自动加入  redpill-dtb-static，并替换自定义的 dtb 到 redpill-dtb-static 中 。   
-2 | dtb参数 为空 | 内部会加入 redpill-dtb , redpill-dtb 将识别硬盘pci位置自动修改dtb，支持≤4个硬盘热插拔。  
-3 | dtb参数 为空，ext 加入 "-dtb,dtbpatch" | 内部会加入 dtbpatch，自动识别已插入硬盘（增加硬盘重启即可）。  
+1 | dtb参数 填写 dtb/dts 的下载链接 | 内部会自动加入 redpill-dtb-static, 并替换自定义的 dtb 到 redpill-dtb-static 中.  
+2 | dtb参数 为空 | 内部会自动加入 redpill-dtb, redpill-dtb 将识别硬盘pci位置自动修改dtb, 支持≤4个硬盘热插拔.  
+3 | dtb参数 为空, ext 加入 "-dtb,dtbpatch" | 内部会加入 dtbpatch, 自动识别已插入硬盘(增加硬盘重启即可).  
 
 ## 说明
 0. __感谢 [hoping](https://github.com/htmambo) 大佬制作的 WEB 界面.__  
@@ -91,7 +91,7 @@ ext              | ×    |-               | 请输入需要集成的扩展, 多�
   但是快速创建的WEB页面由于 涉及 guthub 的 pages, 且含有CDN加速, 存在一些硬编码, 如要使用, 需要开通pages后方可使用.  
 10. 在Issues下评论 "transfer" 附件转快传 🚲->🏍. (请勿重复发, 转换操作时间 ≈ 该Issue编译成功次数 X 3分钟).
 11. 在Issues下评论 "delete builds" 即可删该Issues的所有历史编译记录.
-12. Web页 Title 后面的红色标签是可以点击的哦!(***PS：只有读到这里的人才会知道.***)  
+12. Web页 Title 后面的红色标签是可以点击的哦!(***PS：只有读到这里的人才会知道.***).  
 
 ## 举例
 * 普通参数示例:
