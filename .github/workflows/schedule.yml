@@ -373,7 +373,7 @@ jobs:
                   issues = json.loads(${{ steps.get-issues.outputs.issues }})
 
                   if len(issues) > 0:
-                      headers = {'Accept': 'application/vnd.github+json', 'Authorization': 'token ${{ secrets.ISSUES }}'}
+                      headers = {'Accept': 'application/vnd.github+json', 'Authorization': 'token ${{ secrets.ACTION }}'}
                       data = '{"state": "open"}'
                       for item in issues:
                           try:
