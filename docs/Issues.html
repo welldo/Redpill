@@ -318,15 +318,15 @@
             html +=
               '<span class="pl-mi1">点击驱动名添加/删除 (* 结尾的为无效驱动, # 结尾的为sha256错误驱动, */# 强制添加将编译失败.) </span><br />';
             html +=
-              '<button type="button" class="btn btn-primary btn-sm mt-2" id="ext_btn_-dtb" onclick="return processext(\'-dtb\')" autofocus="" title="1111111111">-dtb</button>&nbsp;';
+              '<button type="button" class="btn btn-primary btn-sm mt-2 my-2 lh-condensed-ultra" id="ext_btn_-dtb" onclick="return processext(\'-dtb\')" autofocus="" title="同时加入 \'-dtb,dtbpatch\' 将自动识别已插入硬盘.">-dtb</button>&nbsp;';
             html +=
-              '<button type="button" class="btn btn-primary btn-sm mt-2" id="ext_btn_-virtio" onclick="return processext(\'-virtio\')" autofocus="" title="Adds VirtIO support for fast network/PCI/SCSI/network/console paravirtualization under QEmu (Proxmox, VirtualBox, virsh, and similar)">-virtio</button>&nbsp;';
+              '<button type="button" class="btn btn-primary btn-sm mt-2 my-2 lh-condensed-ultra" id="ext_btn_-virtio" onclick="return processext(\'-virtio\')" autofocus="" title="Adds VirtIO support for fast network/PCI/SCSI/network/console paravirtualization under QEmu (Proxmox, VirtualBox, virsh, and similar)">-virtio</button>&nbsp;';
             html +=
-              '<button type="button" class="btn btn-primary btn-sm mt-2" id="ext_btn_-acpid2" onclick="return processext(\'-acpid2\')" autofocus="" title="ACPI Daemon v2 that handles power button events">-acpid2</button>&nbsp;';
+              '<button type="button" class="btn btn-primary btn-sm mt-2 my-2 lh-condensed-ultra" id="ext_btn_-acpid2" onclick="return processext(\'-acpid2\')" autofocus="" title="ACPI Daemon v2 that handles power button events">-acpid2</button>&nbsp;';
             html +=
-              '<button type="button" class="btn btn-primary btn-sm mt-2" id="ext_btn_-misc" onclick="return processext(\'-misc\')" autofocus="" title="Misc shell">-misc</button>&nbsp;';
+              '<button type="button" class="btn btn-primary btn-sm mt-2 my-2 lh-condensed-ultra" id="ext_btn_-misc" onclick="return processext(\'-misc\')" autofocus="" title="Misc shell">-misc</button>&nbsp;';
             html +=
-              '<button type="button" class="btn btn-primary btn-sm mt-2" id="ext_btn_-boot-wait" disabled="true" onclick="return processext(\'-boot-wait\')" autofocus="" title="Simple extension which stops the execution early waiting for the boot device to appear">-boot-wait</button>&nbsp;';
+              '<button type="button" class="btn btn-primary btn-sm mt-2 my-2 lh-condensed-ultra" id="ext_btn_-boot-wait" disabled="true" onclick="return processext(\'-boot-wait\')" autofocus="" title="Simple extension which stops the execution early waiting for the boot device to appear">-boot-wait</button>&nbsp;';
             html +=
               '<span class="pl-md">(注意: boot-wait, misc, acpid2, virtio, dtb 默认会进行判断添加(不是一定有), 此处以"-" 开头代表删除, 无特殊需求请勿删!!!.)</span><br />';
           }
@@ -364,6 +364,7 @@
           });
           obj.removeClass("btn-danger");
         } else {
+          alert("请确认知道该操作的影响.");
           obj.addClass("btn-danger");
           exts.push(ext);
         }
