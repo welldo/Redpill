@@ -3798,7 +3798,7 @@
             "igbvf": "Adds Intel(R) Gigabit Virtual Function Network Driver Support",
             "ixgbe": "Adds Intel(R) 10GbE PCI Express Linux Network Driver Support",
             "ixgbevf": "Adds Intel(R) 10 Gigabit Virtual Function Network Driver Support",
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically",
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically",
             "megaraid_sas": "Adds Avago MegaRAID SAS Driver Support",
             "mlx4_core*": "Adds MLX4 Support",
             "mlx5_core*": "Adds Mellanox Connect-IB, ConnectX-4 core driver Support",
@@ -3939,7 +3939,7 @@
             "igbvf": "Adds Intel(R) Gigabit Virtual Function Network Driver Support",
             "ixgbe": "Adds Intel(R) 10GbE PCI Express Linux Network Driver Support",
             "ixgbevf": "Adds Intel(R) 10 Gigabit Virtual Function Network Driver Support",
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically",
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically",
             "megaraid_sas": "Adds Avago MegaRAID SAS Driver Support",
             "mlx4_core": "Adds MLX4 Support",
             "mlx5_core*": "Adds Mellanox Connect-IB, ConnectX-4 core driver Support",
@@ -4011,7 +4011,7 @@
             "igbvf": "Adds Intel(R) Gigabit Virtual Function Network Driver Support",
             "ixgbe": "Adds Intel(R) 10GbE PCI Express Linux Network Driver Support",
             "ixgbevf": "Adds Intel(R) 10 Gigabit Virtual Function Network Driver Support",
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically",
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically",
             "megaraid_sas": "Adds Avago MegaRAID SAS Driver Support",
             "mlx4_core": "Adds MLX4 Support",
             "mpt2sas": "Adds  Support",
@@ -4081,7 +4081,7 @@
             "ixgbe": "Adds Intel(R) 10GbE PCI Express Linux Network Driver Support",
             "ixgbe.vanilla": "Adds Intel(R) 10GbE PCI Express Linux Network Driver Support",
             "ixgbevf": "Adds Intel(R) 10 Gigabit Virtual Function Network Driver Support",
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically",
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically",
             "megaraid_sas": "Adds Avago MegaRAID SAS Driver Support",
             "mlx4_core": "Adds MLX4 Support",
             "mlx5_core*": "Adds Mellanox Connect-IB, ConnectX-4 core driver Support",
@@ -4155,7 +4155,7 @@
             "igbvf": "Adds Intel(R) Gigabit Virtual Function Network Driver Support",
             "ixgbe": "Adds Intel(R) 10GbE PCI Express Linux Network Driver Support",
             "ixgbevf": "Adds Intel(R) 10 Gigabit Virtual Function Network Driver Support",
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically",
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically",
             "megaraid_sas": "Adds Avago MegaRAID SAS Driver Support",
             "mlx4_core": "Adds MLX4 Support",
             "mlx5_core*": "Adds Mellanox Connect-IB, ConnectX-4 core driver Support",
@@ -4227,7 +4227,7 @@
             "igbvf": "Adds Intel(R) Gigabit Virtual Function Network Driver Support",
             "ixgbe": "Adds Intel(R) 10GbE PCI Express Linux Network Driver Support",
             "ixgbevf": "Adds Intel(R) 10 Gigabit Virtual Function Network Driver Support",
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically",
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically",
             "megaraid_sas": "Adds Avago MegaRAID SAS Driver Support",
             "mlx4_core": "Adds MLX4 Support",
             "mlx5_core*": "Adds Mellanox Connect-IB, ConnectX-4 core driver Support",
@@ -4300,7 +4300,7 @@
             "igc": "Adds Intel(R) 2.5G Ethernet Linux Driver Support",
             "ixgbe": "Adds Intel(R) 10GbE PCI Express Linux Network Driver Support",
             "ixgbevf": "Adds Intel(R) 10 Gigabit Virtual Function Network Driver Support",
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically",
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically",
             "megaraid_sas": "Adds Avago MegaRAID SAS Driver Support",
             "mlx4_core": "Adds MLX4 Support",
             "mlx5_core": "Adds Mellanox Connect-IB, ConnectX-4 core driver Support",
@@ -4372,7 +4372,7 @@
             "igc": "Adds Intel(R) 2.5G Ethernet Linux Driver Support",
             "ixgbe": "Adds Intel(R) 10GbE PCI Express Linux Network Driver Support",
             "ixgbevf": "Adds Intel(R) 10 Gigabit Virtual Function Network Driver Support",
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically",
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically",
             "megaraid_sas": "Adds Avago MegaRAID SAS Driver Support",
             "mlx4_core": "Adds MLX4 Support",
             "mlx5_core": "Adds Mellanox Connect-IB, ConnectX-4 core driver Support",
@@ -4442,7 +4442,7 @@
             "igc": "Adds Intel(R) 2.5G Ethernet Linux Driver Support",
             "ixgbe": "Adds Intel(R) 10GbE PCI Express Linux Network Driver Support",
             "ixgbevf": "Adds Intel(R) 10 Gigabit Virtual Function Network Driver Support",
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically",
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically",
             "megaraid_sas": "Adds Avago MegaRAID SAS Driver Support",
             "mlx4_core": "Adds MLX4 Support",
             "mlx5_core": "Adds Mellanox Connect-IB, ConnectX-4 core driver Support",
@@ -4516,7 +4516,7 @@
             "igc": "Adds Intel(R) 2.5G Ethernet Linux Driver Support",
             "ixgbe": "Adds Intel(R) 10GbE PCI Express Linux Network Driver Support",
             "ixgbevf": "Adds Intel(R) 10 Gigabit Virtual Function Network Driver Support",
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically",
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically",
             "megaraid_sas": "Adds Avago MegaRAID SAS Driver Support",
             "mlx4_core": "Adds MLX4 Support",
             "mlx5_core": "Adds Mellanox Connect-IB, ConnectX-4 core driver Support",
@@ -4589,7 +4589,7 @@
             "igc": "Adds Intel(R) 2.5G Ethernet Linux Driver Support",
             "ixgbe": "Adds Intel(R) 10GbE PCI Express Linux Network Driver Support",
             "ixgbevf": "Adds Intel(R) 10 Gigabit Virtual Function Network Driver Support",
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically",
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically",
             "megaraid_sas": "Adds Avago MegaRAID SAS Driver Support",
             "mlx4_core": "Adds MLX4 Support",
             "mlx5_core": "Adds Mellanox Connect-IB, ConnectX-4 core driver Support",
@@ -4661,7 +4661,7 @@
             "igc": "Adds Intel(R) 2.5G Ethernet Linux Driver Support",
             "ixgbe": "Adds Intel(R) 10GbE PCI Express Linux Network Driver Support",
             "ixgbevf": "Adds Intel(R) 10 Gigabit Virtual Function Network Driver Support",
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically",
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically",
             "megaraid_sas": "Adds Avago MegaRAID SAS Driver Support",
             "mlx4_core": "Adds MLX4 Support",
             "mlx5_core": "Adds Mellanox Connect-IB, ConnectX-4 core driver Support",
@@ -4731,7 +4731,7 @@
             "igc": "Adds Intel(R) 2.5G Ethernet Linux Driver Support",
             "ixgbe": "Adds Intel(R) 10GbE PCI Express Linux Network Driver Support",
             "ixgbevf": "Adds Intel(R) 10 Gigabit Virtual Function Network Driver Support",
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically",
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically",
             "megaraid_sas": "Adds Avago MegaRAID SAS Driver Support",
             "mlx4_core": "Adds MLX4 Support",
             "mlx5_core": "Adds Mellanox Connect-IB, ConnectX-4 core driver Support",
@@ -4801,7 +4801,7 @@
             "igc": "Adds Intel(R) 2.5G Ethernet Linux Driver Support",
             "ixgbe": "Adds Intel(R) 10GbE PCI Express Linux Network Driver Support",
             "ixgbevf": "Adds Intel(R) 10 Gigabit Virtual Function Network Driver Support",
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically",
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically",
             "megaraid_sas": "Adds Avago MegaRAID SAS Driver Support",
             "mlx4_core": "Adds MLX4 Support",
             "mlx5_core": "Adds Mellanox Connect-IB, ConnectX-4 core driver Support",
@@ -4875,7 +4875,7 @@
             "igc": "Adds Intel(R) 2.5G Ethernet Linux Driver Support",
             "ixgbe": "Adds Intel(R) 10GbE PCI Express Linux Network Driver Support",
             "ixgbevf": "Adds Intel(R) 10 Gigabit Virtual Function Network Driver Support",
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically",
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically",
             "megaraid_sas": "Adds Avago MegaRAID SAS Driver Support",
             "mlx4_core": "Adds MLX4 Support",
             "mlx5_core": "Adds Mellanox Connect-IB, ConnectX-4 core driver Support",
@@ -4948,7 +4948,7 @@
             "igc": "Adds Intel(R) 2.5G Ethernet Linux Driver Support",
             "ixgbe": "Adds Intel(R) 10GbE PCI Express Linux Network Driver Support",
             "ixgbevf": "Adds Intel(R) 10 Gigabit Virtual Function Network Driver Support",
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically",
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically",
             "megaraid_sas": "Adds Avago MegaRAID SAS Driver Support",
             "mlx4_core": "Adds MLX4 Support",
             "mlx5_core": "Adds Mellanox Connect-IB, ConnectX-4 core driver Support",
@@ -5018,7 +5018,7 @@
             "igc": "Adds Intel(R) 2.5G Ethernet Linux Driver Support",
             "ixgbe": "Adds Intel(R) 10GbE PCI Express Linux Network Driver Support",
             "ixgbevf": "Adds Intel(R) 10 Gigabit Virtual Function Network Driver Support",
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically",
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically",
             "megaraid_sas": "Adds Avago MegaRAID SAS Driver Support",
             "mlx4_core": "Adds MLX4 Support",
             "mpt2sas*": "Adds  Support",
@@ -5084,7 +5084,7 @@
             "igc": "Adds Intel(R) 2.5G Ethernet Linux Driver Support",
             "ixgbe": "Adds Intel(R) 10GbE PCI Express Linux Network Driver Support",
             "ixgbevf": "Adds Intel(R) 10 Gigabit Virtual Function Network Driver Support",
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically",
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically",
             "megaraid_sas": "Adds Avago MegaRAID SAS Driver Support",
             "mlx4_core": "Adds MLX4 Support",
             "mpt2sas*": "Adds  Support",
@@ -5150,7 +5150,7 @@
             "igc": "Adds Intel(R) 2.5G Ethernet Linux Driver Support",
             "ixgbe": "Adds Intel(R) 10GbE PCI Express Linux Network Driver Support",
             "ixgbevf": "Adds Intel(R) 10 Gigabit Virtual Function Network Driver Support",
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically",
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically",
             "megaraid_sas": "Adds Avago MegaRAID SAS Driver Support",
             "mlx4_core": "Adds MLX4 Support",
             "mpt2sas*": "Adds  Support",
@@ -5216,7 +5216,7 @@
             "igc": "Adds Intel(R) 2.5G Ethernet Linux Driver Support",
             "ixgbe": "Adds Intel(R) 10GbE PCI Express Linux Network Driver Support",
             "ixgbevf": "Adds Intel(R) 10 Gigabit Virtual Function Network Driver Support",
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically",
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically",
             "megaraid_sas": "Adds Avago MegaRAID SAS Driver Support",
             "mlx4_core": "Adds MLX4 Support",
             "mpt2sas*": "Adds  Support",
@@ -5282,7 +5282,7 @@
             "igc": "Adds Intel(R) 2.5G Ethernet Linux Driver Support",
             "ixgbe": "Adds Intel(R) 10GbE PCI Express Linux Network Driver Support",
             "ixgbevf": "Adds Intel(R) 10 Gigabit Virtual Function Network Driver Support",
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically",
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically",
             "megaraid_sas": "Adds Avago MegaRAID SAS Driver Support",
             "mlx4_core": "Adds MLX4 Support",
             "mpt2sas*": "Adds  Support",
@@ -6740,7 +6740,7 @@
             "igc": "Adds Intel(R) 2.5G Ethernet Linux Driver Support",
             "ixgbe": "Adds Intel(R) 10GbE PCI Express Linux Network Driver Support",
             "ixgbevf": "Adds Intel(R) 10 Gigabit Virtual Function Network Driver Support",
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically",
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically",
             "megaraid_sas": "Adds Avago MegaRAID SAS Driver Support",
             "mlx4_core*": "Adds MLX4 Support",
             "mlx5_core": "Adds Mellanox Connect-IB, ConnectX-4 core driver Support",
@@ -6812,7 +6812,7 @@
             "igc": "Adds Intel(R) 2.5G Ethernet Linux Driver Support",
             "ixgbe": "Adds Intel(R) 10GbE PCI Express Linux Network Driver Support",
             "ixgbevf": "Adds Intel(R) 10 Gigabit Virtual Function Network Driver Support",
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically",
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically",
             "megaraid_sas": "Adds Avago MegaRAID SAS Driver Support",
             "mlx4_core*": "Adds MLX4 Support",
             "mlx5_core": "Adds Mellanox Connect-IB, ConnectX-4 core driver Support",
@@ -6882,7 +6882,7 @@
             "igc": "Adds Intel(R) 2.5G Ethernet Linux Driver Support",
             "ixgbe": "Adds Intel(R) 10GbE PCI Express Linux Network Driver Support",
             "ixgbevf": "Adds Intel(R) 10 Gigabit Virtual Function Network Driver Support",
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically",
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically",
             "megaraid_sas": "Adds Avago MegaRAID SAS Driver Support",
             "mlx4_core*": "Adds MLX4 Support",
             "mlx5_core": "Adds Mellanox Connect-IB, ConnectX-4 core driver Support",
@@ -6956,7 +6956,7 @@
             "igc": "Adds Intel(R) 2.5G Ethernet Linux Driver Support",
             "ixgbe": "Adds Intel(R) 10GbE PCI Express Linux Network Driver Support",
             "ixgbevf": "Adds Intel(R) 10 Gigabit Virtual Function Network Driver Support",
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically",
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically",
             "megaraid_sas": "Adds Avago MegaRAID SAS Driver Support",
             "mlx4_core*": "Adds MLX4 Support",
             "mlx5_core": "Adds Mellanox Connect-IB, ConnectX-4 core driver Support",
@@ -7029,7 +7029,7 @@
             "igc": "Adds Intel(R) 2.5G Ethernet Linux Driver Support",
             "ixgbe": "Adds Intel(R) 10GbE PCI Express Linux Network Driver Support",
             "ixgbevf": "Adds Intel(R) 10 Gigabit Virtual Function Network Driver Support",
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically",
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically",
             "megaraid_sas": "Adds Avago MegaRAID SAS Driver Support",
             "mlx4_core*": "Adds MLX4 Support",
             "mlx5_core": "Adds Mellanox Connect-IB, ConnectX-4 core driver Support",
@@ -7101,7 +7101,7 @@
             "igbvf": "Adds Intel(R) Gigabit Virtual Function Network Driver Support",
             "ixgbe": "Adds Intel(R) 10GbE PCI Express Linux Network Driver Support",
             "ixgbevf": "Adds Intel(R) 10 Gigabit Virtual Function Network Driver Support",
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically",
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically",
             "megaraid_sas": "Adds Avago MegaRAID SAS Driver Support",
             "mlx4_core": "Adds MLX4 Support",
             "mlx5_core": "Adds Mellanox Connect-IB, ConnectX-4 core driver Support",
@@ -7239,7 +7239,7 @@
             "igc": "Adds Intel(R) 2.5G Ethernet Linux Driver Support",
             "ixgbe": "Adds Intel(R) 10GbE PCI Express Linux Network Driver Support",
             "ixgbevf": "Adds Intel(R) 10 Gigabit Virtual Function Network Driver Support",
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically",
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically",
             "megaraid_sas": "Adds Avago MegaRAID SAS Driver Support",
             "mlx4_core": "Adds MLX4 Support",
             "mlx5_core": "Adds Mellanox Connect-IB, ConnectX-4 core driver Support",
@@ -7310,7 +7310,7 @@
             "igc": "Adds Intel(R) 2.5G Ethernet Linux Driver Support",
             "ixgbe": "Adds Intel(R) 10GbE PCI Express Linux Network Driver Support",
             "ixgbevf": "Adds Intel(R) 10 Gigabit Virtual Function Network Driver Support",
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically",
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically",
             "megaraid_sas": "Adds Avago MegaRAID SAS Driver Support",
             "mlx4_core": "Adds MLX4 Support",
             "mlx5_core": "Adds Mellanox Connect-IB, ConnectX-4 core driver Support",
@@ -7384,7 +7384,7 @@
             "igc": "Adds Intel(R) 2.5G Ethernet Linux Driver Support",
             "ixgbe": "Adds Intel(R) 10GbE PCI Express Linux Network Driver Support",
             "ixgbevf": "Adds Intel(R) 10 Gigabit Virtual Function Network Driver Support",
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically",
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically",
             "megaraid_sas": "Adds Avago MegaRAID SAS Driver Support",
             "mlx4_core": "Adds MLX4 Support",
             "mlx5_core": "Adds Mellanox Connect-IB, ConnectX-4 core driver Support",
@@ -7456,7 +7456,7 @@
             "igc": "Adds Intel(R) 2.5G Ethernet Linux Driver Support",
             "ixgbe": "Adds Intel(R) 10GbE PCI Express Linux Network Driver Support",
             "ixgbevf": "Adds Intel(R) 10 Gigabit Virtual Function Network Driver Support",
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically",
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically",
             "megaraid_sas": "Adds Avago MegaRAID SAS Driver Support",
             "mlx4_core": "Adds MLX4 Support",
             "mlx5_core": "Adds Mellanox Connect-IB, ConnectX-4 core driver Support",
@@ -8862,7 +8862,7 @@
         "ds918p_42951": {
             "forcedeth": "Adds Reverse Engineered nForce ethernet driver Support",
             "igc": "Adds Intel(R) 2.5G Ethernet Linux Driver Support",
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically",
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically",
             "mlx5_core": "Adds Mellanox Connect-IB, ConnectX-4 core driver Support",
             "netxen_nic": "Adds QLogic/NetXen (1/10) GbE Intelligent Ethernet Driver Support",
             "powersched": "Adds Driver for PC-style 'CMOS' RTCs Support",
@@ -8879,58 +8879,58 @@
             "tg3*": "Adds Broadcom Tigon3 ethernet driver Support"
         },
         "ds918p_42550": {
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically"
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically"
         },
         "ds1019p_42218": {
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically"
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically"
         },
         "ds1019p_42550": {
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically"
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically"
         },
         "ds1019p_42621": {
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically"
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically"
         },
         "ds1019p_42661": {
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically"
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically"
         },
         "ds1019p_42951": {
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically"
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically"
         },
         "ds1019p_42962": {
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically"
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically"
         },
         "ds3615xs_42550": {
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically"
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically"
         },
         "ds3617xs_42550": {
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically"
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically"
         },
         "ds3622xsp_42550": {
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically"
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically"
         },
         "dva3219_42218": {
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically"
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically"
         },
         "dva3219_42550": {
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically"
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically"
         },
         "dva3219_42621": {
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically"
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically"
         },
         "dva3219_42661": {
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically"
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically"
         },
         "dva3219_42951": {
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically"
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically"
         },
         "dva3219_42962": {
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically"
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically"
         },
         "dva3221_42550": {
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically"
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically"
         },
         "rs4021xsp_42550": {
-            "maxdisks#": "Adjust maxdisks and internalportcfg automatically"
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically"
         }
     }
 }
