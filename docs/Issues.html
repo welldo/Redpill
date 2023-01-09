@@ -364,7 +364,9 @@
           });
           obj.removeClass("btn-danger");
         } else {
-          alert("请确认知道该操作的影响.");
+          if (ext.startsWith("-") || exts.length > 4) {
+            alert("请确认知道该操作的影响.");
+          }
           obj.addClass("btn-danger");
           exts.push(ext);
         }
