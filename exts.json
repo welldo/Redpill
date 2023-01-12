@@ -8867,6 +8867,7 @@
             "r8125": "Adds Realtek RTL8125 2.5Gigabit Ethernet driver Support",
             "r8152": "Adds Realtek RTL8152/RTL8153 Based USB Ethernet Adapters Support",
             "r8169": "Adds RealTek RTL-8169 Gigabit Ethernet driver Support",
+            "rtc-cmos*": "Adds Driver for PC-style 'CMOS' RTCs Support",
             "rtl8150": "Adds rtl8150 based usb-ethernet driver Support",
             "tg3": "Adds Broadcom Tigon3 ethernet driver Support",
             "vmxnet3": "Adds VMware vmxnet3 virtual NIC driver Support"
