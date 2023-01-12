@@ -942,7 +942,7 @@ jobs:
           # cp -fv ./redpill.ko ../ext/rp-lkm/redpill-linux-v$(modinfo --field=vermagic ./redpill.ko | awk '{print $1}').ko
           # cd ..
 
-          dtbs=(DS920+ DS923+ DS1520+ DS1621+ DS1821+ DS2422+ DVA1622 FS2500)
+          dtbs=(DS920+ DS923+ DS1520+ DS1621+ DS1821+ DS2422+ DVA1622 FS2500 SA6400)
           for item in ${dtbs[@]}
           do
             if [ "${item}" == "${platform}" ]; then
