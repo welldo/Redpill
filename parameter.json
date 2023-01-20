@@ -100,7 +100,7 @@
     "internalportcfg": {
         "name": "internalportcfg",
         "description": "如不了解请保持默认, 请输入 sata 接口配置 internalportcfg(十六进制数). 默认: 0xffff",
-        "detailedinfo": "以上数值为16进制, 将其转换为2进制进行理解.\n群晖内使用“1”表示存在这个接口, “0”表示不存在这个接口.\n 0xffff 转为2进制为“1111,1111”, 即 1-8 号硬盘为内部sata硬盘\n与esataportcfg和usbportcfg不应该出现重复.",
+        "detailedinfo": "以上数值为16进制, 将其转换为2进制进行理解.\n群晖内使用“1”表示存在这个接口, “0”表示不存在这个接口.\n 0xffff 转为2进制为“1111,1111,1111,1111”, 即 1-16 号硬盘为内部sata硬盘\n与esataportcfg和usbportcfg不应该出现重复.",
         "required": false,
         "default": "0xffff",
         "type": "string"
@@ -108,7 +108,7 @@
     "esataportcfg": {
         "name": "esataportcfg",
         "description": "如不了解请保持默认, 请输入 esata 接口配置 esataportcfg(十六进制数). 默认: 无",
-        "detailedinfo": "以上数值为16进制, 将其转换为2进制进行理解.\n群晖内使用“1”表示存在这个接口, “0”表示不存在这个接口.\n 0xf000 转为2进制为“1100,0000”, 即 7-8 号硬盘为内部esata硬盘\n与internalportcfg和usbportcfg不应该出现重复.",
+        "detailedinfo": "以上数值为16进制, 将其转换为2进制进行理解.\n群晖内使用“1”表示存在这个接口, “0”表示不存在这个接口.\n 0xf000 转为2进制为“1111,0000,0000,0000”, 即 13-16 号硬盘为内部esata硬盘\n与internalportcfg和usbportcfg不应该出现重复.",
         "required": false,
         "default": "",
         "type": "string"
@@ -116,7 +116,7 @@
     "usbportcfg": {
         "name": "usbportcfg",
         "description": "如不了解请保持默认, 请输入 usb 接口配置 usbportcfg(十六进制数). 默认: 无",
-        "detailedinfo": "以上数值为16进制, 将其转换为2进制进行理解.\n群晖内使用“1”表示存在这个接口, “0”表示不存在这个接口.\n 0xf0 转为2进制为“1100”, 即 3-4 号硬盘为usb硬盘\n与internalportcfg和esataportcfg不应该出现重复.",
+        "detailedinfo": "以上数值为16进制, 将其转换为2进制进行理解.\n群晖内使用“1”表示存在这个接口, “0”表示不存在这个接口.\n 0xf0 转为2进制为“1111,0000”, 即 5-8 号硬盘为usb硬盘\n与internalportcfg和esataportcfg不应该出现重复.",
         "required": false,
         "default": "",
         "type": "string"
