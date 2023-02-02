@@ -750,21 +750,20 @@ jobs:
             pwd
             cd ./cache
             curl -L ${paturl} -o ds.pat
-            # if [ "${platform}" == "DVA1622" -o "${platform}" == "DS923+" ]; then
-              curl -L https://global.download.synology.com/download/DSM/release/7.0.1/42218/DSM_DS3622xs%2B_42218.pat -o oldpat.tar.gz
-            # else
-            #   curl -L https://global.download.synology.com/download/DSM/release/7.0.1/42218/DSM_${platform/+/%2B}_42218.pat -o oldpat.tar.gz
-            # fi
-            mkdir synoesp && tar -C./synoesp/ -xf oldpat.tar.gz rd.gz
-            cd synoesp
-            xz -dc < rd.gz >rd 2>/dev/null || echo "extract rd.gz"
-            cpio -idm <rd 2>&1 || echo "extract rd"
-            mkdir extract
-            cp ./usr/lib/libcurl.so.4 ./usr/lib/libmbedcrypto.so.5 ./usr/lib/libmbedtls.so.13 ./usr/lib/libmbedx509.so.1 ./usr/lib/libmsgpackc.so.2 ./usr/lib/libsodium.so ./usr/lib/libsynocodesign-ng-virtual-junior-wins.so.7 ./usr/syno/bin/scemd ./extract/
-            cd extract && ln -s scemd syno_extract_system_patch && cd ..
-            cd ..
-            mkdir pat
-            sudo LD_LIBRARY_PATH=synoesp/extract synoesp/extract/syno_extract_system_patch ds.pat pat || echo "extract latest pat"
+
+            # curl -L https://global.download.synology.com/download/DSM/release/7.0.1/42218/DSM_DS3622xs%2B_42218.pat -o oldpat.tar.gz
+            # mkdir synoesp && tar -C./synoesp/ -xf oldpat.tar.gz rd.gz
+            # cd synoesp
+            # xz -dc < rd.gz >rd 2>/dev/null || echo "extract rd.gz"
+            # cpio -idm <rd 2>&1 || echo "extract rd"
+            # mkdir extract
+            # cp ./usr/lib/libcurl.so.4 ./usr/lib/libmbedcrypto.so.5 ./usr/lib/libmbedtls.so.13 ./usr/lib/libmbedx509.so.1 ./usr/lib/libmsgpackc.so.2 ./usr/lib/libsodium.so ./usr/lib/libsynocodesign-ng-virtual-junior-wins.so.7 ./usr/syno/bin/scemd ./extract/
+            # cd extract && ln -s scemd syno_extract_system_patch && cd ..
+            # cd ..
+            # mkdir pat
+            # sudo LD_LIBRARY_PATH=synoesp/extract synoesp/extract/syno_extract_system_patch ds.pat pat || echo "extract latest pat"
+            curl -k https://raw.githubusercontent.com/wjz304/Redpill_CustomBuild/main/syno-extractor.sh | sudo bash -s ds.pat pat
+
             tar -czvf ${synoplatform}_${synoversion}.pat -C ./pat/ . --warning=no-file-changed
             ls -al
             sha256zImage=$(sha256sum ./pat/zImage | awk '{print $1}')
