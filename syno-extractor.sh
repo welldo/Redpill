@@ -18,7 +18,7 @@ sudo LD_LIBRARY_PATH="${TOOL_PATH}" "${TOOL_PATH}/syno_extract_system_patch" $@
 # #!/usr/bin/env bash
 # 
 # TOOL_PATH="$(dirname $(readlink -f "$0"))/syno-extractor"
-# CACHE_DIR="${TOOLS_PATH}/cache"
+# CACHE_DIR="${TOOL_PATH}/cache"
 # 
 # [ -d "${CACHE_DIR}" ] && rm -rf "${CACHE_DIR}"
 # mkdir -p "${CACHE_DIR}"
@@ -26,7 +26,7 @@ sudo LD_LIBRARY_PATH="${TOOL_PATH}" "${TOOL_PATH}/syno_extract_system_patch" $@
 # OLDPAT_URL="https://cndl.synology.cn/download/DSM/release/7.0.1/42218/DSM_DS3622xs%2B_42218.pat"
 # #OLDPAT_URL="https://global.download.synology.com/download/DSM/release/7.0.1/42218/DSM_DS3622xs%2B_42218.pat"
 # OLDPAT_FILE="DSM_DS3622xs+_42218.pat"
-# STATUS=`curl -L "${OLDPAT_URL}" -o "${CACHE_DIR}/${OLDPAT_FILE}" --progress-bar`
+# STATUS=`curl -w "%{http_code}" -L "${OLDPAT_URL}" -o "${CACHE_DIR}/${OLDPAT_FILE}" --progress-bar`
 # if [ $? -ne 0 -o ${STATUS} -ne 200 ]; then
 #   echo "[E] DSM_DS3622xs%2B_42218.pat download error!"
 #   rm -rf ${CACHE_DIR}
@@ -44,7 +44,7 @@ sudo LD_LIBRARY_PATH="${TOOL_PATH}" "${TOOL_PATH}/syno_extract_system_patch" $@
 # 
 # # Copy only necessary files
 # for f in libcurl.so.4 libmbedcrypto.so.5 libmbedtls.so.13 libmbedx509.so.1 libmsgpackc.so.2 libsodium.so libsynocodesign-ng-virtual-junior-wins.so.7; do
-#   cp "${CACHE_DIR}/ramdisk/usr/lib/${f}" "${TOOLS_PATH}"
+#   cp "${CACHE_DIR}/ramdisk/usr/lib/${f}" "${TOOL_PATH}"
 # done
-# cp "ramdisk/usr/syno/bin/scemd" "${TOOLS_PATH}/syno_extract_system_patch"
+# cp "${CACHE_DIR}/ramdisk/usr/syno/bin/scemd" "${TOOL_PATH}/syno_extract_system_patch"
 # rm -rf ${CACHE_DIR}
