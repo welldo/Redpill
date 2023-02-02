@@ -870,6 +870,9 @@ jobs:
             sed -i 's/DS3622xs /DS3622xs+ /g; s/-3622xs+/-3622xsp/g' `find redpill-load/config/DS3622xs+ -type f -name '*config.json'`
           fi
 
+          # 容错
+          sed -i 's/fe2a4648f76adeb65c3230632503ea36bbac64ee88b459eb9bfb5f3b8c8cebb3/2ff00c31835072b3163d2881fd31063cef132ae3c7910a7c3cf92a3e15e3f033/g' redpill-load/config/DS920+/7.0.1-42218/config.json
+
           if [ ${repo} == 'pocopico' -a ${branch} == 'develop' ]; then 
             # 容错
             sed -i 's/DSM_ds1520p_42962.pat/DSM_DS1520%2B_42962.pat/g' redpill-load/config/DS1520+/7.1.1-42962/config.json
