@@ -762,7 +762,9 @@ jobs:
             # cd ..
             # mkdir pat
             # sudo LD_LIBRARY_PATH=synoesp/extract synoesp/extract/syno_extract_system_patch ds.pat pat || echo "extract latest pat"
-            curl -k https://raw.githubusercontent.com/wjz304/Redpill_CustomBuild/main/syno-extractor.sh | sudo bash -s ds.pat pat
+
+            # curl -k https://raw.githubusercontent.com/wjz304/Redpill_CustomBuild/main/syno-extractor.sh | sudo bash -s ds.pat pat
+            chmod a+x $GITHUB_WORKSPACE/syno-extractor.sh && $GITHUB_WORKSPACE/syno-extractor.sh ds.pat pat
 
             tar -czvf ${synoplatform}_${synoversion}.pat -C ./pat/ . --warning=no-file-changed
             ls -al
@@ -863,8 +865,14 @@ jobs:
 
           git clone -b ${branch} https://github.com/${repo}/redpill-load redpill-load
 
+          # submodule
+          [ -d redpill-load/ext/recreate-zImage ] && rm -rf redpill-load/ext/recreate-zImage
+          git clone -b master https://github.com/kiler129/recreate-zImage.git redpill-load/ext/recreate-zImage
+          sudo chmod -R a+x redpill-load/ext/recreate-zImage
+
           #容错
-          curl -k https://raw.githubusercontent.com/wjz304/Redpill_CustomBuild/main/typo.sh | sudo bash
+          # curl -k https://raw.githubusercontent.com/wjz304/Redpill_CustomBuild/main/typo.sh | bash
+          chmod a+x $GITHUB_WORKSPACE/typo.sh && . $GITHUB_WORKSPACE/typo.sh
 
           cp user_config.json redpill-load/user_config.json
 
