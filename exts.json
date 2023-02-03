@@ -3990,7 +3990,7 @@
             "8139too": "Adds RealTek RTL-8139 Fast Ethernet driver Support",
             "aacraid": "Adds  Support",
             "aic94xx": "Adds Adaptec aic94xx SAS/SATA driver Support",
-            "all-modules#": "Adds All modules Support",
+            "all-modules": "Adds All modules Support",
             "alx": "Adds Qualcomm Atheros(R) AR816x/AR817x PCI-E Ethernet Network Driver Support",
             "asix": "Adds ASIX AX8817X based USB 2.0 Ethernet Devices Support",
             "atl1": "Adds Atheros L1 Gigabit Ethernet Driver Support",
@@ -4352,7 +4352,7 @@
             "8139too": "Adds RealTek RTL-8139 Fast Ethernet driver Support",
             "aacraid": "Adds  Support",
             "aic94xx": "Adds Adaptec aic94xx SAS/SATA driver Support",
-            "all-modules#": "Adds All modules Support",
+            "all-modules": "Adds All modules Support",
             "alx": "Adds Qualcomm Atheros(R) AR816x/AR817x PCI-E Ethernet Network Driver Support",
             "asix*": "Adds ASIX AX8817X based USB 2.0 Ethernet Devices Support",
             "atl1": "Adds Atheros L1 Gigabit Ethernet Driver Support",
@@ -5728,7 +5728,7 @@
             "8139too": "Adds RealTek RTL-8139 Fast Ethernet driver Support",
             "aacraid": "Adds  Support",
             "aic94xx": "Adds Adaptec aic94xx SAS/SATA driver Support",
-            "all-modules#": "Adds All modules Support",
+            "all-modules": "Adds All modules Support",
             "alx": "Adds Qualcomm Atheros(R) AR816x/AR817x PCI-E Ethernet Network Driver Support",
             "asix*": "Adds ASIX AX8817X based USB 2.0 Ethernet Devices Support",
             "atl1": "Adds Atheros L1 Gigabit Ethernet Driver Support",
@@ -6086,7 +6086,7 @@
             "8139too": "Adds RealTek RTL-8139 Fast Ethernet driver Support",
             "aacraid": "Adds  Support",
             "aic94xx": "Adds Adaptec aic94xx SAS/SATA driver Support",
-            "all-modules#": "Adds All modules Support",
+            "all-modules": "Adds All modules Support",
             "alx": "Adds Qualcomm Atheros(R) AR816x/AR817x PCI-E Ethernet Network Driver Support",
             "asix*": "Adds ASIX AX8817X based USB 2.0 Ethernet Devices Support",
             "atl1": "Adds Atheros L1 Gigabit Ethernet Driver Support",
@@ -6802,7 +6802,7 @@
             "8139too": "Adds RealTek RTL-8139 Fast Ethernet driver Support",
             "aacraid": "Adds  Support",
             "aic94xx": "Adds Adaptec aic94xx SAS/SATA driver Support",
-            "all-modules#": "Adds All modules Support",
+            "all-modules": "Adds All modules Support",
             "alx": "Adds Qualcomm Atheros(R) AR816x/AR817x PCI-E Ethernet Network Driver Support",
             "asix": "Adds ASIX AX8817X based USB 2.0 Ethernet Devices Support",
             "atl1": "Adds Atheros L1 Gigabit Ethernet Driver Support",
@@ -7232,7 +7232,7 @@
             "8139too": "Adds RealTek RTL-8139 Fast Ethernet driver Support",
             "aacraid": "Adds  Support",
             "aic94xx": "Adds Adaptec aic94xx SAS/SATA driver Support",
-            "all-modules#": "Adds All modules Support",
+            "all-modules": "Adds All modules Support",
             "alx": "Adds Qualcomm Atheros(R) AR816x/AR817x PCI-E Ethernet Network Driver Support",
             "asix": "Adds ASIX AX8817X based USB 2.0 Ethernet Devices Support",
             "atl1": "Adds Atheros L1 Gigabit Ethernet Driver Support",
@@ -7665,7 +7665,7 @@
             "8139too": "Adds RealTek RTL-8139 Fast Ethernet driver Support",
             "aacraid*": "Adds  Support",
             "aic94xx": "Adds Adaptec aic94xx SAS/SATA driver Support",
-            "all-modules#": "Adds All modules Support",
+            "all-modules": "Adds All modules Support",
             "alx": "Adds Qualcomm Atheros(R) AR816x/AR817x PCI-E Ethernet Network Driver Support",
             "asix": "Adds ASIX AX8817X based USB 2.0 Ethernet Devices Support",
             "atl1": "Adds Atheros L1 Gigabit Ethernet Driver Support",
@@ -7948,7 +7948,7 @@
             "8139too": "Adds RealTek RTL-8139 Fast Ethernet driver Support",
             "aacraid*": "Adds  Support",
             "aic94xx": "Adds Adaptec aic94xx SAS/SATA driver Support",
-            "all-modules#": "Adds All modules Support",
+            "all-modules": "Adds All modules Support",
             "alx": "Adds Qualcomm Atheros(R) AR816x/AR817x PCI-E Ethernet Network Driver Support",
             "asix": "Adds ASIX AX8817X based USB 2.0 Ethernet Devices Support",
             "atl1": "Adds Atheros L1 Gigabit Ethernet Driver Support",
@@ -8150,7 +8150,7 @@
             "8139too": "Adds RealTek RTL-8139 Fast Ethernet driver Support",
             "aacraid": "Adds  Support",
             "aic94xx": "Adds Adaptec aic94xx SAS/SATA driver Support",
-            "all-modules#": "Adds All modules Support",
+            "all-modules": "Adds All modules Support",
             "alx": "Adds Qualcomm Atheros(R) AR816x/AR817x PCI-E Ethernet Network Driver Support",
             "asix*": "Adds ASIX AX8817X based USB 2.0 Ethernet Devices Support",
             "atl1": "Adds Atheros L1 Gigabit Ethernet Driver Support",
@@ -8603,7 +8603,7 @@
             "8139too": "Adds RealTek RTL-8139 Fast Ethernet driver Support",
             "aacraid*": "Adds  Support",
             "aic94xx": "Adds Adaptec aic94xx SAS/SATA driver Support",
-            "all-modules#": "Adds All modules Support",
+            "all-modules": "Adds All modules Support",
             "alx": "Adds Qualcomm Atheros(R) AR816x/AR817x PCI-E Ethernet Network Driver Support",
             "asix": "Adds ASIX AX8817X based USB 2.0 Ethernet Devices Support",
             "atl1": "Adds Atheros L1 Gigabit Ethernet Driver Support",
@@ -8858,7 +8858,7 @@
             "wch*": "Adds  Support"
         },
         "ds1019p_42962": {
-            "all-modules#": "Adds All modules Support",
+            "all-modules": "Adds All modules Support",
             "cpuinfo": "Adds correct CPU Info, from FOXBI",
             "maxdisks": "Adjust maxdisks and internalportcfg automatically"
         },
@@ -8867,20 +8867,20 @@
             "cpuinfo": "Adds correct CPU Info, from FOXBI"
         },
         "rs3413xsp_42962": {
-            "all-modules#": "Adds All modules Support",
+            "all-modules": "Adds All modules Support",
             "cpuinfo": "Adds correct CPU Info, from FOXBI"
         },
         "rs3618xs_42962": {
-            "all-modules#": "Adds All modules Support",
+            "all-modules": "Adds All modules Support",
             "cpuinfo": "Adds correct CPU Info, from FOXBI"
         },
         "dva3219_42962": {
-            "all-modules#": "Adds All modules Support",
+            "all-modules": "Adds All modules Support",
             "cpuinfo": "Adds correct CPU Info, from FOXBI",
             "maxdisks": "Adjust maxdisks and internalportcfg automatically"
         },
         "ds923p_42962": {
-            "all-modules#": "Adds All modules Support",
+            "all-modules": "Adds All modules Support",
             "cpuinfo": "Adds correct CPU Info, from FOXBI",
             "dtb-patch": "An extension that will assist in collecting DSM diagnostic information",
             "dtbpatch": "Update device tree binary automatically on boot",
@@ -8890,11 +8890,11 @@
             "vmxnet3": "Adds VMware vmxnet3 virtual NIC driver Support"
         },
         "ds723p_42962": {
-            "all-modules#": "Adds All modules Support",
+            "all-modules": "Adds All modules Support",
             "cpuinfo": "Adds correct CPU Info, from FOXBI"
         },
         "sa6400_42962": {
-            "all-modules#": "Adds All modules Support",
+            "all-modules": "Adds All modules Support",
             "dtbpatch": "Update device tree binary automatically on boot",
             "e1000": "Adds Intel(R) PRO/1000 Network Driver Support",
             "e1000e": "Adds Intel(R) PRO/1000 Network Driver Support",
