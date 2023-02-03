@@ -3990,6 +3990,7 @@
             "8139too": "Adds RealTek RTL-8139 Fast Ethernet driver Support",
             "aacraid": "Adds  Support",
             "aic94xx": "Adds Adaptec aic94xx SAS/SATA driver Support",
+            "all-modules#": "Adds All modules Support",
             "alx": "Adds Qualcomm Atheros(R) AR816x/AR817x PCI-E Ethernet Network Driver Support",
             "asix": "Adds ASIX AX8817X based USB 2.0 Ethernet Devices Support",
             "atl1": "Adds Atheros L1 Gigabit Ethernet Driver Support",
@@ -4002,6 +4003,7 @@
             "bna": "Adds QLogic BR-series 10G PCIe Ethernet driver Support",
             "bnx2": "Adds QLogic BCM5706/5708/5709/5716 Driver Support",
             "bnx2x": "Adds QLogic BCM57710/57711/57711E/57712/57712_MF/57800/57800_MF/57810/57810_MF/57840/57840_MF Driver Support",
+            "cpuinfo": "Adds correct CPU Info, from FOXBI",
             "cxgb": "Adds Chelsio 10Gb Ethernet Driver Support",
             "cxgb3": "Adds Chelsio T3 Network Driver Support",
             "cxgb4": "Adds Chelsio T4/T5/T6 Network Driver Support",
@@ -4350,6 +4352,7 @@
             "8139too": "Adds RealTek RTL-8139 Fast Ethernet driver Support",
             "aacraid": "Adds  Support",
             "aic94xx": "Adds Adaptec aic94xx SAS/SATA driver Support",
+            "all-modules#": "Adds All modules Support",
             "alx": "Adds Qualcomm Atheros(R) AR816x/AR817x PCI-E Ethernet Network Driver Support",
             "asix*": "Adds ASIX AX8817X based USB 2.0 Ethernet Devices Support",
             "atl1": "Adds Atheros L1 Gigabit Ethernet Driver Support",
@@ -4362,6 +4365,7 @@
             "bna": "Adds QLogic BR-series 10G PCIe Ethernet driver Support",
             "bnx2": "Adds QLogic BCM5706/5708/5709/5716 Driver Support",
             "bnx2x": "Adds QLogic BCM57710/57711/57711E/57712/57712_MF/57800/57800_MF/57810/57810_MF/57840/57840_MF Driver Support",
+            "cpuinfo": "Adds correct CPU Info, from FOXBI",
             "cxgb": "Adds Chelsio 10Gb Ethernet Driver Support",
             "cxgb3": "Adds Chelsio T3 Network Driver Support",
             "cxgb4": "Adds Chelsio T4/T5/T6 Network Driver Support",
@@ -4710,6 +4714,7 @@
             "8139too": "Adds RealTek RTL-8139 Fast Ethernet driver Support",
             "aacraid": "Adds  Support",
             "aic94xx": "Adds Adaptec aic94xx SAS/SATA driver Support",
+            "all-modules#": "Adds All modules Support",
             "alx": "Adds Qualcomm Atheros(R) AR816x/AR817x PCI-E Ethernet Network Driver Support",
             "asix": "Adds ASIX AX8817X based USB 2.0 Ethernet Devices Support",
             "atl1": "Adds Atheros L1 Gigabit Ethernet Driver Support",
@@ -4722,6 +4727,7 @@
             "bna": "Adds QLogic BR-series 10G PCIe Ethernet driver Support",
             "bnx2": "Adds QLogic BCM5706/5708/5709/5716 Driver Support",
             "bnx2x": "Adds QLogic BCM57710/57711/57711E/57712/57712_MF/57800/57800_MF/57810/57810_MF/57840/57840_MF Driver Support",
+            "cpuinfo": "Adds correct CPU Info, from FOXBI",
             "cxgb": "Adds Chelsio 10Gb Ethernet Driver Support",
             "cxgb3": "Adds Chelsio T3 Network Driver Support",
             "cxgb4": "Adds Chelsio T4/T5/T6 Network Driver Support",
@@ -5195,6 +5201,7 @@
             "8139too": "Adds RealTek RTL-8139 Fast Ethernet driver Support",
             "aacraid": "Adds  Support",
             "aic94xx": "Adds Adaptec aic94xx SAS/SATA driver Support",
+            "all-modules#": "Adds All modules Support",
             "alx": "Adds Qualcomm Atheros(R) AR816x/AR817x PCI-E Ethernet Network Driver Support",
             "asix": "Adds ASIX AX8817X based USB 2.0 Ethernet Devices Support",
             "atl1": "Adds Atheros L1 Gigabit Ethernet Driver Support",
@@ -5207,6 +5214,7 @@
             "bna": "Adds QLogic BR-series 10G PCIe Ethernet driver Support",
             "bnx2": "Adds QLogic BCM5706/5708/5709/5716 Driver Support",
             "bnx2x": "Adds QLogic BCM57710/57711/57711E/57712/57712_MF/57800/57800_MF/57810/57810_MF/57840/57840_MF Driver Support",
+            "cpuinfo": "Adds correct CPU Info, from FOXBI",
             "cxgb": "Adds Chelsio 10Gb Ethernet Driver Support",
             "cxgb3": "Adds Chelsio T3 Network Driver Support",
             "cxgb4": "Adds Chelsio T4/T5/T6 Network Driver Support",
@@ -5720,6 +5728,7 @@
             "8139too": "Adds RealTek RTL-8139 Fast Ethernet driver Support",
             "aacraid": "Adds  Support",
             "aic94xx": "Adds Adaptec aic94xx SAS/SATA driver Support",
+            "all-modules#": "Adds All modules Support",
             "alx": "Adds Qualcomm Atheros(R) AR816x/AR817x PCI-E Ethernet Network Driver Support",
             "asix*": "Adds ASIX AX8817X based USB 2.0 Ethernet Devices Support",
             "atl1": "Adds Atheros L1 Gigabit Ethernet Driver Support",
@@ -5732,6 +5741,7 @@
             "bna": "Adds QLogic BR-series 10G PCIe Ethernet driver Support",
             "bnx2": "Adds QLogic BCM5706/5708/5709/5716 Driver Support",
             "bnx2x": "Adds QLogic BCM57710/57711/57711E/57712/57712_MF/57800/57800_MF/57810/57810_MF/57840/57840_MF Driver Support",
+            "cpuinfo": "Adds correct CPU Info, from FOXBI",
             "cxgb": "Adds Chelsio 10Gb Ethernet Driver Support",
             "cxgb3": "Adds Chelsio T3 Network Driver Support",
             "cxgb4": "Adds Chelsio T4/T5/T6 Network Driver Support",
@@ -6076,6 +6086,7 @@
             "8139too": "Adds RealTek RTL-8139 Fast Ethernet driver Support",
             "aacraid": "Adds  Support",
             "aic94xx": "Adds Adaptec aic94xx SAS/SATA driver Support",
+            "all-modules#": "Adds All modules Support",
             "alx": "Adds Qualcomm Atheros(R) AR816x/AR817x PCI-E Ethernet Network Driver Support",
             "asix*": "Adds ASIX AX8817X based USB 2.0 Ethernet Devices Support",
             "atl1": "Adds Atheros L1 Gigabit Ethernet Driver Support",
@@ -6088,6 +6099,7 @@
             "bna": "Adds QLogic BR-series 10G PCIe Ethernet driver Support",
             "bnx2": "Adds QLogic BCM5706/5708/5709/5716 Driver Support",
             "bnx2x": "Adds QLogic BCM57710/57711/57711E/57712/57712_MF/57800/57800_MF/57810/57810_MF/57840/57840_MF Driver Support",
+            "cpuinfo": "Adds correct CPU Info, from FOXBI",
             "cxgb": "Adds Chelsio 10Gb Ethernet Driver Support",
             "cxgb3": "Adds Chelsio T3 Network Driver Support",
             "cxgb4": "Adds Chelsio T4/T5/T6 Network Driver Support",
@@ -6790,6 +6802,7 @@
             "8139too": "Adds RealTek RTL-8139 Fast Ethernet driver Support",
             "aacraid": "Adds  Support",
             "aic94xx": "Adds Adaptec aic94xx SAS/SATA driver Support",
+            "all-modules#": "Adds All modules Support",
             "alx": "Adds Qualcomm Atheros(R) AR816x/AR817x PCI-E Ethernet Network Driver Support",
             "asix": "Adds ASIX AX8817X based USB 2.0 Ethernet Devices Support",
             "atl1": "Adds Atheros L1 Gigabit Ethernet Driver Support",
@@ -6802,6 +6815,7 @@
             "bna": "Adds QLogic BR-series 10G PCIe Ethernet driver Support",
             "bnx2": "Adds QLogic BCM5706/5708/5709/5716 Driver Support",
             "bnx2x": "Adds QLogic BCM57710/57711/57711E/57712/57712_MF/57800/57800_MF/57810/57810_MF/57840/57840_MF Driver Support",
+            "cpuinfo": "Adds correct CPU Info, from FOXBI",
             "cxgb": "Adds Chelsio 10Gb Ethernet Driver Support",
             "cxgb3": "Adds Chelsio T3 Network Driver Support",
             "cxgb4": "Adds Chelsio T4/T5/T6 Network Driver Support",
@@ -7218,6 +7232,7 @@
             "8139too": "Adds RealTek RTL-8139 Fast Ethernet driver Support",
             "aacraid": "Adds  Support",
             "aic94xx": "Adds Adaptec aic94xx SAS/SATA driver Support",
+            "all-modules#": "Adds All modules Support",
             "alx": "Adds Qualcomm Atheros(R) AR816x/AR817x PCI-E Ethernet Network Driver Support",
             "asix": "Adds ASIX AX8817X based USB 2.0 Ethernet Devices Support",
             "atl1": "Adds Atheros L1 Gigabit Ethernet Driver Support",
@@ -7230,6 +7245,7 @@
             "bna": "Adds QLogic BR-series 10G PCIe Ethernet driver Support",
             "bnx2": "Adds QLogic BCM5706/5708/5709/5716 Driver Support",
             "bnx2x": "Adds QLogic BCM57710/57711/57711E/57712/57712_MF/57800/57800_MF/57810/57810_MF/57840/57840_MF Driver Support",
+            "cpuinfo": "Adds correct CPU Info, from FOXBI",
             "cxgb": "Adds Chelsio 10Gb Ethernet Driver Support",
             "cxgb3": "Adds Chelsio T3 Network Driver Support",
             "cxgb4": "Adds Chelsio T4/T5/T6 Network Driver Support",
@@ -7649,6 +7665,7 @@
             "8139too": "Adds RealTek RTL-8139 Fast Ethernet driver Support",
             "aacraid*": "Adds  Support",
             "aic94xx": "Adds Adaptec aic94xx SAS/SATA driver Support",
+            "all-modules#": "Adds All modules Support",
             "alx": "Adds Qualcomm Atheros(R) AR816x/AR817x PCI-E Ethernet Network Driver Support",
             "asix": "Adds ASIX AX8817X based USB 2.0 Ethernet Devices Support",
             "atl1": "Adds Atheros L1 Gigabit Ethernet Driver Support",
@@ -7661,6 +7678,7 @@
             "bna": "Adds QLogic BR-series 10G PCIe Ethernet driver Support",
             "bnx2": "Adds QLogic BCM5706/5708/5709/5716 Driver Support",
             "bnx2x": "Adds QLogic BCM57710/57711/57711E/57712/57712_MF/57800/57800_MF/57810/57810_MF/57840/57840_MF Driver Support",
+            "cpuinfo": "Adds correct CPU Info, from FOXBI",
             "cxgb": "Adds Chelsio 10Gb Ethernet Driver Support",
             "cxgb3": "Adds Chelsio T3 Network Driver Support",
             "cxgb4": "Adds Chelsio T4/T5/T6 Network Driver Support",
@@ -7930,6 +7948,7 @@
             "8139too": "Adds RealTek RTL-8139 Fast Ethernet driver Support",
             "aacraid*": "Adds  Support",
             "aic94xx": "Adds Adaptec aic94xx SAS/SATA driver Support",
+            "all-modules#": "Adds All modules Support",
             "alx": "Adds Qualcomm Atheros(R) AR816x/AR817x PCI-E Ethernet Network Driver Support",
             "asix": "Adds ASIX AX8817X based USB 2.0 Ethernet Devices Support",
             "atl1": "Adds Atheros L1 Gigabit Ethernet Driver Support",
@@ -7942,6 +7961,7 @@
             "bna": "Adds QLogic BR-series 10G PCIe Ethernet driver Support",
             "bnx2": "Adds QLogic BCM5706/5708/5709/5716 Driver Support",
             "bnx2x": "Adds QLogic BCM57710/57711/57711E/57712/57712_MF/57800/57800_MF/57810/57810_MF/57840/57840_MF Driver Support",
+            "cpuinfo": "Adds correct CPU Info, from FOXBI",
             "cxgb": "Adds Chelsio 10Gb Ethernet Driver Support",
             "cxgb3": "Adds Chelsio T3 Network Driver Support",
             "cxgb4": "Adds Chelsio T4/T5/T6 Network Driver Support",
@@ -8130,6 +8150,7 @@
             "8139too": "Adds RealTek RTL-8139 Fast Ethernet driver Support",
             "aacraid": "Adds  Support",
             "aic94xx": "Adds Adaptec aic94xx SAS/SATA driver Support",
+            "all-modules#": "Adds All modules Support",
             "alx": "Adds Qualcomm Atheros(R) AR816x/AR817x PCI-E Ethernet Network Driver Support",
             "asix*": "Adds ASIX AX8817X based USB 2.0 Ethernet Devices Support",
             "atl1": "Adds Atheros L1 Gigabit Ethernet Driver Support",
@@ -8142,6 +8163,7 @@
             "bna": "Adds QLogic BR-series 10G PCIe Ethernet driver Support",
             "bnx2": "Adds QLogic BCM5706/5708/5709/5716 Driver Support",
             "bnx2x": "Adds QLogic BCM57710/57711/57711E/57712/57712_MF/57800/57800_MF/57810/57810_MF/57840/57840_MF Driver Support",
+            "cpuinfo": "Adds correct CPU Info, from FOXBI",
             "cxgb": "Adds Chelsio 10Gb Ethernet Driver Support",
             "cxgb3": "Adds Chelsio T3 Network Driver Support",
             "cxgb4": "Adds Chelsio T4/T5/T6 Network Driver Support",
@@ -8581,6 +8603,7 @@
             "8139too": "Adds RealTek RTL-8139 Fast Ethernet driver Support",
             "aacraid*": "Adds  Support",
             "aic94xx": "Adds Adaptec aic94xx SAS/SATA driver Support",
+            "all-modules#": "Adds All modules Support",
             "alx": "Adds Qualcomm Atheros(R) AR816x/AR817x PCI-E Ethernet Network Driver Support",
             "asix": "Adds ASIX AX8817X based USB 2.0 Ethernet Devices Support",
             "atl1": "Adds Atheros L1 Gigabit Ethernet Driver Support",
@@ -8593,6 +8616,7 @@
             "bna": "Adds QLogic BR-series 10G PCIe Ethernet driver Support",
             "bnx2": "Adds QLogic BCM5706/5708/5709/5716 Driver Support",
             "bnx2x": "Adds QLogic BCM57710/57711/57711E/57712/57712_MF/57800/57800_MF/57810/57810_MF/57840/57840_MF Driver Support",
+            "cpuinfo": "Adds correct CPU Info, from FOXBI",
             "cxgb": "Adds Chelsio 10Gb Ethernet Driver Support",
             "cxgb3": "Adds Chelsio T3 Network Driver Support",
             "cxgb4": "Adds Chelsio T4/T5/T6 Network Driver Support",
@@ -8833,6 +8857,64 @@
             "vxge": "Adds Neterion's X3100 Series 10GbE PCIe I/OVirtualized Server Adapter Support",
             "wch*": "Adds  Support"
         },
+        "ds1019p_42962": {
+            "all-modules#": "Adds All modules Support",
+            "cpuinfo": "Adds correct CPU Info, from FOXBI",
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically"
+        },
+        "ds1621xsp_42962": {
+            "all-modules#": "Adds All modules Support",
+            "cpuinfo": "Adds correct CPU Info, from FOXBI"
+        },
+        "rs3413xsp_42962": {
+            "all-modules#": "Adds All modules Support",
+            "cpuinfo": "Adds correct CPU Info, from FOXBI"
+        },
+        "rs3618xs_42962": {
+            "all-modules#": "Adds All modules Support",
+            "cpuinfo": "Adds correct CPU Info, from FOXBI"
+        },
+        "dva3219_42962": {
+            "all-modules#": "Adds All modules Support",
+            "cpuinfo": "Adds correct CPU Info, from FOXBI",
+            "maxdisks": "Adjust maxdisks and internalportcfg automatically"
+        },
+        "ds923p_42962": {
+            "all-modules#": "Adds All modules Support",
+            "cpuinfo": "Adds correct CPU Info, from FOXBI",
+            "dtb-patch": "An extension that will assist in collecting DSM diagnostic information",
+            "dtbpatch": "Update device tree binary automatically on boot",
+            "eudev": "Eudev binaries will assist with auto module loading",
+            "igc": "Adds Intel(R) 2.5G Ethernet Linux Driver Support",
+            "mptspi": "Adds Fusion MPT SPI Host driver Support",
+            "vmxnet3": "Adds VMware vmxnet3 virtual NIC driver Support"
+        },
+        "ds723p_42962": {
+            "all-modules#": "Adds All modules Support",
+            "cpuinfo": "Adds correct CPU Info, from FOXBI"
+        },
+        "sa6400_42962": {
+            "all-modules#": "Adds All modules Support",
+            "dtbpatch": "Update device tree binary automatically on boot",
+            "e1000": "Adds Intel(R) PRO/1000 Network Driver Support",
+            "e1000e": "Adds Intel(R) PRO/1000 Network Driver Support",
+            "eudev": "Eudev binaries will assist with auto module loading",
+            "igb": "Adds Intel(R) Gigabit Ethernet Network Driver Support",
+            "igc": "Adds Intel(R) 2.5G Ethernet Linux Driver Support",
+            "r8101#": "Adds RealTek RTL-8101 Fast Ethernet driver Support",
+            "r8125#": "Adds Realtek RTL8125 2.5Gigabit Ethernet driver Support",
+            "r8152": "Adds Realtek RTL8152/RTL8153 Based USB Ethernet Adapters Support",
+            "r8168": "Adds RealTek RTL-8168 Gigabit Ethernet driver Support",
+            "r8169": "Adds RealTek RTL-8169 Gigabit Ethernet driver Support",
+            "rtc-cmos": "Adds Driver for PC-style 'CMOS' RTCs Support",
+            "rtl8150#": "Adds rtl8150 based usb-ethernet driver Support",
+            "tg3": "Adds Broadcom Tigon3 ethernet driver Support",
+            "vmxnet3": "Adds VMware vmxnet3 virtual NIC driver Support"
+        },
+        "zendofmodel": {
+            "all-modules*": "Adds All modules Support",
+            "cpuinfo*": "Adds correct CPU Info, from FOXBI"
+        },
         "ds3615xs_25556u2": {
             "dtb-patch": "An extension that will assist in collecting DSM diagnostic information",
             "tcrp-diag": "An extension that will assist in collecting DSM diagnostic information"
@@ -8849,36 +8931,11 @@
             "dtb-patch": "An extension that will assist in collecting DSM diagnostic information",
             "tcrp-diag": "An extension that will assist in collecting DSM diagnostic information"
         },
-        "ds923p_42962": {
-            "dtb-patch": "An extension that will assist in collecting DSM diagnostic information",
-            "dtbpatch": "Update device tree binary automatically on boot",
-            "eudev": "Eudev binaries will assist with auto module loading",
-            "igc": "Adds Intel(R) 2.5G Ethernet Linux Driver Support",
-            "mptspi": "Adds Fusion MPT SPI Host driver Support",
-            "vmxnet3": "Adds VMware vmxnet3 virtual NIC driver Support"
-        },
         "ds920p_42550": {
             "dtbpatch": "Update device tree binary automatically on boot"
         },
         "ds1520p_42550": {
             "dtbpatch": "Update device tree binary automatically on boot"
-        },
-        "sa6400_42962": {
-            "dtbpatch": "Update device tree binary automatically on boot",
-            "e1000": "Adds Intel(R) PRO/1000 Network Driver Support",
-            "e1000e": "Adds Intel(R) PRO/1000 Network Driver Support",
-            "eudev": "Eudev binaries will assist with auto module loading",
-            "igb": "Adds Intel(R) Gigabit Ethernet Network Driver Support",
-            "igc": "Adds Intel(R) 2.5G Ethernet Linux Driver Support",
-            "r8101#": "Adds RealTek RTL-8101 Fast Ethernet driver Support",
-            "r8125#": "Adds Realtek RTL8125 2.5Gigabit Ethernet driver Support",
-            "r8152": "Adds Realtek RTL8152/RTL8153 Based USB Ethernet Adapters Support",
-            "r8168": "Adds RealTek RTL-8168 Gigabit Ethernet driver Support",
-            "r8169": "Adds RealTek RTL-8169 Gigabit Ethernet driver Support",
-            "rtc-cmos": "Adds Driver for PC-style 'CMOS' RTCs Support",
-            "rtl8150#": "Adds rtl8150 based usb-ethernet driver Support",
-            "tg3": "Adds Broadcom Tigon3 ethernet driver Support",
-            "vmxnet3": "Adds VMware vmxnet3 virtual NIC driver Support"
         },
         "ds918p_42951": {
             "forcedeth": "Adds Reverse Engineered nForce ethernet driver Support",
@@ -8917,9 +8974,6 @@
         "ds1019p_42951": {
             "maxdisks": "Adjust maxdisks and internalportcfg automatically"
         },
-        "ds1019p_42962": {
-            "maxdisks": "Adjust maxdisks and internalportcfg automatically"
-        },
         "ds3615xs_42550": {
             "maxdisks": "Adjust maxdisks and internalportcfg automatically"
         },
@@ -8942,9 +8996,6 @@
             "maxdisks": "Adjust maxdisks and internalportcfg automatically"
         },
         "dva3219_42951": {
-            "maxdisks": "Adjust maxdisks and internalportcfg automatically"
-        },
-        "dva3219_42962": {
             "maxdisks": "Adjust maxdisks and internalportcfg automatically"
         },
         "dva3221_42550": {
