@@ -845,12 +845,15 @@ jobs:
           branch=$(echo ${repository} | awk -F'_' '{print $2}')
           lkm=${{ env.lkm }}
 
-          bArgs=''
+          bArgs=""
           if [ ${repository} != 'pocopico_develop' ]; then 
-            bArgs+='BRP_JUN_MOD=1 BRP_DEBUG=1 '
+            bArgs+='BRP_JUN_MOD=1 '
           fi
-          if [ ${{ env.platform }} == 'SA6400' -a ${{ env.version }} == '7.1.1-42962' ]; then 
-            bArgs+='BRP_LINUX_PATCH_METHOD=repack '
+          # if [ ${{ env.platform }} == 'SA6400' -a ${{ env.version }} == '7.1.1-42962' ]; then
+          #   bArgs+='BRP_LINUX_PATCH_METHOD=repack '
+          # fi
+          if [ "${bArgs}" != "" ]; then 
+            bArgs="BRP_DEBUG=1 ${bArgs}"
           fi
 
           lkmext=https://raw.githubusercontent.com/wjz304/rp-ext/master
