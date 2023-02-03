@@ -4714,7 +4714,7 @@
             "8139too": "Adds RealTek RTL-8139 Fast Ethernet driver Support",
             "aacraid": "Adds  Support",
             "aic94xx": "Adds Adaptec aic94xx SAS/SATA driver Support",
-            "all-modules#": "Adds All modules Support",
+            "all-modules": "Adds All modules Support",
             "alx": "Adds Qualcomm Atheros(R) AR816x/AR817x PCI-E Ethernet Network Driver Support",
             "asix": "Adds ASIX AX8817X based USB 2.0 Ethernet Devices Support",
             "atl1": "Adds Atheros L1 Gigabit Ethernet Driver Support",
@@ -5201,7 +5201,7 @@
             "8139too": "Adds RealTek RTL-8139 Fast Ethernet driver Support",
             "aacraid": "Adds  Support",
             "aic94xx": "Adds Adaptec aic94xx SAS/SATA driver Support",
-            "all-modules#": "Adds All modules Support",
+            "all-modules": "Adds All modules Support",
             "alx": "Adds Qualcomm Atheros(R) AR816x/AR817x PCI-E Ethernet Network Driver Support",
             "asix": "Adds ASIX AX8817X based USB 2.0 Ethernet Devices Support",
             "atl1": "Adds Atheros L1 Gigabit Ethernet Driver Support",
@@ -8863,7 +8863,7 @@
             "maxdisks": "Adjust maxdisks and internalportcfg automatically"
         },
         "ds1621xsp_42962": {
-            "all-modules#": "Adds All modules Support",
+            "all-modules": "Adds All modules Support",
             "cpuinfo": "Adds correct CPU Info, from FOXBI"
         },
         "rs3413xsp_42962": {
