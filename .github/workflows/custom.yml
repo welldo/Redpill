@@ -845,7 +845,10 @@ jobs:
 
           bArgs=''
           if [ ${repository} != 'pocopico_develop' ]; then 
-            bArgs='BRP_JUN_MOD=1 BRP_DEBUG=1'
+            bArgs+='BRP_JUN_MOD=1 BRP_DEBUG=1 '
+          fi
+          if [ ${{ env.platform }} == 'SA6400' -a ${{ env.version }} == '7.1.1-42962' ]; then 
+            bArgs+='BRP_LINUX_PATCH_METHOD=repack '
           fi
 
           lkmext=https://raw.githubusercontent.com/wjz304/rp-ext/master
