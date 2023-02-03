@@ -868,7 +868,8 @@ jobs:
           # submodule
           [ -d redpill-load/ext/recreate-zImage ] && rm -rf redpill-load/ext/recreate-zImage
           git clone -b master https://github.com/kiler129/recreate-zImage.git redpill-load/ext/recreate-zImage
-          sudo chmod -R a+x redpill-load/ext/recreate-zImage
+          sudo chmod -R a+x redpill-load/ext
+          find redpill-load/ext -type f -name '*.sh' -exec ls -al '{}' +
 
           #容错
           # curl -k https://raw.githubusercontent.com/wjz304/Redpill_CustomBuild/main/typo.sh | bash
