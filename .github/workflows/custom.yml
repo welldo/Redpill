@@ -834,7 +834,7 @@ jobs:
           }
 
           sudo apt update
-          sudo apt upgrade -y
+          #sudo apt upgrade -y
           sudo apt install curl bspatch jq git -y
           sudo apt install rename tree -y
 
@@ -875,8 +875,10 @@ jobs:
           find redpill-load/ext -type f -name '*.sh' -exec ls -al '{}' +
 
           #容错
-          # curl -k https://raw.githubusercontent.com/wjz304/Redpill_CustomBuild/main/typo.sh | bash
-          chmod a+x $GITHUB_WORKSPACE/typo.sh && . $GITHUB_WORKSPACE/typo.sh
+          echo "==============================↓ 容错 ↓=========================="
+          # curl -k https://raw.githubusercontent.com/wjz304/Redpill_CustomBuild/main/typo.sh | bash -s ${repo} ${branch}
+          chmod a+x $GITHUB_WORKSPACE/typo.sh && $GITHUB_WORKSPACE/typo.sh ${repo} ${branch}
+          echo "==============================↑ 容错 ↑=========================="
 
           cp user_config.json redpill-load/user_config.json
 

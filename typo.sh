@@ -1,14 +1,81 @@
 #!/usr/bin/env bash
 
+repo=${1}
+branch=${2}
+
+echo repo:${repo}  branch:${branch}
+
 # 修复 pocopico 大的一个 typo
-if [ ${repo} == 'pocopico' -a ${branch} == 'develop' ]; then 
+if [ "${repo}" == "pocopico" -a ${branch} == "develop" ]; then 
   # cd redpill-load && git reset --hard d810a64a33fdc84287ab68e2d5919763c725ebeb && cd ..
   #find redpill-load/config/DS3622xs+ -type d -name '*3622xs*' -execdir rename 's/3622xs\+/3622xsp/' '{}' +
   find redpill-load/config/DS3622xs+ -type f -name '*3622xs*' -exec rename 's/-3622xs\+/-3622xsp/' '{}' +
   sed -i 's/DS3622xs /DS3622xs+ /g; s/-3622xs+/-3622xsp/g' `find redpill-load/config/DS3622xs+ -type f -name '*config.json'`
 fi
 
+if [ "${repo}" == "pocopico" -a "${branch}" == "develop" ]; then 
+  # 容错
+  [ -e redpill-load/config/DS1520+/7.1.1-42962/config.json ] && sed -i 's/DSM_ds1520p_42962.pat/DSM_DS1520%2B_42962.pat/g' redpill-load/config/DS1520+/7.1.1-42962/config.json
+  [ -e redpill-load/redpill-misc/recipes/universal.json ] && sed -i 's/856331415d6980d9ef03a75eae4b9c5c927d1083266e1d7038ad8c62fbc2d570/625daf8507141d055b60b9e5ffd633cde1302d68387d611ac97a98a92f820501/g' redpill-load/redpill-misc/recipes/universal.json
+
+  [ -e redpill-load/config/DS1019+/7.0.1-42218/config.json ] && rm -rf redpill-load/config/DS1019+/7.0.1-42218/config.json && curl -L https://raw.githubusercontent.com/wjz304/redpill-load/test-dev/config/DS1019+/7.0.1-42218/config.json -o redpill-load/config/DS1019+/7.0.1-42218/config.json
+  [ -e redpill-load/config/DS1520+/7.0.1-42218/config.json ] && rm -rf redpill-load/config/DS1520+/7.0.1-42218/config.json && curl -L https://raw.githubusercontent.com/wjz304/redpill-load/test-dev/config/DS1520+/7.0.1-42218/config.json -o redpill-load/config/DS1520+/7.0.1-42218/config.json
+  [ -e redpill-load/config/DS1520+/7.1.0-42661/config.json ] && rm -rf redpill-load/config/DS1520+/7.1.0-42661/config.json && curl -L https://raw.githubusercontent.com/wjz304/redpill-load/test-dev/config/DS1520+/7.1.0-42661/config.json -o redpill-load/config/DS1520+/7.1.0-42661/config.json
+  [ -e redpill-load/config/DS1621xs+/7.0.1-42218/config.json ] && rm -rf redpill-load/config/DS1621xs+/7.0.1-42218/config.json && curl -L https://raw.githubusercontent.com/wjz304/redpill-load/test-dev/config/DS1621xs+/7.0.1-42218/config.json -o redpill-load/config/DS1621xs+/7.0.1-42218/config.json
+  [ -e redpill-load/config/DVA3219/7.0.1-42218/config.json ] && rm -rf redpill-load/config/DVA3219/7.0.1-42218/config.json && curl -L https://raw.githubusercontent.com/wjz304/redpill-load/test-dev/config/DVA3219/7.0.1-42218/config.json -o redpill-load/config/DVA3219/7.0.1-42218/config.json
+  [ -e redpill-load/config/DVA3219/7.1.0-42661/config.json ] && rm -rf redpill-load/config/DVA3219/7.1.0-42661/config.json && curl -L https://raw.githubusercontent.com/wjz304/redpill-load/test-dev/config/DVA3219/7.1.0-42661/config.json -o redpill-load/config/DVA3219/7.1.0-42661/config.json
+  [ -e redpill-load/config/DVA3221/7.0.1-42218/config.json ] && rm -rf redpill-load/config/DVA3221/7.0.1-42218/config.json && curl -L https://raw.githubusercontent.com/wjz304/redpill-load/test-dev/config/DVA3221/7.0.1-42218/config.json -o redpill-load/config/DVA3221/7.0.1-42218/config.json
+  [ -e redpill-load/config/DVA3221/7.1.0-42661/config.json ] && rm -rf redpill-load/config/DVA3221/7.1.0-42661/config.json && curl -L https://raw.githubusercontent.com/wjz304/redpill-load/test-dev/config/DVA3221/7.1.0-42661/config.json -o redpill-load/config/DVA3221/7.1.0-42661/config.json
+  [ -e redpill-load/config/FS2500/7.0.1-42218/config.json ] && rm -rf redpill-load/config/FS2500/7.0.1-42218/config.json && curl -L https://raw.githubusercontent.com/wjz304/redpill-load/test-dev/config/FS2500/7.0.1-42218/config.json -o redpill-load/config/FS2500/7.0.1-42218/config.json
+  [ -e redpill-load/config/FS2500/7.1.0-42661/config.json ] && rm -rf redpill-load/config/FS2500/7.1.0-42661/config.json && curl -L https://raw.githubusercontent.com/wjz304/redpill-load/test-dev/config/FS2500/7.1.0-42661/config.json -o redpill-load/config/FS2500/7.1.0-42661/config.json
+  [ -e redpill-load/config/FS6400/7.0.1-42218/config.json ] && rm -rf redpill-load/config/FS6400/7.0.1-42218/config.json && curl -L https://raw.githubusercontent.com/wjz304/redpill-load/test-dev/config/FS6400/7.0.1-42218/config.json -o redpill-load/config/FS6400/7.0.1-42218/config.json
+  [ -e redpill-load/config/RS3413xs+/7.0.1-42218/config.json ] && rm -rf redpill-load/config/RS3413xs+/7.0.1-42218/config.json && curl -L https://raw.githubusercontent.com/wjz304/redpill-load/test-dev/config/RS3413xs+/7.0.1-42218/config.json -o redpill-load/config/RS3413xs+/7.0.1-42218/config.json
+  [ -e redpill-load/config/RS3413xs+/7.1.0-42661/config.json ] && rm -rf redpill-load/config/RS3413xs+/7.1.0-42661/config.json && curl -L https://raw.githubusercontent.com/wjz304/redpill-load/test-dev/config/RS3413xs+/7.1.0-42661/config.json -o redpill-load/config/RS3413xs+/7.1.0-42661/config.json
+  [ -e redpill-load/config/RS3618xs/7.0.1-42218/config.json ] && rm -rf redpill-load/config/RS3618xs/7.0.1-42218/config.json && curl -L https://raw.githubusercontent.com/wjz304/redpill-load/test-dev/config/RS3618xs/7.0.1-42218/config.json -o redpill-load/config/RS3618xs/7.0.1-42218/config.json
+  [ -e redpill-load/config/RS3618xs/7.1.0-42661/config.json ] && rm -rf redpill-load/config/RS3618xs/7.1.0-42661/config.json && curl -L https://raw.githubusercontent.com/wjz304/redpill-load/test-dev/config/RS3618xs/7.1.0-42661/config.json -o redpill-load/config/RS3618xs/7.1.0-42661/config.json
+
+  [ -d redpill-load/config/SA6400/7.1.1-42962 -a ! -f redpill-load/config/SA6400/7.1.1-42962/zImage-001-SA6400-42962-ramdisk-and-header.bsp ] && curl -L https://raw.githubusercontent.com/wjz304/redpill-load/test-dev/config/SA6400/7.1.1-42962/zImage-001-SA6400-42962-ramdisk-and-header.bsp -o redpill-load/config/SA6400/7.1.1-42962/zImage-001-SA6400-42962-ramdisk-and-header.bsp
+  [ -e redpill-load/config/SA6400/7.1.1-42962/config.json ] && sed -i 's/redpill-linux-v4.4.180+.ko/redpill-linux-v5.10.55+.ko/g' redpill-load/config/SA6400/7.1.1-42962/config.json
+fi
+
+if [ "${repo}" == "PeterSuh-Q3" -a "${branch}" == "master" ]; then 
+  # 容错
+  [ -e redpill-load/config/DS1520+/7.1.1-42962/config.json ] && sed -i 's/DSM_ds1520p_42962.pat/DSM_DS1520%2B_42962.pat/g' redpill-load/config/DS1520+/7.1.1-42962/config.json
+fi
+
+if [ "${repo}" == "pocopico" -a "${branch}" == "jun" ]; then 
+  # 容错
+  [ -e redpill-load/config/DVA3221/7.0.1-42218/config.json ] && sed -i 's/cndl.synology.cn/global.download.synology.com/g' redpill-load/config/DVA3221/7.0.1-42218/config.json
+  [ -e redpill-load/config/FS6400/7.0.1-42218/config.json  ] && sed -i 's/global.synology.com/global.download.synology.com/g' redpill-load/config/FS6400/7.0.1-42218/config.json 
+  [ -e redpill-load/config/RS4021xs+/7.0.1-42218/config.json ] && sed -i 's/global.synology.com/global.download.synology.com/g' redpill-load/config/RS4021xs+/7.0.1-42218/config.json
+  [ -e redpill-load/config/RS4021xs+/7.0.1-42218/config.json ] && sed -i 's/a72076b1a5c148e775e9542916e2f07fe18d8676dc7396ed69355a9a0a38b36c/7afca3970ac7324d7431c1484d4249939bedd4c18ac34187f894c43119edf3a1/g' redpill-load/config/RS4021xs+/7.0.1-42218/config.json
+  [ -e redpill-load/config/RS4021xs+/7.0.1-42218/config.json ] && sed -i 's/17607e1739c8acc9903272ebd981bccb27b51057cdcb3cc446e5c5149db452d3/b4cc62e9953f226960de98b65887e17dd6df5fa0ad28f665e0b4660dbd5f2fa8/g' redpill-load/config/RS4021xs+/7.0.1-42218/config.json
+  [ -e redpill-load/config/RS4021xs+/7.0.1-42218/config.json ] && sed -i 's/3aa9d810064747fca6d0a3ab4c979bd82b49fc0d166dfe714261c2a22145cc70/3510afe5b3dfe3662bfe054c1728c8794911da431718b533cd03d2a2c061ffd5/g' redpill-load/config/RS4021xs+/7.0.1-42218/config.json
+fi
+
+if [ "${repo}" == "jumkey" -a "${branch}" == "develop" ]; then 
+  # 容错
+  if [ -d redpill-load/config/DS920+/7.0.1-42218 ]; then
+    rm -rf redpill-load/config/DS920+/7.0.1-42218/*
+    curl -L https://raw.githubusercontent.com/wjz304/redpill-load/test-jun/config/DS920+/7.0.1-42218/zImage-001-920p-42218-ramdisk-and-flag-NOP.bsp -o redpill-load/config/DS920+/7.0.1-42218/zImage-001-920p-42218-ramdisk-and-flag-NOP.bsp
+    curl -L https://raw.githubusercontent.com/wjz304/redpill-load/test-jun/config/DS920+/7.0.1-42218/config.json -o redpill-load/config/DS920+/7.0.1-42218/config.json
+  fi
+  if [ -d redpill-load/config/DVA3221/7.0.1-42218 ]; then
+    rm -rf redpill-load/config/DVA3221/7.0.1-42218/*
+    curl -L https://raw.githubusercontent.com/wjz304/redpill-load/test-jun/config/DVA3221/7.0.1-42218/zImage-001-dav3221-42218-ramdisk-and-header.bsp -o redpill-load/config/DVA3221/7.0.1-42218/zImage-001-dav3221-42218-ramdisk-and-header.bsp
+    curl -L https://raw.githubusercontent.com/wjz304/redpill-load/test-jun/config/DVA3221/7.0.1-42218/config.json -o redpill-load/config/DVA3221/7.0.1-42218/config.json
+  fi
+  [ -e redpill-load/config/DS923+/7.1.1-42962/config.json ] && sed -i 's|file://localhost/root/DSM_DS923%2B_42962.pat|https://global.download.synology.com/download/DSM/release/7.1.1/42962/DSM_DS923%2B_42962.pat|g' redpill-load/config/DS923+/7.1.1-42962/config.json
+  [ -e redpill-load/config/DS923+/7.1.1-42962/config.json ] && sed -i 's|a2bcfae34eda13f65bc7ee453b63bab982e2db9891a680968bc24ef5035ae8d8|e33b47df446ce0bd99c5613767c9dba977915e25acfb5ccb9f5650b14459458f|g' redpill-load/config/DS923+/7.1.1-42962/config.json
+  rm -rf redpill-load/config/DVA1622
+  #[ -e redpill-load/config/DVA1622/7.1.0-42661/config.json ] && sed -i 's|file://localhost/root/content.tar|https://global.download.synology.com/download/DSM/release/7.1/42661-1/DSM_DVA1622_42661.pat|g' redpill-load/config/DVA1622/7.1-42661/config.json
+  #[ -e redpill-load/config/DVA1622/7.1.0-42661/config.json ] && sed -i 's|99f60f0c2b54c0a2adbc01d79e872273488ba43296a7a74904c462bc423b7dfe|f1484cf302627072ca393293cd73e61dc9e09d479ef028b216eae7c12f7b7825|g' redpill-load/config/DVA1622/7.1-42661/config.json
+  #[ -e redpill-load/config/DVA1622/7.1.0-42661/config.json ] && sed -i 's|a31e91a62ab6f3ff986bc7fcfde0a56a292c15e17735e7b5fad573d333cf7de4|1d0e5b76e08e3483f6bf06d23b5978ec498b855bde23db1f96f343db4c43337d|g' redpill-load/config/DVA1622/7.1-42661/config.json
+  #[ -e redpill-load/config/DVA1622/7.1.0-42661/config.json ] && sed -i 's|32ee25e7a806eb481cc858edd7f1e341c85c7627ea03788f8466716432830d33|6290945ba61f652aec83725f81f5a47bd5e4cdbeb86241c33825154140e164ec|g' redpill-load/config/DVA1622/7.1-42661/config.json
+fi
+
 # 容错
+echo "Synology was modified in 'Thu, 02 Feb 2023 09:02:06 GMT'"
 [ -e redpill-load/config/DS1019+/7.0.1-42218/config.json ] && sed -i 's/920b53b9022ebd4675049b43c493455a1307ec97344846ca9dfd25d964b75684/b029393ea7b7cf644fb1c9f984f57c1980077562ee2e15d0ffd049c4c48098d3/g' redpill-load/config/DS1019+/7.0.1-42218/config.json
 [ -e redpill-load/config/DS1019+/7.0.1-42218/config.json ] && sed -i 's/338ba514066da01d0c1f770418916b9b96f5355d88a7b55b398d2726db591fdb/7311b04f7462847f529cf966c7b332097354692485c8157643d89441e2a81cd0/g' redpill-load/config/DS1019+/7.0.1-42218/config.json
 [ -e redpill-load/config/DS1019+/7.0.1-42218/config.json ] && sed -i 's/f17be89d59b0e59df4093df7e5d1ac1cf199f3b22413fe62e1a792c543d6172d/a8bcb6c36e8657a8723882b19ec3e76149dc67df3650f6db0af1958637e7f565/g' redpill-load/config/DS1019+/7.0.1-42218/config.json
@@ -61,36 +128,4 @@ fi
 [ -e redpill-load/config/RS4021xs+/7.0.1-42218/config.json ] && sed -i 's/b4cc62e9953f226960de98b65887e17dd6df5fa0ad28f665e0b4660dbd5f2fa8/d6059bcd7160ed1f775a9323599ac8860b60ada32f0a4f3e5ca166c15a17784e/g' redpill-load/config/RS4021xs+/7.0.1-42218/config.json
 [ -e redpill-load/config/RS4021xs+/7.0.1-42218/config.json ] && sed -i 's/3510afe5b3dfe3662bfe054c1728c8794911da431718b533cd03d2a2c061ffd5/f2b99b4c05559376d34d30d6446c30a8b3f44f516e5a041299d03be9c7fd0095/g' redpill-load/config/RS4021xs+/7.0.1-42218/config.json
 
-[ -d redpill-load/config/SA6400/7.1.1-42962 -a ! -f redpill-load/config/SA6400/7.1.1-42962/zImage-001-SA6400-42962-ramdisk-and-header.bsp ] && curl -L https://raw.githubusercontent.com/wjz304/redpill-load/test-dev/config/SA6400/7.1.1-42962/zImage-001-SA6400-42962-ramdisk-and-header.bsp -o redpill-load/config/SA6400/7.1.1-42962/zImage-001-SA6400-42962-ramdisk-and-header.bsp
-[ -e redpill-load/config/SA6400/7.1.1-42962/config.json ] && sed -i 's/redpill-linux-v4.4.180+.ko/redpill-linux-v5.10.55+.ko/g' redpill-load/config/SA6400/7.1.1-42962/config.json
-
-if [ ${repo} == 'pocopico' -a ${branch} == 'develop' ]; then 
-  # 容错
-  [ -e redpill-load/config/DS1520+/7.1.1-42962/config.json ] && sed -i 's/DSM_ds1520p_42962.pat/DSM_DS1520%2B_42962.pat/g' redpill-load/config/DS1520+/7.1.1-42962/config.json
-  [ -e redpill-load/redpill-misc/recipes/universal.json ] && sed -i 's/856331415d6980d9ef03a75eae4b9c5c927d1083266e1d7038ad8c62fbc2d570/625daf8507141d055b60b9e5ffd633cde1302d68387d611ac97a98a92f820501/g' redpill-load/redpill-misc/recipes/universal.json
-fi
-
-if [ ${repo} == 'PeterSuh-Q3' -a ${branch} == 'master' ]; then 
-  # 容错
-  [ -e redpill-load/config/DS1520+/7.1.1-42962/config.json ] && sed -i 's/DSM_ds1520p_42962.pat/DSM_DS1520%2B_42962.pat/g' redpill-load/config/DS1520+/7.1.1-42962/config.json
-fi
-
-if [ ${repo} == 'pocopico' -a ${branch} == 'jun' ]; then 
-  # 容错
-  [ -e redpill-load/config/DVA3221/7.0.1-42218/config.json ] && sed -i 's/cndl.synology.cn/global.download.synology.com/g' redpill-load/config/DVA3221/7.0.1-42218/config.json
-  [ -e redpill-load/config/FS6400/7.0.1-42218/config.json  ] && sed -i 's/global.synology.com/global.download.synology.com/g' redpill-load/config/FS6400/7.0.1-42218/config.json 
-  [ -e redpill-load/config/RS4021xs+/7.0.1-42218/config.json ] && sed -i 's/global.synology.com/global.download.synology.com/g' redpill-load/config/RS4021xs+/7.0.1-42218/config.json
-  [ -e redpill-load/config/RS4021xs+/7.0.1-42218/config.json ] && sed -i 's/a72076b1a5c148e775e9542916e2f07fe18d8676dc7396ed69355a9a0a38b36c/7afca3970ac7324d7431c1484d4249939bedd4c18ac34187f894c43119edf3a1/g' redpill-load/config/RS4021xs+/7.0.1-42218/config.json
-  [ -e redpill-load/config/RS4021xs+/7.0.1-42218/config.json ] && sed -i 's/17607e1739c8acc9903272ebd981bccb27b51057cdcb3cc446e5c5149db452d3/b4cc62e9953f226960de98b65887e17dd6df5fa0ad28f665e0b4660dbd5f2fa8/g' redpill-load/config/RS4021xs+/7.0.1-42218/config.json
-  [ -e redpill-load/config/RS4021xs+/7.0.1-42218/config.json ] && sed -i 's/3aa9d810064747fca6d0a3ab4c979bd82b49fc0d166dfe714261c2a22145cc70/3510afe5b3dfe3662bfe054c1728c8794911da431718b533cd03d2a2c061ffd5/g' redpill-load/config/RS4021xs+/7.0.1-42218/config.json
-fi
-
-if [ ${repo} == 'jumkey' -a ${branch} == 'develop' ]; then 
-  # 容错
-  [ -e redpill-load/config/DS923+/7.1.1-42962/config.json ] && sed -i 's|file://localhost/root/DSM_DS923%2B_42962.pat|https://global.download.synology.com/download/DSM/release/7.1.1/42962/DSM_DS923%2B_42962.pat|g' redpill-load/config/DS923+/7.1.1-42962/config.json
-  [ -e redpill-load/config/DS923+/7.1.1-42962/config.json ] && sed -i 's|a2bcfae34eda13f65bc7ee453b63bab982e2db9891a680968bc24ef5035ae8d8|e33b47df446ce0bd99c5613767c9dba977915e25acfb5ccb9f5650b14459458f|g' redpill-load/config/DS923+/7.1.1-42962/config.json
-  [ -e redpill-load/config/DVA1622/7.1-42661/config.json ] && sed -i 's|file://localhost/root/content.tar|https://global.download.synology.com/download/DSM/release/7.1/42661-1/DSM_DVA1622_42661.pat|g' redpill-load/config/DVA1622/7.1-42661/config.json
-  [ -e redpill-load/config/DVA1622/7.1-42661/config.json ] && sed -i 's|99f60f0c2b54c0a2adbc01d79e872273488ba43296a7a74904c462bc423b7dfe|f1484cf302627072ca393293cd73e61dc9e09d479ef028b216eae7c12f7b7825|g' redpill-load/config/DVA1622/7.1-42661/config.json
-  [ -e redpill-load/config/DVA1622/7.1-42661/config.json ] && sed -i 's|a31e91a62ab6f3ff986bc7fcfde0a56a292c15e17735e7b5fad573d333cf7de4|1d0e5b76e08e3483f6bf06d23b5978ec498b855bde23db1f96f343db4c43337d|g' redpill-load/config/DVA1622/7.1-42661/config.json
-  [ -e redpill-load/config/DVA1622/7.1-42661/config.json ] && sed -i 's|32ee25e7a806eb481cc858edd7f1e341c85c7627ea03788f8466716432830d33|6290945ba61f652aec83725f81f5a47bd5e4cdbeb86241c33825154140e164ec|g' redpill-load/config/DVA1622/7.1-42661/config.json
-fi
+exit 0
