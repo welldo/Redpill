@@ -846,7 +846,7 @@ jobs:
           lkm=${{ env.lkm }}
 
           bArgs=""
-          if [ ${repository} != 'pocopico_develop' ]; then 
+          if [ ${repository} != 'pocopico_develop' -a ${repository} != 'wjz304_test-dev' ]; then 
             bArgs+='BRP_JUN_MOD=1 '
           fi
           # if [ ${{ env.platform }} == 'SA6400' -a ${{ env.version }} == '7.1.1-42962' ]; then
@@ -990,6 +990,10 @@ jobs:
               echo "由于权限太高, 防止有些人执行非法操作, 仅仓库作者可操作, 请联系该仓库管理员或者fork到自己名下操作."
             fi
           fi
+
+          # 空间
+          echo "==============================空间=============================="
+          df -h
 
           # 编译
           echo "==============================编译=============================="
