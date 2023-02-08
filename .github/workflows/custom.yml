@@ -225,7 +225,7 @@ jobs:
                   errinfo = 'body 错误, 不符合JSON规范 {}.'.format(e)
 
               loads = {}
-              with open('loads.json', mode="r") as f:
+              with open('docs/loads.json', mode="r") as f:
                   loads = json.loads(f.read())
 
               repositorys = loads.keys()
@@ -247,7 +247,7 @@ jobs:
 
               if iscustom == 'true':
                   lkms = []
-                  with open('lkms.json', mode="r") as f:
+                  with open('docs/lkms.json', mode="r") as f:
                       keys = json.loads(f.read())['wjz304'][platform.replace('+', 'p').lower() + '_' + version.split('-')[-1]].keys()
                       lkms = [x for x in keys if not x.endswith('*') and not x.endswith('#')]
                   if lkm == '':
@@ -439,7 +439,7 @@ jobs:
               if iscustom == 'true' and ext != '':
                   rpKey = platform.replace('+', 'p').lower() + '_' + version.split('-')[-1]
                   rpExts = []
-                  with open('exts.json', mode="r") as f:
+                  with open('docs/exts.json', mode="r") as f:
                       extsjson = json.loads(f.read())
                       extskey = 'pocopico'
                       if dev == '1':
@@ -469,7 +469,7 @@ jobs:
                           extc = [x for x in list(set(extpocs) - set(rpExts)) if type(x) == str]
                           if len(extc) > 0:
                               iscustom = 'false'
-                              errinfo = 'ext 参数错误, "{}" 不在 exts.json 中, 请填写 exts.json 中存在的名称(no */#).'.format(','.join(extc))       
+                              errinfo = 'ext 参数错误, "{}" 不在 docs/ 中, 请填写 docs/exts.json 中存在的名称(no */#).'.format(','.join(extc))       
                               break
                           extc = [x for x in extpocs if x.endswith('*') or x.endswith('#')]
                           if len(extc) > 0:
@@ -867,6 +867,9 @@ jobs:
           fi
 
           git clone -b ${branch} https://github.com/${repo}/redpill-load redpill-load
+
+          # resize boot
+          cp -f boot-image-template.img.gz redpill-load/ext/boot-image-template.img.gz
 
           # submodule
           [ -d redpill-load/ext/recreate-zImage ] && rm -rf redpill-load/ext/recreate-zImage

@@ -193,13 +193,13 @@ jobs:
               if len(exts) > 0:
                   print('#######################   exts   #######################')
                   print(json.dumps(exts, indent=4))
-                  with open(os.path.join(root, 'exts.json'), 'w', encoding='utf-8') as f:
+                  with open(os.path.join(root, 'docs/exts.json'), 'w', encoding='utf-8') as f:
                       f.write(json.dumps(exts, indent=4))
 
               if len(lkms) > 0:
                   print('#######################   lkms   #######################')
                   print(json.dumps(lkms, indent=4))
-                  with open(os.path.join(root, 'lkms.json'), 'w', encoding='utf-8') as f:
+                  with open(os.path.join(root, 'docs/lkms.json'), 'w', encoding='utf-8') as f:
                       f.write(json.dumps(lkms, indent=4))
 
       - name: Check and Push
@@ -256,7 +256,7 @@ jobs:
               load = {}
               try:
                   lkms = {}
-                  with open('lkms.json', mode="r") as f:
+                  with open('docs/lkms.json', mode="r") as f:
                       lkms = json.loads(f.read())['wjz304']    # 暂时只匹配自己
 
                   platforms = os.listdir(os.path.join(root, work, 'config'))
@@ -309,12 +309,12 @@ jobs:
               if len(loads) > 0:
                   print('#######################  loads   #######################')
                   print(json.dumps(loads, indent=4))
-                  with open(os.path.join(root, 'loads.json'), 'w', encoding='utf-8') as f:
+                  with open(os.path.join(root, 'docs/loads.json'), 'w', encoding='utf-8') as f:
                       f.write(json.dumps(loads, indent=4))
 
       - name: Check and Push
         run: |
-          if [ -n "$(git status -s | grep loads.json)" ]; then
+          if [ -n "$(git status -s | grep 'loads.json')" ]; then
             git add loads.json
             git commit -m "update $(date +%Y-%m-%d" "%H:%M:%S)"
             git push -f

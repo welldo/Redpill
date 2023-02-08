@@ -56,20 +56,16 @@
       var extbase = "";
       var repo = "wjz304/Redpill_CustomBuild";
       var dev = "0";
-      var cdn = "";
+      var url = "";
 
+      var _parameters = {};
       var _loads = {};
       var _exts = {};
       var _lkms = {};
 
       repo = getRepo(repo);
       dev = getUrlParam("dev");
-      cdn = `https://raw.githubusercontent.com/${repo}/main/`;
-      cdn = `https://ghproxy.com/https://raw.githubusercontent.com/${repo}/main/`;
-      //cdn = `https://fastly.jsdelivr.net/gh/${repo}@main/`;
-      //cdn = `https://gcore.jsdelivr.net/gh/${repo}@main/`;
-      //cdn = `https://cdn.statically.io/gh/${repo}/main/`;
-      //cdn = `https://cdn.staticaly.com/gh/${repo}/main/`;
+      url = `https://raw.githubusercontent.com/${repo}/main/`;
 
       function getRepo(repo) {
         var url = document.location.toString();
@@ -114,39 +110,61 @@
         xmlHttpReq.send(null);
       }
 
-      window.onload = function () {
+      var html = "";
+      window.onload = function () { 
         //confirm("!!!");
         setLogo(dev);
         setTitle();
         setTips();
         $("#titleLabel").on("click", changemode);
-        httpGetAsync(cdn + "parameter.json" + "?" + Math.random(), function (result) {
-            result = JSON.parse(result);
-            $("#inputs").find("div").remove(); //html('');
-            var html = "";
-            for (var key in result) {
-              //console.log(key, result[key]);
-              html += createInput(result[key]);
-            }
-            $("#inputs").prepend(html);
+        html += createInput({
+          "name": "selectproxy",
+          "description": "如果下面显示异常请尝试切换代理设置.",
+          "detailedinfo": "如果下面显示异常请尝试切换代理设置.",
+          "required": true,
+          "default": "ghproxy.com",
+          "type": "choice",
+          "options": [
+              "raw.githubusercontent.com",
+              "ghproxy.com",
+              "fastly.jsdelivr.net",
+              "gcore.jsdelivr.net",
+              "cdn.statically.io",
+              "cdn.staticaly.com"
+          ]
+        });
+        $("#inputs").find("div").remove(); //html('');
+        $("#inputs").prepend(html);
+        $("#selectproxy").on("change", changeProxy); 
+        init(); 
+      };
 
-            $("#repository").on("change", changeRepository);
-            $("#platform").on("change", changePlatform);
-            $("#version").on("change", changeVersion);
-
-            httpGetAsync(cdn + "loads.json" + "?" + Math.random(), function (result) {
-              _loads = JSON.parse(result);
-              httpGetAsync(cdn + "exts.json" + "?" + Math.random(), function (result) {
-                _exts = JSON.parse(result);
-                httpGetAsync(cdn + "lkms.json" + "?" + Math.random(), function (result) {
-                  _lkms = JSON.parse(result);
-                  changeRepository();
-                });
+      function init() {
+        httpGetAsync(url + "docs/parameter.json" + "?" + Math.random(), function (result) {
+          _parameters = JSON.parse(result);
+          httpGetAsync(url + "docs/loads.json" + "?" + Math.random(), function (result) {
+            _loads = JSON.parse(result);
+            httpGetAsync(url + "docs/exts.json" + "?" + Math.random(), function (result) {
+              _exts = JSON.parse(result);
+              httpGetAsync(url + "docs/lkms.json" + "?" + Math.random(), function (result) {
+                _lkms = JSON.parse(result);
+                $("#inputs").find("div").remove(); //html('');
+                var parameters = "";
+                for (var key in _parameters) {
+                  //console.log(key, result[key]);
+                  parameters += createInput(_parameters[key]);
+                }
+                $("#inputs").prepend(html + parameters);
+                $("#selectproxy").on("change", changeProxy); 
+                $("#repository").on("change", changeRepository);
+                $("#platform").on("change", changePlatform);
+                $("#version").on("change", changeVersion);
+                changeRepository();
               });
             });
-          }
-        );
-      };
+          });
+        });
+      }
 
       function setLogo(dev) {
         if (dev == "1") {
@@ -167,7 +185,7 @@
       }
 
       function setTips() {
-        httpGetAsync(cdn + "tips.md" + "?" + Math.random(), function (result) {
+        httpGetAsync(url + "docs/tips.md" + "?" + Math.random(), function (result) {
           var html = result.replace(/\n/g, "<br />");
           $("#content").html(html);
         });
@@ -220,6 +238,35 @@
         } else {
         }
         return html;
+      }
+
+      function changeProxy() {
+        proxy=$("#selectproxy").val();
+        switch (proxy) {
+          case "raw.githubusercontent.com":
+            url = `https://raw.githubusercontent.com/${repo}/main/`;
+            break;
+          case "ghproxy.com":
+            url = `https://ghproxy.com/https://raw.githubusercontent.com/${repo}/main/`;
+            break;
+          case "fastly.jsdelivr.net":
+            url = `https://fastly.jsdelivr.net/gh/${repo}@main/`;
+            break;
+          case "gcore.jsdelivr.net":
+            url = `https://gcore.jsdelivr.net/gh/${repo}@main/`;
+            break;
+          case "cdn.statically.io":
+            url = `https://cdn.statically.io/gh/${repo}/main/`;
+            break;
+          case "cdn.staticaly.com":
+            url = `https://cdn.staticaly.com/gh/${repo}/main/`;
+            break;
+          default:
+            ;
+            break;
+        }
+
+        init();
       }
 
       function changeRepository() {
@@ -306,50 +353,48 @@
         platform = $("#platform").val().replace("+", "p").toLowerCase();
         version = $("#version").val().split("-")[1];
         var exts = {};
-        httpGetAsync(cdn + "exts.json" + "?" + Math.random(), function (result) {
-          result = JSON.parse(result);
-          extskey = "pocopico";
-          if (dev == "1") extskey = "wjz304";
-          if (extskey in result && platform + "_" + version in result[extskey])
-            exts = result[extskey][platform + "_" + version];
-          var html = "";
-          let idx = 1;
-          if (Object.keys(exts).length > 0) {
-            html +=
-              '<span class="pl-mi1">点击驱动名添加/删除 (* 结尾的为无效驱动, # 结尾的为sha256错误驱动, */# 强制添加将编译失败.) </span><br />';
-            html +=
-              '<button type="button" class="btn btn-primary btn-sm mt-2 my-2 lh-condensed-ultra" id="ext_btn_-dtb" onclick="return processext(\'-dtb\')" autofocus="" title="同时加入 \'-dtb,dtbpatch\' 将自动识别已插入硬盘.">-dtb</button>&nbsp;';
-            html +=
-              '<button type="button" class="btn btn-primary btn-sm mt-2 my-2 lh-condensed-ultra" id="ext_btn_-virtio" onclick="return processext(\'-virtio\')" autofocus="" title="Adds VirtIO support for fast network/PCI/SCSI/network/console paravirtualization under QEmu (Proxmox, VirtualBox, virsh, and similar)">-virtio</button>&nbsp;';
-            html +=
-              '<button type="button" class="btn btn-primary btn-sm mt-2 my-2 lh-condensed-ultra" id="ext_btn_-acpid2" onclick="return processext(\'-acpid2\')" autofocus="" title="ACPI Daemon v2 that handles power button events">-acpid2</button>&nbsp;';
-            html +=
-              '<button type="button" class="btn btn-primary btn-sm mt-2 my-2 lh-condensed-ultra" id="ext_btn_-misc" onclick="return processext(\'-misc\')" autofocus="" title="Misc shell">-misc</button>&nbsp;';
-            html +=
-              '<button type="button" class="btn btn-primary btn-sm mt-2 my-2 lh-condensed-ultra" id="ext_btn_-boot-wait" onclick="return processext(\'-boot-wait\')" autofocus="" title="Simple extension which stops the execution early waiting for the boot device to appear">-boot-wait</button>&nbsp;';
-            html +=
-              '<span class="pl-md">(注意: boot-wait, misc, acpid2, virtio, dtb 默认会进行判断添加(不是一定有), 此处以"-" 开头代表删除, 无特殊需求请勿删!!!.)</span><br />';
-          }
-          for (var ext in exts) {
-            var par = "";
-            if (ext.endsWith("*") || ext.endsWith("#"))
-              par = 'disabled="false"';
-            html += `<button type="button" class="btn btn-primary btn-sm mt-2" id="ext_btn_${ext
-              .replace(/\./g, "·")
-              .replace(
-                /[\*|\#]/g,
-                ""
-              )}" ${par} onclick="return processext('${ext}')" autofocus="" title="${
-              exts[ext]
-            }">${ext}</button>&nbsp;`;
-            if (idx++ % 15 == 0) html += "<br />";
-          }
-          $("#ext").prop("readonly", true);
-          if (extbase == "")
-            extbase = $($("#ext").parent().parent())[0].innerHTML;
-          if (extbase != "")
-            $($("#ext").parent().parent())[0].innerHTML = extbase + html;
-        });
+
+        extskey = "pocopico";
+        if (dev == "1") extskey = "wjz304";
+        if (extskey in _exts && platform + "_" + version in _exts[extskey])
+          exts = _exts[extskey][platform + "_" + version];
+        var html = "";
+        let idx = 1;
+        if (Object.keys(exts).length > 0) {
+          html +=
+            '<span class="pl-mi1">点击驱动名添加/删除 (* 结尾的为无效驱动, # 结尾的为sha256错误驱动, */# 强制添加将编译失败.) </span><br />';
+          html +=
+            '<button type="button" class="btn btn-primary btn-sm mt-2 my-2 lh-condensed-ultra" id="ext_btn_-dtb" onclick="return processext(\'-dtb\')" autofocus="" title="同时加入 \'-dtb,dtbpatch\' 将自动识别已插入硬盘.">-dtb</button>&nbsp;';
+          html +=
+            '<button type="button" class="btn btn-primary btn-sm mt-2 my-2 lh-condensed-ultra" id="ext_btn_-virtio" onclick="return processext(\'-virtio\')" autofocus="" title="Adds VirtIO support for fast network/PCI/SCSI/network/console paravirtualization under QEmu (Proxmox, VirtualBox, virsh, and similar)">-virtio</button>&nbsp;';
+          html +=
+            '<button type="button" class="btn btn-primary btn-sm mt-2 my-2 lh-condensed-ultra" id="ext_btn_-acpid2" onclick="return processext(\'-acpid2\')" autofocus="" title="ACPI Daemon v2 that handles power button events">-acpid2</button>&nbsp;';
+          html +=
+            '<button type="button" class="btn btn-primary btn-sm mt-2 my-2 lh-condensed-ultra" id="ext_btn_-misc" onclick="return processext(\'-misc\')" autofocus="" title="Misc shell">-misc</button>&nbsp;';
+          html +=
+            '<button type="button" class="btn btn-primary btn-sm mt-2 my-2 lh-condensed-ultra" id="ext_btn_-boot-wait" onclick="return processext(\'-boot-wait\')" autofocus="" title="Simple extension which stops the execution early waiting for the boot device to appear">-boot-wait</button>&nbsp;';
+          html +=
+            '<span class="pl-md">(注意: boot-wait, misc, acpid2, virtio, dtb 默认会进行判断添加(不是一定有), 此处以"-" 开头代表删除, 无特殊需求请勿删!!!.)</span><br />';
+        }
+        for (var ext in exts) {
+          var par = "";
+          if (ext.endsWith("*") || ext.endsWith("#"))
+            par = 'disabled="false"';
+          html += `<button type="button" class="btn btn-primary btn-sm mt-2" id="ext_btn_${ext
+            .replace(/\./g, "·")
+            .replace(
+              /[\*|\#]/g,
+              ""
+            )}" ${par} onclick="return processext('${ext}')" autofocus="" title="${
+            exts[ext]
+          }">${ext}</button>&nbsp;`;
+          if (idx++ % 15 == 0) html += "<br />";
+        }
+        $("#ext").prop("readonly", true);
+        if (extbase == "")
+          extbase = $($("#ext").parent().parent())[0].innerHTML;
+        if (extbase != "")
+          $($("#ext").parent().parent())[0].innerHTML = extbase + html;
       }
 
       function processext(ext) {
@@ -384,30 +429,27 @@
         var title = "Custom";
         var body = {};
         //body["info"] = "整个编译过程一般在5分钟左右(受驱动数量和版本影响), 并发较多时有概率出现未触发或者网络阻塞的情况, 如长时间未收到[bot]的回复, 请reopen或者重新创建Issue.";
-        httpGetAsync(
-          cdn + "parameter.json" + "?" + Math.random(),
-          function (result) {
-            result = JSON.parse(result);
-            for (var key in result) {
-              var name = result[key]["name"];
-              if (name == "title") {
-                if (formData.get(`inputs[${name}]`)) {
-                  title += " " + formData.get(`inputs[${name}]`);
-                } else {
-                  title += " " + new Date().toISOString().substr(0, 10);
-                }
-                continue;
-              }
-              if (formData.get(`inputs[${name}]`)) {
-                body[name] = formData.get(`inputs[${name}]`);
-              }
-            }
 
-            if (dev == "1") body["dev"] = "1";
-            body = JSON.stringify(body).replace(/\+/g, "%2b");
-            window.location.href = `https://github.com/${repo}/issues/new?title=${title}&body=${body}`;
+        for (var key in _parameters) {
+          var name = _parameters[key]["name"];
+          if (name == "title") {
+            if (formData.get(`inputs[${name}]`)) {
+              title += " " + formData.get(`inputs[${name}]`);
+            } else {
+              title += " " + new Date().toISOString().substr(0, 10);
+            }
+            continue;
           }
-        );
+          if (formData.get(`inputs[${name}]`)) {
+            body[name] = formData.get(`inputs[${name}]`);
+          }
+        }
+
+        if (dev == "1") body["dev"] = "1";
+        body = JSON.stringify(body).replace(/\+/g, "%2b");
+        window.location.href = `https://github.com/${repo}/issues/new?title=${title}&body=${body}`;
+
+
       }
     </script>
 
