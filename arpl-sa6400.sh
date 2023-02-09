@@ -33,7 +33,14 @@ cp -rf "/opt/arpl" "${RDXZ_PATH}/opt"
 rm -rf "${RDXZ_PATH}"
 
 [ ! -f "/mnt/p3/modules/epyc7002-5.10.55.tgz" ] && curl -skL "https://github.com/fbelavenuto/arpl-modules/releases/download/v1.63/epyc7002-5.10.55.tgz" -o "/mnt/p3/modules/epyc7002-5.10.55.tgz"
-[ ! -f "/mnt/p3/lkms/rp-epyc7002-5.10.55-dev.ko.gz" ] && curl -skL "https://github.com/wjz304/Redpill_CustomBuild/files/10607931/rp-epyc7002-5.10.55-dev.ko.gz" -o "/mnt/p3/lkms/rp-epyc7002-5.10.55-dev.ko.gz"
-[ ! -f "/mnt/p3/lkms/rp-epyc7002-5.10.55-prod.ko.gz" ] && curl -skL "https://github.com/wjz304/Redpill_CustomBuild/files/10607932/rp-epyc7002-5.10.55-prod.ko.gz" -o "/mnt/p3/lkms/rp-epyc7002-5.10.55-prod.ko.gz"
+#jim
+#[ ! -f "/mnt/p3/lkms/rp-epyc7002-5.10.55-dev.ko.gz" ] && curl -skL "https://github.com/wjz304/Redpill_CustomBuild/files/10607931/rp-epyc7002-5.10.55-dev.ko.gz" -o "/mnt/p3/lkms/rp-epyc7002-5.10.55-dev.ko.gz"
+#[ ! -f "/mnt/p3/lkms/rp-epyc7002-5.10.55-prod.ko.gz" ] && curl -skL "https://github.com/wjz304/Redpill_CustomBuild/files/10607932/rp-epyc7002-5.10.55-prod.ko.gz" -o "/mnt/p3/lkms/rp-epyc7002-5.10.55-prod.ko.gz"
+#poco
+#[ ! -f "/mnt/p3/lkms/rp-epyc7002-5.10.55-dev.ko.gz" ] && curl -skL "https://github.com/wjz304/Redpill_CustomBuild/files/10689263/rp-epyc7002-5.10.55-dev.ko.gz" -o "/mnt/p3/lkms/rp-epyc7002-5.10.55-dev.ko.gz"
+#[ ! -f "/mnt/p3/lkms/rp-epyc7002-5.10.55-prod.ko.gz" ] && curl -skL "https://github.com/wjz304/Redpill_CustomBuild/files/10689264/rp-epyc7002-5.10.55-prod.ko.gz" -o "/mnt/p3/lkms/rp-epyc7002-5.10.55-prod.ko.gz"
+#my
+[ ! -f "/mnt/p3/lkms/rp-epyc7002-5.10.55-dev.ko.gz" ] && curl -skL "https://github.com/wjz304/Redpill_CustomBuild/files/10689124/rp-epyc7002-5.10.55-dev.ko.gz" -o "/mnt/p3/lkms/rp-epyc7002-5.10.55-dev.ko.gz"
+[ ! -f "/mnt/p3/lkms/rp-epyc7002-5.10.55-prod.ko.gz" ] && curl -skL "https://github.com/wjz304/Redpill_CustomBuild/files/10689127/rp-epyc7002-5.10.55-prod.ko.gz" -o "/mnt/p3/lkms/rp-epyc7002-5.10.55-prod.ko.gz"
 
 echo "Open SA6400 OK!"
