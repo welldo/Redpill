@@ -247,9 +247,10 @@ jobs:
 
               if iscustom == 'true':
                   lkms = []
-                  with open('docs/lkms.json', mode="r") as f:
-                      keys = json.loads(f.read())['wjz304'][platform.replace('+', 'p').lower() + '_' + version.split('-')[-1]].keys()
-                      lkms = [x for x in keys if not x.endswith('*') and not x.endswith('#')]
+                  with open('docs/parameter.json', mode="r") as f:
+                      parameter = json.loads(f.read())
+                      lkms = parameter['lkm']['options']
+                  lkm = lkm.replace('redpill', '')   # 兼容一下旧issues
                   if lkm == '':
                       lkm = lkms[0]
                   if not lkm in lkms:
@@ -799,16 +800,13 @@ jobs:
           branch=$(echo ${repository} | awk -F'_' '{print $2}')
           lkm=${{ env.lkm }}
 
-          bArgs=""
+          bArgs="BRP_DEBUG=1 "
           if [ ${repository} != 'pocopico_develop' -a ${repository} != 'wjz304_test-dev' ]; then 
             bArgs+='BRP_JUN_MOD=1 '
           fi
           # if [ ${{ env.platform }} == 'SA6400' -a ${{ env.version }} == '7.1.1-42962' ]; then
           #   bArgs+='BRP_LINUX_PATCH_METHOD=repack '
           # fi
-          if [ "${bArgs}" != "" ]; then 
-            bArgs="BRP_DEBUG=1 ${bArgs}"
-          fi
 
           lkmext=https://raw.githubusercontent.com/wjz304/rp-ext/master
           rpext=https://raw.githubusercontent.com/pocopico/rp-ext/master
@@ -863,9 +861,10 @@ jobs:
           # [ "$(echo $redpilltgz | awk '{print $NF}')" != "$redpilltgz" ] && redpilltgz=$(echo $redpilltgz | awk '{print $1}')
           # wget ${redpilltgz}
           # tar zxvf $(echo ${redpilltgz} | awk -F / '{print $NF}') -C ./ 
-          # mv ./redpill.ko ./ext/rp-lkm/redpill-linux-v$(modinfo --field=vermagic redpill.ko | awk '{print $1}').ko
+          # RPKOVER=$(modinfo --field=vermagic ./redpill.ko | awk '{print $1}')
+          # cp -fv ./redpill.ko ./ext/rp-lkm/redpill-linux-v${RPKOVER}.ko
 
-          # # redpill.ko 方式二 
+          # # redpill.ko 方式二 GCC版本需要修改,待优化
           # echo "========================Build redpill.ko========================"
           # toolkittxz=ds.${synoarch}-${version::3}.dev.txz
           # toolkitdir=usr/local/x86_64-pc-linux-gnu/x86_64-pc-linux-gnu/sys-root/usr/lib/modules/DSM-${version::3}/build
@@ -875,18 +874,34 @@ jobs:
           # cd redpill-lkm
           # # sed -i 's/   -std=gnu89/   -std=gnu89 -fno-pie/' ../${synoarch}/${toolkitdir}/Makefile
           # make LINUX_SRC=../${synoarch}/${toolkitdir} dev-v${version::1}
-          # cp -fv ./redpill.ko ../ext/rp-lkm/redpill-linux-v$(modinfo --field=vermagic ./redpill.ko | awk '{print $1}').ko
+          # RPKOVER=$(modinfo --field=vermagic ./redpill.ko | awk '{print $1}')
+          # cp -fv ./redpill.ko ../ext/rp-lkm/redpill-linux-v${RPKOVER}.ko
           # cd ..
 
           # redpill.ko 方式三 
-          echo "========================Build redpill.ko========================"
-          git clone --recursive https://github.com/fbelavenuto/redpill-lkm.git redpill-lkm
-          mkdir redpill-lkm-output && chmod -R 777 redpill-lkm-output
-          TOOLKIT_VER="latest"  # "7.1"
-          sudo docker run -u 1000 --rm -t -v "${PWD}/redpill-lkm":/input -v "${PWD}/redpill-lkm-output":/output fbelavenuto/syno-compiler:${TOOLKIT_VER} compile-lkm ${synoarch}
-          #cp -fv ./redpill-lkm-output/redpill-dev.ko ./ext/rp-lkm/redpill-linux-v$(modinfo --field=vermagic ./redpill-lkm-output/redpill-prod.ko | awk '{print $1}').ko
-          cp -fv ./redpill-lkm-output/redpill-prod.ko ./ext/rp-lkm/redpill-linux-v$(modinfo --field=vermagic ./redpill-lkm-output/redpill-prod.ko | awk '{print $1}').ko
-          sudo chmod -R +x ./ext/rp-lkm
+          echo "========================Arpl redpill.ko========================"
+          TAG=`curl --insecure -s https://api.github.com/repos/fbelavenuto/redpill-lkm/releases/latest | grep "tag_name" | awk '{print substr($2, 2, length($2)-3)}'`
+          curl --insecure -s -L "https://github.com/fbelavenuto/redpill-lkm/releases/download/${TAG}/rp-lkms.zip" -o ./rp-lkms.zip
+          unzip ./rp-lkms.zip -d ./rp-lkms
+          for file in ./rp-lkms/*; do if [[ ${file} =~ .*${synoarch}.*${lkm}.ko ]]; then gzip -dc "${file}" > "./redpill.ko"; fi; done || true
+          if [ -f ./redpill.ko ]; then
+            RPKOVER=$(modinfo --field=vermagic ./redpill.ko | awk '{print $1}')
+            cp -fv ./redpill.ko ./ext/rp-lkm/redpill-linux-v${RPKOVER}.ko
+          else
+            git clone --recursive https://github.com/fbelavenuto/redpill-lkm.git redpill-lkm
+            mkdir redpill-lkm-output && chmod -R 777 redpill-lkm-output
+            TOOLKIT_VER="latest"  # "7.1"
+            sudo docker run -u 1000 --rm -t -v "${PWD}/redpill-lkm":/input -v "${PWD}/redpill-lkm-output":/output fbelavenuto/syno-compiler:${TOOLKIT_VER} compile-lkm ${synoarch}
+            RPKOVER=$(modinfo --field=vermagic ./redpill-lkm-output/redpill-${lkm}.ko | awk '{print $1}')
+            cp -fv ./redpill-lkm-output/redpill-${lkm}.ko ./ext/rp-lkm/redpill-linux-v${RPKOVER}.ko
+            sudo chmod -R +x ./ext/rp-lkm
+          fi
+
+          RPKOOLD=`echo $(grep "@@@EXT@@@/rp-lkm" ./config/${platform}/${version}/config.json | sed -r 's|"@@@EXT@@@/(.*)":(.*)|\1|')`  # `echo $P` 去首尾空格
+          if [ ! "${RPKOOLD}" == "rp-lkm/redpill-linux-v${RPKOVER}.ko" ]; then
+            echo "change ./config/${platform}/${version}/config.json from ${RPKOOLD} to rp-lkm/redpill-linux-v${RPKOVER}.ko"
+            sed -i 's|${RPKOOLD}|rp-lkm/redpill-linux-v${RPKOVER}.ko|' ./config/${platform}/${version}/config.json
+          fi
 
           dtbs=(DS920+ DS923+ DS1520+ DS1621+ DS1821+ DS2422+ DVA1622 FS2500 SA6400)
           for item in ${dtbs[@]}

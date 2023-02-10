@@ -119,6 +119,7 @@ if [ "${repo}" == "jumkey" -a "${branch}" == "develop" ]; then
   [ -e redpill-load/config/DS923+/7.1.1-42962/config.json ] && sed -i 's|file://localhost/root/DSM_DS923%2B_42962.pat|https://global.download.synology.com/download/DSM/release/7.1.1/42962/DSM_DS923%2B_42962.pat|g' redpill-load/config/DS923+/7.1.1-42962/config.json
   [ -e redpill-load/config/DS923+/7.1.1-42962/config.json ] && sed -i 's|a2bcfae34eda13f65bc7ee453b63bab982e2db9891a680968bc24ef5035ae8d8|e33b47df446ce0bd99c5613767c9dba977915e25acfb5ccb9f5650b14459458f|g' redpill-load/config/DS923+/7.1.1-42962/config.json
   rm -rf redpill-load/config/DVA1622
+  #[ -d redpill-load/config/DVA1622/7.1-42661 ] && mv redpill-load/config/DVA1622/7.1-42661 redpill-load/config/DVA1622/7.1.0-42661
   #[ -e redpill-load/config/DVA1622/7.1.0-42661/config.json ] && sed -i 's|file://localhost/root/content.tar|https://global.download.synology.com/download/DSM/release/7.1/42661-1/DSM_DVA1622_42661.pat|g' redpill-load/config/DVA1622/7.1-42661/config.json
   #[ -e redpill-load/config/DVA1622/7.1.0-42661/config.json ] && sed -i 's|99f60f0c2b54c0a2adbc01d79e872273488ba43296a7a74904c462bc423b7dfe|f1484cf302627072ca393293cd73e61dc9e09d479ef028b216eae7c12f7b7825|g' redpill-load/config/DVA1622/7.1-42661/config.json
   #[ -e redpill-load/config/DVA1622/7.1.0-42661/config.json ] && sed -i 's|a31e91a62ab6f3ff986bc7fcfde0a56a292c15e17735e7b5fad573d333cf7de4|1d0e5b76e08e3483f6bf06d23b5978ec498b855bde23db1f96f343db4c43337d|g' redpill-load/config/DVA1622/7.1-42661/config.json

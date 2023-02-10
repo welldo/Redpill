@@ -61,11 +61,10 @@
       var _parameters = {};
       var _loads = {};
       var _exts = {};
-      var _lkms = {};
 
-      repo = getRepo(repo);
-      dev = getUrlParam("dev");
-      url = `https://raw.githubusercontent.com/${repo}/main/`;
+      //repo = getRepo(repo);
+      //dev = getUrlParam("dev");
+      url = `./`;
 
       function getRepo(repo) {
         var url = document.location.toString();
@@ -140,27 +139,24 @@
       };
 
       function init() {
-        httpGetAsync(url + "docs/parameter.json" + "?" + Math.random(), function (result) {
+        httpGetAsync(url + "parameter.json" + "?" + Math.random(), function (result) {
           _parameters = JSON.parse(result);
-          httpGetAsync(url + "docs/loads.json" + "?" + Math.random(), function (result) {
+          httpGetAsync(url + "loads.json" + "?" + Math.random(), function (result) {
             _loads = JSON.parse(result);
-            httpGetAsync(url + "docs/exts.json" + "?" + Math.random(), function (result) {
+            httpGetAsync(url + "exts.json" + "?" + Math.random(), function (result) {
               _exts = JSON.parse(result);
-              httpGetAsync(url + "docs/lkms.json" + "?" + Math.random(), function (result) {
-                _lkms = JSON.parse(result);
-                $("#inputs").find("div").remove(); //html('');
-                var parameters = "";
-                for (var key in _parameters) {
-                  //console.log(key, result[key]);
-                  parameters += createInput(_parameters[key]);
-                }
-                $("#inputs").prepend(html + parameters);
-                $("#selectproxy").on("change", changeProxy); 
-                $("#repository").on("change", changeRepository);
-                $("#platform").on("change", changePlatform);
-                $("#version").on("change", changeVersion);
-                changeRepository();
-              });
+              $("#inputs").find("div").remove(); //html('');
+              var parameters = "";
+              for (var key in _parameters) {
+                //console.log(key, result[key]);
+                parameters += createInput(_parameters[key]);
+              }
+              $("#inputs").prepend(html + parameters);
+              $("#selectproxy").on("change", changeProxy); 
+              $("#repository").on("change", changeRepository);
+              $("#platform").on("change", changePlatform);
+              $("#version").on("change", changeVersion);
+              changeRepository();
             });
           });
         });
@@ -185,7 +181,7 @@
       }
 
       function setTips() {
-        httpGetAsync(url + "docs/tips.md" + "?" + Math.random(), function (result) {
+        httpGetAsync(url + "tips.md" + "?" + Math.random(), function (result) {
           var html = result.replace(/\n/g, "<br />");
           $("#content").html(html);
         });
@@ -244,22 +240,22 @@
         proxy=$("#selectproxy").val();
         switch (proxy) {
           case "raw.githubusercontent.com":
-            url = `https://raw.githubusercontent.com/${repo}/main/`;
+            url = `https://raw.githubusercontent.com/${repo}/main/docs/`;
             break;
           case "ghproxy.com":
-            url = `https://ghproxy.com/https://raw.githubusercontent.com/${repo}/main/`;
+            url = `https://ghproxy.com/https://raw.githubusercontent.com/${repo}/main/docs/`;
             break;
           case "fastly.jsdelivr.net":
-            url = `https://fastly.jsdelivr.net/gh/${repo}@main/`;
+            url = `https://fastly.jsdelivr.net/gh/${repo}@main/docs/`;
             break;
           case "gcore.jsdelivr.net":
-            url = `https://gcore.jsdelivr.net/gh/${repo}@main/`;
+            url = `https://gcore.jsdelivr.net/gh/${repo}@main/docs/`;
             break;
           case "cdn.statically.io":
-            url = `https://cdn.statically.io/gh/${repo}/main/`;
+            url = `https://cdn.statically.io/gh/${repo}/main/docs/`;
             break;
           case "cdn.staticaly.com":
-            url = `https://cdn.staticaly.com/gh/${repo}/main/`;
+            url = `https://cdn.staticaly.com/gh/${repo}/main/docs/`;
             break;
           default:
             ;
@@ -274,23 +270,7 @@
         var xreleases = Object.keys(_loads[repository]).sort();
         $("#platform")[0].options.length = 0;
         for (var i in xreleases) {
-          var isFind = false;
-          var keys = Object.keys(_lkms["wjz304"]);
-          for (var key in keys) {
-            if (keys[key].startsWith(xreleases[i].replace("+", "p").toLowerCase())) {
-              var lkms = Object.keys(_lkms["wjz304"][keys[key]]);
-              for (lkm in lkms) {
-                if (lkms[lkm].endsWith("*") || lkms[lkm].endsWith("#")) {
-                  continue;
-                }
-                isFind = true;
-                break;
-              }
-            }
-            if (isFind == true) break;
-          }
-          if (isFind == true)
-            $("#platform")[0].options.add(new Option(xreleases[i], xreleases[i]));
+          $("#platform")[0].options.add(new Option(xreleases[i], xreleases[i]));
         }
         changePlatform();
       }
@@ -302,51 +282,13 @@
         var xreleases = _loads[repository][platform].reverse();
         $("#version")[0].options.length = 0;
         for (var i in xreleases) { 
-          var isFind = false;
-          var keys = Object.keys(_lkms["wjz304"]);
-          for (var key in keys) {
-            if (keys[key].startsWith(platform.replace("+", "p").toLowerCase()) && keys[key].endsWith(xreleases[i].split("-")[1])) {
-              var lkms = Object.keys(_lkms["wjz304"][keys[key]]);
-              for (lkm in lkms) {
-                if (lkms[lkm].endsWith("*") || lkms[lkm].endsWith("#")) {
-                  continue;
-                }
-                isFind = true;
-                break;
-              }
-            }
-            if (isFind == true) break;
-          }
-          if (isFind == true)
-            $("#version")[0].options.add(new Option(xreleases[i], xreleases[i]));
+          $("#version")[0].options.add(new Option(xreleases[i], xreleases[i]));
         }
         changeVersion();
       }
 
       function changeVersion() {
-        changeLkm();
         createExtBtn();
-      }
-
-      function changeLkm() {
-        repository = $("#repository").val();
-        platform = $("#platform").val().replace("+", "p").toLowerCase();
-        version = $("#version").val().split("-")[1];
-
-        var keys = Object.keys(_lkms["wjz304"]);
-        $("#lkm")[0].options.length = 0;
-        for (var key in keys) {
-          if (keys[key].startsWith(platform) && keys[key].endsWith(version)) {
-            var lkms = Object.keys(_lkms["wjz304"][keys[key]]);
-            for (lkm in lkms) {
-              if (lkms[lkm].endsWith("*") || lkms[lkm].endsWith("#")) {
-                continue;
-              }
-              $("#lkm")[0].options.add(new Option(lkms[lkm], lkms[lkm]));
-            }
-            break;
-          }
-        }
       }
 
       function createExtBtn() {
