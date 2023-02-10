@@ -5,15 +5,66 @@ branch=${2}
 
 echo repo:${repo}  branch:${branch}
 
-# 修复 pocopico 大的一个 typo
-if [ "${repo}" == "pocopico" -a ${branch} == "develop" ]; then 
+# load 容错
+sed -i 's/printf "${2}" "${@:3}"/printf "${2}\\n" "${@:3}"/' redpill-load/include/log.sh
+sed -i 's/\[ $(tput colors || exit 1) -gt 0 ]/[[ $([[ -n "$TERM" ]] \&\& tput colors || exit 1) -gt 0 ]]/' redpill-load/include/log.sh
+
+sed -i 's/rpt_load_bundled_extensions/[ -e "${RPT_BUNDLED_EXTS_CFG}" ] \&\& rpt_load_bundled_extensions/' redpill-load/build-loader.sh
+[ -e redpill-load/bundled-exts.json ] && rm -f redpill-load/bundled-exts.json 
+
+sed -i 's/mrp_fetch_new_ext_recipe()/mrp_fetch_new_ext_recipe_bak()/'                                                                                                                         redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\mrp_fetch_new_ext_recipe()'                                                                                                                         redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\{'                                                                                                                                                  redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\  pr_dbg "Fetching new recipe for extension %s and platform %s" "${1}" "${2}"'                                                                      redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\'                                                                                                                                                   redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\  if ! mrp_validate_platform_id "${2}"; then '                                                                                                      redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\    pr_err "Platform ID %s is not valid" "${2}"'                                                                                                    redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\    return 1'                                                                                                                                       redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\  fi'                                                                                                                                               redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\'                                                                                                                                                   redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\  local index_file;'                                                                                                                                redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\  index_file=$(mrp_get_existing_index_file "${1}")'                                                                                                 redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\  if [ $? -ne 0 ]; then'                                                                                                                            redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\    pr_err "Failed to load index file for extension %s - see errors above for details" "${1}"'                                                      redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\    return 1'                                                                                                                                       redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\  fi'                                                                                                                                               redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\'                                                                                                                                                   redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\  local recipe_url;'                                                                                                                                redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\  recipe_url=$(brp_json_get_field "${index_file}" "releases.${2}" 1)'                                                                               redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\  if [[ $? -ne 0 ]] || [[ "${recipe_url}" == "null" ]]; then'                                                                                       redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\    pr_warn "Failed to get recipe for %s try fallback to \"_\"" "${2}"'                                                                             redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\    recipe_url=$(brp_json_get_field "${index_file}" "releases._" 1)'                                                                                redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\    if [[ $? -ne 0 ]] || [[ "${recipe_url}" == "null" ]]; then'                                                                                     redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\      pr_err "The extension %s was found. However, the extension index has no recipe for %s platform. It may not be" "${1}" "${2}"'                 redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\      pr_err "supported on that platform, or author did not updated it for that platform yet. You can try running"'                                 redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\      pr_err "\"%s update\" to refresh indexes for all extensions manually. Below are the currently known information about" "${MRP_SRC_NAME}"'     redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\      pr_err "the extension stored locally:"'                                                                                                       redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\      mrp_show_ext_info "${1}"'                                                                                                                     redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\      return 1'                                                                                                                                     redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\    fi'                                                                                                                                             redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\  fi'                                                                                                                                               redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\'                                                                                                                                                   redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\  local mrp_tmp_rcp="${RPT_EXTS_DIR}/_ext_new_rcp.tmp_json"'                                                                                        redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\  rm "${mrp_tmp_rcp}" &> /dev/null'                                                                                                                 redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\'                                                                                                                                                   redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\  rpt_download_remote "${recipe_url}" "${mrp_tmp_rcp}" 1'                                                                                           redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\  brp_json_validate "${mrp_tmp_rcp}" # validate JSON *file*, not its format/semantic'                                                               redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\'                                                                                                                                                   redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\  echo "${mrp_tmp_rcp}"'                                                                                                                            redpill-load/ext-manager.sh
+sed -i '/mrp_fetch_new_ext_recipe_bak()/i\}'                                                                                                                                                  redpill-load/ext-manager.sh
+
+
+# resize boot
+#[ -f boot-image-template.img.gz ] && cp -f boot-image-template.img.gz redpill-load/ext/boot-image-template.img.gz
+
+
+# 三方库容错
+if [ "${repo}" == "pocopico" -a "${branch}" == "develop" ]; then 
   # cd redpill-load && git reset --hard d810a64a33fdc84287ab68e2d5919763c725ebeb && cd ..
   #find redpill-load/config/DS3622xs+ -type d -name '*3622xs*' -execdir rename 's/3622xs\+/3622xsp/' '{}' +
   find redpill-load/config/DS3622xs+ -type f -name '*3622xs*' -exec rename 's/-3622xs\+/-3622xsp/' '{}' +
   sed -i 's/DS3622xs /DS3622xs+ /g; s/-3622xs+/-3622xsp/g' `find redpill-load/config/DS3622xs+ -type f -name '*config.json'`
-fi
 
-if [ "${repo}" == "pocopico" -a "${branch}" == "develop" ]; then 
   # 容错
   [ -e redpill-load/config/DS1520+/7.1.1-42962/config.json ] && sed -i 's/DSM_ds1520p_42962.pat/DSM_DS1520%2B_42962.pat/g' redpill-load/config/DS1520+/7.1.1-42962/config.json
   [ -e redpill-load/redpill-misc/recipes/universal.json ] && sed -i 's/856331415d6980d9ef03a75eae4b9c5c927d1083266e1d7038ad8c62fbc2d570/625daf8507141d055b60b9e5ffd633cde1302d68387d611ac97a98a92f820501/g' redpill-load/redpill-misc/recipes/universal.json
