@@ -26,6 +26,9 @@ jobs:
           git config --global user.name "github-actions[bot]"
           sudo timedatectl set-timezone "Asia/Shanghai"
 
+          sudo apt install build-essential libtool pkgconf libzstd-dev liblzma-dev libssl-dev
+          pip install requests BeautifulSoup4 kmodule
+
       - name: Checkout rp-ext s
         run: |
           sudo rm -rf rp-ext_pocopico
@@ -202,27 +205,6 @@ jobs:
                   with open(os.path.join(root, 'docs/lkms.json'), 'w', encoding='utf-8') as f:
                       f.write(json.dumps(lkms, indent=4))
 
-      - name: Check and Push
-        run: |
-          if [ -n "$(git status -s | grep -E 'exts.json|lkms.json')" ]; then
-            git add $(git status -s | grep -E 'exts.json|lkms.json' | awk '{printf " %s", $2}')
-            git commit -m "update $(date +%Y-%m-%d" "%H:%M:%S)"
-            git push -f
-          fi
-
-
-  loads:
-    runs-on: ubuntu-latest
-    needs: exts
-    steps:
-      - name: Checkout
-        uses: actions/checkout@main
-
-      - name: Initialization environment
-        run : |
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
-          sudo timedatectl set-timezone "Asia/Shanghai"
 
       - name: Checkout redpill-load s
         run: |
@@ -312,10 +294,115 @@ jobs:
                   with open(os.path.join(root, 'docs/loads.json'), 'w', encoding='utf-8') as f:
                       f.write(json.dumps(loads, indent=4))
 
+
+      - name: Get models lsit
+        shell: python
+        run: |
+          # -*- coding: utf-8 -*-
+          import os, re, json, requests
+          from bs4 import BeautifulSoup
+          
+          root = '' # os.path.dirname(os.path.abspath(__file__))
+
+          if __name__ == '__main__':
+              req = requests.get('https://kb.synology.com/en-us/DSM/tutorial/What_kind_of_CPU_does_my_NAS_have')
+              req.encoding = 'utf-8'
+              bs=BeautifulSoup(req.text, 'html.parser')
+              p = re.compile(r"data: (.*?),$", re.MULTILINE | re.DOTALL)
+              data = json.loads(p.search(bs.find('script', string=p).prettify()).group(1))
+
+              models=[]
+              model='(.*?)'  # (.*?): all, FS6400: one
+              p = re.compile(r"\n\t\t\t<td>{}<\/td>\n\t\t\t<td>(.*?)<\/td>\n\t\t\t<td>(.*?)<\/td>\n\t\t\t<td>(.*?)<\/td>\n\t\t\t<td>(.*?)<\/td>\n\t\t\t<td>(.*?)<\/td>\n\t\t\t<td>(.*?)<\/td>\n\t\t".format(model), re.MULTILINE | re.DOTALL)
+              it = p.finditer(data["preload"]["content"])
+              for i in it:
+                  d = i.groups()
+                  if len(d) == 6: d = model + d
+                  models.append({"Model":d[0],"CPU Model":d[1],"Cores":d[2],"Threads":d[3],"FPU":d[4],"PackageArch":d[5],"RAM":d[6]})
+
+              print(json.dumps(models, indent=4))
+              with open(os.path.join(root, 'docs/models.json'), 'w', encoding='utf-8') as f:
+                  f.write(json.dumps(models, indent=4))
+
+
+      - name: Checkout arpl-modules
+        run: |
+          sudo rm -rf arpl-modules
+          git clone https://github.com/fbelavenuto/arpl-modules.git arpl-modules
+
+      - name: Get modules lsit
+        shell: python
+        run: |
+          # -*- coding: utf-8 -*-
+          import os, json, kmodule
+
+          root = '' # os.path.dirname(os.path.abspath(__file__))
+
+          if __name__ == '__main__':
+              modulesjs = {}
+              modulesmd = {}
+              try:
+                  p_v_dirs = os.listdir(os.path.join(root, 'arpl-modules'))
+                  for p_v in p_v_dirs:
+                      if p_v.startswith('.') or '-' not in p_v:
+                          continue
+                      if os.path.isfile(os.path.join(root, 'arpl-modules', p_v)):
+                          continue
+                      p_v_m = []
+                      modules = os.listdir(os.path.join(root, 'arpl-modules', p_v))
+                      for module in modules:
+                          if module.startswith('.') or '.ko' not in module:
+                              continue
+                          if os.path.isdir(os.path.join(root, 'arpl-modules', p_v, module)):
+                              continue
+                          #(
+                          #    {
+                          #        'filename': '/arpl-modules/apollolake-4.4.180/virtio_input.ko', 
+                          #        'author': 'Gerd Hoffmann <kraxel@redhat.com>', 
+                          #        'description': 'Virtio input device driver', 
+                          #        'license': 'GPL', 
+                          #        'depends': 'virtio,virtio_ring', 
+                          #        'retpoline': 'Y', 
+                          #        'vermagic': '4.4.180+ SMP mod_unload ', 
+                          #        'alias': ('virtio:d00000012v*',)
+                          #    },
+                          #)
+                          info = kmodule.modinfo(os.path.join(root, 'arpl-modules', p_v, module))[0]
+                          info['filename'] = module[:-3]    # module.replace('.ko', '')
+                          p_v_m.append(info)
+                          
+                          if not info['filename'] in modulesmd.keys():
+                              modulesmd[info['filename']] = {}
+                          if 'description' in info.keys() and info['description'] != '' and 'description' not in modulesmd[info['filename']]:
+                              modulesmd[info['filename']]['description'] = info['description']
+                          if 'depends' in info.keys() and info['depends'] != '' and 'depends' not in modulesmd[info['filename']]:
+                              modulesmd[info['filename']]['depends'] = info['depends']
+                      modulesjs[p_v] = p_v_m
+
+              except Exception as err:
+                  print(err)
+
+              print(json.dumps(modulesjs, indent=4))
+              with open(os.path.join(root, 'docs/modules.json'), 'w', encoding='utf-8') as f:
+                  f.write(json.dumps(modulesjs, indent=4))
+
+              print(json.dumps(modulesmd, indent=4))
+              with open(os.path.join(root, 'modules.md'), 'w', encoding='utf-8') as f:
+                  for modules in modulesmd.items():
+                      f.write('## ' + modules[0] + '  \n')
+                      if len(modules[1]) > 0:
+                          for info in modules[1].items():
+                              if info[1] != '':
+                                  f.write('>' + info[0] + ': ' + info[1] + '  \n')
+                      else:
+                          f.write('>description: null  \n')
+
       - name: Check and Push
         run: |
-          if [ -n "$(git status -s | grep 'loads.json')" ]; then
-            git add loads.json
+          git pull
+          status=$(git status -s | grep -E 'exts.json|lkms.json|loads.json|models.json|modules.json|modules.md' | awk '{printf " %s", $2}')
+          if [ -n "${status}" ]; then
+            git add ${status}
             git commit -m "update $(date +%Y-%m-%d" "%H:%M:%S)"
             git push -f
           fi
