@@ -876,7 +876,7 @@ jobs:
           TAG=`curl -skL https://api.github.com/repos/fbelavenuto/redpill-lkm/releases/latest | grep "tag_name" | awk '{print substr($2, 2, length($2)-3)}'`
           curl -#kL "https://github.com/fbelavenuto/redpill-lkm/releases/download/${TAG}/rp-lkms.zip" -o ./rp-lkms.zip   # curl 新版有毛病, 下载会概率报错 "End-of-central-directory signature not found"
           [ -f ./rp-lkms.zip ] && unzip ./rp-lkms.zip -d ./rp-lkms >/dev/null || true
-          [ -d ./rp-lkms ] && for file in ./rp-lkms/*; do [ "$(echo ${file} | grep ${synoarch} | grep ${lkm})" != "" ] && gzip -dcv "${file}" > "./redpill.ko" || echo "${file}: No"; done
+          [ -d ./rp-lkms ] && for file in ./rp-lkms/*; do [ "$(echo ${file} | grep -e -${synoarch}- | grep ${lkm})" != "" ] && gzip -dcv "${file}" > "./redpill.ko" || echo "${file}: No"; done
           if [ -f ./redpill.ko ]; then
             modinfo ./redpill.ko
             RPKOVER=$(modinfo --field=vermagic ./redpill.ko | awk '{print $1}')
