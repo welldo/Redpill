@@ -143,7 +143,7 @@
 >depends: usbcore,mii  
 ## bnx2x  
 >description: QLogic BCM57710/57711/57711E/57712/57712_MF/57800/57800_MF/57810/57810_MF/57840/57840_MF Driver  
->depends: mdio  
+>depends: mdio,vxlan  
 ## atl1c  
 >description: Qualcomm Atheros 100/1000M Ethernet Network Driver  
 ## sky2  
@@ -239,9 +239,6 @@
 ## mlxsw_pci  
 >description: Mellanox switch PCI interface driver  
 >depends: mlxsw_core  
-## 8139too  
->description: RealTek RTL-8139 Fast Ethernet driver  
->depends: mii  
 ## dvb-usb-dvbsky  
 >description: Driver for DVBSky USB  
 >depends: dvb_usb_v2,dvb-core,usbcore,rc-core,m88ds3103  
@@ -327,20 +324,11 @@
 >depends: usbcore,mmc_core  
 ## rc-core  
 >description: null  
-## scsi_transport_fc  
->description: FC Transport Attributes  
 ## sysfillrect  
 >description: Generic fill rectangle (sys-to-sys)  
-## vmw_vmci  
->description: VMware Virtual Machine Communication Interface.  
 ## dvb_usb_v2  
 >description: DVB USB common  
 >depends: rc-core,dvb-core,usbcore  
-## megaraid  
->description: LSI Logic MegaRAID legacy driver  
-## cdc_ether  
->description: USB CDC Ethernet devices  
->depends: usbnet,usbcore  
 ## bnxt_en  
 >description: Broadcom BCM573xx network driver  
 >depends: vxlan  
@@ -357,8 +345,6 @@
 >description: Silicon Labs Si2146/2147/2148/2157/2158 silicon tuner driver  
 ## sysimgblt  
 >description: 1-bit/8-bit to 1-32 bit color expansion (sys-to-sys)  
-## bna  
->description: QLogic BR-series 10G PCIe Ethernet driver  
 ## fb_sys_fops  
 >description: Generic file read (fb in system RAM)  
 ## cpufreq_conservative  
@@ -367,20 +353,18 @@
 >description: SCSI cdrom (sr) driver  
 ## megaraid_sas  
 >description: Avago MegaRAID SAS Driver  
-## i40evf  
->description: Intel(R) XL710 X710 Virtual Function Network Driver  
 ## i915  
 >description: Intel Graphics  
 >depends: drm_kms_helper,drm,iosf_mbi,backlight,video,fb,button,i2c-algo-bit  
 ## drm_panel_orientation_quirks  
 >description: null  
-## rc-dib0700-rc5  
->depends: rc-core  
 ## libsas  
 >description: SAS Transport Layer  
 >depends: scsi_transport_sas  
 ## raid_class  
 >description: RAID device class  
+## cpufreq_governor  
+>description: null  
 ## video  
 >description: ACPI Video Driver  
 >depends: backlight  
@@ -389,21 +373,9 @@
 ## drm_kms_helper  
 >description: DRM KMS helper  
 >depends: drm,fb,fb_sys_fops,cfbfillrect,syscopyarea,cfbimgblt,sysfillrect,sysimgblt,cfbcopyarea  
-## rc-dib0700-nec  
->depends: rc-core  
 ## generic_bl  
 >description: Generic Backlight Driver  
 >depends: backlight  
-## nicvf  
->description: Cavium Thunder NIC Virtual Function Driver  
-## rc-dvbsky  
->depends: rc-core  
-## nicpf  
->description: Cavium Thunder NIC Physical Function Driver  
->depends: thunder_bgx  
-## libfc  
->description: libfc  
->depends: scsi_transport_fc  
 ## mptlan  
 >description: Fusion MPT LAN driver  
 >depends: mptbase  
@@ -414,19 +386,11 @@
 >depends: drm_panel_orientation_quirks  
 ## mpt2sas  
 >description: LSI MPT Fusion SAS 2.0 Device Driver  
-## freq_table  
->description: CPUfreq frequency table helpers  
-## mperf  
->description: null  
-## thermal_sys  
->description: Generic thermal management sysfs support  
 ## marvell10g  
 >description: Marvell Alaska X 10Gigabit Ethernet PHY driver (MV88X3310)  
 ## amd-xgbe  
 >description: AMD 10 Gigabit Ethernet Driver  
 ## nvidia  
->description: null  
-## cpufreq_governor  
 >description: null  
 ## nvidia-uvm  
 >depends: nvidia  

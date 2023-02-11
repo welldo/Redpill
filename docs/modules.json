@@ -2763,7 +2763,6 @@
             "srcversion": "ACCC3B732514BB2911C40C0",
             "depends": "mptbase",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
@@ -2793,7 +2792,6 @@
             "srcversion": "88D15396D280106CDA69BCA",
             "depends": "mptscsih,mptbase,scsi_transport_spi",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "mpt_saf_te": " Force enabling SEP Processor: enable=1  (default=MPTSCSIH_SAF_TE=0) (int)"
@@ -3042,7 +3040,6 @@
             "srcversion": "DC23A8F0007F9504DA7D0CC",
             "depends": "megaraid_mm",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "unconf_disks": "Set to expose unconfigured disks to kernel (default=0) (int)",
@@ -3116,7 +3113,12 @@
             "depends": "",
             "retpoline": "Y",
             "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload "
+            "vermagic": "4.4.180+ SMP mod_unload ",
+            "sig_id": "PKCS#7",
+            "signer": "",
+            "sig_key": "",
+            "sig_hashalgo": "unknown",
+            "signature": ""
         },
         {
             "filename": "cdc_ncm",
@@ -3125,7 +3127,6 @@
             "author": "Hans Petter Selasky",
             "depends": "usbnet,usbcore",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "prefer_mbim": "Prefer MBIM setting on dual NCM/MBIM functions (bool)"
@@ -3214,7 +3215,6 @@
             "srcversion": "78E5FCEAAA935963F07A476",
             "depends": "mii",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "debug": "8139cp: bitmapped message enable number (int)",
@@ -3463,49 +3463,6 @@
             "alias": [
                 "pci:v000015B3d0000CB84sv*sd*bc*sc*i*",
                 "pci:v000015B3d0000C738sv*sd*bc*sc*i*"
-            ]
-        },
-        {
-            "filename": "8139too",
-            "version": "0.9.28",
-            "license": "GPL",
-            "description": "RealTek RTL-8139 Fast Ethernet driver",
-            "author": "Jeff Garzik <jgarzik@pobox.com>",
-            "srcversion": "4CABF3612D74FE1A9B5330C",
-            "depends": "mii",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "parm": {
-                "use_io": "Force use of I/O access mode. 0=MMIO 1=PIO (bool)",
-                "debug": "8139too bitmapped message enable number (int)",
-                "multicast_filter_limit": "8139too maximum number of filtered multicast addresses (int)",
-                "media": "8139too: Bits 4+9: force full duplex, bit 5: 100Mbps (array of int)",
-                "full_duplex": "8139too: Force full duplex for board(s) (1) (array of int)"
-            },
-            "alias": [
-                "pci:v*d00008139sv000013D1sd0000AB06bc*sc*i*",
-                "pci:v*d00008139sv00001186sd00001300bc*sc*i*",
-                "pci:v*d00008139sv000010ECsd00008139bc*sc*i*",
-                "pci:v0000021Bd00008139sv*sd*bc*sc*i*",
-                "pci:v00001743d00008139sv*sd*bc*sc*i*",
-                "pci:v0000126Cd00001211sv*sd*bc*sc*i*",
-                "pci:v0000018Ad00000106sv*sd*bc*sc*i*",
-                "pci:v000002ACd00001012sv*sd*bc*sc*i*",
-                "pci:v00001432d00009130sv*sd*bc*sc*i*",
-                "pci:v000011DBd00001234sv*sd*bc*sc*i*",
-                "pci:v000014EAd0000AB07sv*sd*bc*sc*i*",
-                "pci:v000014EAd0000AB06sv*sd*bc*sc*i*",
-                "pci:v00001259d0000A11Esv*sd*bc*sc*i*",
-                "pci:v00001259d0000A117sv*sd*bc*sc*i*",
-                "pci:v000013D1d0000AB06sv*sd*bc*sc*i*",
-                "pci:v00001186d00001340sv*sd*bc*sc*i*",
-                "pci:v00001186d00001300sv*sd*bc*sc*i*",
-                "pci:v00004033d00001360sv*sd*bc*sc*i*",
-                "pci:v00001500d00001360sv*sd*bc*sc*i*",
-                "pci:v00001113d00001211sv*sd*bc*sc*i*",
-                "pci:v000010ECd00008138sv*sd*bc*sc*i*",
-                "pci:v000010ECd00008139sv*sd*bc*sc*i*"
             ]
         },
         {
@@ -3830,7 +3787,6 @@
             "srcversion": "FFF8388F4530CDC32C8D66D",
             "depends": "mptscsih,mptbase",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "mpt_pt_clear": " Clear persistency table: enable=1  (default=MPTSCSIH_PT_CLEAR=0) (int)",
@@ -3930,7 +3886,6 @@
             "srcversion": "CDDC0538312D664323CC715",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "mpt_msi_enable_spi": " Enable MSI Support for SPI controllers (default=0) (int)",
@@ -4300,7 +4255,6 @@
             "srcversion": "B705E62304F32FB0AA63AE1",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "dlevel": "Debug level (default=0) (int)"
@@ -4328,7 +4282,6 @@
             "srcversion": "494EB80058EB0166E18639E",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "ring_pages": "Number of pages per req/cmp ring - (default=8[up to 16 targets],32[for 16+ targets]) (int)",
@@ -4350,7 +4303,6 @@
             "author": "Martin Hicks",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
@@ -4563,7 +4515,6 @@
             "srcversion": "4728C19D1776A534AC92588",
             "depends": "mptbase",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
@@ -4720,21 +4671,6 @@
             "author": "Venkatesh Pallipadi <venkatesh.pallipadi@intel.com>"
         },
         {
-            "filename": "virtio_blk",
-            "license": "GPL",
-            "description": "Virtio block driver",
-            "depends": "virtio,virtio_ring",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "parm": {
-                "queue_depth": "uint"
-            },
-            "alias": [
-                "virtio:d00000002v*"
-            ]
-        },
-        {
             "filename": "etxhci-hcd",
             "license": "GPL",
             "author": "Sarah Sharp",
@@ -4798,7 +4734,6 @@
             "srcversion": "2A61A12A5712ED95F834DF5",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "alias": [
                 "pci:v000015ADd000007B0sv*sd*bc*sc*i*"
@@ -4985,23 +4920,34 @@
         },
         {
             "filename": "bnx2x",
-            "firmware": "bnx2x/bnx2x-e1-7.12.30.0.fw",
-            "version": "1.712.30-0",
+            "version": "1.713.36",
             "license": "GPL",
             "description": "QLogic BCM57710/57711/57711E/57712/57712_MF/57800/57800_MF/57810/57810_MF/57840/57840_MF Driver",
             "author": "Eliezer Tamir",
-            "srcversion": "F68B239548A85A7793A689D",
-            "depends": "mdio",
+            "srcversion": "0E1F3CC82139AE0E04A0CA9",
+            "depends": "mdio,vxlan",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
+            "sig_id": "PKCS#7",
+            "signer": "",
+            "sig_key": "",
+            "sig_hashalgo": "unknown",
+            "signature": "",
             "parm": {
+                "pri_map": " Priority to HW queue mapping (uint)",
                 "num_queues": " Set number of queues (default is as a number of CPUs) (int)",
-                "disable_tpa": " Disable the TPA (LRO) feature (int)",
-                "int_mode": " Force interrupt mode other than MSI-X (1 INT#x; 2 MSI) (int)",
-                "dropless_fc": " Pause on exhausted host ring (int)",
+                "disable_iscsi_ooo": " Disable iSCSI OOO support (uint)",
+                "disable_tpa": " Disable the TPA (LRO) feature (uint)",
+                "int_mode": " Force interrupt mode other than MSI-X (1 INT#x; 2 MSI) (uint)",
+                "dropless_fc": " Pause on exhausted host ring (uint)",
+                "poll": " Use polling (for debug) (uint)",
                 "mrrs": " Force Max Read Req Size (0..3) (for debug) (int)",
-                "debug": " Default debug msglevel (int)"
+                "debug": " Default debug msglevel (uint)",
+                "num_vfs": " Number of supported virtual functions (0 means SR-IOV is disabled) (uint)",
+                "autogreeen": " Set autoGrEEEn (0:HW default; 1:force on; 2:force off) (uint)",
+                "native_eee": "int",
+                "eee": "set EEE Tx LPI timer with this value; 0: HW default; -1: Force disable EEE.",
+                "tx_switching": " Enable tx-switching (uint)"
             },
             "alias": [
                 "pci:v000014E4d0000163Fsv*sd*bc*sc*i*",
@@ -5189,16 +5135,6 @@
             }
         },
         {
-            "filename": "scsi_transport_fc",
-            "license": "GPL",
-            "file": "drivers/scsi/scsi_transport_fc",
-            "description": "FC Transport Attributes",
-            "author": "James Smart",
-            "parm": {
-                "dev_loss_tmo": "Maximum number of seconds that the FC transport should insulate the loss of a remote port. Once this value is exceeded, the scsi target is removed. Value should be between 1 and SCSI_DEVICE_BLOCK_MAX_TIMEOUT if fast_io_fail_tmo is not set. (uint)"
-            }
-        },
-        {
             "filename": "sysfillrect",
             "license": "GPL",
             "description": "Generic fill rectangle (sys-to-sys)",
@@ -5206,27 +5142,6 @@
             "depends": "",
             "retpoline": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
-        },
-        {
-            "filename": "vmw_vmci",
-            "license": "GPL v2",
-            "version": "1.1.3.0-k",
-            "description": "VMware Virtual Machine Communication Interface.",
-            "author": "VMware, Inc.",
-            "srcversion": "A7156B12EAFFDA6A083DF20",
-            "depends": "",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "parm": {
-                "disable_msi": "Disable MSI use in driver - (default=0) (bool)",
-                "disable_msix": "Disable MSI-X use in driver - (default=0) (bool)",
-                "disable_host": "Disable driver host personality (default=enabled) (bool)",
-                "disable_guest": "Disable driver guest personality (default=enabled) (bool)"
-            },
-            "alias": [
-                "pci:v000015ADd00000740sv*sd*bc*sc*i*"
-            ]
         },
         {
             "filename": "dvb_usb_v2",
@@ -5242,28 +5157,6 @@
                 "disable_rc_polling": "disable remote control polling (default: 0) (int)",
                 "force_pid_filter_usage": "force all DVB USB devices to use a PID filter, if any (default: 0) (int)"
             }
-        },
-        {
-            "filename": "megaraid",
-            "version": "2.00.4",
-            "license": "GPL",
-            "description": "LSI Logic MegaRAID legacy driver",
-            "author": "sju@lsil.com",
-            "srcversion": "19EF2088F005CDA3AF8025D",
-            "depends": "",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "parm": {
-                "max_cmd_per_lun": "Maximum number of commands which can be issued to a single LUN (default=DEF_CMD_PER_LUN=63) (uint)",
-                "max_sectors_per_io": "Maximum number of sectors per I/O request (default=MAX_SECTORS_PER_IO=128) (ushort)",
-                "max_mbox_busy_wait": "Maximum wait for mailbox in microseconds if busy (default=MBOX_BUSY_WAIT=10) (ushort)"
-            },
-            "alias": [
-                "pci:v00008086d00001960sv*sd*bc*sc*i*",
-                "pci:v0000101Ed00009060sv*sd*bc*sc*i*",
-                "pci:v0000101Ed00009010sv*sd*bc*sc*i*"
-            ]
         },
         {
             "filename": "acpi-cpufreq",
@@ -5284,54 +5177,6 @@
             "file": "drivers/video/fbdev/core/cfbcopyarea",
             "description": "Generic software accelerated copyarea",
             "author": "James Simmons <jsimmons@users.sf.net>"
-        },
-        {
-            "filename": "cdc_ether",
-            "license": "GPL",
-            "description": "USB CDC Ethernet devices",
-            "author": "David Brownell",
-            "depends": "usbnet,usbcore",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "alias": [
-                "usb:v12D1p*d*dc*dsc*dp*ic02isc06ipFFin*",
-                "usb:v*p*d*dc*dsc*dp*ic02isc0Aip00in*",
-                "usb:v*p*d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v413Cp81BAd*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v1BC7p*d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v1E2Dp0055d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v19D2p1181d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v19D2p1177d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v19D2p1173d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v19D2p1015d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v19D2p1003d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v0955p09FFd*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v17EFp7205d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v13B1p0041d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v04E8pA101d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v0BDAp8153d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v0BDAp8152d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v12D1p14ACd*dc*dsc*dp*ic*isc*ip*in01*",
-                "usb:v16D5p650Ad*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v03F0p421Dd*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v1410p9011d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v413Cp819Bd*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v413Cp8196d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v413Cp8195d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v1410p9010d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v1410pB001d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v046DpC11Fd*dc*dsc*dp*ic02isc0Aip00in*",
-                "usb:v1004p61AAd*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v07B4p0F02d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v04DDp9050d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v04DDp9032d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v04DDp9031d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v04DDp8007d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v04DDp8006d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v04DDp8005d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v04DDp8004d*dc*dsc*dp*ic02isc06ip00in*"
-            ]
         },
         {
             "filename": "bnxt_en",
@@ -5398,7 +5243,6 @@
             "author": "Jeff Garzik <jgarzik@pobox.com>",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
@@ -5496,7 +5340,6 @@
             "srcversion": "5F236BC2B61DF015610918A",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "TxDescriptors": "Number of transmit descriptors (array of int)",
@@ -5591,28 +5434,6 @@
             ]
         },
         {
-            "filename": "bna",
-            "firmware": "ctfw-3.2.5.1.bin",
-            "version": "3.2.25.1",
-            "description": "QLogic BR-series 10G PCIe Ethernet driver",
-            "license": "GPL",
-            "author": "Brocade",
-            "srcversion": "D1F569B189A32891BE54D3E",
-            "depends": "",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "parm": {
-                "bnad_msix_disable": "Disable MSIX mode (uint)",
-                "bnad_ioc_auto_recover": "Enable / Disable auto recovery (uint)",
-                "bna_debugfs_enable": "Enables debugfs feature, default=1, Range[false:0|true:1] (uint)"
-            },
-            "alias": [
-                "pci:v00001657d00000022sv*sd*bc02sc00i*",
-                "pci:v00001657d00000014sv*sd*bc02sc00i*"
-            ]
-        },
-        {
             "filename": "font",
             "license": "GPL",
             "file": "lib/fonts/font",
@@ -5677,7 +5498,6 @@
             "srcversion": "DDEFCAABBD6019D1E78D062",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "lb_pending_cmds": "Change raid-1 load balancing outstanding threshold. Valid Values are 1-128. Default: 4 (int)",
@@ -5731,22 +5551,6 @@
             ]
         },
         {
-            "filename": "i40evf",
-            "version": "1.3.33",
-            "license": "GPL",
-            "description": "Intel(R) XL710 X710 Virtual Function Network Driver",
-            "author": "Intel Corporation, <linux.nics@intel.com>",
-            "srcversion": "C25DECBA17CF1421F115F7F",
-            "depends": "",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "alias": [
-                "pci:v00008086d000037CDsv*sd*bc*sc*i*",
-                "pci:v00008086d0000154Csv*sd*bc*sc*i*"
-            ]
-        },
-        {
             "filename": "virtio_ring",
             "license": "GPL",
             "file": "drivers/virtio/virtio_ring"
@@ -5793,7 +5597,7 @@
             "description": "LSI MPT Fusion SAS 3.0 & SAS 3.5 Device Driver",
             "author": "Broadcom Inc. <MPT-FusionLinux.pdl@broadcom.com>",
             "srcversion": "DCF77D5C93E6BFB8C7F01AB",
-            "depends": "",
+            "depends": "scsi_transport_sas,raid_class",
             "retpoline": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
@@ -5922,7 +5726,6 @@
             "srcversion": "A3A0CF74C3034BCCD1D9612",
             "depends": "rc-core,dvb-core,usbcore",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "debug": "set debugging level (1=info,xfer=2,pll=4,ts=8,err=16,rc=32,fw=64,mem=128,uxfer=256  (or-able)). (int)",
@@ -6141,7 +5944,6 @@
             "srcversion": "ACCC3B732514BB2911C40C0",
             "depends": "mptbase",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
@@ -6443,7 +6245,6 @@
             "srcversion": "88D15396D280106CDA69BCA",
             "depends": "mptscsih,mptbase,scsi_transport_spi",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "mpt_saf_te": " Force enabling SEP Processor: enable=1  (default=MPTSCSIH_SAF_TE=0) (int)"
@@ -6555,18 +6356,35 @@
         },
         {
             "filename": "igb",
-            "version": "5.3.0-k",
+            "version": "5.3.5.22",
             "license": "GPL",
-            "description": "Intel(R) Gigabit Ethernet Network Driver",
+            "description": "Intel(R) Gigabit Ethernet Linux Driver",
             "author": "Intel Corporation, <e1000-devel@lists.sourceforge.net>",
-            "srcversion": "B7D25A6C7ACF7CCB008869B",
-            "depends": "i2c-algo-bit",
+            "srcversion": "AC921B8B4A2872430DCA845",
+            "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
+            "sig_id": "PKCS#7",
+            "signer": "",
+            "sig_key": "",
+            "sig_hashalgo": "unknown",
+            "signature": "",
             "parm": {
-                "max_vfs": "Maximum number of virtual functions to allocate per physical function (uint)",
-                "debug": "Debug level (0=none,...,16=all) (int)"
+                "InterruptThrottleRate": "Maximum interrupts per second, per vector, (max 100000), default 3=adaptive (array of int)",
+                "IntMode": "Change Interrupt Mode (0=Legacy, 1=MSI, 2=MSI-X), default 2 (array of int)",
+                "Node": "set the starting node to allocate memory on, default -1 (array of int)",
+                "LLIPort": "Low Latency Interrupt TCP Port (0-65535), default 0=off (array of int)",
+                "LLIPush": "Low Latency Interrupt on TCP Push flag (0,1), default 0=off (array of int)",
+                "LLISize": "Low Latency Interrupt on Packet Size (0-1500), default 0=off (array of int)",
+                "RSS": "Number of Receive-Side Scaling Descriptor Queues (0-8), default 1, 0=number of cpus (array of int)",
+                "VMDQ": "Number of Virtual Machine Device Queues: 0-1 = disable, 2-8 enable, default 0 (array of int)",
+                "max_vfs": "Number of Virtual Functions: 0 = disable, 1-7 enable, default 0 (array of int)",
+                "MDD": "Malicious Driver Detection (0/1), default 1 = enabled. Only available when max_vfs is greater than 0 (array of int)",
+                "QueuePairs": "Enable Tx/Rx queue pairs for interrupt handling (0,1), default 1=on (array of int)",
+                "EEE": "Enable/disable on parts that support the feature (array of int)",
+                "DMAC": "Disable or set latency for DMA Coalescing ((0=off, 1000-10000(msec), 250, 500 (usec)) (array of int)",
+                "LRO": "Large Receive Offload (0,1), default 0=off (array of int)",
+                "debug": "Debug level (0=none, ..., 16=all) (int)"
             },
             "alias": [
                 "pci:v00008086d000010D6sv*sd*bc*sc*i*",
@@ -6594,13 +6412,13 @@
                 "pci:v00008086d00001523sv*sd*bc*sc*i*",
                 "pci:v00008086d00001522sv*sd*bc*sc*i*",
                 "pci:v00008086d00001521sv*sd*bc*sc*i*",
+                "pci:v00008086d00001539sv*sd*bc*sc*i*",
                 "pci:v00008086d0000157Csv*sd*bc*sc*i*",
                 "pci:v00008086d0000157Bsv*sd*bc*sc*i*",
                 "pci:v00008086d00001538sv*sd*bc*sc*i*",
                 "pci:v00008086d00001537sv*sd*bc*sc*i*",
                 "pci:v00008086d00001536sv*sd*bc*sc*i*",
                 "pci:v00008086d00001533sv*sd*bc*sc*i*",
-                "pci:v00008086d00001539sv*sd*bc*sc*i*",
                 "pci:v00008086d00001F45sv*sd*bc*sc*i*",
                 "pci:v00008086d00001F41sv*sd*bc*sc*i*",
                 "pci:v00008086d00001F40sv*sd*bc*sc*i*"
@@ -6615,7 +6433,6 @@
             "srcversion": "DC23A8F0007F9504DA7D0CC",
             "depends": "megaraid_mm",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "unconf_disks": "Set to expose unconfigured disks to kernel (default=0) (int)",
@@ -6648,15 +6465,6 @@
             "file": "drivers/gpu/drm/drm_panel_orientation_quirks"
         },
         {
-            "filename": "rc-dib0700-rc5",
-            "author": "Mauro Carvalho Chehab",
-            "license": "GPL",
-            "depends": "rc-core",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload "
-        },
-        {
             "filename": "cxgb3",
             "firmware": "cxgb3/t3fw-7.12.0.bin",
             "version": "1.1.5-ko",
@@ -6664,7 +6472,7 @@
             "author": "Chelsio Communications",
             "description": "Chelsio T3 Network Driver",
             "srcversion": "4E8ACB67D64A201124B6A00",
-            "depends": "",
+            "depends": "mdio",
             "retpoline": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
@@ -6702,7 +6510,6 @@
             "description": "Generic support for MDIO-compatible transceivers",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
@@ -6712,7 +6519,6 @@
             "author": "Hans Petter Selasky",
             "depends": "usbnet,usbcore",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "prefer_mbim": "Prefer MBIM setting on dual NCM/MBIM functions (bool)"
@@ -6781,7 +6587,6 @@
             "srcversion": "78E5FCEAAA935963F07A476",
             "depends": "mii",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "debug": "8139cp: bitmapped message enable number (int)",
@@ -6826,7 +6631,6 @@
             "author": "James Bottomley",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
@@ -6990,6 +6794,13 @@
             ]
         },
         {
+            "filename": "cpufreq_governor",
+            "license": "GPL",
+            "depends": "",
+            "retpoline": "Y",
+            "vermagic": "4.4.180+ SMP mod_unload "
+        },
+        {
             "filename": "xhci-hcd",
             "license": "GPL",
             "file": "drivers/usb/host/xhci-hcd",
@@ -7078,49 +6889,6 @@
             "author": "David E. Box <david.e.box@linux.intel.com>"
         },
         {
-            "filename": "8139too",
-            "version": "0.9.28",
-            "license": "GPL",
-            "description": "RealTek RTL-8139 Fast Ethernet driver",
-            "author": "Jeff Garzik <jgarzik@pobox.com>",
-            "srcversion": "4CABF3612D74FE1A9B5330C",
-            "depends": "mii",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "parm": {
-                "use_io": "Force use of I/O access mode. 0=MMIO 1=PIO (bool)",
-                "debug": "8139too bitmapped message enable number (int)",
-                "multicast_filter_limit": "8139too maximum number of filtered multicast addresses (int)",
-                "media": "8139too: Bits 4+9: force full duplex, bit 5: 100Mbps (array of int)",
-                "full_duplex": "8139too: Force full duplex for board(s) (1) (array of int)"
-            },
-            "alias": [
-                "pci:v*d00008139sv000013D1sd0000AB06bc*sc*i*",
-                "pci:v*d00008139sv00001186sd00001300bc*sc*i*",
-                "pci:v*d00008139sv000010ECsd00008139bc*sc*i*",
-                "pci:v0000021Bd00008139sv*sd*bc*sc*i*",
-                "pci:v00001743d00008139sv*sd*bc*sc*i*",
-                "pci:v0000126Cd00001211sv*sd*bc*sc*i*",
-                "pci:v0000018Ad00000106sv*sd*bc*sc*i*",
-                "pci:v000002ACd00001012sv*sd*bc*sc*i*",
-                "pci:v00001432d00009130sv*sd*bc*sc*i*",
-                "pci:v000011DBd00001234sv*sd*bc*sc*i*",
-                "pci:v000014EAd0000AB07sv*sd*bc*sc*i*",
-                "pci:v000014EAd0000AB06sv*sd*bc*sc*i*",
-                "pci:v00001259d0000A11Esv*sd*bc*sc*i*",
-                "pci:v00001259d0000A117sv*sd*bc*sc*i*",
-                "pci:v000013D1d0000AB06sv*sd*bc*sc*i*",
-                "pci:v00001186d00001340sv*sd*bc*sc*i*",
-                "pci:v00001186d00001300sv*sd*bc*sc*i*",
-                "pci:v00004033d00001360sv*sd*bc*sc*i*",
-                "pci:v00001500d00001360sv*sd*bc*sc*i*",
-                "pci:v00001113d00001211sv*sd*bc*sc*i*",
-                "pci:v000010ECd00008138sv*sd*bc*sc*i*",
-                "pci:v000010ECd00008139sv*sd*bc*sc*i*"
-            ]
-        },
-        {
             "filename": "i40e",
             "version": "2.20.12",
             "license": "GPL",
@@ -7189,7 +6957,6 @@
             "author": "Max nibble <nibble.max@gmail.com>",
             "depends": "dvb_usb_v2,dvb-core,usbcore,rc-core,m88ds3103",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "disable_rc": "Disable inbuilt IR receiver. (int)",
@@ -7212,10 +6979,9 @@
             "description": "Driver for devices based on DiBcom DiB0700 - USB bridge",
             "author": "Patrick Boettcher <pboettcher@dibcom.fr>",
             "firmware": "dvb-usb-dib0700-1.20.fw",
-            "srcversion": "825F647F347351324F2AAD2",
+            "srcversion": "28AA8A6D8C2D5397DD95EC2",
             "depends": "dib7000m,dib9000,dibx000_common,dvb-usb,dib0090,dib0070,dib3000mc,usbcore,rc-core",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "force_lna_activation": "force the activation of Low-Noise-Amplifyer(s) (LNA), if applicable for the device (default: 0=automatic/off). (int)",
@@ -7469,7 +7235,6 @@
             "srcversion": "FFF8388F4530CDC32C8D66D",
             "depends": "mptscsih,mptbase,scsi_transport_sas",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "mpt_pt_clear": " Clear persistency table: enable=1  (default=MPTSCSIH_PT_CLEAR=0) (int)",
@@ -7523,7 +7288,6 @@
             "author": "Christoph Hellwig",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
@@ -7579,7 +7343,6 @@
             "srcversion": "CDDC0538312D664323CC715",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "mpt_msi_enable_spi": " Enable MSI Support for SPI controllers (default=0) (int)",
@@ -7931,15 +7694,6 @@
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
-            "filename": "rc-dib0700-nec",
-            "author": "Mauro Carvalho Chehab",
-            "license": "GPL",
-            "depends": "rc-core",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload "
-        },
-        {
             "filename": "megaraid_mm",
             "version": "2.20.2.7",
             "license": "GPL",
@@ -7948,7 +7702,6 @@
             "srcversion": "B705E62304F32FB0AA63AE1",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "dlevel": "Debug level (default=0) (int)"
@@ -7976,7 +7729,6 @@
             "srcversion": "494EB80058EB0166E18639E",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "ring_pages": "Number of pages per req/cmp ring - (default=8[up to 16 targets],32[for 16+ targets]) (int)",
@@ -7998,7 +7750,6 @@
             "author": "Martin Hicks",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
@@ -8010,17 +7761,20 @@
         },
         {
             "filename": "e1000e",
-            "version": "3.2.6-k",
+            "version": "3.4.2.4-NAPI",
             "license": "GPL",
             "description": "Intel(R) PRO/1000 Network Driver",
             "author": "Intel Corporation, <linux.nics@intel.com>",
-            "srcversion": "5E4D87029608FEDC986018C",
+            "srcversion": "4028D55A711BE8CD752D647",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
+            "sig_id": "PKCS#7",
+            "signer": "",
+            "sig_key": "",
+            "sig_hashalgo": "unknown",
+            "signature": "",
             "parm": {
-                "debug": "Debug level (0=none,...,16=all) (int)",
                 "copybreak": "Maximum size of packet that is copied to a new buffer on receive (uint)",
                 "TxIntDelay": "Transmit Interrupt Delay (array of int)",
                 "TxAbsIntDelay": "Transmit Absolute Interrupt Delay (array of int)",
@@ -8030,10 +7784,21 @@
                 "IntMode": "Interrupt Mode (array of int)",
                 "SmartPowerDownEnable": "Enable PHY smart power down (array of int)",
                 "KumeranLockLoss": "Enable Kumeran lock loss workaround (array of int)",
-                "WriteProtectNVM": "Write-protect NVM [WARNING: disabling this can lead to corrupted NVM] (array of int)",
-                "CrcStripping": "Enable CRC Stripping, disable if your BMC needs the CRC (array of int)"
+                "CrcStripping": "Enable CRC Stripping, disable if your BMC needs the CRC (array of int)",
+                "EEE": "Enable/disable on parts that support the feature (array of int)",
+                "Node": "[ROUTING] Node to allocate memory on, default -1 (array of int)",
+                "debug": "Debug level (0=none,...,16=all) (int)"
             },
             "alias": [
+                "pci:v00008086d000015BCsv*sd*bc*sc*i*",
+                "pci:v00008086d000015BBsv*sd*bc*sc*i*",
+                "pci:v00008086d000015BEsv*sd*bc*sc*i*",
+                "pci:v00008086d000015BDsv*sd*bc*sc*i*",
+                "pci:v00008086d000015D6sv*sd*bc*sc*i*",
+                "pci:v00008086d000015E3sv*sd*bc*sc*i*",
+                "pci:v00008086d000015D8sv*sd*bc*sc*i*",
+                "pci:v00008086d000015D7sv*sd*bc*sc*i*",
+                "pci:v00008086d000015B9sv*sd*bc*sc*i*",
                 "pci:v00008086d000015B8sv*sd*bc*sc*i*",
                 "pci:v00008086d000015B7sv*sd*bc*sc*i*",
                 "pci:v00008086d00001570sv*sd*bc*sc*i*",
@@ -8141,7 +7906,6 @@
             "srcversion": "4728C19D1776A534AC92588",
             "depends": "mptbase",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
@@ -8261,6 +8025,13 @@
             ]
         },
         {
+            "filename": "cpufreq_ondemand",
+            "license": "GPL",
+            "file": "drivers/cpufreq/cpufreq_ondemand",
+            "description": "'cpufreq_ondemand' - A dynamic cpufreq governor for Low Latency Frequency Transition capable processors",
+            "author": "Venkatesh Pallipadi <venkatesh.pallipadi@intel.com>"
+        },
+        {
             "filename": "hwmon-vid",
             "license": "GPL",
             "description": "hwmon-vid driver",
@@ -8268,21 +8039,6 @@
             "depends": "",
             "retpoline": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
-        },
-        {
-            "filename": "virtio_blk",
-            "license": "GPL",
-            "description": "Virtio block driver",
-            "depends": "virtio,virtio_ring",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "parm": {
-                "queue_depth": "uint"
-            },
-            "alias": [
-                "virtio:d00000002v*"
-            ]
         },
         {
             "filename": "etxhci-hcd",
@@ -8322,26 +8078,6 @@
             "signature": ""
         },
         {
-            "filename": "nicvf",
-            "version": "1.0",
-            "license": "GPL v2",
-            "description": "Cavium Thunder NIC Virtual Function Driver",
-            "author": "Sunil Goutham",
-            "srcversion": "E7DB5B87C3D989253AD0ED9",
-            "depends": "",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "parm": {
-                "debug": "Debug message level bitmap (int)",
-                "cpi_alg": "PFC algorithm (0=none, 1=VLAN, 2=VLAN16, 3=IP Diffserv) (int)"
-            },
-            "alias": [
-                "pci:v0000177Dd00000011sv0000177Dsd0000A11Ebc*sc*i*",
-                "pci:v0000177Dd0000A034sv0000177Dsd0000A134bc*sc*i*"
-            ]
-        },
-        {
             "filename": "via-sdmmc",
             "description": "VIA SD/MMC Card Interface driver",
             "author": "VIA Technologies Inc.",
@@ -8362,7 +8098,6 @@
             "srcversion": "2A61A12A5712ED95F834DF5",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "alias": [
                 "pci:v000015ADd000007B0sv*sd*bc*sc*i*"
@@ -8555,7 +8290,7 @@
             "description": "QLogic BCM57710/57711/57711E/57712/57712_MF/57800/57800_MF/57810/57810_MF/57840/57840_MF Driver",
             "author": "Eliezer Tamir",
             "srcversion": "74F4884260A5B23EFA5207E",
-            "depends": "",
+            "depends": "mdio",
             "retpoline": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
@@ -8617,7 +8352,7 @@
             "license": "GPL",
             "author": "Chelsio Communications",
             "description": "Chelsio 10Gb Ethernet Driver",
-            "depends": "",
+            "depends": "mdio",
             "retpoline": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
@@ -8643,7 +8378,6 @@
             "description": "DVB Core Driver",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "frontend_debug": "Turn on/off frontend core debugging (default:off). (int)",
@@ -8760,20 +8494,9 @@
             "author": "Mauro Carvalho Chehab",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "debug": "int"
-            }
-        },
-        {
-            "filename": "scsi_transport_fc",
-            "license": "GPL",
-            "file": "drivers/scsi/scsi_transport_fc",
-            "description": "FC Transport Attributes",
-            "author": "James Smart",
-            "parm": {
-                "dev_loss_tmo": "Maximum number of seconds that the FC transport should insulate the loss of a remote port. Once this value is exceeded, the scsi target is removed. Value should be between 1 and SCSI_DEVICE_BLOCK_MAX_TIMEOUT if fast_io_fail_tmo is not set. (uint)"
             }
         },
         {
@@ -8792,27 +8515,6 @@
             "signature": ""
         },
         {
-            "filename": "vmw_vmci",
-            "license": "GPL v2",
-            "version": "1.1.3.0-k",
-            "description": "VMware Virtual Machine Communication Interface.",
-            "author": "VMware, Inc.",
-            "srcversion": "A7156B12EAFFDA6A083DF20",
-            "depends": "",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "parm": {
-                "disable_msi": "Disable MSI use in driver - (default=0) (bool)",
-                "disable_msix": "Disable MSI-X use in driver - (default=0) (bool)",
-                "disable_host": "Disable driver host personality (default=enabled) (bool)",
-                "disable_guest": "Disable driver guest personality (default=enabled) (bool)"
-            },
-            "alias": [
-                "pci:v000015ADd00000740sv*sd*bc*sc*i*"
-            ]
-        },
-        {
             "filename": "dvb_usb_v2",
             "license": "GPL",
             "description": "DVB USB common",
@@ -8828,37 +8530,6 @@
             }
         },
         {
-            "filename": "megaraid",
-            "version": "2.00.4",
-            "license": "GPL",
-            "description": "LSI Logic MegaRAID legacy driver",
-            "author": "sju@lsil.com",
-            "srcversion": "19EF2088F005CDA3AF8025D",
-            "depends": "",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "parm": {
-                "max_cmd_per_lun": "Maximum number of commands which can be issued to a single LUN (default=DEF_CMD_PER_LUN=63) (uint)",
-                "max_sectors_per_io": "Maximum number of sectors per I/O request (default=MAX_SECTORS_PER_IO=128) (ushort)",
-                "max_mbox_busy_wait": "Maximum wait for mailbox in microseconds if busy (default=MBOX_BUSY_WAIT=10) (ushort)"
-            },
-            "alias": [
-                "pci:v00008086d00001960sv*sd*bc*sc*i*",
-                "pci:v0000101Ed00009060sv*sd*bc*sc*i*",
-                "pci:v0000101Ed00009010sv*sd*bc*sc*i*"
-            ]
-        },
-        {
-            "filename": "rc-dvbsky",
-            "author": "Nibble Max <nibble.max@gmail.com>",
-            "license": "GPL",
-            "depends": "rc-core",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload "
-        },
-        {
             "filename": "acpi-cpufreq",
             "license": "GPL",
             "file": "drivers/cpufreq/acpi-cpufreq",
@@ -8872,39 +8543,11 @@
             ]
         },
         {
-            "filename": "nicpf",
-            "version": "1.0",
-            "license": "GPL v2",
-            "description": "Cavium Thunder NIC Physical Function Driver",
-            "author": "Sunil Goutham",
-            "srcversion": "6D94300A0DC1DCA414C36AA",
-            "depends": "thunder_bgx",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "alias": [
-                "pci:v0000177Dd0000A01Esv*sd*bc*sc*i*"
-            ]
-        },
-        {
             "filename": "cfbcopyarea",
             "license": "GPL",
             "file": "drivers/video/fbdev/core/cfbcopyarea",
             "description": "Generic software accelerated copyarea",
             "author": "James Simmons <jsimmons@users.sf.net>"
-        },
-        {
-            "filename": "libfc",
-            "license": "GPL v2",
-            "description": "libfc",
-            "author": "Open-FCoE.org",
-            "depends": "scsi_transport_fc",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "parm": {
-                "debug_logging": "a bit mask of logging levels (int)"
-            }
         },
         {
             "filename": "bnxt_en",
@@ -8971,7 +8614,6 @@
             "author": "Jeff Garzik <jgarzik@pobox.com>",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
@@ -9086,7 +8728,6 @@
             "srcversion": "5F236BC2B61DF015610918A",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "TxDescriptors": "Number of transmit descriptors (array of int)",
@@ -9203,6 +8844,13 @@
             "signature": ""
         },
         {
+            "filename": "cpufreq_conservative",
+            "license": "GPL",
+            "file": "drivers/cpufreq/cpufreq_conservative",
+            "description": "'cpufreq_conservative' - A dynamic cpufreq governor for Low Latency Frequency Transition capable processors optimised for use in a battery environment",
+            "author": "Alexander Clouter <alex@digriz.org.uk>"
+        },
+        {
             "filename": "sr_mod",
             "license": "GPL",
             "file": "drivers/scsi/sr_mod",
@@ -9251,7 +8899,6 @@
             "srcversion": "DDEFCAABBD6019D1E78D062",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "lb_pending_cmds": "Change raid-1 load balancing outstanding threshold. Valid Values are 1-128. Default: 4 (int)",
@@ -9324,22 +8971,6 @@
                 "edid_fixup": "Minimum number of valid EDID header bytes (0-8, default 6) (int)",
                 "debug": "Enable debug output, where each bit enables a debug category.\n\t\tBit 0 (0x01) will enable CORE messages (drm core code)\n\t\tBit 1 (0x02) will enable DRIVER messages (drm controller code)\n\t\tBit 2 (0x04) will enable KMS messages (modesetting code)\n\t\tBit 3 (0x08) will enable PRIME messages (prime code)\n\t\tBit 4 (0x10) will enable ATOMIC messages (atomic code)\n\t\tBit 5 (0x20) will enable VBL messages (vblank code)\n\t\tBit 7 (0x80) will enable LEASE messages (leasing code) (int)"
             }
-        },
-        {
-            "filename": "i40evf",
-            "version": "1.3.33",
-            "license": "GPL",
-            "description": "Intel(R) XL710 X710 Virtual Function Network Driver",
-            "author": "Intel Corporation, <linux.nics@intel.com>",
-            "srcversion": "C25DECBA17CF1421F115F7F",
-            "depends": "",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "alias": [
-                "pci:v00008086d000037CDsv*sd*bc*sc*i*",
-                "pci:v00008086d0000154Csv*sd*bc*sc*i*"
-            ]
         },
         {
             "filename": "virtio_ring",
@@ -9746,7 +9377,6 @@
             "srcversion": "ACCC3B732514BB2911C40C0",
             "depends": "mptbase",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
@@ -9776,7 +9406,6 @@
             "srcversion": "88D15396D280106CDA69BCA",
             "depends": "mptscsih,mptbase,scsi_transport_spi",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "mpt_saf_te": " Force enabling SEP Processor: enable=1  (default=MPTSCSIH_SAF_TE=0) (int)"
@@ -9948,18 +9577,35 @@
         },
         {
             "filename": "igb",
-            "version": "5.3.0-k",
+            "version": "5.3.5.22",
             "license": "GPL",
-            "description": "Intel(R) Gigabit Ethernet Network Driver",
+            "description": "Intel(R) Gigabit Ethernet Linux Driver",
             "author": "Intel Corporation, <e1000-devel@lists.sourceforge.net>",
-            "srcversion": "B7D25A6C7ACF7CCB008869B",
-            "depends": "dca,i2c-algo-bit",
+            "srcversion": "AC921B8B4A2872430DCA845",
+            "depends": "dca",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
+            "sig_id": "PKCS#7",
+            "signer": "",
+            "sig_key": "",
+            "sig_hashalgo": "unknown",
+            "signature": "",
             "parm": {
-                "max_vfs": "Maximum number of virtual functions to allocate per physical function (uint)",
-                "debug": "Debug level (0=none,...,16=all) (int)"
+                "InterruptThrottleRate": "Maximum interrupts per second, per vector, (max 100000), default 3=adaptive (array of int)",
+                "IntMode": "Change Interrupt Mode (0=Legacy, 1=MSI, 2=MSI-X), default 2 (array of int)",
+                "Node": "set the starting node to allocate memory on, default -1 (array of int)",
+                "LLIPort": "Low Latency Interrupt TCP Port (0-65535), default 0=off (array of int)",
+                "LLIPush": "Low Latency Interrupt on TCP Push flag (0,1), default 0=off (array of int)",
+                "LLISize": "Low Latency Interrupt on Packet Size (0-1500), default 0=off (array of int)",
+                "RSS": "Number of Receive-Side Scaling Descriptor Queues (0-8), default 1, 0=number of cpus (array of int)",
+                "VMDQ": "Number of Virtual Machine Device Queues: 0-1 = disable, 2-8 enable, default 0 (array of int)",
+                "max_vfs": "Number of Virtual Functions: 0 = disable, 1-7 enable, default 0 (array of int)",
+                "MDD": "Malicious Driver Detection (0/1), default 1 = enabled. Only available when max_vfs is greater than 0 (array of int)",
+                "QueuePairs": "Enable Tx/Rx queue pairs for interrupt handling (0,1), default 1=on (array of int)",
+                "EEE": "Enable/disable on parts that support the feature (array of int)",
+                "DMAC": "Disable or set latency for DMA Coalescing ((0=off, 1000-10000(msec), 250, 500 (usec)) (array of int)",
+                "LRO": "Large Receive Offload (0,1), default 0=off (array of int)",
+                "debug": "Debug level (0=none, ..., 16=all) (int)"
             },
             "alias": [
                 "pci:v00008086d000010D6sv*sd*bc*sc*i*",
@@ -9987,13 +9633,13 @@
                 "pci:v00008086d00001523sv*sd*bc*sc*i*",
                 "pci:v00008086d00001522sv*sd*bc*sc*i*",
                 "pci:v00008086d00001521sv*sd*bc*sc*i*",
+                "pci:v00008086d00001539sv*sd*bc*sc*i*",
                 "pci:v00008086d0000157Csv*sd*bc*sc*i*",
                 "pci:v00008086d0000157Bsv*sd*bc*sc*i*",
                 "pci:v00008086d00001538sv*sd*bc*sc*i*",
                 "pci:v00008086d00001537sv*sd*bc*sc*i*",
                 "pci:v00008086d00001536sv*sd*bc*sc*i*",
                 "pci:v00008086d00001533sv*sd*bc*sc*i*",
-                "pci:v00008086d00001539sv*sd*bc*sc*i*",
                 "pci:v00008086d00001F45sv*sd*bc*sc*i*",
                 "pci:v00008086d00001F41sv*sd*bc*sc*i*",
                 "pci:v00008086d00001F40sv*sd*bc*sc*i*"
@@ -10008,7 +9654,6 @@
             "srcversion": "DC23A8F0007F9504DA7D0CC",
             "depends": "megaraid_mm",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "unconf_disks": "Set to expose unconfigured disks to kernel (default=0) (int)",
@@ -10082,7 +9727,12 @@
             "depends": "",
             "retpoline": "Y",
             "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload "
+            "vermagic": "4.4.180+ SMP mod_unload ",
+            "sig_id": "PKCS#7",
+            "signer": "",
+            "sig_key": "",
+            "sig_hashalgo": "unknown",
+            "signature": ""
         },
         {
             "filename": "cdc_ncm",
@@ -10091,7 +9741,6 @@
             "author": "Hans Petter Selasky",
             "depends": "usbnet,usbcore",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "prefer_mbim": "Prefer MBIM setting on dual NCM/MBIM functions (bool)"
@@ -10180,7 +9829,6 @@
             "srcversion": "78E5FCEAAA935963F07A476",
             "depends": "mii",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "debug": "8139cp: bitmapped message enable number (int)",
@@ -10429,49 +10077,6 @@
             "alias": [
                 "pci:v000015B3d0000CB84sv*sd*bc*sc*i*",
                 "pci:v000015B3d0000C738sv*sd*bc*sc*i*"
-            ]
-        },
-        {
-            "filename": "8139too",
-            "version": "0.9.28",
-            "license": "GPL",
-            "description": "RealTek RTL-8139 Fast Ethernet driver",
-            "author": "Jeff Garzik <jgarzik@pobox.com>",
-            "srcversion": "4CABF3612D74FE1A9B5330C",
-            "depends": "mii",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "parm": {
-                "use_io": "Force use of I/O access mode. 0=MMIO 1=PIO (bool)",
-                "debug": "8139too bitmapped message enable number (int)",
-                "multicast_filter_limit": "8139too maximum number of filtered multicast addresses (int)",
-                "media": "8139too: Bits 4+9: force full duplex, bit 5: 100Mbps (array of int)",
-                "full_duplex": "8139too: Force full duplex for board(s) (1) (array of int)"
-            },
-            "alias": [
-                "pci:v*d00008139sv000013D1sd0000AB06bc*sc*i*",
-                "pci:v*d00008139sv00001186sd00001300bc*sc*i*",
-                "pci:v*d00008139sv000010ECsd00008139bc*sc*i*",
-                "pci:v0000021Bd00008139sv*sd*bc*sc*i*",
-                "pci:v00001743d00008139sv*sd*bc*sc*i*",
-                "pci:v0000126Cd00001211sv*sd*bc*sc*i*",
-                "pci:v0000018Ad00000106sv*sd*bc*sc*i*",
-                "pci:v000002ACd00001012sv*sd*bc*sc*i*",
-                "pci:v00001432d00009130sv*sd*bc*sc*i*",
-                "pci:v000011DBd00001234sv*sd*bc*sc*i*",
-                "pci:v000014EAd0000AB07sv*sd*bc*sc*i*",
-                "pci:v000014EAd0000AB06sv*sd*bc*sc*i*",
-                "pci:v00001259d0000A11Esv*sd*bc*sc*i*",
-                "pci:v00001259d0000A117sv*sd*bc*sc*i*",
-                "pci:v000013D1d0000AB06sv*sd*bc*sc*i*",
-                "pci:v00001186d00001340sv*sd*bc*sc*i*",
-                "pci:v00001186d00001300sv*sd*bc*sc*i*",
-                "pci:v00004033d00001360sv*sd*bc*sc*i*",
-                "pci:v00001500d00001360sv*sd*bc*sc*i*",
-                "pci:v00001113d00001211sv*sd*bc*sc*i*",
-                "pci:v000010ECd00008138sv*sd*bc*sc*i*",
-                "pci:v000010ECd00008139sv*sd*bc*sc*i*"
             ]
         },
         {
@@ -10796,7 +10401,6 @@
             "srcversion": "FFF8388F4530CDC32C8D66D",
             "depends": "mptscsih,mptbase",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "mpt_pt_clear": " Clear persistency table: enable=1  (default=MPTSCSIH_PT_CLEAR=0) (int)",
@@ -10877,7 +10481,6 @@
             "srcversion": "CDDC0538312D664323CC715",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "mpt_msi_enable_spi": " Enable MSI Support for SPI controllers (default=0) (int)",
@@ -11247,7 +10850,6 @@
             "srcversion": "B705E62304F32FB0AA63AE1",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "dlevel": "Debug level (default=0) (int)"
@@ -11275,7 +10877,6 @@
             "srcversion": "494EB80058EB0166E18639E",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "ring_pages": "Number of pages per req/cmp ring - (default=8[up to 16 targets],32[for 16+ targets]) (int)",
@@ -11297,7 +10898,6 @@
             "author": "Martin Hicks",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
@@ -11510,7 +11110,6 @@
             "srcversion": "4728C19D1776A534AC92588",
             "depends": "mptbase",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
@@ -11667,21 +11266,6 @@
             "author": "Venkatesh Pallipadi <venkatesh.pallipadi@intel.com>"
         },
         {
-            "filename": "virtio_blk",
-            "license": "GPL",
-            "description": "Virtio block driver",
-            "depends": "virtio,virtio_ring",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "parm": {
-                "queue_depth": "uint"
-            },
-            "alias": [
-                "virtio:d00000002v*"
-            ]
-        },
-        {
             "filename": "etxhci-hcd",
             "license": "GPL",
             "author": "Sarah Sharp",
@@ -11745,7 +11329,6 @@
             "srcversion": "2A61A12A5712ED95F834DF5",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "alias": [
                 "pci:v000015ADd000007B0sv*sd*bc*sc*i*"
@@ -11903,53 +11486,35 @@
             ]
         },
         {
-            "filename": "bnx2",
-            "firmware": "bnx2/bnx2-mips-06-6.2.3.fw",
-            "version": "2.2.6",
-            "license": "GPL",
-            "description": "QLogic BCM5706/5708/5709/5716 Driver",
-            "author": "Michael Chan <mchan@broadcom.com>",
-            "srcversion": "A17EF7EA577C7F82E1E51C2",
-            "depends": "",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "parm": {
-                "disable_msi": "Disable Message Signaled Interrupt (MSI) (int)"
-            },
-            "alias": [
-                "pci:v000014E4d0000163Csv*sd*bc*sc*i*",
-                "pci:v000014E4d0000163Bsv*sd*bc*sc*i*",
-                "pci:v000014E4d0000163Asv*sd*bc*sc*i*",
-                "pci:v000014E4d00001639sv*sd*bc*sc*i*",
-                "pci:v000014E4d000016ACsv*sd*bc*sc*i*",
-                "pci:v000014E4d000016AAsv*sd*bc*sc*i*",
-                "pci:v000014E4d000016AAsv0000103Csd00003102bc*sc*i*",
-                "pci:v000014E4d0000164Csv*sd*bc*sc*i*",
-                "pci:v000014E4d0000164Asv*sd*bc*sc*i*",
-                "pci:v000014E4d0000164Asv0000103Csd00003106bc*sc*i*",
-                "pci:v000014E4d0000164Asv0000103Csd00003101bc*sc*i*"
-            ]
-        },
-        {
             "filename": "bnx2x",
-            "firmware": "bnx2x/bnx2x-e1-7.12.30.0.fw",
-            "version": "1.712.30-0",
+            "version": "1.713.36",
             "license": "GPL",
             "description": "QLogic BCM57710/57711/57711E/57712/57712_MF/57800/57800_MF/57810/57810_MF/57840/57840_MF Driver",
             "author": "Eliezer Tamir",
-            "srcversion": "F68B239548A85A7793A689D",
-            "depends": "mdio",
+            "srcversion": "0E1F3CC82139AE0E04A0CA9",
+            "depends": "mdio,vxlan",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
+            "sig_id": "PKCS#7",
+            "signer": "",
+            "sig_key": "",
+            "sig_hashalgo": "unknown",
+            "signature": "",
             "parm": {
+                "pri_map": " Priority to HW queue mapping (uint)",
                 "num_queues": " Set number of queues (default is as a number of CPUs) (int)",
-                "disable_tpa": " Disable the TPA (LRO) feature (int)",
-                "int_mode": " Force interrupt mode other than MSI-X (1 INT#x; 2 MSI) (int)",
-                "dropless_fc": " Pause on exhausted host ring (int)",
+                "disable_iscsi_ooo": " Disable iSCSI OOO support (uint)",
+                "disable_tpa": " Disable the TPA (LRO) feature (uint)",
+                "int_mode": " Force interrupt mode other than MSI-X (1 INT#x; 2 MSI) (uint)",
+                "dropless_fc": " Pause on exhausted host ring (uint)",
+                "poll": " Use polling (for debug) (uint)",
                 "mrrs": " Force Max Read Req Size (0..3) (for debug) (int)",
-                "debug": " Default debug msglevel (int)"
+                "debug": " Default debug msglevel (uint)",
+                "num_vfs": " Number of supported virtual functions (0 means SR-IOV is disabled) (uint)",
+                "autogreeen": " Set autoGrEEEn (0:HW default; 1:force on; 2:force off) (uint)",
+                "native_eee": "int",
+                "eee": "set EEE Tx LPI timer with this value; 0: HW default; -1: Force disable EEE.",
+                "tx_switching": " Enable tx-switching (uint)"
             },
             "alias": [
                 "pci:v000014E4d0000163Fsv*sd*bc*sc*i*",
@@ -12207,20 +11772,9 @@
             "author": "Mauro Carvalho Chehab",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "debug": "int"
-            }
-        },
-        {
-            "filename": "scsi_transport_fc",
-            "license": "GPL",
-            "file": "drivers/scsi/scsi_transport_fc",
-            "description": "FC Transport Attributes",
-            "author": "James Smart",
-            "parm": {
-                "dev_loss_tmo": "Maximum number of seconds that the FC transport should insulate the loss of a remote port. Once this value is exceeded, the scsi target is removed. Value should be between 1 and SCSI_DEVICE_BLOCK_MAX_TIMEOUT if fast_io_fail_tmo is not set. (uint)"
             }
         },
         {
@@ -12231,27 +11785,6 @@
             "depends": "",
             "retpoline": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
-        },
-        {
-            "filename": "vmw_vmci",
-            "license": "GPL v2",
-            "version": "1.1.3.0-k",
-            "description": "VMware Virtual Machine Communication Interface.",
-            "author": "VMware, Inc.",
-            "srcversion": "A7156B12EAFFDA6A083DF20",
-            "depends": "",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "parm": {
-                "disable_msi": "Disable MSI use in driver - (default=0) (bool)",
-                "disable_msix": "Disable MSI-X use in driver - (default=0) (bool)",
-                "disable_host": "Disable driver host personality (default=enabled) (bool)",
-                "disable_guest": "Disable driver guest personality (default=enabled) (bool)"
-            },
-            "alias": [
-                "pci:v000015ADd00000740sv*sd*bc*sc*i*"
-            ]
         },
         {
             "filename": "dvb_usb_v2",
@@ -12267,28 +11800,6 @@
                 "disable_rc_polling": "disable remote control polling (default: 0) (int)",
                 "force_pid_filter_usage": "force all DVB USB devices to use a PID filter, if any (default: 0) (int)"
             }
-        },
-        {
-            "filename": "megaraid",
-            "version": "2.00.4",
-            "license": "GPL",
-            "description": "LSI Logic MegaRAID legacy driver",
-            "author": "sju@lsil.com",
-            "srcversion": "19EF2088F005CDA3AF8025D",
-            "depends": "",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "parm": {
-                "max_cmd_per_lun": "Maximum number of commands which can be issued to a single LUN (default=DEF_CMD_PER_LUN=63) (uint)",
-                "max_sectors_per_io": "Maximum number of sectors per I/O request (default=MAX_SECTORS_PER_IO=128) (ushort)",
-                "max_mbox_busy_wait": "Maximum wait for mailbox in microseconds if busy (default=MBOX_BUSY_WAIT=10) (ushort)"
-            },
-            "alias": [
-                "pci:v00008086d00001960sv*sd*bc*sc*i*",
-                "pci:v0000101Ed00009060sv*sd*bc*sc*i*",
-                "pci:v0000101Ed00009010sv*sd*bc*sc*i*"
-            ]
         },
         {
             "filename": "acpi-cpufreq",
@@ -12375,7 +11886,6 @@
             "author": "Jeff Garzik <jgarzik@pobox.com>",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
@@ -12453,7 +11963,6 @@
             "srcversion": "5F236BC2B61DF015610918A",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "TxDescriptors": "Number of transmit descriptors (array of int)",
@@ -12548,28 +12057,6 @@
             ]
         },
         {
-            "filename": "bna",
-            "firmware": "ctfw-3.2.5.1.bin",
-            "version": "3.2.25.1",
-            "description": "QLogic BR-series 10G PCIe Ethernet driver",
-            "license": "GPL",
-            "author": "Brocade",
-            "srcversion": "D1F569B189A32891BE54D3E",
-            "depends": "",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "parm": {
-                "bnad_msix_disable": "Disable MSIX mode (uint)",
-                "bnad_ioc_auto_recover": "Enable / Disable auto recovery (uint)",
-                "bna_debugfs_enable": "Enables debugfs feature, default=1, Range[false:0|true:1] (uint)"
-            },
-            "alias": [
-                "pci:v00001657d00000022sv*sd*bc02sc00i*",
-                "pci:v00001657d00000014sv*sd*bc02sc00i*"
-            ]
-        },
-        {
             "filename": "font",
             "license": "GPL",
             "file": "lib/fonts/font",
@@ -12634,7 +12121,6 @@
             "srcversion": "DDEFCAABBD6019D1E78D062",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "lb_pending_cmds": "Change raid-1 load balancing outstanding threshold. Valid Values are 1-128. Default: 4 (int)",
@@ -12688,22 +12174,6 @@
             ]
         },
         {
-            "filename": "i40evf",
-            "version": "1.3.33",
-            "license": "GPL",
-            "description": "Intel(R) XL710 X710 Virtual Function Network Driver",
-            "author": "Intel Corporation, <linux.nics@intel.com>",
-            "srcversion": "C25DECBA17CF1421F115F7F",
-            "depends": "",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "alias": [
-                "pci:v00008086d000037CDsv*sd*bc*sc*i*",
-                "pci:v00008086d0000154Csv*sd*bc*sc*i*"
-            ]
-        },
-        {
             "filename": "virtio_ring",
             "license": "GPL",
             "file": "drivers/virtio/virtio_ring"
@@ -12750,7 +12220,7 @@
             "description": "LSI MPT Fusion SAS 3.0 & SAS 3.5 Device Driver",
             "author": "Broadcom Inc. <MPT-FusionLinux.pdl@broadcom.com>",
             "srcversion": "DCF77D5C93E6BFB8C7F01AB",
-            "depends": "",
+            "depends": "scsi_transport_sas,raid_class",
             "retpoline": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
@@ -13097,7 +12567,6 @@
             "srcversion": "ACCC3B732514BB2911C40C0",
             "depends": "mptbase",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
@@ -13399,7 +12868,6 @@
             "srcversion": "88D15396D280106CDA69BCA",
             "depends": "mptscsih,mptbase,scsi_transport_spi",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "mpt_saf_te": " Force enabling SEP Processor: enable=1  (default=MPTSCSIH_SAF_TE=0) (int)"
@@ -13570,7 +13038,6 @@
             "srcversion": "DC23A8F0007F9504DA7D0CC",
             "depends": "megaraid_mm",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "unconf_disks": "Set to expose unconfigured disks to kernel (default=0) (int)",
@@ -13610,7 +13077,7 @@
             "author": "Chelsio Communications",
             "description": "Chelsio T3 Network Driver",
             "srcversion": "4E8ACB67D64A201124B6A00",
-            "depends": "",
+            "depends": "mdio",
             "retpoline": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
@@ -13648,7 +13115,6 @@
             "description": "Generic support for MDIO-compatible transceivers",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
@@ -13658,7 +13124,6 @@
             "author": "Hans Petter Selasky",
             "depends": "usbnet,usbcore",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "prefer_mbim": "Prefer MBIM setting on dual NCM/MBIM functions (bool)"
@@ -13727,7 +13192,6 @@
             "srcversion": "78E5FCEAAA935963F07A476",
             "depends": "mii",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "debug": "8139cp: bitmapped message enable number (int)",
@@ -13772,7 +13236,6 @@
             "author": "James Bottomley",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
@@ -13936,6 +13399,13 @@
             ]
         },
         {
+            "filename": "cpufreq_governor",
+            "license": "GPL",
+            "depends": "",
+            "retpoline": "Y",
+            "vermagic": "4.4.180+ SMP mod_unload "
+        },
+        {
             "filename": "xhci-hcd",
             "license": "GPL",
             "file": "drivers/usb/host/xhci-hcd",
@@ -14022,49 +13492,6 @@
             "file": "arch/x86/platform/intel/iosf_mbi",
             "description": "IOSF Mailbox Interface accessor",
             "author": "David E. Box <david.e.box@linux.intel.com>"
-        },
-        {
-            "filename": "8139too",
-            "version": "0.9.28",
-            "license": "GPL",
-            "description": "RealTek RTL-8139 Fast Ethernet driver",
-            "author": "Jeff Garzik <jgarzik@pobox.com>",
-            "srcversion": "4CABF3612D74FE1A9B5330C",
-            "depends": "mii",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "parm": {
-                "use_io": "Force use of I/O access mode. 0=MMIO 1=PIO (bool)",
-                "debug": "8139too bitmapped message enable number (int)",
-                "multicast_filter_limit": "8139too maximum number of filtered multicast addresses (int)",
-                "media": "8139too: Bits 4+9: force full duplex, bit 5: 100Mbps (array of int)",
-                "full_duplex": "8139too: Force full duplex for board(s) (1) (array of int)"
-            },
-            "alias": [
-                "pci:v*d00008139sv000013D1sd0000AB06bc*sc*i*",
-                "pci:v*d00008139sv00001186sd00001300bc*sc*i*",
-                "pci:v*d00008139sv000010ECsd00008139bc*sc*i*",
-                "pci:v0000021Bd00008139sv*sd*bc*sc*i*",
-                "pci:v00001743d00008139sv*sd*bc*sc*i*",
-                "pci:v0000126Cd00001211sv*sd*bc*sc*i*",
-                "pci:v0000018Ad00000106sv*sd*bc*sc*i*",
-                "pci:v000002ACd00001012sv*sd*bc*sc*i*",
-                "pci:v00001432d00009130sv*sd*bc*sc*i*",
-                "pci:v000011DBd00001234sv*sd*bc*sc*i*",
-                "pci:v000014EAd0000AB07sv*sd*bc*sc*i*",
-                "pci:v000014EAd0000AB06sv*sd*bc*sc*i*",
-                "pci:v00001259d0000A11Esv*sd*bc*sc*i*",
-                "pci:v00001259d0000A117sv*sd*bc*sc*i*",
-                "pci:v000013D1d0000AB06sv*sd*bc*sc*i*",
-                "pci:v00001186d00001340sv*sd*bc*sc*i*",
-                "pci:v00001186d00001300sv*sd*bc*sc*i*",
-                "pci:v00004033d00001360sv*sd*bc*sc*i*",
-                "pci:v00001500d00001360sv*sd*bc*sc*i*",
-                "pci:v00001113d00001211sv*sd*bc*sc*i*",
-                "pci:v000010ECd00008138sv*sd*bc*sc*i*",
-                "pci:v000010ECd00008139sv*sd*bc*sc*i*"
-            ]
         },
         {
             "filename": "i40e",
@@ -14397,7 +13824,6 @@
             "srcversion": "FFF8388F4530CDC32C8D66D",
             "depends": "mptscsih,mptbase,scsi_transport_sas",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "mpt_pt_clear": " Clear persistency table: enable=1  (default=MPTSCSIH_PT_CLEAR=0) (int)",
@@ -14427,7 +13853,6 @@
             "author": "Christoph Hellwig",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
@@ -14483,7 +13908,6 @@
             "srcversion": "CDDC0538312D664323CC715",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "mpt_msi_enable_spi": " Enable MSI Support for SPI controllers (default=0) (int)",
@@ -14843,7 +14267,6 @@
             "srcversion": "B705E62304F32FB0AA63AE1",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "dlevel": "Debug level (default=0) (int)"
@@ -14871,7 +14294,6 @@
             "srcversion": "494EB80058EB0166E18639E",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "ring_pages": "Number of pages per req/cmp ring - (default=8[up to 16 targets],32[for 16+ targets]) (int)",
@@ -14893,7 +14315,6 @@
             "author": "Martin Hicks",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
@@ -15065,7 +14486,6 @@
             "srcversion": "4728C19D1776A534AC92588",
             "depends": "mptbase",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
@@ -15185,6 +14605,13 @@
             ]
         },
         {
+            "filename": "cpufreq_ondemand",
+            "license": "GPL",
+            "file": "drivers/cpufreq/cpufreq_ondemand",
+            "description": "'cpufreq_ondemand' - A dynamic cpufreq governor for Low Latency Frequency Transition capable processors",
+            "author": "Venkatesh Pallipadi <venkatesh.pallipadi@intel.com>"
+        },
+        {
             "filename": "hwmon-vid",
             "license": "GPL",
             "description": "hwmon-vid driver",
@@ -15192,21 +14619,6 @@
             "depends": "",
             "retpoline": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
-        },
-        {
-            "filename": "virtio_blk",
-            "license": "GPL",
-            "description": "Virtio block driver",
-            "depends": "virtio,virtio_ring",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "parm": {
-                "queue_depth": "uint"
-            },
-            "alias": [
-                "virtio:d00000002v*"
-            ]
         },
         {
             "filename": "etxhci-hcd",
@@ -15266,7 +14678,6 @@
             "srcversion": "2A61A12A5712ED95F834DF5",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "alias": [
                 "pci:v000015ADd000007B0sv*sd*bc*sc*i*"
@@ -15459,7 +14870,7 @@
             "description": "QLogic BCM57710/57711/57711E/57712/57712_MF/57800/57800_MF/57810/57810_MF/57840/57840_MF Driver",
             "author": "Eliezer Tamir",
             "srcversion": "74F4884260A5B23EFA5207E",
-            "depends": "",
+            "depends": "mdio",
             "retpoline": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
@@ -15521,7 +14932,7 @@
             "license": "GPL",
             "author": "Chelsio Communications",
             "description": "Chelsio 10Gb Ethernet Driver",
-            "depends": "",
+            "depends": "mdio",
             "retpoline": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
@@ -15684,27 +15095,6 @@
             "signature": ""
         },
         {
-            "filename": "vmw_vmci",
-            "license": "GPL v2",
-            "version": "1.1.3.0-k",
-            "description": "VMware Virtual Machine Communication Interface.",
-            "author": "VMware, Inc.",
-            "srcversion": "A7156B12EAFFDA6A083DF20",
-            "depends": "",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "parm": {
-                "disable_msi": "Disable MSI use in driver - (default=0) (bool)",
-                "disable_msix": "Disable MSI-X use in driver - (default=0) (bool)",
-                "disable_host": "Disable driver host personality (default=enabled) (bool)",
-                "disable_guest": "Disable driver guest personality (default=enabled) (bool)"
-            },
-            "alias": [
-                "pci:v000015ADd00000740sv*sd*bc*sc*i*"
-            ]
-        },
-        {
             "filename": "dvb_usb_v2",
             "license": "GPL",
             "description": "DVB USB common",
@@ -15718,28 +15108,6 @@
                 "disable_rc_polling": "disable remote control polling (default: 0) (int)",
                 "force_pid_filter_usage": "force all DVB USB devices to use a PID filter, if any (default: 0) (int)"
             }
-        },
-        {
-            "filename": "megaraid",
-            "version": "2.00.4",
-            "license": "GPL",
-            "description": "LSI Logic MegaRAID legacy driver",
-            "author": "sju@lsil.com",
-            "srcversion": "19EF2088F005CDA3AF8025D",
-            "depends": "",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "parm": {
-                "max_cmd_per_lun": "Maximum number of commands which can be issued to a single LUN (default=DEF_CMD_PER_LUN=63) (uint)",
-                "max_sectors_per_io": "Maximum number of sectors per I/O request (default=MAX_SECTORS_PER_IO=128) (ushort)",
-                "max_mbox_busy_wait": "Maximum wait for mailbox in microseconds if busy (default=MBOX_BUSY_WAIT=10) (ushort)"
-            },
-            "alias": [
-                "pci:v00008086d00001960sv*sd*bc*sc*i*",
-                "pci:v0000101Ed00009060sv*sd*bc*sc*i*",
-                "pci:v0000101Ed00009010sv*sd*bc*sc*i*"
-            ]
         },
         {
             "filename": "acpi-cpufreq",
@@ -15760,54 +15128,6 @@
             "file": "drivers/video/fbdev/core/cfbcopyarea",
             "description": "Generic software accelerated copyarea",
             "author": "James Simmons <jsimmons@users.sf.net>"
-        },
-        {
-            "filename": "cdc_ether",
-            "license": "GPL",
-            "description": "USB CDC Ethernet devices",
-            "author": "David Brownell",
-            "depends": "usbnet,usbcore",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "alias": [
-                "usb:v12D1p*d*dc*dsc*dp*ic02isc06ipFFin*",
-                "usb:v*p*d*dc*dsc*dp*ic02isc0Aip00in*",
-                "usb:v*p*d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v413Cp81BAd*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v1BC7p*d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v1E2Dp0055d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v19D2p1181d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v19D2p1177d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v19D2p1173d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v19D2p1015d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v19D2p1003d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v0955p09FFd*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v17EFp7205d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v13B1p0041d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v04E8pA101d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v0BDAp8153d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v0BDAp8152d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v12D1p14ACd*dc*dsc*dp*ic*isc*ip*in01*",
-                "usb:v16D5p650Ad*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v03F0p421Dd*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v1410p9011d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v413Cp819Bd*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v413Cp8196d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v413Cp8195d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v1410p9010d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v1410pB001d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v046DpC11Fd*dc*dsc*dp*ic02isc0Aip00in*",
-                "usb:v1004p61AAd*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v07B4p0F02d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v04DDp9050d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v04DDp9032d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v04DDp9031d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v04DDp8007d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v04DDp8006d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v04DDp8005d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v04DDp8004d*dc*dsc*dp*ic02isc06ip00in*"
-            ]
         },
         {
             "filename": "bnxt_en",
@@ -15874,7 +15194,6 @@
             "author": "Jeff Garzik <jgarzik@pobox.com>",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
@@ -15978,7 +15297,6 @@
             "srcversion": "5F236BC2B61DF015610918A",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "TxDescriptors": "Number of transmit descriptors (array of int)",
@@ -16073,28 +15391,6 @@
             ]
         },
         {
-            "filename": "bna",
-            "firmware": "ctfw-3.2.5.1.bin",
-            "version": "3.2.25.1",
-            "description": "QLogic BR-series 10G PCIe Ethernet driver",
-            "license": "GPL",
-            "author": "Brocade",
-            "srcversion": "D1F569B189A32891BE54D3E",
-            "depends": "",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "parm": {
-                "bnad_msix_disable": "Disable MSIX mode (uint)",
-                "bnad_ioc_auto_recover": "Enable / Disable auto recovery (uint)",
-                "bna_debugfs_enable": "Enables debugfs feature, default=1, Range[false:0|true:1] (uint)"
-            },
-            "alias": [
-                "pci:v00001657d00000022sv*sd*bc02sc00i*",
-                "pci:v00001657d00000014sv*sd*bc02sc00i*"
-            ]
-        },
-        {
             "filename": "font",
             "license": "GPL",
             "file": "lib/fonts/font",
@@ -16115,6 +15411,13 @@
             "sig_key": "",
             "sig_hashalgo": "unknown",
             "signature": ""
+        },
+        {
+            "filename": "cpufreq_conservative",
+            "license": "GPL",
+            "file": "drivers/cpufreq/cpufreq_conservative",
+            "description": "'cpufreq_conservative' - A dynamic cpufreq governor for Low Latency Frequency Transition capable processors optimised for use in a battery environment",
+            "author": "Alexander Clouter <alex@digriz.org.uk>"
         },
         {
             "filename": "sr_mod",
@@ -16165,7 +15468,6 @@
             "srcversion": "DDEFCAABBD6019D1E78D062",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "lb_pending_cmds": "Change raid-1 load balancing outstanding threshold. Valid Values are 1-128. Default: 4 (int)",
@@ -16240,22 +15542,6 @@
             }
         },
         {
-            "filename": "i40evf",
-            "version": "1.3.33",
-            "license": "GPL",
-            "description": "Intel(R) XL710 X710 Virtual Function Network Driver",
-            "author": "Intel Corporation, <linux.nics@intel.com>",
-            "srcversion": "C25DECBA17CF1421F115F7F",
-            "depends": "",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "alias": [
-                "pci:v00008086d000037CDsv*sd*bc*sc*i*",
-                "pci:v00008086d0000154Csv*sd*bc*sc*i*"
-            ]
-        },
-        {
             "filename": "virtio_ring",
             "license": "GPL",
             "file": "drivers/virtio/virtio_ring"
@@ -16302,7 +15588,7 @@
             "description": "LSI MPT Fusion SAS 3.0 & SAS 3.5 Device Driver",
             "author": "Broadcom Inc. <MPT-FusionLinux.pdl@broadcom.com>",
             "srcversion": "DCF77D5C93E6BFB8C7F01AB",
-            "depends": "",
+            "depends": "scsi_transport_sas,raid_class",
             "retpoline": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
@@ -17327,48 +16613,6 @@
             "alias": [
                 "pci:v000015B3d0000CB84sv*sd*bc*sc*i*",
                 "pci:v000015B3d0000C738sv*sd*bc*sc*i*"
-            ]
-        },
-        {
-            "filename": "8139too",
-            "version": "0.9.28",
-            "license": "GPL",
-            "description": "RealTek RTL-8139 Fast Ethernet driver",
-            "author": "Jeff Garzik <jgarzik@pobox.com>",
-            "srcversion": "DD84EFD5F85BD287B27EC06",
-            "depends": "mii",
-            "retpoline": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "parm": {
-                "use_io": "Force use of I/O access mode. 0=MMIO 1=PIO (bool)",
-                "debug": "8139too bitmapped message enable number (int)",
-                "multicast_filter_limit": "8139too maximum number of filtered multicast addresses (int)",
-                "media": "8139too: Bits 4+9: force full duplex, bit 5: 100Mbps (array of int)",
-                "full_duplex": "8139too: Force full duplex for board(s) (1) (array of int)"
-            },
-            "alias": [
-                "pci:v*d00008139sv000013D1sd0000AB06bc*sc*i*",
-                "pci:v*d00008139sv00001186sd00001300bc*sc*i*",
-                "pci:v*d00008139sv000010ECsd00008139bc*sc*i*",
-                "pci:v0000021Bd00008139sv*sd*bc*sc*i*",
-                "pci:v00001743d00008139sv*sd*bc*sc*i*",
-                "pci:v0000126Cd00001211sv*sd*bc*sc*i*",
-                "pci:v0000018Ad00000106sv*sd*bc*sc*i*",
-                "pci:v000002ACd00001012sv*sd*bc*sc*i*",
-                "pci:v00001432d00009130sv*sd*bc*sc*i*",
-                "pci:v000011DBd00001234sv*sd*bc*sc*i*",
-                "pci:v000014EAd0000AB07sv*sd*bc*sc*i*",
-                "pci:v000014EAd0000AB06sv*sd*bc*sc*i*",
-                "pci:v00001259d0000A11Esv*sd*bc*sc*i*",
-                "pci:v00001259d0000A117sv*sd*bc*sc*i*",
-                "pci:v000013D1d0000AB06sv*sd*bc*sc*i*",
-                "pci:v00001186d00001340sv*sd*bc*sc*i*",
-                "pci:v00001186d00001300sv*sd*bc*sc*i*",
-                "pci:v00004033d00001360sv*sd*bc*sc*i*",
-                "pci:v00001500d00001360sv*sd*bc*sc*i*",
-                "pci:v00001113d00001211sv*sd*bc*sc*i*",
-                "pci:v000010ECd00008138sv*sd*bc*sc*i*",
-                "pci:v000010ECd00008139sv*sd*bc*sc*i*"
             ]
         },
         {
@@ -19660,13 +18904,6 @@
             ]
         },
         {
-            "filename": "freq_table",
-            "license": "GPL",
-            "file": "drivers/cpufreq/freq_table",
-            "description": "CPUfreq frequency table helpers",
-            "author": "Dominik Brodowski <linux@brodo.de>"
-        },
-        {
             "filename": "virtio_mmio",
             "license": "GPL",
             "file": "drivers/virtio/virtio_mmio",
@@ -20061,48 +19298,6 @@
             ]
         },
         {
-            "filename": "8139too",
-            "version": "0.9.28",
-            "license": "GPL",
-            "description": "RealTek RTL-8139 Fast Ethernet driver",
-            "author": "Jeff Garzik <jgarzik@pobox.com>",
-            "retpoline": "Y",
-            "srcversion": "492C77EEE059F6A79E30173",
-            "depends": "mii",
-            "vermagic": "3.10.108 SMP mod_unload ",
-            "parm": {
-                "use_io": "Force use of I/O access mode. 0=MMIO 1=PIO (bool)",
-                "debug": "8139too bitmapped message enable number (int)",
-                "multicast_filter_limit": "8139too maximum number of filtered multicast addresses (int)",
-                "media": "8139too: Bits 4+9: force full duplex, bit 5: 100Mbps (array of int)",
-                "full_duplex": "8139too: Force full duplex for board(s) (1) (array of int)"
-            },
-            "alias": [
-                "pci:v*d00008139sv000013D1sd0000AB06bc*sc*i*",
-                "pci:v*d00008139sv00001186sd00001300bc*sc*i*",
-                "pci:v*d00008139sv000010ECsd00008139bc*sc*i*",
-                "pci:v0000021Bd00008139sv*sd*bc*sc*i*",
-                "pci:v00001743d00008139sv*sd*bc*sc*i*",
-                "pci:v0000126Cd00001211sv*sd*bc*sc*i*",
-                "pci:v0000018Ad00000106sv*sd*bc*sc*i*",
-                "pci:v000002ACd00001012sv*sd*bc*sc*i*",
-                "pci:v00001432d00009130sv*sd*bc*sc*i*",
-                "pci:v000011DBd00001234sv*sd*bc*sc*i*",
-                "pci:v000014EAd0000AB07sv*sd*bc*sc*i*",
-                "pci:v000014EAd0000AB06sv*sd*bc*sc*i*",
-                "pci:v00001259d0000A11Esv*sd*bc*sc*i*",
-                "pci:v00001259d0000A117sv*sd*bc*sc*i*",
-                "pci:v000013D1d0000AB06sv*sd*bc*sc*i*",
-                "pci:v00001186d00001340sv*sd*bc*sc*i*",
-                "pci:v00001186d00001300sv*sd*bc*sc*i*",
-                "pci:v00004033d00001360sv*sd*bc*sc*i*",
-                "pci:v00001500d00001360sv*sd*bc*sc*i*",
-                "pci:v00001113d00001211sv*sd*bc*sc*i*",
-                "pci:v000010ECd00008138sv*sd*bc*sc*i*",
-                "pci:v000010ECd00008139sv*sd*bc*sc*i*"
-            ]
-        },
-        {
             "filename": "i40e",
             "version": "2.7.29",
             "license": "GPL",
@@ -20160,19 +19355,6 @@
             "parm": {
                 "bit_test": "lines testing - 0 off; 1 report; 2 fail if stuck (int)"
             }
-        },
-        {
-            "filename": "mperf",
-            "license": "GPL",
-            "retpoline": "Y",
-            "depends": "",
-            "intree": "Y",
-            "vermagic": "3.10.108 SMP mod_unload ",
-            "sig_id": "X509",
-            "signer": "Synology SDG kernel module signing key",
-            "sig_key": "7B:D0:B0:D6:BC:D3:16:51:C2:2C:E3:97:8B:DC:8C:8B:DC:41:73:29",
-            "sig_hashalgo": "sha384",
-            "signature": "01:00:76:97:3E:D8:43:DD:21:8E:3E:A7:34:FF:9A:EF:C8:8D:79:15:\n\t\t01:EF:AF:C9:6C:41:5A:2F:19:8E:BC:9A:51:2C:32:34:66:A1:C4:35:\n\t\t05:57:C4:B8:CB:F8:B9:5B:0C:87:F8:73:DE:45:1B:E2:B8:87:3F:1C:\n\t\t2A:19:EF:81:A7:60:73:60:59:4D:D1:89:B9:B9:C1:38:35:E6:78:A9:\n\t\tBF:0D:3A:54:D9:60:54:FC:A4:84:DA:C0:41:ED:44:78:A1:F5:3B:B7:\n\t\t35:18:D8:7C:90:8D:03:1E:95:C8:7B:50:4F:EC:D6:D1:0F:61:6D:7C:\n\t\t33:28:DC:6E:37:26:CE:30:1D:5B:48:8C:0D:D1:9F:B5:BE:EB:A9:F6:\n\t\tDC:6B:73:5D:07:19:E5:7D:A1:6E:C3:0F:19:38:4D:99:8F:A5:1B:AD:\n\t\t83:AF:7E:DA:A7:F5:78:FA:6D:C2:9A:A9:E8:BB:E7:81:F6:7A:2A:65:\n\t\tB3:7A:67:39:20:C7:78:AF:5C:A4:40:49:49:25:D7:56:39:66:7A:7C:\n\t\tD1:B3:2F:35:64:80:F1:44:74:7D:F9:D7:43:46:DF:32:11:13:C3:05:\n\t\t94:9D:B1:C9:C0:2D:54:B5:4E:8B:4E:C8:8B:1E:7F:D8:50:34:6C:F4:\n\t\t67:2E:A6:F8:EB:0A:20:FF:25:C3:9A:87:8D:2E:28:56:CE:1E"
         },
         {
             "filename": "alx",
@@ -20484,21 +19666,6 @@
             "alias": [
                 "virtio:d00000008v*"
             ]
-        },
-        {
-            "filename": "thermal_sys",
-            "license": "GPL v2",
-            "description": "Generic thermal management sysfs support",
-            "author": "Zhang Rui",
-            "retpoline": "Y",
-            "depends": "",
-            "intree": "Y",
-            "vermagic": "3.10.108 SMP mod_unload ",
-            "sig_id": "X509",
-            "signer": "Synology SDG kernel module signing key",
-            "sig_key": "7B:D0:B0:D6:BC:D3:16:51:C2:2C:E3:97:8B:DC:8C:8B:DC:41:73:29",
-            "sig_hashalgo": "sha384",
-            "signature": "01:00:03:3D:62:FF:5F:B9:AB:AE:0D:AD:1D:C2:02:26:1B:39:79:43:\n\t\tEF:46:27:09:B8:4D:69:93:89:1B:8B:40:FB:DF:0C:80:DB:B7:DA:99:\n\t\t04:B8:81:3B:0C:35:F1:AF:9C:54:1D:87:10:08:0D:9C:00:1E:A2:C4:\n\t\t31:65:A9:C2:84:C5:AC:58:C4:41:0B:F8:19:22:C6:6B:F1:56:5F:1E:\n\t\t75:56:B9:FD:52:61:91:87:83:47:01:C5:7F:67:97:DA:AF:73:44:31:\n\t\tDF:82:20:F3:6F:42:B7:37:F6:74:48:CD:86:EC:C1:88:2B:6E:29:A7:\n\t\t11:79:D5:BD:F0:FC:FE:EB:70:CC:BF:AD:CF:E0:18:23:49:05:CF:B0:\n\t\t1B:24:3A:45:60:BB:F6:95:91:06:CA:A8:C8:3A:99:4C:54:34:53:27:\n\t\t42:F4:41:04:46:7B:E7:AA:E5:C4:DD:0D:70:9B:82:90:D5:AC:68:D4:\n\t\t9F:51:26:AA:36:52:60:FE:58:D0:94:D0:21:81:ED:03:83:EB:33:07:\n\t\tD3:22:5A:FC:DA:FF:D9:6C:52:E7:0B:47:84:91:4B:25:AB:AD:DE:A1:\n\t\tA4:13:6A:FD:01:09:52:98:6F:40:B5:F5:67:BF:FC:F6:47:0E:3A:F3:\n\t\tA6:20:8A:26:D9:0E:6A:F8:95:CC:E6:DA:0E:CC:DB:FE:F5:C5"
         },
         {
             "filename": "tg3",
@@ -21463,7 +20630,7 @@
             "description": "LSI MPT Fusion SAS 3.0 & SAS 3.5 Device Driver",
             "author": "Broadcom Inc. <MPT-FusionLinux.pdl@broadcom.com>",
             "srcversion": "DCF77D5C93E6BFB8C7F01AB",
-            "depends": "",
+            "depends": "scsi_transport_sas,raid_class",
             "retpoline": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
@@ -21810,7 +20977,6 @@
             "srcversion": "ACCC3B732514BB2911C40C0",
             "depends": "mptbase",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
@@ -21840,7 +21006,6 @@
             "srcversion": "88D15396D280106CDA69BCA",
             "depends": "mptscsih,mptbase,scsi_transport_spi",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "mpt_saf_te": " Force enabling SEP Processor: enable=1  (default=MPTSCSIH_SAF_TE=0) (int)"
@@ -22055,7 +21220,6 @@
             "srcversion": "DC23A8F0007F9504DA7D0CC",
             "depends": "megaraid_mm",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "unconf_disks": "Set to expose unconfigured disks to kernel (default=0) (int)",
@@ -22129,7 +21293,12 @@
             "depends": "",
             "retpoline": "Y",
             "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload "
+            "vermagic": "4.4.180+ SMP mod_unload ",
+            "sig_id": "PKCS#7",
+            "signer": "",
+            "sig_key": "",
+            "sig_hashalgo": "unknown",
+            "signature": ""
         },
         {
             "filename": "cdc_ncm",
@@ -22138,7 +21307,6 @@
             "author": "Hans Petter Selasky",
             "depends": "usbnet,usbcore",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "prefer_mbim": "Prefer MBIM setting on dual NCM/MBIM functions (bool)"
@@ -22227,7 +21395,6 @@
             "srcversion": "78E5FCEAAA935963F07A476",
             "depends": "mii",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "debug": "8139cp: bitmapped message enable number (int)",
@@ -22272,7 +21439,6 @@
             "author": "James Bottomley",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
@@ -22511,49 +21677,6 @@
             "alias": [
                 "pci:v000015B3d0000CB84sv*sd*bc*sc*i*",
                 "pci:v000015B3d0000C738sv*sd*bc*sc*i*"
-            ]
-        },
-        {
-            "filename": "8139too",
-            "version": "0.9.28",
-            "license": "GPL",
-            "description": "RealTek RTL-8139 Fast Ethernet driver",
-            "author": "Jeff Garzik <jgarzik@pobox.com>",
-            "srcversion": "4CABF3612D74FE1A9B5330C",
-            "depends": "mii",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "parm": {
-                "use_io": "Force use of I/O access mode. 0=MMIO 1=PIO (bool)",
-                "debug": "8139too bitmapped message enable number (int)",
-                "multicast_filter_limit": "8139too maximum number of filtered multicast addresses (int)",
-                "media": "8139too: Bits 4+9: force full duplex, bit 5: 100Mbps (array of int)",
-                "full_duplex": "8139too: Force full duplex for board(s) (1) (array of int)"
-            },
-            "alias": [
-                "pci:v*d00008139sv000013D1sd0000AB06bc*sc*i*",
-                "pci:v*d00008139sv00001186sd00001300bc*sc*i*",
-                "pci:v*d00008139sv000010ECsd00008139bc*sc*i*",
-                "pci:v0000021Bd00008139sv*sd*bc*sc*i*",
-                "pci:v00001743d00008139sv*sd*bc*sc*i*",
-                "pci:v0000126Cd00001211sv*sd*bc*sc*i*",
-                "pci:v0000018Ad00000106sv*sd*bc*sc*i*",
-                "pci:v000002ACd00001012sv*sd*bc*sc*i*",
-                "pci:v00001432d00009130sv*sd*bc*sc*i*",
-                "pci:v000011DBd00001234sv*sd*bc*sc*i*",
-                "pci:v000014EAd0000AB07sv*sd*bc*sc*i*",
-                "pci:v000014EAd0000AB06sv*sd*bc*sc*i*",
-                "pci:v00001259d0000A11Esv*sd*bc*sc*i*",
-                "pci:v00001259d0000A117sv*sd*bc*sc*i*",
-                "pci:v000013D1d0000AB06sv*sd*bc*sc*i*",
-                "pci:v00001186d00001340sv*sd*bc*sc*i*",
-                "pci:v00001186d00001300sv*sd*bc*sc*i*",
-                "pci:v00004033d00001360sv*sd*bc*sc*i*",
-                "pci:v00001500d00001360sv*sd*bc*sc*i*",
-                "pci:v00001113d00001211sv*sd*bc*sc*i*",
-                "pci:v000010ECd00008138sv*sd*bc*sc*i*",
-                "pci:v000010ECd00008139sv*sd*bc*sc*i*"
             ]
         },
         {
@@ -22855,11 +21978,16 @@
             "version": "1.0.3",
             "license": "Dual BSD/GPL",
             "author": "Tom Lendacky <thomas.lendacky@amd.com>",
-            "srcversion": "78FDDD0093AF199DF5C8758",
+            "srcversion": "234D734403F1D3A4AF5622B",
             "depends": "",
             "retpoline": "Y",
             "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
+            "sig_id": "PKCS#7",
+            "signer": "",
+            "sig_key": "",
+            "sig_hashalgo": "unknown",
+            "signature": "",
             "parm": {
                 "ecc_sec_info_threshold": " ECC corrected error informational threshold setting (uint)",
                 "ecc_sec_warn_threshold": " ECC corrected error warning threshold setting (uint)",
@@ -22904,7 +22032,6 @@
             "srcversion": "FFF8388F4530CDC32C8D66D",
             "depends": "mptscsih,mptbase,scsi_transport_sas",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "mpt_pt_clear": " Clear persistency table: enable=1  (default=MPTSCSIH_PT_CLEAR=0) (int)",
@@ -22958,7 +22085,6 @@
             "author": "Christoph Hellwig",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
@@ -23014,7 +22140,6 @@
             "srcversion": "CDDC0538312D664323CC715",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "mpt_msi_enable_spi": " Enable MSI Support for SPI controllers (default=0) (int)",
@@ -23271,7 +22396,6 @@
             "srcversion": "B705E62304F32FB0AA63AE1",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "dlevel": "Debug level (default=0) (int)"
@@ -23320,7 +22444,6 @@
             "author": "Martin Hicks",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
@@ -23526,7 +22649,6 @@
             "srcversion": "4728C19D1776A534AC92588",
             "depends": "mptbase",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
@@ -23683,21 +22805,6 @@
             "author": "Venkatesh Pallipadi <venkatesh.pallipadi@intel.com>"
         },
         {
-            "filename": "virtio_blk",
-            "license": "GPL",
-            "description": "Virtio block driver",
-            "depends": "virtio,virtio_ring",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "parm": {
-                "queue_depth": "uint"
-            },
-            "alias": [
-                "virtio:d00000002v*"
-            ]
-        },
-        {
             "filename": "etxhci-hcd",
             "license": "GPL",
             "author": "Sarah Sharp",
@@ -23740,7 +22847,6 @@
             "srcversion": "2A61A12A5712ED95F834DF5",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "alias": [
                 "pci:v000015ADd000007B0sv*sd*bc*sc*i*"
@@ -24155,16 +23261,6 @@
             }
         },
         {
-            "filename": "scsi_transport_fc",
-            "license": "GPL",
-            "file": "drivers/scsi/scsi_transport_fc",
-            "description": "FC Transport Attributes",
-            "author": "James Smart",
-            "parm": {
-                "dev_loss_tmo": "Maximum number of seconds that the FC transport should insulate the loss of a remote port. Once this value is exceeded, the scsi target is removed. Value should be between 1 and SCSI_DEVICE_BLOCK_MAX_TIMEOUT if fast_io_fail_tmo is not set. (uint)"
-            }
-        },
-        {
             "filename": "sysfillrect",
             "license": "GPL",
             "description": "Generic fill rectangle (sys-to-sys)",
@@ -24172,27 +23268,6 @@
             "depends": "",
             "retpoline": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
-        },
-        {
-            "filename": "vmw_vmci",
-            "license": "GPL v2",
-            "version": "1.1.3.0-k",
-            "description": "VMware Virtual Machine Communication Interface.",
-            "author": "VMware, Inc.",
-            "srcversion": "A7156B12EAFFDA6A083DF20",
-            "depends": "",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "parm": {
-                "disable_msi": "Disable MSI use in driver - (default=0) (bool)",
-                "disable_msix": "Disable MSI-X use in driver - (default=0) (bool)",
-                "disable_host": "Disable driver host personality (default=enabled) (bool)",
-                "disable_guest": "Disable driver guest personality (default=enabled) (bool)"
-            },
-            "alias": [
-                "pci:v000015ADd00000740sv*sd*bc*sc*i*"
-            ]
         },
         {
             "filename": "dvb_usb_v2",
@@ -24208,28 +23283,6 @@
                 "disable_rc_polling": "disable remote control polling (default: 0) (int)",
                 "force_pid_filter_usage": "force all DVB USB devices to use a PID filter, if any (default: 0) (int)"
             }
-        },
-        {
-            "filename": "megaraid",
-            "version": "2.00.4",
-            "license": "GPL",
-            "description": "LSI Logic MegaRAID legacy driver",
-            "author": "sju@lsil.com",
-            "srcversion": "19EF2088F005CDA3AF8025D",
-            "depends": "",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "parm": {
-                "max_cmd_per_lun": "Maximum number of commands which can be issued to a single LUN (default=DEF_CMD_PER_LUN=63) (uint)",
-                "max_sectors_per_io": "Maximum number of sectors per I/O request (default=MAX_SECTORS_PER_IO=128) (ushort)",
-                "max_mbox_busy_wait": "Maximum wait for mailbox in microseconds if busy (default=MBOX_BUSY_WAIT=10) (ushort)"
-            },
-            "alias": [
-                "pci:v00008086d00001960sv*sd*bc*sc*i*",
-                "pci:v0000101Ed00009060sv*sd*bc*sc*i*",
-                "pci:v0000101Ed00009010sv*sd*bc*sc*i*"
-            ]
         },
         {
             "filename": "acpi-cpufreq",
@@ -24250,54 +23303,6 @@
             "file": "drivers/video/fbdev/core/cfbcopyarea",
             "description": "Generic software accelerated copyarea",
             "author": "James Simmons <jsimmons@users.sf.net>"
-        },
-        {
-            "filename": "cdc_ether",
-            "license": "GPL",
-            "description": "USB CDC Ethernet devices",
-            "author": "David Brownell",
-            "depends": "usbnet,usbcore",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "alias": [
-                "usb:v12D1p*d*dc*dsc*dp*ic02isc06ipFFin*",
-                "usb:v*p*d*dc*dsc*dp*ic02isc0Aip00in*",
-                "usb:v*p*d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v413Cp81BAd*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v1BC7p*d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v1E2Dp0055d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v19D2p1181d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v19D2p1177d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v19D2p1173d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v19D2p1015d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v19D2p1003d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v0955p09FFd*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v17EFp7205d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v13B1p0041d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v04E8pA101d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v0BDAp8153d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v0BDAp8152d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v12D1p14ACd*dc*dsc*dp*ic*isc*ip*in01*",
-                "usb:v16D5p650Ad*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v03F0p421Dd*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v1410p9011d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v413Cp819Bd*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v413Cp8196d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v413Cp8195d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v1410p9010d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v1410pB001d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v046DpC11Fd*dc*dsc*dp*ic02isc0Aip00in*",
-                "usb:v1004p61AAd*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v07B4p0F02d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v04DDp9050d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v04DDp9032d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v04DDp9031d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v04DDp8007d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v04DDp8006d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v04DDp8005d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v04DDp8004d*dc*dsc*dp*ic02isc06ip00in*"
-            ]
         },
         {
             "filename": "bnxt_en",
@@ -24364,7 +23369,6 @@
             "author": "Jeff Garzik <jgarzik@pobox.com>",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
@@ -24445,7 +23449,6 @@
             "srcversion": "5F236BC2B61DF015610918A",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "TxDescriptors": "Number of transmit descriptors (array of int)",
@@ -24604,7 +23607,6 @@
             "srcversion": "DDEFCAABBD6019D1E78D062",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "lb_pending_cmds": "Change raid-1 load balancing outstanding threshold. Valid Values are 1-128. Default: 4 (int)",
@@ -24658,22 +23660,6 @@
             ]
         },
         {
-            "filename": "i40evf",
-            "version": "1.3.33",
-            "license": "GPL",
-            "description": "Intel(R) XL710 X710 Virtual Function Network Driver",
-            "author": "Intel Corporation, <linux.nics@intel.com>",
-            "srcversion": "C25DECBA17CF1421F115F7F",
-            "depends": "",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "alias": [
-                "pci:v00008086d000037CDsv*sd*bc*sc*i*",
-                "pci:v00008086d0000154Csv*sd*bc*sc*i*"
-            ]
-        },
-        {
             "filename": "virtio_ring",
             "license": "GPL",
             "file": "drivers/virtio/virtio_ring"
@@ -24720,7 +23706,7 @@
             "description": "LSI MPT Fusion SAS 3.0 & SAS 3.5 Device Driver",
             "author": "Broadcom Inc. <MPT-FusionLinux.pdl@broadcom.com>",
             "srcversion": "DCF77D5C93E6BFB8C7F01AB",
-            "depends": "",
+            "depends": "scsi_transport_sas,raid_class",
             "retpoline": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
@@ -24817,18 +23803,28 @@
         },
         {
             "filename": "be2net",
+            "supported": "external",
             "license": "GPL",
             "author": "Emulex Corporation",
-            "description": "Emulex OneConnect NIC Driver 10.6.0.3",
-            "version": "10.6.0.3",
-            "srcversion": "5D7E1E21DEF8E435F06F0DC",
-            "depends": "",
+            "description": "Emulex OneConnect NIC Driver 11.1.38.64",
+            "version": "11.1.38.64",
+            "srcversion": "533BB7E5866E52F63B9ACCB",
+            "depends": "vxlan",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
+            "sig_id": "PKCS#7",
+            "signer": "",
+            "sig_key": "",
+            "sig_hashalgo": "unknown",
+            "signature": "",
             "parm": {
+                "rss_on_mc": "Enable RSS in multi-channel functions with the capability. Disabled by default. This is an obsolete parameter (ushort)",
+                "tx_prio": "Create priority based TX queues. Disabled by default (uint)",
                 "num_vfs": "Number of PCI VFs to initialize (uint)",
-                "rx_frag_size": "Size of a fragment that holds rcvd data. (ushort)"
+                "rx_frag_size": "Size of receive fragment buffer - 2048 (default), 4096 or 8192 (ushort)",
+                "gro": "Enable or Disable GRO. Enabled by default (uint)",
+                "emi_canceller": "Enable or Disable EMI Canceller. Disabled by default (uint)",
+                "syno_hide_vf": "Don't create interface when probing VF. Enabled by default (uint)"
             },
             "alias": [
                 "pci:v000010DFd00000728sv*sd*bc*sc*i*",
@@ -25068,7 +24064,6 @@
             "srcversion": "ACCC3B732514BB2911C40C0",
             "depends": "mptbase",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
@@ -25098,7 +24093,6 @@
             "srcversion": "88D15396D280106CDA69BCA",
             "depends": "mptscsih,mptbase,scsi_transport_spi",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "mpt_saf_te": " Force enabling SEP Processor: enable=1  (default=MPTSCSIH_SAF_TE=0) (int)"
@@ -25309,18 +24303,35 @@
         },
         {
             "filename": "igb",
-            "version": "5.3.0-k",
+            "version": "5.3.5.22",
             "license": "GPL",
-            "description": "Intel(R) Gigabit Ethernet Network Driver",
+            "description": "Intel(R) Gigabit Ethernet Linux Driver",
             "author": "Intel Corporation, <e1000-devel@lists.sourceforge.net>",
-            "srcversion": "B7D25A6C7ACF7CCB008869B",
-            "depends": "i2c-algo-bit",
+            "srcversion": "AC921B8B4A2872430DCA845",
+            "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
+            "sig_id": "PKCS#7",
+            "signer": "",
+            "sig_key": "",
+            "sig_hashalgo": "unknown",
+            "signature": "",
             "parm": {
-                "max_vfs": "Maximum number of virtual functions to allocate per physical function (uint)",
-                "debug": "Debug level (0=none,...,16=all) (int)"
+                "InterruptThrottleRate": "Maximum interrupts per second, per vector, (max 100000), default 3=adaptive (array of int)",
+                "IntMode": "Change Interrupt Mode (0=Legacy, 1=MSI, 2=MSI-X), default 2 (array of int)",
+                "Node": "set the starting node to allocate memory on, default -1 (array of int)",
+                "LLIPort": "Low Latency Interrupt TCP Port (0-65535), default 0=off (array of int)",
+                "LLIPush": "Low Latency Interrupt on TCP Push flag (0,1), default 0=off (array of int)",
+                "LLISize": "Low Latency Interrupt on Packet Size (0-1500), default 0=off (array of int)",
+                "RSS": "Number of Receive-Side Scaling Descriptor Queues (0-8), default 1, 0=number of cpus (array of int)",
+                "VMDQ": "Number of Virtual Machine Device Queues: 0-1 = disable, 2-8 enable, default 0 (array of int)",
+                "max_vfs": "Number of Virtual Functions: 0 = disable, 1-7 enable, default 0 (array of int)",
+                "MDD": "Malicious Driver Detection (0/1), default 1 = enabled. Only available when max_vfs is greater than 0 (array of int)",
+                "QueuePairs": "Enable Tx/Rx queue pairs for interrupt handling (0,1), default 1=on (array of int)",
+                "EEE": "Enable/disable on parts that support the feature (array of int)",
+                "DMAC": "Disable or set latency for DMA Coalescing ((0=off, 1000-10000(msec), 250, 500 (usec)) (array of int)",
+                "LRO": "Large Receive Offload (0,1), default 0=off (array of int)",
+                "debug": "Debug level (0=none, ..., 16=all) (int)"
             },
             "alias": [
                 "pci:v00008086d000010D6sv*sd*bc*sc*i*",
@@ -25348,13 +24359,13 @@
                 "pci:v00008086d00001523sv*sd*bc*sc*i*",
                 "pci:v00008086d00001522sv*sd*bc*sc*i*",
                 "pci:v00008086d00001521sv*sd*bc*sc*i*",
+                "pci:v00008086d00001539sv*sd*bc*sc*i*",
                 "pci:v00008086d0000157Csv*sd*bc*sc*i*",
                 "pci:v00008086d0000157Bsv*sd*bc*sc*i*",
                 "pci:v00008086d00001538sv*sd*bc*sc*i*",
                 "pci:v00008086d00001537sv*sd*bc*sc*i*",
                 "pci:v00008086d00001536sv*sd*bc*sc*i*",
                 "pci:v00008086d00001533sv*sd*bc*sc*i*",
-                "pci:v00008086d00001539sv*sd*bc*sc*i*",
                 "pci:v00008086d00001F45sv*sd*bc*sc*i*",
                 "pci:v00008086d00001F41sv*sd*bc*sc*i*",
                 "pci:v00008086d00001F40sv*sd*bc*sc*i*"
@@ -25369,7 +24380,6 @@
             "srcversion": "DC23A8F0007F9504DA7D0CC",
             "depends": "megaraid_mm",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "unconf_disks": "Set to expose unconfigured disks to kernel (default=0) (int)",
@@ -25443,7 +24453,12 @@
             "depends": "",
             "retpoline": "Y",
             "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload "
+            "vermagic": "4.4.180+ SMP mod_unload ",
+            "sig_id": "PKCS#7",
+            "signer": "",
+            "sig_key": "",
+            "sig_hashalgo": "unknown",
+            "signature": ""
         },
         {
             "filename": "cdc_ncm",
@@ -25452,7 +24467,6 @@
             "author": "Hans Petter Selasky",
             "depends": "usbnet,usbcore",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "prefer_mbim": "Prefer MBIM setting on dual NCM/MBIM functions (bool)"
@@ -25541,7 +24555,6 @@
             "srcversion": "78E5FCEAAA935963F07A476",
             "depends": "mii",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "debug": "8139cp: bitmapped message enable number (int)",
@@ -25586,7 +24599,6 @@
             "author": "James Bottomley",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
@@ -25756,9 +24768,9 @@
         },
         {
             "filename": "cpufreq_governor",
+            "license": "GPL",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
@@ -25815,49 +24827,6 @@
             "alias": [
                 "pci:v000015B3d0000CB84sv*sd*bc*sc*i*",
                 "pci:v000015B3d0000C738sv*sd*bc*sc*i*"
-            ]
-        },
-        {
-            "filename": "8139too",
-            "version": "0.9.28",
-            "license": "GPL",
-            "description": "RealTek RTL-8139 Fast Ethernet driver",
-            "author": "Jeff Garzik <jgarzik@pobox.com>",
-            "srcversion": "4CABF3612D74FE1A9B5330C",
-            "depends": "mii",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "parm": {
-                "use_io": "Force use of I/O access mode. 0=MMIO 1=PIO (bool)",
-                "debug": "8139too bitmapped message enable number (int)",
-                "multicast_filter_limit": "8139too maximum number of filtered multicast addresses (int)",
-                "media": "8139too: Bits 4+9: force full duplex, bit 5: 100Mbps (array of int)",
-                "full_duplex": "8139too: Force full duplex for board(s) (1) (array of int)"
-            },
-            "alias": [
-                "pci:v*d00008139sv000013D1sd0000AB06bc*sc*i*",
-                "pci:v*d00008139sv00001186sd00001300bc*sc*i*",
-                "pci:v*d00008139sv000010ECsd00008139bc*sc*i*",
-                "pci:v0000021Bd00008139sv*sd*bc*sc*i*",
-                "pci:v00001743d00008139sv*sd*bc*sc*i*",
-                "pci:v0000126Cd00001211sv*sd*bc*sc*i*",
-                "pci:v0000018Ad00000106sv*sd*bc*sc*i*",
-                "pci:v000002ACd00001012sv*sd*bc*sc*i*",
-                "pci:v00001432d00009130sv*sd*bc*sc*i*",
-                "pci:v000011DBd00001234sv*sd*bc*sc*i*",
-                "pci:v000014EAd0000AB07sv*sd*bc*sc*i*",
-                "pci:v000014EAd0000AB06sv*sd*bc*sc*i*",
-                "pci:v00001259d0000A11Esv*sd*bc*sc*i*",
-                "pci:v00001259d0000A117sv*sd*bc*sc*i*",
-                "pci:v000013D1d0000AB06sv*sd*bc*sc*i*",
-                "pci:v00001186d00001340sv*sd*bc*sc*i*",
-                "pci:v00001186d00001300sv*sd*bc*sc*i*",
-                "pci:v00004033d00001360sv*sd*bc*sc*i*",
-                "pci:v00001500d00001360sv*sd*bc*sc*i*",
-                "pci:v00001113d00001211sv*sd*bc*sc*i*",
-                "pci:v000010ECd00008138sv*sd*bc*sc*i*",
-                "pci:v000010ECd00008139sv*sd*bc*sc*i*"
             ]
         },
         {
@@ -26182,7 +25151,6 @@
             "srcversion": "FFF8388F4530CDC32C8D66D",
             "depends": "mptscsih,mptbase,scsi_transport_sas",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "mpt_pt_clear": " Clear persistency table: enable=1  (default=MPTSCSIH_PT_CLEAR=0) (int)",
@@ -26236,7 +25204,6 @@
             "author": "Christoph Hellwig",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
@@ -26292,7 +25259,6 @@
             "srcversion": "CDDC0538312D664323CC715",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "mpt_msi_enable_spi": " Enable MSI Support for SPI controllers (default=0) (int)",
@@ -26662,7 +25628,6 @@
             "srcversion": "B705E62304F32FB0AA63AE1",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "dlevel": "Debug level (default=0) (int)"
@@ -26690,7 +25655,6 @@
             "srcversion": "494EB80058EB0166E18639E",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "ring_pages": "Number of pages per req/cmp ring - (default=8[up to 16 targets],32[for 16+ targets]) (int)",
@@ -26712,7 +25676,6 @@
             "author": "Martin Hicks",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
@@ -26925,7 +25888,6 @@
             "srcversion": "4728C19D1776A534AC92588",
             "depends": "mptbase",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
@@ -27097,21 +26059,6 @@
             "signature": ""
         },
         {
-            "filename": "virtio_blk",
-            "license": "GPL",
-            "description": "Virtio block driver",
-            "depends": "virtio,virtio_ring",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "parm": {
-                "queue_depth": "uint"
-            },
-            "alias": [
-                "virtio:d00000002v*"
-            ]
-        },
-        {
             "filename": "etxhci-hcd",
             "license": "GPL",
             "author": "Sarah Sharp",
@@ -27154,7 +26101,6 @@
             "srcversion": "2A61A12A5712ED95F834DF5",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "alias": [
                 "pci:v000015ADd000007B0sv*sd*bc*sc*i*"
@@ -27402,23 +26348,34 @@
         },
         {
             "filename": "bnx2x",
-            "firmware": "bnx2x/bnx2x-e1-7.12.30.0.fw",
-            "version": "1.712.30-0",
+            "version": "1.713.36",
             "license": "GPL",
             "description": "QLogic BCM57710/57711/57711E/57712/57712_MF/57800/57800_MF/57810/57810_MF/57840/57840_MF Driver",
             "author": "Eliezer Tamir",
-            "srcversion": "F68B239548A85A7793A689D",
-            "depends": "mdio",
+            "srcversion": "0E1F3CC82139AE0E04A0CA9",
+            "depends": "mdio,vxlan",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
+            "sig_id": "PKCS#7",
+            "signer": "",
+            "sig_key": "",
+            "sig_hashalgo": "unknown",
+            "signature": "",
             "parm": {
+                "pri_map": " Priority to HW queue mapping (uint)",
                 "num_queues": " Set number of queues (default is as a number of CPUs) (int)",
-                "disable_tpa": " Disable the TPA (LRO) feature (int)",
-                "int_mode": " Force interrupt mode other than MSI-X (1 INT#x; 2 MSI) (int)",
-                "dropless_fc": " Pause on exhausted host ring (int)",
+                "disable_iscsi_ooo": " Disable iSCSI OOO support (uint)",
+                "disable_tpa": " Disable the TPA (LRO) feature (uint)",
+                "int_mode": " Force interrupt mode other than MSI-X (1 INT#x; 2 MSI) (uint)",
+                "dropless_fc": " Pause on exhausted host ring (uint)",
+                "poll": " Use polling (for debug) (uint)",
                 "mrrs": " Force Max Read Req Size (0..3) (for debug) (int)",
-                "debug": " Default debug msglevel (int)"
+                "debug": " Default debug msglevel (uint)",
+                "num_vfs": " Number of supported virtual functions (0 means SR-IOV is disabled) (uint)",
+                "autogreeen": " Set autoGrEEEn (0:HW default; 1:force on; 2:force off) (uint)",
+                "native_eee": "int",
+                "eee": "set EEE Tx LPI timer with this value; 0: HW default; -1: Force disable EEE.",
+                "tx_switching": " Enable tx-switching (uint)"
             },
             "alias": [
                 "pci:v000014E4d0000163Fsv*sd*bc*sc*i*",
@@ -27615,27 +26572,6 @@
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
-            "filename": "vmw_vmci",
-            "license": "GPL v2",
-            "version": "1.1.3.0-k",
-            "description": "VMware Virtual Machine Communication Interface.",
-            "author": "VMware, Inc.",
-            "srcversion": "A7156B12EAFFDA6A083DF20",
-            "depends": "",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "parm": {
-                "disable_msi": "Disable MSI use in driver - (default=0) (bool)",
-                "disable_msix": "Disable MSI-X use in driver - (default=0) (bool)",
-                "disable_host": "Disable driver host personality (default=enabled) (bool)",
-                "disable_guest": "Disable driver guest personality (default=enabled) (bool)"
-            },
-            "alias": [
-                "pci:v000015ADd00000740sv*sd*bc*sc*i*"
-            ]
-        },
-        {
             "filename": "dvb_usb_v2",
             "license": "GPL",
             "description": "DVB USB common",
@@ -27649,28 +26585,6 @@
                 "disable_rc_polling": "disable remote control polling (default: 0) (int)",
                 "force_pid_filter_usage": "force all DVB USB devices to use a PID filter, if any (default: 0) (int)"
             }
-        },
-        {
-            "filename": "megaraid",
-            "version": "2.00.4",
-            "license": "GPL",
-            "description": "LSI Logic MegaRAID legacy driver",
-            "author": "sju@lsil.com",
-            "srcversion": "19EF2088F005CDA3AF8025D",
-            "depends": "",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "parm": {
-                "max_cmd_per_lun": "Maximum number of commands which can be issued to a single LUN (default=DEF_CMD_PER_LUN=63) (uint)",
-                "max_sectors_per_io": "Maximum number of sectors per I/O request (default=MAX_SECTORS_PER_IO=128) (ushort)",
-                "max_mbox_busy_wait": "Maximum wait for mailbox in microseconds if busy (default=MBOX_BUSY_WAIT=10) (ushort)"
-            },
-            "alias": [
-                "pci:v00008086d00001960sv*sd*bc*sc*i*",
-                "pci:v0000101Ed00009060sv*sd*bc*sc*i*",
-                "pci:v0000101Ed00009010sv*sd*bc*sc*i*"
-            ]
         },
         {
             "filename": "acpi-cpufreq",
@@ -27691,54 +26605,6 @@
             "file": "drivers/video/fbdev/core/cfbcopyarea",
             "description": "Generic software accelerated copyarea",
             "author": "James Simmons <jsimmons@users.sf.net>"
-        },
-        {
-            "filename": "cdc_ether",
-            "license": "GPL",
-            "description": "USB CDC Ethernet devices",
-            "author": "David Brownell",
-            "depends": "usbnet,usbcore",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "alias": [
-                "usb:v12D1p*d*dc*dsc*dp*ic02isc06ipFFin*",
-                "usb:v*p*d*dc*dsc*dp*ic02isc0Aip00in*",
-                "usb:v*p*d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v413Cp81BAd*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v1BC7p*d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v1E2Dp0055d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v19D2p1181d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v19D2p1177d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v19D2p1173d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v19D2p1015d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v19D2p1003d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v0955p09FFd*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v17EFp7205d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v13B1p0041d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v04E8pA101d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v0BDAp8153d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v0BDAp8152d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v12D1p14ACd*dc*dsc*dp*ic*isc*ip*in01*",
-                "usb:v16D5p650Ad*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v03F0p421Dd*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v1410p9011d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v413Cp819Bd*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v413Cp8196d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v413Cp8195d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v1410p9010d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v1410pB001d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v046DpC11Fd*dc*dsc*dp*ic02isc0Aip00in*",
-                "usb:v1004p61AAd*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v07B4p0F02d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v04DDp9050d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v04DDp9032d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v04DDp9031d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v04DDp8007d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v04DDp8006d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v04DDp8005d*dc*dsc*dp*ic02isc06ip00in*",
-                "usb:v04DDp8004d*dc*dsc*dp*ic02isc06ip00in*"
-            ]
         },
         {
             "filename": "bnxt_en",
@@ -27805,7 +26671,6 @@
             "author": "Jeff Garzik <jgarzik@pobox.com>",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload "
         },
         {
@@ -27903,7 +26768,6 @@
             "srcversion": "5F236BC2B61DF015610918A",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "TxDescriptors": "Number of transmit descriptors (array of int)",
@@ -28062,7 +26926,6 @@
             "srcversion": "DDEFCAABBD6019D1E78D062",
             "depends": "",
             "retpoline": "Y",
-            "intree": "Y",
             "vermagic": "4.4.180+ SMP mod_unload ",
             "parm": {
                 "lb_pending_cmds": "Change raid-1 load balancing outstanding threshold. Valid Values are 1-128. Default: 4 (int)",
@@ -28113,22 +26976,6 @@
             "alias": [
                 "pci:v00001969d00001066sv*sd*bc*sc*i*",
                 "pci:v00001969d00001026sv*sd*bc*sc*i*"
-            ]
-        },
-        {
-            "filename": "i40evf",
-            "version": "1.3.33",
-            "license": "GPL",
-            "description": "Intel(R) XL710 X710 Virtual Function Network Driver",
-            "author": "Intel Corporation, <linux.nics@intel.com>",
-            "srcversion": "C25DECBA17CF1421F115F7F",
-            "depends": "",
-            "retpoline": "Y",
-            "intree": "Y",
-            "vermagic": "4.4.180+ SMP mod_unload ",
-            "alias": [
-                "pci:v00008086d000037CDsv*sd*bc*sc*i*",
-                "pci:v00008086d0000154Csv*sd*bc*sc*i*"
             ]
         },
         {
