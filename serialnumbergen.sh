@@ -100,7 +100,12 @@ function toupper() {
 function generateMacAddress() {
 
     #toupper "Mac Address: 00:11:32:$(randomhex):$(randomhex):$(randomhex)"
-    printf '00:11:32:%02X:%02X:%02X' $((RANDOM % 256)) $((RANDOM % 256)) $((RANDOM % 256))
+    if [ "$1" = "DS923+" ] || [ "$1" = "DS1522+" ] || [ "$1" = "RS4021xs+" ]; then
+        # DS1522+ and DS923+ Mac starts with 90:09:d0
+        printf '90:09:d0:%02X:%02X:%02X' $((RANDOM % 256)) $((RANDOM % 256)) $((RANDOM % 256))
+    else
+        printf '00:11:32:%02X:%02X:%02X' $((RANDOM % 256)) $((RANDOM % 256)) $((RANDOM % 256))
+    fi
 
 }
 

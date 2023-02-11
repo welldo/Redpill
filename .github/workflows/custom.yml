@@ -655,25 +655,6 @@ jobs:
 
               dat = []
               if '${{ env.sn }}' == '' or '${{ env.mac }}' == '':
-                  # try:
-                  #     import wget
-                  # except ModuleNotFoundError:
-                  #     os.system('pip3 install wget')
-                  #     import wget
-                  # res = wget.download('https://raw.githubusercontent.com/pocopico/tinycore-redpill/main/serialnumbergen.sh', out='serialnumbergen.sh')
-                  # os.system('sed -i "s|DS3622xsp|DS3622xs+|g" serialnumbergen.sh')
-                  # os.system('sed -i "s|echo.*\$(generateMacAddress)|echo \$(generateMacAddress)|g" serialnumbergen.sh')
-                  # os.system('sed -i "s|echo.*\$(generateSerial \$1)|echo \$(generateSerial \$1)|g" serialnumbergen.sh')
-                  # platform = '${{ env.platform }}'
-                  # if platform == 'DS923+': platform = 'DS920+'         # 当前不支持 DS923+    算号
-                  # if platform == 'DS1520+': platform = 'DS920+'        # 当前不支持 DS1520+   算号
-                  # if platform == 'DS1821+': platform = 'DS1621+'       # 当前不支持 DS1821+   算号
-                  # if platform == 'DS2422+': platform = 'DS1621+'       # 当前不支持 DS2422+   算号
-                  # if platform == 'FS2500': platform = 'DS1621+'        # 当前不支持 FS2500    算号
-                  # if platform == 'FS3600': platform = 'DS3622xs+'      # 当前不支持 FS3600    算号
-                  # if platform == 'RS4021xs+': platform = 'DS3622xs+'   # 当前不支持 RS4021xs+ 算号
-                  # dat = os.popen('bash ./serialnumbergen.sh {}'.format(platform)).readlines()
-
                   platform = '${{ env.platform }}'
                   dat = os.popen('bash ./serialnumbergen.sh {}'.format(platform)).readlines()
 
@@ -738,10 +719,23 @@ jobs:
       - name: Run Build
         if: env.iscustom == 'true' && success()
         run: |
+          # 累了, 毁灭吧
+          #
+          # # curl 参数说明
+          # -f, --fail              连接失败时不显示HTTP错误信息 (H)
+          # -k, --insecure          允许连接到 SSL 站点，而不使用证书 (H)
+          # -L, --location          跟踪重定向 (H)
+          # -o, --output FILE       将输出写入文件，而非 stdout
+          # -O, --remote-name       将输出写入远程文件
+          # -S, --show-error        显示错误. 在选项 -s 中，当 curl 出现错误时将显示
+          # -s, --silent            Silent模式。不输出任务内容
+          # -w, --write-out FORMAT  完成后输出什么
+          # -#/--progress-bar	      用进度条显示当前的传送状态
+
           sudo apt update
           #sudo apt upgrade -y
-          sudo apt install curl bspatch jq git -y
-          sudo apt install rename tree -y
+          sudo apt install bspatch jq -y    # curl 新版有毛病
+          sudo apt install rename tree -y   # typo 依赖
 
           function exdsmpat() {
             platform=$1
@@ -751,17 +745,17 @@ jobs:
             synoversion=$(echo ${version} | awk -F - '{print $2}')                         # 7.0.1-42218 => 42218
             
             configfile=./config/${platform}/${version}/config.json
-            paturl=$(cat ${configfile} | jq '.os .pat_url' | sed -s 's/"//g')
+            paturl=$(cat ${configfile} | jq -r '.os .pat_url')
 
             cd ./cache
-            curl -L ${paturl} -o ds.pat
+            curl -#kL ${paturl} -o ds.pat
             if [ -f "$GITHUB_WORKSPACE/syno-extractor.sh" ]; then
               chmod a+x $GITHUB_WORKSPACE/syno-extractor.sh && $GITHUB_WORKSPACE/syno-extractor.sh ds.pat pat
             else
-              curl -k https://raw.githubusercontent.com/wjz304/Redpill_CustomBuild/main/syno-extractor.sh | sudo bash -s ds.pat pat
+              curl -sSkL https://raw.githubusercontent.com/wjz304/Redpill_CustomBuild/main/syno-extractor.sh | sudo bash -s ds.pat pat
             fi
 
-            tar -czvf ${synoplatform}_${synoversion}.pat -C ./pat/ . --warning=no-file-changed
+            tar -czf ${synoplatform}_${synoversion}.pat -C ./pat/ . --warning=no-file-changed
 
             sha256newpat=$(sha256sum ${synoplatform}_${synoversion}.pat | awk '{print $1}')
             sha256zImage=$(sha256sum ./pat/zImage | awk '{print $1}')
@@ -783,9 +777,9 @@ jobs:
           function setsynoarch() {
             # jq: error: xxxx/0 is not defined at <top-level> : --arg xxxx "${xxxx}" ' ... $xxxx ...
             if [ -f "$GITHUB_WORKSPACE/docs/models.json" ]; then
-              synoarch=$(jq --arg platform "${platform}" '. | map(select(.Model == $platform)) | .[].PackageArch' $GITHUB_WORKSPACE/docs/models.json)
+              synoarch=$(jq -r --arg platform "${platform}" '. | map(select(.Model == $platform)) | .[].PackageArch' $GITHUB_WORKSPACE/docs/models.json)
             else
-              synoarch=$(curl -s --location https://raw.githubusercontent.com/wjz304/Redpill_CustomBuild/main/docs/models.json | jq --arg platform "${platform}" '. | map(select(.Model == $platform)) | .[].PackageArch')
+              synoarch=$(curl -skL https://raw.githubusercontent.com/wjz304/Redpill_CustomBuild/main/docs/models.json | jq -r --arg platform "${platform}" '. | map(select(.Model == $platform)) | .[].PackageArch')
             fi
             synoarch=${synoarch,,}
             echo ${synoarch}
@@ -804,9 +798,6 @@ jobs:
           if [ ${repository} != 'pocopico_develop' -a ${repository} != 'wjz304_test-dev' ]; then 
             bArgs+='BRP_JUN_MOD=1 '
           fi
-          # if [ ${{ env.platform }} == 'SA6400' -a ${{ env.version }} == '7.1.1-42962' ]; then
-          #   bArgs+='BRP_LINUX_PATCH_METHOD=repack '
-          # fi
 
           lkmext=https://raw.githubusercontent.com/wjz304/rp-ext/master
           rpext=https://raw.githubusercontent.com/pocopico/rp-ext/master
@@ -827,10 +818,10 @@ jobs:
           # find redpill-load/ext -type f -name '*.sh' -exec ls -al '{}' +
 
           #容错
-          echo "==============================↓ 容错 ↓=========================="
-          # curl -k https://raw.githubusercontent.com/wjz304/Redpill_CustomBuild/main/typo.sh | bash -s ${repo} ${branch}
+          echo "============================↓ 容错 ↓============================="
+          # curl -skL https://raw.githubusercontent.com/wjz304/Redpill_CustomBuild/main/typo.sh | bash -s ${repo} ${branch}
           chmod a+x $GITHUB_WORKSPACE/typo.sh && $GITHUB_WORKSPACE/typo.sh ${repo} ${branch}
-          echo "==============================↑ 容错 ↑=========================="
+          echo "============================↑ 容错 ↑============================="
 
           cp user_config.json redpill-load/user_config.json
 
@@ -842,49 +833,52 @@ jobs:
           setsynoarch ${platform}
 
           # 7.1 解密PAT
-          echo "===========================7.1 解密PAT=========================="
+          echo "===========================7.1+ 解密PAT==========================="
           if [[ "${version}" > "7.0.1-42218" ]]; then 
             exdsmpat ${platform} ${version}
           fi
 
           # 添加必备驱动
-          echo "===========================添加必备驱动=========================="
-          [ -f ./redpill-boot-wait/rpext-index.json -a "$(curl -s --location ${loadext}/redpill-boot-wait/rpext-index.json | jq -r .releases.${synoplatform}_${synoversion})" != "null" ] && ./ext-manager.sh add ${loadext}/redpill-boot-wait/rpext-index.json
-          [ -f ./redpill-acpid/rpext-index.json -a "$(curl -s --location ${loadext}/redpill-acpid/rpext-index.json | jq -r .releases.${synoplatform}_${synoversion})" != "null" ] && ./ext-manager.sh add ${loadext}/redpill-acpid/rpext-index.json
-          [ -f ./redpill-misc/rpext-index.json -a "$(curl -s --location ${loadext}/redpill-misc/rpext-index.json | jq -r .releases.${synoplatform}_${synoversion})" != "null" ] && ./ext-manager.sh add ${loadext}/redpill-misc/rpext-index.json
-          [ -f ./redpill-virtio/rpext-index.json -a "$(curl -s --location ${loadext}/redpill-virtio/rpext-index.json | jq -r .releases.${synoplatform}_${synoversion})" != "null" ] && ./ext-manager.sh add ${loadext}/redpill-virtio/rpext-index.json
+          echo "===========================添加必备驱动==========================="
+          [ -f ./redpill-boot-wait/rpext-index.json -a "$(curl -skL ${loadext}/redpill-boot-wait/rpext-index.json | jq -r .releases.${synoplatform}_${synoversion})" != "null" ] && ./ext-manager.sh add ${loadext}/redpill-boot-wait/rpext-index.json
+          [ -f ./redpill-acpid/rpext-index.json -a "$(curl -skL ${loadext}/redpill-acpid/rpext-index.json | jq -r .releases.${synoplatform}_${synoversion})" != "null" ] && ./ext-manager.sh add ${loadext}/redpill-acpid/rpext-index.json
+          [ -f ./redpill-misc/rpext-index.json -a "$(curl -skL ${loadext}/redpill-misc/rpext-index.json | jq -r .releases.${synoplatform}_${synoversion})" != "null" ] && ./ext-manager.sh add ${loadext}/redpill-misc/rpext-index.json
+          [ -f ./redpill-virtio/rpext-index.json -a "$(curl -skL ${loadext}/redpill-virtio/rpext-index.json | jq -r .releases.${synoplatform}_${synoversion})" != "null" ] && ./ext-manager.sh add ${loadext}/redpill-virtio/rpext-index.json
 
           # # redpill.ko 方式一 
-          # echo "=======================Download redpill.ko======================"
-          # extension=$(curl -s --location "${lkmext}/${lkm}/rpext-index.json")
-          # redpilltgz=$(curl -s --location "$(echo ${extension} | jq -r .releases.${synoplatform}_${synoversion})" | jq -r '.files[] .url')
+          # echo "=========================Download redpill.ko=========================="
+          # extension=$(curl -skL "${lkmext}/${lkm}/rpext-index.json")
+          # redpilltgz=$(curl -skL "$(echo ${extension} | jq -r .releases.${synoplatform}_${synoversion})" | jq -r '.files[] .url')
           # [ "$(echo $redpilltgz | awk '{print $NF}')" != "$redpilltgz" ] && redpilltgz=$(echo $redpilltgz | awk '{print $1}')
           # wget ${redpilltgz}
           # tar zxvf $(echo ${redpilltgz} | awk -F / '{print $NF}') -C ./ 
+          # modinfo ./redpill.ko
           # RPKOVER=$(modinfo --field=vermagic ./redpill.ko | awk '{print $1}')
           # cp -fv ./redpill.ko ./ext/rp-lkm/redpill-linux-v${RPKOVER}.ko
 
           # # redpill.ko 方式二 GCC版本需要修改,待优化
-          # echo "========================Build redpill.ko========================"
+          # echo "===========================Build redpill.ko==========================="
           # toolkittxz=ds.${synoarch}-${version::3}.dev.txz
           # toolkitdir=usr/local/x86_64-pc-linux-gnu/x86_64-pc-linux-gnu/sys-root/usr/lib/modules/DSM-${version::3}/build
-          # curl --location "https://global.download.synology.com/download/ToolChain/toolkit/${version::3}/${synoarch}/${toolkittxz}" --output ${toolkittxz}
+          # curl -skL "https://global.download.synology.com/download/ToolChain/toolkit/${version::3}/${synoarch}/${toolkittxz}" -o ${toolkittxz}
           # mkdir ${synoarch} && tar -C./${synoarch}/ -xf ${toolkittxz} ${toolkitdir}
           # git clone -b master --depth=1 https://github.com/${repo}/redpill-lkm.git
           # cd redpill-lkm
           # # sed -i 's/   -std=gnu89/   -std=gnu89 -fno-pie/' ../${synoarch}/${toolkitdir}/Makefile
           # make LINUX_SRC=../${synoarch}/${toolkitdir} dev-v${version::1}
+          # modinfo ./redpill.ko
           # RPKOVER=$(modinfo --field=vermagic ./redpill.ko | awk '{print $1}')
           # cp -fv ./redpill.ko ../ext/rp-lkm/redpill-linux-v${RPKOVER}.ko
           # cd ..
 
           # redpill.ko 方式三 
-          echo "========================Arpl redpill.ko========================"
-          TAG=`curl --insecure -s https://api.github.com/repos/fbelavenuto/redpill-lkm/releases/latest | grep "tag_name" | awk '{print substr($2, 2, length($2)-3)}'`
-          curl --insecure -s -L "https://github.com/fbelavenuto/redpill-lkm/releases/download/${TAG}/rp-lkms.zip" -o ./rp-lkms.zip
-          unzip ./rp-lkms.zip -d ./rp-lkms
-          for file in ./rp-lkms/*; do if [[ ${file} =~ .*${synoarch}.*${lkm}.ko ]]; then gzip -dc "${file}" > "./redpill.ko"; fi; done || true
+          echo "===========================Arpl redpill.ko==========================="
+          TAG=`curl -skL https://api.github.com/repos/fbelavenuto/redpill-lkm/releases/latest | grep "tag_name" | awk '{print substr($2, 2, length($2)-3)}'`
+          curl -#kL "https://github.com/fbelavenuto/redpill-lkm/releases/download/${TAG}/rp-lkms.zip" -o ./rp-lkms.zip   # curl 新版有毛病, 下载会概率报错 "End-of-central-directory signature not found"
+          [ -f ./rp-lkms.zip ] && unzip ./rp-lkms.zip -d ./rp-lkms >/dev/null || true
+          [ -d ./rp-lkms ] && for file in ./rp-lkms/*; do [ "$(echo ${file} | grep ${synoarch} | grep ${lkm})" != "" ] && gzip -dcv "${file}" > "./redpill.ko" || echo "${file}: No"; done
           if [ -f ./redpill.ko ]; then
+            modinfo ./redpill.ko
             RPKOVER=$(modinfo --field=vermagic ./redpill.ko | awk '{print $1}')
             cp -fv ./redpill.ko ./ext/rp-lkm/redpill-linux-v${RPKOVER}.ko
           else
@@ -892,6 +886,7 @@ jobs:
             mkdir redpill-lkm-output && chmod -R 777 redpill-lkm-output
             TOOLKIT_VER="latest"  # "7.1"
             sudo docker run -u 1000 --rm -t -v "${PWD}/redpill-lkm":/input -v "${PWD}/redpill-lkm-output":/output fbelavenuto/syno-compiler:${TOOLKIT_VER} compile-lkm ${synoarch}
+            modinfo ./redpill-lkm-output/redpill-${lkm}.ko
             RPKOVER=$(modinfo --field=vermagic ./redpill-lkm-output/redpill-${lkm}.ko | awk '{print $1}')
             cp -fv ./redpill-lkm-output/redpill-${lkm}.ko ./ext/rp-lkm/redpill-linux-v${RPKOVER}.ko
             sudo chmod -R +x ./ext/rp-lkm
@@ -900,7 +895,7 @@ jobs:
           RPKOOLD=`echo $(grep "@@@EXT@@@/rp-lkm" ./config/${platform}/${version}/config.json | sed -r 's|"@@@EXT@@@/(.*)":(.*)|\1|')`  # `echo $P` 去首尾空格
           if [ ! "${RPKOOLD}" == "rp-lkm/redpill-linux-v${RPKOVER}.ko" ]; then
             echo "change ./config/${platform}/${version}/config.json from ${RPKOOLD} to rp-lkm/redpill-linux-v${RPKOVER}.ko"
-            sed -i 's|${RPKOOLD}|rp-lkm/redpill-linux-v${RPKOVER}.ko|' ./config/${platform}/${version}/config.json
+            sed -i "s|${RPKOOLD}|rp-lkm/redpill-linux-v${RPKOVER}.ko|" ./config/${platform}/${version}/config.json
           fi
 
           dtbs=(DS920+ DS923+ DS1520+ DS1621+ DS1821+ DS2422+ DVA1622 FS2500 SA6400)
@@ -908,15 +903,15 @@ jobs:
           do
             if [ "${item}" == "${platform}" ]; then
               if [ -z "${{ env.dtb }}" ]; then
-                echo "========================Add redpill-dtb========================="
+                echo "===========================Add redpill-dtb=========================="
                 ./ext-manager.sh add ${lkmext}/redpill-dtb/rpext-index.json
                 ./ext-manager.sh _update_platform_exts ${synoplatform}_${synoversion} pocopico.dtb
               # elif [ "${{ env.dtb }}" == "auto" ]; then
-              #   echo "==========================Add dtbpatch=========================="
+              #   echo "===========================Add dtbpatch==========================="
               #   ./ext-manager.sh add ${lkmext}/dtbpatch/rpext-index.json
               #   ./ext-manager.sh _update_platform_exts ${synoplatform}_${synoversion} dtbpatch
               else
-                echo "=====================Add redpill-dtb-static====================="
+                echo "=========================Add redpill-dtb-static========================"
                 ./ext-manager.sh add ${lkmext}/redpill-dtb-static/rpext-index.json
                 ./ext-manager.sh _update_platform_exts ${synoplatform}_${synoversion} redpill-dtb-static
                 # dtbextfile="$(find custom -name model_${synoplatform}.dtb)"
@@ -929,7 +924,7 @@ jobs:
           done
 
           # 添加扩展驱动
-          echo "==========================添加扩展驱动==========================="
+          echo "===========================添加扩展驱动==========================="
           if [ -n "${{ env.ext }}" ]; then
             ext=${{ env.ext }}
             exts=(${ext//,/ })
@@ -958,7 +953,7 @@ jobs:
           #自定义操作
           if [ -f '../customshell.sh' ]; then
             if [ "${{ env.issueauth }}" == "${{ github.repository_owner }}" -o "${{ github.triggering_actor }}" == "${{ github.repository_owner }}" ]; then
-              echo "===========================自定义操作============================"
+              echo "============================自定义操作============================"
               cp ../customshell.sh customshell.sh
               chmod a+x customshell.sh
               source customshell.sh
@@ -1010,7 +1005,7 @@ jobs:
           fi
 
           configfile=./redpill-load/config/${{ env.platform }}/${{ env.version }}/config.json
-          paturl=$(cat ${configfile} | jq '.os .pat_url' | sed -s 's/"//g')
+          paturl=$(cat ${configfile} | jq -r '.os .pat_url')
 
           echo -e "\nPAT:\n${paturl}" >> redpill-load/body#${{ env.issuenumber }}.txt
 

@@ -13,10 +13,10 @@ chmod a+x dtc
 ./dtc -I dtb -O dts output.dtb > output.dts     #
 #./dtc -q -I dts -O dtb output.dts > output.dtb  #
 
-echo Please enter the following link on your PC to download the dtb file：
-curl -fsSL --insecure -w '\n' --upload-file output.dtb https://transfer.sh
+echo Please enter the following link on your PC to download the dtb file:
+curl -sSL --insecure -w '\n' --upload-file output.dtb https://transfer.sh
 echo 
 
-echo Please enter the following link on your PC to download the dts file：
-curl -fsSL --insecure -w '\n' --upload-file output.dts https://transfer.sh
+echo Please enter the following link on your PC to download the dts file:
+curl -sSL --insecure -w '\n' --upload-file output.dts https://transfer.sh
 echo 

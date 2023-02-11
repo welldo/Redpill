@@ -31,10 +31,10 @@ jobs:
           curl -L "https://purge.jsdelivr.net/gh/wjz304/Redpill_CustomBuild@main/docs/exts.json"
           curl -L "https://purge.jsdelivr.net/gh/wjz304/Redpill_CustomBuild@main/docs/tips.md"
 
-          curl -I "https://cdn.statically.io/gh/wjz304/Redpill_CustomBuild/main/docs/parameter.json"
+          curl -L "https://cdn.statically.io/gh/wjz304/Redpill_CustomBuild/main/docs/parameter.json"
           curl -L "https://cdn.statically.io/gh/wjz304/Redpill_CustomBuild/main/docs/modules.json"
           curl -L "https://cdn.statically.io/gh/wjz304/Redpill_CustomBuild/main/docs/models.json"
-          curl -I "https://cdn.statically.io/gh/wjz304/Redpill_CustomBuild/main/docs/loads.json"
-          curl -I "https://cdn.statically.io/gh/wjz304/Redpill_CustomBuild/main/docs/exts.json"
-          curl -I "https://cdn.statically.io/gh/wjz304/Redpill_CustomBuild/main/docs/tips.md"
+          curl -L "https://cdn.statically.io/gh/wjz304/Redpill_CustomBuild/main/docs/loads.json"
+          curl -L "https://cdn.statically.io/gh/wjz304/Redpill_CustomBuild/main/docs/exts.json"
+          curl -L "https://cdn.statically.io/gh/wjz304/Redpill_CustomBuild/main/docs/tips.md"
           
