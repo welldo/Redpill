@@ -4,7 +4,6 @@
 
 ## 介绍  
 [Redpill_CustomBuild](https://github.com/wjz304/Redpill_CustomBuild)  
-[Redpill_CustomBuild_v1](https://github.com/wjz304/Redpill_CustomBuild_v1)(old)  
 一个自定义配置及驱动并通过 Github Action 编译 DSM redpill 引导的平台.  
 本库并没有实际的技术创新, 仅做了一个参数适配, 使一些定制更简单, 并把过程搬到线上, 依赖微软强大的服务器使其快速得到想要的引导文件.  
 高度依赖以下大佬的项目, 请给以下各位大佬点赞.
