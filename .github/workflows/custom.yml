@@ -1028,7 +1028,8 @@ jobs:
         if: env.iscustom == 'true' && success()
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ github.event.repository.name }}-Custom-${{ env.release_tag }}
+          #name: ${{ github.event.repository.name }}-Custom-${{ env.release_tag }}
+          name: Redpill-${{ env.platform }}-${{ env.version }}-${{ env.release_tag }}
           path: |
             redpill-load/exts.txt
             redpill-load/body*.txt
