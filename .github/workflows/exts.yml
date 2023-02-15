@@ -241,7 +241,7 @@ jobs:
                       f.write(json.dumps(loads, indent=4))
 
 
-      - name: Get models lsit
+      - name: Get models and toolchain lsit
         shell: python
         run: |
           # -*- coding: utf-8 -*-
@@ -251,6 +251,8 @@ jobs:
           root = '' # os.path.dirname(os.path.abspath(__file__))
 
           if __name__ == '__main__':
+
+              # models
               req = requests.get('https://kb.synology.com/en-us/DSM/tutorial/What_kind_of_CPU_does_my_NAS_have')
               req.encoding = 'utf-8'
               bs=BeautifulSoup(req.text, 'html.parser')
@@ -264,12 +266,37 @@ jobs:
               for i in it:
                   d = i.groups()
                   if len(d) == 6: d = model + d
-                  models.append({"Model":d[0],"CPU Model":d[1],"Cores":d[2],"Threads":d[3],"FPU":d[4],"PackageArch":d[5],"RAM":d[6]})
+                  models.append({"Model":d[0],"CPU Model":d[1],"Cores":d[2],"Threads":d[3],"FPU":d[4],"PackageArch":d[5].lower(),"RAM":d[6]})
 
               print(json.dumps(models, indent=4))
               with open(os.path.join(root, 'docs/models.json'), 'w', encoding='utf-8') as f:
                   f.write(json.dumps(models, indent=4))
 
+
+              # toolchain
+              req = requests.get('https://archive.synology.cn/download/ToolChain/toolchain')
+              req.encoding = 'utf-8'
+              bs=BeautifulSoup(req.text, 'html.parser')
+              p = re.compile(r"(.*?)-(.*?)", re.MULTILINE | re.DOTALL)
+              l = bs.find_all('a', text=p)
+
+              toolchain = {}
+              for i in l:
+                  req = requests.get('https://archive.synology.cn{}'.format(i.attrs['href']))
+                  req.encoding = 'utf-8'
+                  bs=BeautifulSoup(req.text, 'html.parser')
+
+                  p = re.compile(r"^(.*?)Linux(.*?)\((.*?)\)$", re.MULTILINE | re.DOTALL)
+                  data = bs.find_all('td', text=p)
+                  for item in data:
+                      info = p.search(item.string).groups()
+                      if not i.string in toolchain.keys(): toolchain[i.string] = {}
+                      toolchain[i.string][info[2].strip().lower()] = info[1].replace('Linux', '').strip()
+                      print(info)
+              
+              print(toolchain)
+              with open(os.path.join(root, 'docs/toolchain.json'), 'w', encoding='utf-8') as f:
+                  f.write(json.dumps(toolchain, indent=4))
 
       - name: Checkout arpl-modules
         run: |
@@ -346,7 +373,7 @@ jobs:
       - name: Check and Push
         run: |
           git pull
-          status=$(git status -s | grep -E 'exts.json|loads.json|models.json|modules.json|modules.md' | awk '{printf " %s", $2}')
+          status=$(git status -s | grep -E 'exts.json|loads.json|models.json|toolchain.json|modules.json|modules.md' | awk '{printf " %s", $2}')
           if [ -n "${status}" ]; then
             git add ${status}
             git commit -m "update $(date +%Y-%m-%d" "%H:%M:%S)"
