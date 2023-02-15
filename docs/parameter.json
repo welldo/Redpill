@@ -65,7 +65,7 @@
         "description": "如不了解请保持默认, 请选择 LKM 版本.(目前具体有何区别不详)",
         "detailedinfo": "请选择 LKM 版本",
         "required": false,
-        "default": "prod",
+        "default": "dev",
         "type": "choice",
         "options": [
             "dev",
