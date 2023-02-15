@@ -5,7 +5,7 @@
         "Cores": "Eight Core x 2",
         "Threads": "16 x 2",
         "FPU": "Yes",
-        "PackageArch": "Purley",
+        "PackageArch": "purley",
         "RAM": "DDR4 ECC RDIMM 32 GB"
     },
     {
@@ -14,7 +14,7 @@
         "Cores": "Twelve Core",
         "Threads": "24",
         "FPU": "Yes",
-        "PackageArch": "Broadwellnk",
+        "PackageArch": "broadwellnk",
         "RAM": "DDR4 ECC RDIMM 16 GB"
     },
     {
@@ -23,7 +23,7 @@
         "Cores": "Eight Core",
         "Threads": "16",
         "FPU": "Yes",
-        "PackageArch": "Broadwellnkv2",
+        "PackageArch": "broadwellnkv2",
         "RAM": "DDR4 ECC RDIMM 16 GB"
     },
     {
@@ -32,7 +32,7 @@
         "Cores": "Eight Core",
         "Threads": "16",
         "FPU": "Yes",
-        "PackageArch": "Broadwell",
+        "PackageArch": "broadwell",
         "RAM": "DDR4 ECC RDIMM 16 GB"
     },
     {
@@ -41,7 +41,7 @@
         "Cores": "Six Core x 2",
         "Threads": "12 x 2",
         "FPU": "Yes",
-        "PackageArch": "Grantley",
+        "PackageArch": "grantley",
         "RAM": "DDR4 ECC RDIMM 64 GB"
     },
     {
@@ -50,7 +50,7 @@
         "Cores": "Quad Core",
         "Threads": "8",
         "FPU": "Yes",
-        "PackageArch": "V1000",
+        "PackageArch": "v1000",
         "RAM": "DDR4 ECC UDIMM 8 GB"
     },
     {
@@ -59,7 +59,7 @@
         "Cores": "Eight Core",
         "Threads": "16",
         "FPU": "Yes",
-        "PackageArch": "Broadwell",
+        "PackageArch": "broadwell",
         "RAM": "DDR4 ECC RDIMM 16 GB"
     },
     {
@@ -68,7 +68,7 @@
         "Cores": "Dual Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Broadwellnk",
+        "PackageArch": "broadwellnk",
         "RAM": "DDR4 ECC SODIMM 8 GB"
     },
     {
@@ -77,7 +77,7 @@
         "Cores": "Ten Core x 2",
         "Threads": "20 x 2",
         "FPU": "Yes",
-        "PackageArch": "Purley",
+        "PackageArch": "purley",
         "RAM": "DDR4 ECC RDIMM 64 GB"
     },
     {
@@ -86,7 +86,7 @@
         "Cores": "Twelve Core",
         "Threads": "24",
         "FPU": "Yes",
-        "PackageArch": "Epyc7002",
+        "PackageArch": "epyc7002",
         "RAM": "DDR4 ECC RDIMM 32 GB"
     },
     {
@@ -95,7 +95,7 @@
         "Cores": "Twelve Core",
         "Threads": "24",
         "FPU": "Yes",
-        "PackageArch": "Broadwellnkv2",
+        "PackageArch": "broadwellnkv2",
         "RAM": "DDR4 ECC RDIMM 16 GB"
     },
     {
@@ -104,7 +104,7 @@
         "Cores": "Twelve Core",
         "Threads": "24",
         "FPU": "Yes",
-        "PackageArch": "Broadwellnk",
+        "PackageArch": "broadwellnk",
         "RAM": "DDR4 ECC RDIMM 16 GB"
     },
     {
@@ -113,7 +113,7 @@
         "Cores": "Eight Core",
         "Threads": "16",
         "FPU": "Yes",
-        "PackageArch": "Broadwellnkv2",
+        "PackageArch": "broadwellnkv2",
         "RAM": "DDR4 ECC RDIMM 16 GB"
     },
     {
@@ -122,7 +122,7 @@
         "Cores": "Eight Core",
         "Threads": "16",
         "FPU": "Yes",
-        "PackageArch": "Broadwellnk",
+        "PackageArch": "broadwellnk",
         "RAM": "DDR4 ECC RDIMM 16 GB"
     },
     {
@@ -131,7 +131,7 @@
         "Cores": "Quad Core x 2",
         "Threads": "8 x 2",
         "FPU": "Yes",
-        "PackageArch": "Broadwellntbap",
+        "PackageArch": "broadwellntbap",
         "RAM": "DDR4 ECC UDIMM 8 GB x 2"
     },
     {
@@ -140,7 +140,7 @@
         "Cores": "Dual Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "R1000",
+        "PackageArch": "r1000",
         "RAM": "DDR4 ECC SODIMM 4 GB"
     },
     {
@@ -149,7 +149,7 @@
         "Cores": "Dual Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "R1000",
+        "PackageArch": "r1000",
         "RAM": "DDR4 ECC SODIMM 2 GB"
     },
     {
@@ -167,7 +167,7 @@
         "Cores": "Quad Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Geminilake",
+        "PackageArch": "geminilake",
         "RAM": "DDR4 6 GB"
     },
     {
@@ -176,7 +176,7 @@
         "Cores": "Quad Core",
         "Threads": "8",
         "FPU": "Yes",
-        "PackageArch": "V1000",
+        "PackageArch": "v1000",
         "RAM": "DDR4 ECC SODIMM 2 GB"
     },
     {
@@ -185,7 +185,7 @@
         "Cores": "Dual Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "R1000",
+        "PackageArch": "r1000",
         "RAM": "DDR4 ECC 2 GB"
     },
     {
@@ -194,7 +194,7 @@
         "Cores": "Six Core",
         "Threads": "12",
         "FPU": "Yes",
-        "PackageArch": "Broadwellnk",
+        "PackageArch": "broadwellnk",
         "RAM": "DDR4 ECC SODIMM 16 GB"
     },
     {
@@ -203,7 +203,7 @@
         "Cores": "Quad Core",
         "Threads": "8",
         "FPU": "Yes",
-        "PackageArch": "V1000",
+        "PackageArch": "v1000",
         "RAM": "DDR4 ECC SODIMM 4 GB"
     },
     {
@@ -212,7 +212,7 @@
         "Cores": "Dual Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "R1000",
+        "PackageArch": "r1000",
         "RAM": "DDR4 ECC SODIMM 8 GB"
     },
     {
@@ -221,7 +221,7 @@
         "Cores": "Eight Core",
         "Threads": "16",
         "FPU": "Yes",
-        "PackageArch": "Broadwellnk",
+        "PackageArch": "broadwellnk",
         "RAM": "DDR4 ECC UDIMM 16 GB"
     },
     {
@@ -230,7 +230,7 @@
         "Cores": "Eight Core",
         "Threads": "16",
         "FPU": "Yes",
-        "PackageArch": "Broadwellnk",
+        "PackageArch": "broadwellnk",
         "RAM": "DDR4 ECC UDIMM 8 GB"
     },
     {
@@ -239,7 +239,7 @@
         "Cores": "Six Core",
         "Threads": "12",
         "FPU": "Yes",
-        "PackageArch": "Broadwellnk",
+        "PackageArch": "broadwellnk",
         "RAM": "DDR4 ECC UDIMM 8 GB"
     },
     {
@@ -248,7 +248,7 @@
         "Cores": "Quad Core",
         "Threads": "8",
         "FPU": "Yes",
-        "PackageArch": "V1000",
+        "PackageArch": "v1000",
         "RAM": "DDR4 ECC UDIMM 4 GB"
     },
     {
@@ -257,7 +257,7 @@
         "Cores": "Quad Core",
         "Threads": "8",
         "FPU": "Yes",
-        "PackageArch": "V1000",
+        "PackageArch": "v1000",
         "RAM": "DDR4 ECC UDIMM 4 GB"
     },
     {
@@ -266,7 +266,7 @@
         "Cores": "Quad Core",
         "Threads": "8",
         "FPU": "Yes",
-        "PackageArch": "V1000",
+        "PackageArch": "v1000",
         "RAM": "DDR4 ECC SODIMM 4 GB"
     },
     {
@@ -275,7 +275,7 @@
         "Cores": "Quad Core",
         "Threads": "8",
         "FPU": "Yes",
-        "PackageArch": "V1000",
+        "PackageArch": "v1000",
         "RAM": "DDR4 ECC SODIMM 4 GB"
     },
     {
@@ -284,7 +284,7 @@
         "Cores": "Quad Core",
         "Threads": "8",
         "FPU": "Yes",
-        "PackageArch": "Broadwellnk",
+        "PackageArch": "broadwellnk",
         "RAM": "DDR4 ECC SODIMM 8 GB"
     },
     {
@@ -293,7 +293,7 @@
         "Cores": "Quad Core",
         "Threads": "8",
         "FPU": "Yes",
-        "PackageArch": "V1000",
+        "PackageArch": "v1000",
         "RAM": "DDR4 ECC SODIMM 4 GB"
     },
     {
@@ -302,7 +302,7 @@
         "Cores": "Quad Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Denverton",
+        "PackageArch": "denverton",
         "RAM": "DDR4 Non-ECC SODIMM 8 GB"
     },
     {
@@ -311,7 +311,7 @@
         "Cores": "Quad Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Denverton",
+        "PackageArch": "denverton",
         "RAM": "DDR4 Non-ECC 2 GB"
     },
     {
@@ -320,7 +320,7 @@
         "Cores": "Quad Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Geminilake",
+        "PackageArch": "geminilake",
         "RAM": "DDR4 8 GB"
     },
     {
@@ -329,7 +329,7 @@
         "Cores": "Quad Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Geminilake",
+        "PackageArch": "geminilake",
         "RAM": "DDR4 4 GB"
     },
     {
@@ -338,7 +338,7 @@
         "Cores": "Quad Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Geminilake",
+        "PackageArch": "geminilake",
         "RAM": "DDR4 2 GB"
     },
     {
@@ -347,7 +347,7 @@
         "Cores": "Dual Core",
         "Threads": "2",
         "FPU": "Yes",
-        "PackageArch": "Apollolake",
+        "PackageArch": "apollolake",
         "RAM": "DDR3L SODIMM 2 GB"
     },
     {
@@ -356,7 +356,7 @@
         "Cores": "Dual Core",
         "Threads": "2",
         "FPU": "Yes",
-        "PackageArch": "Geminilake",
+        "PackageArch": "geminilake",
         "RAM": "DDR4 2 GB"
     },
     {
@@ -374,7 +374,7 @@
         "Cores": "Dual Core",
         "Threads": "2",
         "FPU": "Yes",
-        "PackageArch": "Geminilake",
+        "PackageArch": "geminilake",
         "RAM": "DDR4 2 GB"
     },
     {
@@ -401,7 +401,7 @@
         "Cores": "Quad Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Avoton",
+        "PackageArch": "avoton",
         "RAM": "DDR3 2 GB"
     },
     {
@@ -419,7 +419,7 @@
         "Cores": "Quad Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Apollolake",
+        "PackageArch": "apollolake",
         "RAM": "DDR3L SODIMM 8 GB"
     },
     {
@@ -446,7 +446,7 @@
         "Cores": "Quad Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Denverton",
+        "PackageArch": "denverton",
         "RAM": "DDR4 Non-ECC SODIMM 4 GB"
     },
     {
@@ -455,7 +455,7 @@
         "Cores": "Quad Core",
         "Threads": "8",
         "FPU": "Yes",
-        "PackageArch": "Broadwell",
+        "PackageArch": "broadwell",
         "RAM": "DDR4 ECC UDIMM 8 GB"
     },
     {
@@ -464,7 +464,7 @@
         "Cores": "Quad Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Denverton",
+        "PackageArch": "denverton",
         "RAM": "DDR4 Non-ECC UDIMM 4 GB"
     },
     {
@@ -473,7 +473,7 @@
         "Cores": "Quad Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Denverton",
+        "PackageArch": "denverton",
         "RAM": "DDR4 Non-ECC UDIMM 4 GB"
     },
     {
@@ -482,7 +482,7 @@
         "Cores": "Quad Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Avoton",
+        "PackageArch": "avoton",
         "RAM": "DDR3 2GB"
     },
     {
@@ -491,7 +491,7 @@
         "Cores": "Dual Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Broadwellnk",
+        "PackageArch": "broadwellnk",
         "RAM": "DDR4 SODIMM 8 GB"
     },
     {
@@ -500,7 +500,7 @@
         "Cores": "Quad Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Denverton",
+        "PackageArch": "denverton",
         "RAM": "DDR4 Non-ECC SODIMM 4 GB"
     },
     {
@@ -509,7 +509,7 @@
         "Cores": "Quad Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Apollolake",
+        "PackageArch": "apollolake",
         "RAM": "DDR3L SODIMM 4 GB"
     },
     {
@@ -518,7 +518,7 @@
         "Cores": "Quad Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Apollolake",
+        "PackageArch": "apollolake",
         "RAM": "DDR3L SODIMM 2 GB"
     },
     {
@@ -536,7 +536,7 @@
         "Cores": "Dual Core",
         "Threads": "2",
         "FPU": "Yes",
-        "PackageArch": "Apollolake",
+        "PackageArch": "apollolake",
         "RAM": "DDR3L SODIMM 2 GB"
     },
     {
@@ -554,7 +554,7 @@
         "Cores": "Dual Core",
         "Threads": "2",
         "FPU": "Yes",
-        "PackageArch": "Apollolake",
+        "PackageArch": "apollolake",
         "RAM": "DDR3L SODIMM 2 GB"
     },
     {
@@ -581,7 +581,7 @@
         "Cores": "Dual Core",
         "Threads": "2",
         "FPU": "Yes",
-        "PackageArch": "Armada38x",
+        "PackageArch": "armada38x",
         "RAM": "DDR3 512 MB"
     },
     {
@@ -599,7 +599,7 @@
         "Cores": "Six Core",
         "Threads": "12",
         "FPU": "Yes",
-        "PackageArch": "Broadwell",
+        "PackageArch": "broadwell",
         "RAM": "DDR4 ECC RDIMM 16 GB"
     },
     {
@@ -608,7 +608,7 @@
         "Cores": "Eight Core",
         "Threads": "16",
         "FPU": "Yes",
-        "PackageArch": "Broadwell",
+        "PackageArch": "broadwell",
         "RAM": "DDR4 ECC UDIMM 8 GB"
     },
     {
@@ -617,7 +617,7 @@
         "Cores": "Six Core",
         "Threads": "12",
         "FPU": "Yes",
-        "PackageArch": "Broadwell",
+        "PackageArch": "broadwell",
         "RAM": "DDR4 ECC UDIMM 8 GB"
     },
     {
@@ -626,7 +626,7 @@
         "Cores": "Quad Core",
         "Threads": "8",
         "FPU": "Yes",
-        "PackageArch": "Broadwell",
+        "PackageArch": "broadwell",
         "RAM": "DDR4 ECC UDIMM 8 GB"
     },
     {
@@ -635,7 +635,7 @@
         "Cores": "Quad Core",
         "Threads": "8",
         "FPU": "Yes",
-        "PackageArch": "Bromolow",
+        "PackageArch": "bromolow",
         "RAM": "DDR3 ECC 4 GB"
     },
     {
@@ -644,7 +644,7 @@
         "Cores": "Dual Core",
         "Threads": "2",
         "FPU": "Yes",
-        "PackageArch": "Armada38x",
+        "PackageArch": "armada38x",
         "RAM": "DDR3 512 MB"
     },
     {
@@ -653,7 +653,7 @@
         "Cores": "Quad Core",
         "Threads": "8",
         "FPU": "Yes",
-        "PackageArch": "Broadwell",
+        "PackageArch": "broadwell",
         "RAM": "DDR4 ECC SODIMM 16 GB"
     },
     {
@@ -662,7 +662,7 @@
         "Cores": "Quad Core",
         "Threads": "8",
         "FPU": "Yes",
-        "PackageArch": "Broadwell",
+        "PackageArch": "broadwell",
         "RAM": "DDR4 ECC SODIMM 16 GB"
     },
     {
@@ -671,7 +671,7 @@
         "Cores": "Quad Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Avoton",
+        "PackageArch": "avoton",
         "RAM": "DDR3 2/8 GB"
     },
     {
@@ -680,7 +680,7 @@
         "Cores": "Quad Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Alpine",
+        "PackageArch": "alpine",
         "RAM": "DDR3L 4GB"
     },
     {
@@ -689,7 +689,7 @@
         "Cores": "Quad Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Avoton",
+        "PackageArch": "avoton",
         "RAM": "DDR3 2/8 GB"
     },
     {
@@ -698,7 +698,7 @@
         "Cores": "Quad Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Alpine",
+        "PackageArch": "alpine",
         "RAM": "DDR3L 2 GB"
     },
     {
@@ -707,7 +707,7 @@
         "Cores": "Quad Core",
         "Threads": "8",
         "FPU": "Yes",
-        "PackageArch": "Bromolow",
+        "PackageArch": "bromolow",
         "RAM": "DDR3 ECC 8 GB"
     },
     {
@@ -716,7 +716,7 @@
         "Cores": "Quad Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Avoton",
+        "PackageArch": "avoton",
         "RAM": "DDR3 2 GB"
     },
     {
@@ -725,7 +725,7 @@
         "Cores": "Dual Core",
         "Threads": "2",
         "FPU": "Yes",
-        "PackageArch": "Armada38x",
+        "PackageArch": "armada38x",
         "RAM": "DDR3 1 GB"
     },
     {
@@ -734,7 +734,7 @@
         "Cores": "Quad Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Braswell",
+        "PackageArch": "braswell",
         "RAM": "DDR3 2 / 8 GB"
     },
     {
@@ -743,7 +743,7 @@
         "Cores": "Quad Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Braswell",
+        "PackageArch": "braswell",
         "RAM": "DDR3 2 GB"
     },
     {
@@ -752,7 +752,7 @@
         "Cores": "Quad Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Braswell",
+        "PackageArch": "braswell",
         "RAM": "DDR3 2 GB"
     },
     {
@@ -761,7 +761,7 @@
         "Cores": "Dual Core",
         "Threads": "2",
         "FPU": "Yes",
-        "PackageArch": "Alpine4k",
+        "PackageArch": "alpine4k",
         "RAM": "DDR3 1 GB"
     },
     {
@@ -770,7 +770,7 @@
         "Cores": "Dual Core",
         "Threads": "2",
         "FPU": "Yes",
-        "PackageArch": "Braswell",
+        "PackageArch": "braswell",
         "RAM": "DDR3 1 GB"
     },
     {
@@ -779,7 +779,7 @@
         "Cores": "Dual Core",
         "Threads": "2",
         "FPU": "Yes",
-        "PackageArch": "Armada38x",
+        "PackageArch": "armada38x",
         "RAM": "DDR3 512 MB"
     },
     {
@@ -788,7 +788,7 @@
         "Cores": "Dual Core",
         "Threads": "2",
         "FPU": "Yes",
-        "PackageArch": "Armada38x",
+        "PackageArch": "armada38x",
         "RAM": "DDR3 512 MB"
     },
     {
@@ -797,7 +797,7 @@
         "Cores": "Dual Core",
         "Threads": "2",
         "FPU": "Yes",
-        "PackageArch": "Braswell",
+        "PackageArch": "braswell",
         "RAM": "DDR3 1 GB"
     },
     {
@@ -806,7 +806,7 @@
         "Cores": "Dual Core",
         "Threads": "2",
         "FPU": "Yes",
-        "PackageArch": "Braswell",
+        "PackageArch": "braswell",
         "RAM": "DDR3 1 GB"
     },
     {
@@ -815,7 +815,7 @@
         "Cores": "Dual Core",
         "Threads": "2",
         "FPU": "Yes",
-        "PackageArch": "Armada38x",
+        "PackageArch": "armada38x",
         "RAM": "DDR3 512 MB"
     },
     {
@@ -824,7 +824,7 @@
         "Cores": "Dual Core",
         "Threads": "2",
         "FPU": "Yes",
-        "PackageArch": "Monaco",
+        "PackageArch": "monaco",
         "RAM": "DDR3 1 GB"
     },
     {
@@ -833,7 +833,7 @@
         "Cores": "Dual Core",
         "Threads": "2",
         "FPU": "Yes",
-        "PackageArch": "Armada38x",
+        "PackageArch": "armada38x",
         "RAM": "DDR3 512 MB"
     },
     {
@@ -842,7 +842,7 @@
         "Cores": "Single Core",
         "Threads": "1",
         "FPU": "Yes",
-        "PackageArch": "Armada370",
+        "PackageArch": "armada370",
         "RAM": "DDR3 256 MB"
     },
     {
@@ -851,7 +851,7 @@
         "Cores": "Dual Core",
         "Threads": "2",
         "FPU": "Yes",
-        "PackageArch": "Armada38x",
+        "PackageArch": "armada38x",
         "RAM": "DDR3 1 GB"
     },
     {
@@ -860,7 +860,7 @@
         "Cores": "Quad Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Avoton",
+        "PackageArch": "avoton",
         "RAM": "DDR3 2 GB"
     },
     {
@@ -869,7 +869,7 @@
         "Cores": "Dual Core",
         "Threads": "2",
         "FPU": "Yes",
-        "PackageArch": "Armadaxp",
+        "PackageArch": "armadaxp",
         "RAM": "DDR3 1 GB"
     },
     {
@@ -878,7 +878,7 @@
         "Cores": "Quad Core",
         "Threads": "8",
         "FPU": "Yes",
-        "PackageArch": "Bromolow",
+        "PackageArch": "bromolow",
         "RAM": "DDR3 ECC 8 GB"
     },
     {
@@ -887,7 +887,7 @@
         "Cores": "Dual Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Bromolow",
+        "PackageArch": "bromolow",
         "RAM": "DDR3 ECC 4 GB"
     },
     {
@@ -896,7 +896,7 @@
         "Cores": "Quad Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Avoton",
+        "PackageArch": "avoton",
         "RAM": "DDR3 2 GB"
     },
     {
@@ -905,7 +905,7 @@
         "Cores": "Quad Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Alpine",
+        "PackageArch": "alpine",
         "RAM": "DDR3 4 GB"
     },
     {
@@ -914,7 +914,7 @@
         "Cores": "Quad Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Avoton",
+        "PackageArch": "avoton",
         "RAM": "DDR3 2 GB"
     },
     {
@@ -923,7 +923,7 @@
         "Cores": "Quad Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Avoton",
+        "PackageArch": "avoton",
         "RAM": "DDR3 2 GB"
     },
     {
@@ -932,7 +932,7 @@
         "Cores": "Quad Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Alpine",
+        "PackageArch": "alpine",
         "RAM": "DDR3 2 GB"
     },
     {
@@ -941,7 +941,7 @@
         "Cores": "Quad Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Alpine",
+        "PackageArch": "alpine",
         "RAM": "DDR3 2 GB"
     },
     {
@@ -950,7 +950,7 @@
         "Cores": "Quad Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Avoton",
+        "PackageArch": "avoton",
         "RAM": "DDR3 2 GB"
     },
     {
@@ -959,7 +959,7 @@
         "Cores": "Dual Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Evansport",
+        "PackageArch": "evansport",
         "RAM": "DDR3 1 GB"
     },
     {
@@ -968,7 +968,7 @@
         "Cores": "Dual Core",
         "Threads": "2",
         "FPU": "Yes",
-        "PackageArch": "Alpine4k",
+        "PackageArch": "alpine4k",
         "RAM": "DDR3 1 GB"
     },
     {
@@ -977,7 +977,7 @@
         "Cores": "Dual Core",
         "Threads": "2",
         "FPU": "Yes",
-        "PackageArch": "Armada375",
+        "PackageArch": "armada375",
         "RAM": "DDR3 512 MB"
     },
     {
@@ -986,7 +986,7 @@
         "Cores": "Dual Core",
         "Threads": "2",
         "FPU": "Yes",
-        "PackageArch": "Armada375",
+        "PackageArch": "armada375",
         "RAM": "DDR3 512 MB"
     },
     {
@@ -995,7 +995,7 @@
         "Cores": "Single Core",
         "Threads": "1",
         "FPU": "Yes",
-        "PackageArch": "Armada370",
+        "PackageArch": "armada370",
         "RAM": "DDR3 256 MB"
     },
     {
@@ -1004,7 +1004,7 @@
         "Cores": "Quad Core",
         "Threads": "8",
         "FPU": "Yes",
-        "PackageArch": "Bromolow",
+        "PackageArch": "bromolow",
         "RAM": "DDR3 ECC 8 GB"
     },
     {
@@ -1013,7 +1013,7 @@
         "Cores": "Dual Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Bromolow",
+        "PackageArch": "bromolow",
         "RAM": "DDR3 ECC 4 GB"
     },
     {
@@ -1022,7 +1022,7 @@
         "Cores": "Dual Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Cedarview",
+        "PackageArch": "cedarview",
         "RAM": "DDR3 2 GB"
     },
     {
@@ -1031,7 +1031,7 @@
         "Cores": "Dual Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Cedarview",
+        "PackageArch": "cedarview",
         "RAM": "DDR3 2 GB"
     },
     {
@@ -1040,7 +1040,7 @@
         "Cores": "Dual Core",
         "Threads": "2",
         "FPU": "Yes",
-        "PackageArch": "Armadaxp",
+        "PackageArch": "armadaxp",
         "RAM": "DDR3 1 GB"
     },
     {
@@ -1049,7 +1049,7 @@
         "Cores": "Single Core",
         "Threads": "1",
         "FPU": "Yes",
-        "PackageArch": "Armada370",
+        "PackageArch": "armada370",
         "RAM": "DDR3 512 MB"
     },
     {
@@ -1058,7 +1058,7 @@
         "Cores": "Dual Core",
         "Threads": "2",
         "FPU": "Yes",
-        "PackageArch": "Armadaxp",
+        "PackageArch": "armadaxp",
         "RAM": "DDR3 1 GB"
     },
     {
@@ -1067,7 +1067,7 @@
         "Cores": "Dual Core",
         "Threads": "2",
         "FPU": "Yes",
-        "PackageArch": "Comcerto2k",
+        "PackageArch": "comcerto2k",
         "RAM": "DDR3 512 MB"
     },
     {
@@ -1076,7 +1076,7 @@
         "Cores": "Single Core",
         "Threads": "1",
         "FPU": "Yes",
-        "PackageArch": "Armada370",
+        "PackageArch": "armada370",
         "RAM": "DDR3 512 MB"
     },
     {
@@ -1085,7 +1085,7 @@
         "Cores": "Dual Core",
         "Threads": "2",
         "FPU": "Yes",
-        "PackageArch": "Armadaxp",
+        "PackageArch": "armadaxp",
         "RAM": "DDR3 1 GB"
     },
     {
@@ -1094,7 +1094,7 @@
         "Cores": "Dual Core",
         "Threads": "2",
         "FPU": "Yes",
-        "PackageArch": "Armadaxp",
+        "PackageArch": "armadaxp",
         "RAM": "DDR3 512 MB"
     },
     {
@@ -1103,7 +1103,7 @@
         "Cores": "Dual Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Evansport",
+        "PackageArch": "evansport",
         "RAM": "DDR3 1 GB"
     },
     {
@@ -1112,7 +1112,7 @@
         "Cores": "Single Core",
         "Threads": "1",
         "FPU": "Yes",
-        "PackageArch": "Armada370",
+        "PackageArch": "armada370",
         "RAM": "DDR3 256 MB"
     },
     {
@@ -1121,7 +1121,7 @@
         "Cores": "Single Core",
         "Threads": "1",
         "FPU": "Yes",
-        "PackageArch": "Armada370",
+        "PackageArch": "armada370",
         "RAM": "DDR3 512 MB"
     },
     {
@@ -1130,7 +1130,7 @@
         "Cores": "Quad Core",
         "Threads": "8",
         "FPU": "Yes",
-        "PackageArch": "Bromolow",
+        "PackageArch": "bromolow",
         "RAM": "DDR3 ECC 8 GB"
     },
     {
@@ -1139,7 +1139,7 @@
         "Cores": "Quad Core",
         "Threads": "8",
         "FPU": "Yes",
-        "PackageArch": "Bromolow",
+        "PackageArch": "bromolow",
         "RAM": "DDR3 ECC 8 GB"
     },
     {
@@ -1148,7 +1148,7 @@
         "Cores": "Dual Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Cedarview",
+        "PackageArch": "cedarview",
         "RAM": "DDR3 2 GB"
     },
     {
@@ -1157,7 +1157,7 @@
         "Cores": "Dual Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Cedarview",
+        "PackageArch": "cedarview",
         "RAM": "DDR3 2 GB"
     },
     {
@@ -1166,7 +1166,7 @@
         "Cores": "Dual Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Cedarview",
+        "PackageArch": "cedarview",
         "RAM": "DDR3 2 GB"
     },
     {
@@ -1175,7 +1175,7 @@
         "Cores": "Dual Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Cedarview",
+        "PackageArch": "cedarview",
         "RAM": "DDR3 1 GB"
     },
     {
@@ -1184,7 +1184,7 @@
         "Cores": "Dual Core",
         "Threads": "2",
         "FPU": "Yes",
-        "PackageArch": "Qoriq",
+        "PackageArch": "qoriq",
         "RAM": "DDR3 1 GB"
     },
     {
@@ -1202,7 +1202,7 @@
         "Cores": "Dual Core",
         "Threads": "2",
         "FPU": "Yes",
-        "PackageArch": "Qoriq",
+        "PackageArch": "qoriq",
         "RAM": "DDR3 512 MB"
     },
     {
@@ -1229,7 +1229,7 @@
         "Cores": "Single Core",
         "Threads": "1",
         "FPU": "Yes",
-        "PackageArch": "Armada370",
+        "PackageArch": "armada370",
         "RAM": "DDR3 512 MB"
     },
     {
@@ -1238,7 +1238,7 @@
         "Cores": "Dual Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Bromolow",
+        "PackageArch": "bromolow",
         "RAM": "DDR3 ECC 2 GB"
     },
     {
@@ -1247,7 +1247,7 @@
         "Cores": "Dual Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Cedarview",
+        "PackageArch": "cedarview",
         "RAM": "DDR3 1 GB"
     },
     {
@@ -1256,7 +1256,7 @@
         "Cores": "Dual Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Cedarview",
+        "PackageArch": "cedarview",
         "RAM": "DDR3 1 GB"
     },
     {
@@ -1283,7 +1283,7 @@
         "Cores": "Dual Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Bromolow",
+        "PackageArch": "bromolow",
         "RAM": "DDR3 ECC 2 GB"
     },
     {
@@ -1292,7 +1292,7 @@
         "Cores": "Dual Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Cedarview",
+        "PackageArch": "cedarview",
         "RAM": "DDR3 1 GB"
     },
     {
@@ -1301,7 +1301,7 @@
         "Cores": "Dual Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Cedarview",
+        "PackageArch": "cedarview",
         "RAM": "DDR3 1 GB"
     },
     {
@@ -1310,7 +1310,7 @@
         "Cores": "Single Core",
         "Threads": "2",
         "FPU": "Yes",
-        "PackageArch": "X86",
+        "PackageArch": "x86",
         "RAM": "DDR3 1 GB"
     },
     {
@@ -1319,7 +1319,7 @@
         "Cores": "Dual Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Cedarview",
+        "PackageArch": "cedarview",
         "RAM": "DDR3 1 GB"
     },
     {
@@ -1382,7 +1382,7 @@
         "Cores": "Dual Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Bromolow",
+        "PackageArch": "bromolow",
         "RAM": "DDR3 ECC 2 GB"
     },
     {
@@ -1391,7 +1391,7 @@
         "Cores": "Dual Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "X86",
+        "PackageArch": "x86",
         "RAM": "DDR2 1 GB"
     },
     {
@@ -1409,7 +1409,7 @@
         "Cores": "Dual Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "Bromolow",
+        "PackageArch": "bromolow",
         "RAM": "DDR3 ECC 2 GB"
     },
     {
@@ -1418,7 +1418,7 @@
         "Cores": "Dual Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "X86",
+        "PackageArch": "x86",
         "RAM": "DDR2 1 GB"
     },
     {
@@ -1427,7 +1427,7 @@
         "Cores": "Dual Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "X86",
+        "PackageArch": "x86",
         "RAM": "DDR2 1 GB"
     },
     {
@@ -1436,7 +1436,7 @@
         "Cores": "Dual Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "X86",
+        "PackageArch": "x86",
         "RAM": "DDR2 1 GB"
     },
     {
@@ -1445,7 +1445,7 @@
         "Cores": "Dual Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "X86",
+        "PackageArch": "x86",
         "RAM": "DDR2 1 GB"
     },
     {
@@ -1517,7 +1517,7 @@
         "Cores": "Dual Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "X86",
+        "PackageArch": "x86",
         "RAM": "DDR2 1 GB"
     },
     {
@@ -1526,7 +1526,7 @@
         "Cores": "Dual Core",
         "Threads": "4",
         "FPU": "Yes",
-        "PackageArch": "X86",
+        "PackageArch": "x86",
         "RAM": "DDR2 1 GB"
     },
     {
@@ -1535,7 +1535,7 @@
         "Cores": "Single Core",
         "Threads": "2",
         "FPU": "Yes",
-        "PackageArch": "X86",
+        "PackageArch": "x86",
         "RAM": "DDR2 1 GB"
     },
     {
@@ -1544,7 +1544,7 @@
         "Cores": "Single Core",
         "Threads": "1",
         "FPU": "Yes",
-        "PackageArch": "Ppc853x",
+        "PackageArch": "ppc853x",
         "RAM": "DDR 512 MB"
     },
     {
@@ -1562,7 +1562,7 @@
         "Cores": "Single Core",
         "Threads": "1",
         "FPU": "Yes",
-        "PackageArch": "Ppc853x",
+        "PackageArch": "ppc853x",
         "RAM": "DDR 512 MB"
     },
     {
@@ -1580,7 +1580,7 @@
         "Cores": "Single Core",
         "Threads": "1",
         "FPU": "Yes",
-        "PackageArch": "Ppc853x",
+        "PackageArch": "ppc853x",
         "RAM": "DDR 512 MB"
     },
     {
