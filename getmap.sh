@@ -5,7 +5,7 @@ DiskIdxMap=""
 
 
 let maxIdx=`cat /sys/block/sd*/device/syno_disk_serial | cut -c1 | sort -u | tail -n 1`
-if 
+
 for i in $(seq 0 ${maxIdx})
 do
   let idx=-1
