@@ -5159,6 +5159,26 @@
             }
         },
         {
+            "filename": "aqc111",
+            "license": "GPL",
+            "description": "Aquantia AQtion USB to 5/2.5GbE Controllers",
+            "depends": "usbnet,usbcore",
+            "retpoline": "Y",
+            "vermagic": "4.4.180+ SMP mod_unload ",
+            "alias": [
+                "usb:v1C04p0015d*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v1C04p0015d*dc*dsc*dp*icFFisc*ip*in*",
+                "usb:v20F4pE05Ad*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v20F4pE05Ad*dc*dsc*dp*icFFisc*ip*in*",
+                "usb:v0B95p2791d*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v0B95p2791d*dc*dsc*dp*icFFisc*ip*in*",
+                "usb:v0B95p2790d*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v0B95p2790d*dc*dsc*dp*icFFisc*ip*in*",
+                "usb:v2ECApC101d*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v2ECApC101d*dc*dsc*dp*icFFisc*ip*in*"
+            ]
+        },
+        {
             "filename": "acpi-cpufreq",
             "license": "GPL",
             "file": "drivers/cpufreq/acpi-cpufreq",
@@ -7760,6 +7780,66 @@
             "description": "PHY library"
         },
         {
+            "filename": "atlantic",
+            "description": "Marvell (Aquantia) Corporation(R) Network Driver",
+            "author": "Marvell",
+            "version": "2.5.5.0",
+            "license": "GPL v2",
+            "firmware": "mrvl/80B1.fw",
+            "srcversion": "5F4A82156F81C65996BD811",
+            "depends": "crc-itu-t",
+            "retpoline": "Y",
+            "vermagic": "4.4.180+ SMP mod_unload ",
+            "parm": {
+                "aq_ptp_offset_forced": "Force to use the driver parameters (uint)",
+                "aq_ptp_offset_100": "PTP offset for 100M (uint)",
+                "aq_ptp_offset_1000": "PTP offset for 1G (uint)",
+                "aq_ptp_offset_2500": "PTP offset for 2,5G (uint)",
+                "aq_ptp_offset_5000": "PTP offset for 5G (uint)",
+                "aq_ptp_offset_10000": "PTP offset for 10G (uint)",
+                "aq_ptp_gpio_hightime": "PTP GPIO high time (uint)",
+                "sleep_delay": "uint",
+                "aq_itr": "Interrupt throttling mode (uint)",
+                "aq_itr_tx": "TX interrupt throttle rate (uint)",
+                "aq_itr_rx": "RX interrupt throttle rate (uint)",
+                "aq_rxpageorder": "RX page order override (uint)",
+                "aq_rx_refill_thres": "RX refill threshold (uint)",
+                "debug": "Default debug msglevel (uint)",
+                "aq_fw_did": "Use FW image for this DID (array of uint)",
+                "aq_fw_sid": "Use provisioning data for this SID (array of uint)",
+                "aq_force_host_boot": "Force host boot (array of uint)",
+                "aq_enable_wa": "Quirk bits to enable HW workarounds (int)",
+                "aq_enable_ptp": "Enable PTP (bool)"
+            },
+            "alias": [
+                "pci:v00001D6Ad000093C0sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000094C0sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000011C0sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000012C0sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000034C0sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000014C0sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000000C0sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000004C0sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000092B1sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000091B1sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000089B1sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000088B1sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000087B1sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000080B1sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000012B1sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000011B1sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000009B1sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000008B1sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000007B1sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000000B1sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad0000D109sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad0000D108sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad0000D107sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad0000D100sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad00000001sv*sd*bc*sc*i*"
+            ]
+        },
+        {
             "filename": "e1000e",
             "version": "3.4.2.4-NAPI",
             "license": "GPL",
@@ -8528,6 +8608,26 @@
                 "disable_rc_polling": "disable remote control polling (default: 0) (int)",
                 "force_pid_filter_usage": "force all DVB USB devices to use a PID filter, if any (default: 0) (int)"
             }
+        },
+        {
+            "filename": "aqc111",
+            "license": "GPL",
+            "description": "Aquantia AQtion USB to 5/2.5GbE Controllers",
+            "depends": "usbnet,usbcore",
+            "retpoline": "Y",
+            "vermagic": "4.4.180+ SMP mod_unload ",
+            "alias": [
+                "usb:v1C04p0015d*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v1C04p0015d*dc*dsc*dp*icFFisc*ip*in*",
+                "usb:v20F4pE05Ad*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v20F4pE05Ad*dc*dsc*dp*icFFisc*ip*in*",
+                "usb:v0B95p2791d*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v0B95p2791d*dc*dsc*dp*icFFisc*ip*in*",
+                "usb:v0B95p2790d*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v0B95p2790d*dc*dsc*dp*icFFisc*ip*in*",
+                "usb:v2ECApC101d*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v2ECApC101d*dc*dsc*dp*icFFisc*ip*in*"
+            ]
         },
         {
             "filename": "acpi-cpufreq",
@@ -11802,6 +11902,26 @@
             }
         },
         {
+            "filename": "aqc111",
+            "license": "GPL",
+            "description": "Aquantia AQtion USB to 5/2.5GbE Controllers",
+            "depends": "usbnet,usbcore",
+            "retpoline": "Y",
+            "vermagic": "4.4.180+ SMP mod_unload ",
+            "alias": [
+                "usb:v1C04p0015d*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v1C04p0015d*dc*dsc*dp*icFFisc*ip*in*",
+                "usb:v20F4pE05Ad*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v20F4pE05Ad*dc*dsc*dp*icFFisc*ip*in*",
+                "usb:v0B95p2791d*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v0B95p2791d*dc*dsc*dp*icFFisc*ip*in*",
+                "usb:v0B95p2790d*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v0B95p2790d*dc*dsc*dp*icFFisc*ip*in*",
+                "usb:v2ECApC101d*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v2ECApC101d*dc*dsc*dp*icFFisc*ip*in*"
+            ]
+        },
+        {
             "filename": "acpi-cpufreq",
             "license": "GPL",
             "file": "drivers/cpufreq/acpi-cpufreq",
@@ -14325,6 +14445,66 @@
             "description": "PHY library"
         },
         {
+            "filename": "atlantic",
+            "description": "Marvell (Aquantia) Corporation(R) Network Driver",
+            "author": "Marvell",
+            "version": "2.5.5.0",
+            "license": "GPL v2",
+            "firmware": "mrvl/80B1.fw",
+            "srcversion": "5F4A82156F81C65996BD811",
+            "depends": "crc-itu-t",
+            "retpoline": "Y",
+            "vermagic": "4.4.180+ SMP mod_unload ",
+            "parm": {
+                "aq_ptp_offset_forced": "Force to use the driver parameters (uint)",
+                "aq_ptp_offset_100": "PTP offset for 100M (uint)",
+                "aq_ptp_offset_1000": "PTP offset for 1G (uint)",
+                "aq_ptp_offset_2500": "PTP offset for 2,5G (uint)",
+                "aq_ptp_offset_5000": "PTP offset for 5G (uint)",
+                "aq_ptp_offset_10000": "PTP offset for 10G (uint)",
+                "aq_ptp_gpio_hightime": "PTP GPIO high time (uint)",
+                "sleep_delay": "uint",
+                "aq_itr": "Interrupt throttling mode (uint)",
+                "aq_itr_tx": "TX interrupt throttle rate (uint)",
+                "aq_itr_rx": "RX interrupt throttle rate (uint)",
+                "aq_rxpageorder": "RX page order override (uint)",
+                "aq_rx_refill_thres": "RX refill threshold (uint)",
+                "debug": "Default debug msglevel (uint)",
+                "aq_fw_did": "Use FW image for this DID (array of uint)",
+                "aq_fw_sid": "Use provisioning data for this SID (array of uint)",
+                "aq_force_host_boot": "Force host boot (array of uint)",
+                "aq_enable_wa": "Quirk bits to enable HW workarounds (int)",
+                "aq_enable_ptp": "Enable PTP (bool)"
+            },
+            "alias": [
+                "pci:v00001D6Ad000093C0sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000094C0sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000011C0sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000012C0sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000034C0sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000014C0sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000000C0sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000004C0sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000092B1sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000091B1sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000089B1sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000088B1sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000087B1sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000080B1sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000012B1sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000011B1sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000009B1sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000008B1sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000007B1sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad000000B1sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad0000D109sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad0000D108sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad0000D107sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad0000D100sv*sd*bc*sc*i*",
+                "pci:v00001D6Ad00000001sv*sd*bc*sc*i*"
+            ]
+        },
+        {
             "filename": "e1000e",
             "version": "3.8.4-NAPI",
             "license": "GPL",
@@ -15108,6 +15288,26 @@
                 "disable_rc_polling": "disable remote control polling (default: 0) (int)",
                 "force_pid_filter_usage": "force all DVB USB devices to use a PID filter, if any (default: 0) (int)"
             }
+        },
+        {
+            "filename": "aqc111",
+            "license": "GPL",
+            "description": "Aquantia AQtion USB to 5/2.5GbE Controllers",
+            "depends": "usbnet,usbcore",
+            "retpoline": "Y",
+            "vermagic": "4.4.180+ SMP mod_unload ",
+            "alias": [
+                "usb:v1C04p0015d*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v1C04p0015d*dc*dsc*dp*icFFisc*ip*in*",
+                "usb:v20F4pE05Ad*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v20F4pE05Ad*dc*dsc*dp*icFFisc*ip*in*",
+                "usb:v0B95p2791d*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v0B95p2791d*dc*dsc*dp*icFFisc*ip*in*",
+                "usb:v0B95p2790d*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v0B95p2790d*dc*dsc*dp*icFFisc*ip*in*",
+                "usb:v2ECApC101d*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v2ECApC101d*dc*dsc*dp*icFFisc*ip*in*"
+            ]
         },
         {
             "filename": "acpi-cpufreq",
@@ -18144,6 +18344,26 @@
             }
         },
         {
+            "filename": "aqc111",
+            "license": "GPL",
+            "description": "Aquantia AQtion USB to 5/2.5GbE Controllers",
+            "depends": "usbnet,usbcore",
+            "retpoline": "Y",
+            "vermagic": "4.4.180+ SMP mod_unload ",
+            "alias": [
+                "usb:v1C04p0015d*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v1C04p0015d*dc*dsc*dp*icFFisc*ip*in*",
+                "usb:v20F4pE05Ad*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v20F4pE05Ad*dc*dsc*dp*icFFisc*ip*in*",
+                "usb:v0B95p2791d*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v0B95p2791d*dc*dsc*dp*icFFisc*ip*in*",
+                "usb:v0B95p2790d*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v0B95p2790d*dc*dsc*dp*icFFisc*ip*in*",
+                "usb:v2ECApC101d*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v2ECApC101d*dc*dsc*dp*icFFisc*ip*in*"
+            ]
+        },
+        {
             "filename": "acpi-cpufreq",
             "license": "GPL",
             "file": "drivers/cpufreq/acpi-cpufreq",
@@ -20329,6 +20549,26 @@
             "retpoline": "Y",
             "depends": "",
             "vermagic": "3.10.108 SMP mod_unload "
+        },
+        {
+            "filename": "aqc111",
+            "license": "GPL",
+            "description": "Aquantia AQtion USB to 5/2.5GbE Controllers",
+            "retpoline": "Y",
+            "depends": "usbnet,usbcore",
+            "vermagic": "3.10.108 SMP mod_unload ",
+            "alias": [
+                "usb:v1C04p0015d*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v1C04p0015d*dc*dsc*dp*icFFisc*ip*in*",
+                "usb:v20F4pE05Ad*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v20F4pE05Ad*dc*dsc*dp*icFFisc*ip*in*",
+                "usb:v0B95p2791d*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v0B95p2791d*dc*dsc*dp*icFFisc*ip*in*",
+                "usb:v0B95p2790d*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v0B95p2790d*dc*dsc*dp*icFFisc*ip*in*",
+                "usb:v2ECApC101d*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v2ECApC101d*dc*dsc*dp*icFFisc*ip*in*"
+            ]
         },
         {
             "filename": "acpi-cpufreq",
@@ -23283,6 +23523,26 @@
                 "disable_rc_polling": "disable remote control polling (default: 0) (int)",
                 "force_pid_filter_usage": "force all DVB USB devices to use a PID filter, if any (default: 0) (int)"
             }
+        },
+        {
+            "filename": "aqc111",
+            "license": "GPL",
+            "description": "Aquantia AQtion USB to 5/2.5GbE Controllers",
+            "depends": "usbnet,usbcore",
+            "retpoline": "Y",
+            "vermagic": "4.4.180+ SMP mod_unload ",
+            "alias": [
+                "usb:v1C04p0015d*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v1C04p0015d*dc*dsc*dp*icFFisc*ip*in*",
+                "usb:v20F4pE05Ad*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v20F4pE05Ad*dc*dsc*dp*icFFisc*ip*in*",
+                "usb:v0B95p2791d*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v0B95p2791d*dc*dsc*dp*icFFisc*ip*in*",
+                "usb:v0B95p2790d*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v0B95p2790d*dc*dsc*dp*icFFisc*ip*in*",
+                "usb:v2ECApC101d*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v2ECApC101d*dc*dsc*dp*icFFisc*ip*in*"
+            ]
         },
         {
             "filename": "acpi-cpufreq",
@@ -26585,6 +26845,26 @@
                 "disable_rc_polling": "disable remote control polling (default: 0) (int)",
                 "force_pid_filter_usage": "force all DVB USB devices to use a PID filter, if any (default: 0) (int)"
             }
+        },
+        {
+            "filename": "aqc111",
+            "license": "GPL",
+            "description": "Aquantia AQtion USB to 5/2.5GbE Controllers",
+            "depends": "usbnet,usbcore",
+            "retpoline": "Y",
+            "vermagic": "4.4.180+ SMP mod_unload ",
+            "alias": [
+                "usb:v1C04p0015d*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v1C04p0015d*dc*dsc*dp*icFFisc*ip*in*",
+                "usb:v20F4pE05Ad*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v20F4pE05Ad*dc*dsc*dp*icFFisc*ip*in*",
+                "usb:v0B95p2791d*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v0B95p2791d*dc*dsc*dp*icFFisc*ip*in*",
+                "usb:v0B95p2790d*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v0B95p2790d*dc*dsc*dp*icFFisc*ip*in*",
+                "usb:v2ECApC101d*dc*dsc*dp*ic02isc06ip00in*",
+                "usb:v2ECApC101d*dc*dsc*dp*icFFisc*ip*in*"
+            ]
         },
         {
             "filename": "acpi-cpufreq",
