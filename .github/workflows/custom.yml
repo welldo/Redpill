@@ -750,7 +750,7 @@ jobs:
             cd ./cache
             curl -#kL ${paturl} -o ds.pat
             if [ -f "$GITHUB_WORKSPACE/syno-extractor.sh" ]; then
-              chmod a+x $GITHUB_WORKSPACE/syno-extractor.sh && $GITHUB_WORKSPACE/syno-extractor.sh ds.pat pat
+              sudo chmod +x $GITHUB_WORKSPACE/syno-extractor.sh && sudo $GITHUB_WORKSPACE/syno-extractor.sh ds.pat pat
             else
               curl -sSkL https://raw.githubusercontent.com/wjz304/Redpill_CustomBuild/main/syno-extractor.sh | sudo bash -s ds.pat pat
             fi
@@ -841,7 +841,7 @@ jobs:
           if [[ "${version}" < "7" ]]; then 
             # redpill.ko 方式一 
             echo "=========================Download redpill.ko=========================="
-            extension=$(curl -skL "${lkmext}/redpill${lkm}/rpext-index.json")
+            extension=$(curl -skL "${lkmext}/redpill/rpext-index.json")
             redpilltgz=$(curl -skL "$(echo ${extension} | jq -r .releases.${synoplatform}_${synoversion})" | jq -r '.files[] .url')
             [ "$(echo $redpilltgz | awk '{print $NF}')" != "$redpilltgz" ] && redpilltgz=$(echo $redpilltgz | awk '{print $1}')
             wget ${redpilltgz}
