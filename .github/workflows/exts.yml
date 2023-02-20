@@ -298,6 +298,19 @@ jobs:
               with open(os.path.join(root, 'docs/toolchain.json'), 'w', encoding='utf-8') as f:
                   f.write(json.dumps(toolchain, indent=4))
 
+              # patindo
+              models = {}
+              with open('doc/loads.json', 'r') as f:
+                  models = json.load(f)
+              for model in models.keys():
+                  req = requests.get('https://www.synology.com/api/support/findDownloadInfo?lang=en-us&product={}'.format(model.replace('+','%2B')))
+                  data = json.loads(req.text)
+                  data[]
+              
+              print(toolchain)
+              with open(os.path.join(root, 'docs/toolchain.json'), 'w', encoding='utf-8') as f:
+                  f.write(json.dumps(toolchain, indent=4))
+
       - name: Checkout arpl-modules
         run: |
           sudo rm -rf arpl-modules
