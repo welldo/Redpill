@@ -838,7 +838,7 @@ jobs:
             exdsmpat ${platform} ${version}
           fi
 
-          if [[ "${version}" < "7" ]]; then 
+          #if [[ "${version}" < "7" ]]; then 
             # redpill.ko 方式一 
             echo "=========================Download redpill.ko=========================="
             extension=$(curl -skL "${lkmext}/redpill/rpext-index.json")
@@ -849,45 +849,45 @@ jobs:
             modinfo ./redpill.ko
             RPKOVER=$(modinfo --field=vermagic ./redpill.ko | awk '{print $1}')
             cp -fv ./redpill.ko ./ext/rp-lkm/redpill-linux-v${RPKOVER}.ko
-          else
-            # # redpill.ko 方式二 GCC版本需要修改,待优化
-            # echo "===========================Build redpill.ko==========================="
-            # toolkittxz=ds.${synoarch}-${version::3}.dev.txz
-            # toolkitdir=usr/local/x86_64-pc-linux-gnu/x86_64-pc-linux-gnu/sys-root/usr/lib/modules/DSM-${version::3}/build
-            # curl -skL "https://global.download.synology.com/download/ToolChain/toolkit/${version::3}/${synoarch}/${toolkittxz}" -o ${toolkittxz}
-            # mkdir ${synoarch} && tar -C./${synoarch}/ -xf ${toolkittxz} ${toolkitdir}
-            # git clone -b master --depth=1 https://github.com/${repo}/redpill-lkm.git
-            # cd redpill-lkm
-            # # sed -i 's/   -std=gnu89/   -std=gnu89 -fno-pie/' ../${synoarch}/${toolkitdir}/Makefile
-            # make LINUX_SRC=../${synoarch}/${toolkitdir} dev-v${version::1}
-            # modinfo ./redpill.ko
-            # RPKOVER=$(modinfo --field=vermagic ./redpill.ko | awk '{print $1}')
-            # cp -fv ./redpill.ko ../ext/rp-lkm/redpill-linux-v${RPKOVER}.ko
-            # cd ..
-
-            # redpill.ko 方式三 
-            echo "===========================Arpl redpill.ko==========================="
-            TAG=`curl -skL https://api.github.com/repos/fbelavenuto/redpill-lkm/releases/latest | grep "tag_name" | awk '{print substr($2, 2, length($2)-3)}'`
-            curl -#kL "https://github.com/fbelavenuto/redpill-lkm/releases/download/${TAG}/rp-lkms.zip" -o ./rp-lkms.zip   # curl 新版有毛病, 下载会概率报错 "End-of-central-directory signature not found"
-            [ -f ./rp-lkms.zip ] && unzip ./rp-lkms.zip -d ./rp-lkms >/dev/null || true
-            [ -d ./rp-lkms ] && for file in ./rp-lkms/*; do [ "$(echo ${file} | grep -e -${synoarch}- | grep ${lkm})" != "" ] && gzip -dcv "${file}" > "./redpill.ko" || echo "${file}: No"; done
-            rm -rf ./redpill.ko  # 屏蔽下载， 有待确认
-            if [ -f ./redpill.ko ]; then
-              modinfo ./redpill.ko
-              RPKOVER=$(modinfo --field=vermagic ./redpill.ko | awk '{print $1}')
-              cp -fv ./redpill.ko ./ext/rp-lkm/redpill-linux-v${RPKOVER}.ko
-            else
-              [ ${{ env.dev }} == '1' ] && lkmrepo="fbelavenuto" || lkmrepo="pocopico"
-              git clone --recursive https://github.com/${lkmrepo}/redpill-lkm.git redpill-lkm
-              mkdir redpill-lkm-output && chmod -R 777 redpill-lkm-output
-              TOOLKIT_VER="latest"  # "7.1"
-              sudo docker run -u 1000 --rm -t -v "${PWD}/redpill-lkm":/input -v "${PWD}/redpill-lkm-output":/output fbelavenuto/syno-compiler:${TOOLKIT_VER} compile-lkm ${synoarch}
-              modinfo ./redpill-lkm-output/redpill-${lkm}.ko
-              RPKOVER=$(modinfo --field=vermagic ./redpill-lkm-output/redpill-${lkm}.ko | awk '{print $1}')
-              cp -fv ./redpill-lkm-output/redpill-${lkm}.ko ./ext/rp-lkm/redpill-linux-v${RPKOVER}.ko
-              sudo chmod -R +x ./ext/rp-lkm
-            fi
-          fi
+          #else
+          #  # # redpill.ko 方式二 GCC版本需要修改,待优化
+          #  # echo "===========================Build redpill.ko==========================="
+          #  # toolkittxz=ds.${synoarch}-${version::3}.dev.txz
+          #  # toolkitdir=usr/local/x86_64-pc-linux-gnu/x86_64-pc-linux-gnu/sys-root/usr/lib/modules/DSM-${version::3}/build
+          #  # curl -skL "https://global.download.synology.com/download/ToolChain/toolkit/${version::3}/${synoarch}/${toolkittxz}" -o ${toolkittxz}
+          #  # mkdir ${synoarch} && tar -C./${synoarch}/ -xf ${toolkittxz} ${toolkitdir}
+          #  # git clone -b master --depth=1 https://github.com/${repo}/redpill-lkm.git
+          #  # cd redpill-lkm
+          #  # # sed -i 's/   -std=gnu89/   -std=gnu89 -fno-pie/' ../${synoarch}/${toolkitdir}/Makefile
+          #  # make LINUX_SRC=../${synoarch}/${toolkitdir} dev-v${version::1}
+          #  # modinfo ./redpill.ko
+          #  # RPKOVER=$(modinfo --field=vermagic ./redpill.ko | awk '{print $1}')
+          #  # cp -fv ./redpill.ko ../ext/rp-lkm/redpill-linux-v${RPKOVER}.ko
+          #  # cd ..
+          #
+          #  # redpill.ko 方式三 
+          #  echo "===========================Arpl redpill.ko==========================="
+          #  TAG=`curl -skL https://api.github.com/repos/fbelavenuto/redpill-lkm/releases/latest | grep "tag_name" | awk '{print substr($2, 2, length($2)-3)}'`
+          #  curl -#kL "https://github.com/fbelavenuto/redpill-lkm/releases/download/${TAG}/rp-lkms.zip" -o ./rp-lkms.zip   # curl 新版有毛病, 下载会概率报错 "End-of-central-directory signature not found"
+          #  [ -f ./rp-lkms.zip ] && unzip ./rp-lkms.zip -d ./rp-lkms >/dev/null || true
+          #  [ -d ./rp-lkms ] && for file in ./rp-lkms/*; do [ "$(echo ${file} | grep -e -${synoarch}- | grep ${lkm})" != "" ] && gzip -dcv "${file}" > "./redpill.ko" || echo "${file}: No"; done
+          #  rm -rf ./redpill.ko  # 屏蔽下载， 有待确认
+          #  if [ -f ./redpill.ko ]; then
+          #    modinfo ./redpill.ko
+          #    RPKOVER=$(modinfo --field=vermagic ./redpill.ko | awk '{print $1}')
+          #    cp -fv ./redpill.ko ./ext/rp-lkm/redpill-linux-v${RPKOVER}.ko
+          #  else
+          #    [ ${{ env.dev }} == '1' ] && lkmrepo="fbelavenuto" || lkmrepo="pocopico"
+          #    git clone --recursive https://github.com/${lkmrepo}/redpill-lkm.git redpill-lkm
+          #    mkdir redpill-lkm-output && chmod -R 777 redpill-lkm-output
+          #    TOOLKIT_VER="latest"  # "7.1"
+          #    sudo docker run -u 1000 --rm -t -v "${PWD}/redpill-lkm":/input -v "${PWD}/redpill-lkm-output":/output fbelavenuto/syno-compiler:${TOOLKIT_VER} compile-lkm ${synoarch}
+          #    modinfo ./redpill-lkm-output/redpill-${lkm}.ko
+          #    RPKOVER=$(modinfo --field=vermagic ./redpill-lkm-output/redpill-${lkm}.ko | awk '{print $1}')
+          #    cp -fv ./redpill-lkm-output/redpill-${lkm}.ko ./ext/rp-lkm/redpill-linux-v${RPKOVER}.ko
+          #    sudo chmod -R +x ./ext/rp-lkm
+          #  fi
+          #fi
           if [ "SA6400" == "${platform}" ]; then
             if [ "${lkm}" == "prod" ]; then
               curl -skL "https://github.com/wjz304/Redpill_CustomBuild/files/10734770/rp-epyc7002-5.10.55-prod.ko.gz" -o "rp-epyc7002-5.10.55-prod.ko.gz"
