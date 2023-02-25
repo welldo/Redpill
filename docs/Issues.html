@@ -163,7 +163,7 @@
                     $("#inputs").prepend(html + parameters);
                     $("#selectproxy").on("change", changeProxy); 
                     $("#repository").on("change", changeRepository);
-                    $("#platform").on("change", changePlatform);
+                    $("#model").on("change", changeModel);
                     $("#version").on("change", changeVersion);
                     changeRepository();
                   });
@@ -292,18 +292,18 @@
       function changeRepository() {
         repository = $("#repository").val();
         var xreleases = Object.keys(_loads[repository]).sort();
-        $("#platform")[0].options.length = 0;
+        $("#model")[0].options.length = 0;
         for (var i in xreleases) {
-          $("#platform")[0].options.add(new Option(xreleases[i], xreleases[i]));
+          $("#model")[0].options.add(new Option(xreleases[i], xreleases[i]));
         }
-        changePlatform();
+        changeModel();
       }
 
-      function changePlatform() {
+      function changeModel() {
         repository = $("#repository").val();
-        platform = $("#platform").val();
+        model = $("#model").val();
 
-        var xreleases = _loads[repository][platform].reverse();
+        var xreleases = _loads[repository][model].reverse();
         $("#version")[0].options.length = 0;
         for (var i in xreleases) { 
           $("#version")[0].options.add(new Option(xreleases[i], xreleases[i]));
@@ -315,10 +315,11 @@
         createExtBtn("addons");
         createExtBtn("modules");
       }
-      function getToolChain(platform, version) {
-        for (var model in _models) {
-          if (_models[model]["Model"] == platform) {
-            arch = _models[model]["PackageArch"];
+
+      function getToolChain(model, version) {
+        for (var idx in _models) {
+          if (_models[idx]["Model"] == model) {
+            arch = _models[idx]["PackageArch"];
             for (var toolchain in _toolchain) {
               if (version.substring(0,3) == toolchain.substring(0,3)) {
                 return arch.toLowerCase() + '-' + _toolchain[toolchain][arch];
@@ -331,9 +332,9 @@
       }
 
       function createExtBtn(rp) {
-        var platform = $("#platform").val();
-        var version = $("#version").val();
-        var toolchain = getToolChain(platform, version);
+        var model = $("#model").val().replace("+", "p").toLowerCase();;
+        var version = $("#version").val().split("-")[1];
+        var toolchain = getToolChain($("#model").val(), $("#version").val());
         var exts = eval('_'+rp);
 
         var html = "";
@@ -341,7 +342,7 @@
         let idx = 1;
         for (var ext in exts) {
           var par = "";
-          if (exts[ext]["platforms"].split(',').indexOf(platform + "_" + version) == -1)
+          if (exts[ext]["platforms"].split(',').indexOf(model + "_" + version) == -1)
             if (exts[ext]["platforms"].split(',').indexOf(toolchain) == -1)
               if (exts[ext]["platforms"].split(',').indexOf("_") == -1)
                 par = 'disabled="false"';

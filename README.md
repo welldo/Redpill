@@ -39,7 +39,7 @@
 参数             | 必选 |     默认值     | 说明  
 -----------------|------|----------------|---------  
 repository       | √    |-               | 请选择编译依赖的基础库. "pocopico_develop", "pocopico_jun", "jumkey_develop", "PeterSuh-Q3_master"  
-platform         | √    |-               | 请选择你需要编译的型号. (具体包含型号以基础库支持为准)  
+model            | √    |-               | 请选择你需要编译的型号. (具体包含型号以基础库支持为准)  
 version          | √    |-               | 请选择你需要编译的版本. (具体包含版本以基础库支持为准)  
 lkm              | ×    |-               | 如不了解请保持默认, 请选择 LKM 版本.(目前具体有何区别不详, 如无必要选默认的 redpill).  
 config           | ×    |-               | 如不了解请保持默认, 设置默认 user_config.json <sup>[①]()</sup>
@@ -96,11 +96,11 @@ ext3rds          | ×    |-               | 请输入需要集成的其他驱动
 
 ## 举例
 * 普通参数示例:
-  - {"repository":"pocopico_develop", "platform":"DS3622xs+", "version":"7.0.1-42218", "lkm":"dev", "diskidxmap":"00", "sataportmap":"6", "addons":"misc", "modules":"r8125"}  
-  - {"repository":"pocopico_develop", "platform":"DS3622xs+", "version":"7.0.1-42218", "lkm":"dev", "maxdisks":"16", "maxlanport":"7", "addons":"misc", "modules":"r8125"}  
+  - {"repository":"pocopico_develop", "model":"DS3622xs+", "version":"7.0.1-42218", "lkm":"dev", "diskidxmap":"00", "sataportmap":"6", "addons":"misc", "modules":"r8125"}  
+  - {"repository":"pocopico_develop", "model":"DS3622xs+", "version":"7.0.1-42218", "lkm":"dev", "maxdisks":"16", "maxlanport":"7", "addons":"misc", "modules":"r8125"}  
   - {  
       "repository":"pocopico_develop",  
-      "platform":"DS3622xs+",  
+      "model":"DS3622xs+",  
       "version":"7.0.1-42218",  
       "lkm":"dev",  
       "netif_num":"3",  
@@ -110,7 +110,7 @@ ext3rds          | ×    |-               | 请输入需要集成的其他驱动
 * dtb参数示例:  
   - {  
       "repository":"pocopico_develop",  
-      "platform":"DS920+",  
+      "model":"DS920+",  
       "version":"7.0.1-42218",  
       "lkm":"dev",  
       "dtb": "https://github.com/wjz304/Redpill_CustomBuildfiles/9235785/ds920p.zip",  
@@ -119,7 +119,7 @@ ext3rds          | ×    |-               | 请输入需要集成的其他驱动
 * ext3rds参数链接示例:  
   - {  
       "repository":"pocopico_develop",  
-      "platform":"DS3622xs+",  
+      "model":"DS3622xs+",  
       "version":"7.1.1-42962",  
       "lkm":"dev",  
       "addons":"dtbstatic, misc",
@@ -129,16 +129,16 @@ ext3rds          | ×    |-               | 请输入需要集成的其他驱动
 * config参数示例:  
   - {  
       "repository":"pocopico_develop",  
-      "platform":"DS3622xs+",  
+      "model":"DS3622xs+",  
       "version":"7.0.1-42218",  
       "lkm":"dev",  
       "config":{"ramdisk_copy": {}},  
       "addons":"misc"  
     }  
 * 高级自定义示例:
-  - {"repository":"pocopico_develop", "platform":"DS3622xs+", "version":"7.0.1-42218", "lkm":"dev", "addons":"misc"}  
+  - {"repository":"pocopico_develop", "model":"DS3622xs+", "version":"7.0.1-42218", "lkm":"dev", "addons":"misc"}  
     \`\`\`  
-    echo "${platform}"  
+    echo "${model}"  
     \`\`\`  
     
 </br>

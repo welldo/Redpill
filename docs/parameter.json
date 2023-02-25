@@ -23,8 +23,8 @@
             "wjz304_test-jun"
         ]
     },
-    "platform": {
-        "name": "platform",
+    "model": {
+        "name": "model",
         "description": "请选择你需要编译的型号(具体包含型号以基础库支持为准).",
         "detailedinfo": "请选择你需要编译的型号(具体包含版本以基础库支持为准).",
         "required": true,

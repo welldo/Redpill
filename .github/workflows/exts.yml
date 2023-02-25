@@ -62,23 +62,23 @@ jobs:
           def getloadlist(work = 'redpill-load', ignore=[]):
               load = {}
               try:
-                  platforms = os.listdir(os.path.join(root, work, 'config'))
-                  platforms.sort()
-                  print(platforms)
-                  for platform in platforms:
-                      if platform.startswith('.') or platform.startswith('_'):
+                  models = os.listdir(os.path.join(root, work, 'config'))
+                  models.sort()
+                  print(models)
+                  for model in models:
+                      if model.startswith('.') or model.startswith('_'):
                           continue
-                      if os.path.isdir(os.path.join(root, work, 'config', platform)):
-                          versions = os.listdir(os.path.join(root, work, 'config', platform))
+                      if os.path.isdir(os.path.join(root, work, 'config', model)):
+                          versions = os.listdir(os.path.join(root, work, 'config', model))
                           versions.sort()
                           print(versions)
                           for version in versions:
                               if version in ignore:
                                   continue
-                              if os.path.exists(os.path.join(root, work, 'config', platform, version, 'config.json')):
-                                  if platform not in load:
-                                      load[platform] = []
-                                  load[platform].append(version)
+                              if os.path.exists(os.path.join(root, work, 'config', model, version, 'config.json')):
+                                  if model not in load:
+                                      load[model] = []
+                                  load[model].append(version)
 
               except Exception as err:
                   print(err)

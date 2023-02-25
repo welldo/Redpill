@@ -152,8 +152,9 @@ jobs:
               warinfo = ''
 
               repository = ''
-              platform = ''
+              model = ''
               version = ''
+              platform = ''
               lkm = ''
 
               config = ''
@@ -201,8 +202,9 @@ jobs:
                   else:
                       # l = lambda x: x.strip() if isinstance(x, str) else str(x)
                       if 'repository' in body: repository = body['repository'].strip()
-                      if 'platform' in body: platform = body['platform'].strip()
+                      if 'model' in body: model = body['model'].strip()
                       if 'version' in body: version = body['version'].strip()
+                      # if 'platform' in body: platform = body['platform'].strip()
                       if 'lkm' in body: lkm = body['lkm'].strip()
 
                       if 'config' in body: config = body['config'] #l(body['config']).strip()
@@ -241,23 +243,33 @@ jobs:
                   errinfo = 'repository 参数错误, 当前仅支持 {}.'.format(', '.join(repositorys))
 
               if iscustom == 'true':
-                  platforms = loads[repository].keys()
-                  if not platform in platforms:
+                  models = loads[repository].keys()
+                  if not model in models:
                       iscustom = 'false'
-                      errinfo = 'platform 参数错误, 当前仅支持 {}.'.format(', '.join(platforms))
+                      errinfo = 'model 参数错误, 当前仅支持 {}.'.format(', '.join(models))
 
               if iscustom == 'true':
-                  versions = loads[repository][platform]
+                  versions = loads[repository][model]
                   if not version in versions:
                       iscustom = 'false'
                       errinfo = 'version 参数错误, 当前仅支持 {}.'.format(', '.join(versions))
+
+              if iscustom == 'true':
+                  models = {}
+                  with open('docs/models.json', mode="r", encoding='utf-8') as f:
+                      models = json.loads(f.read())
+                  toolchain = {}
+                  with open('docs/toolchain.json', mode="r", encoding='utf-8') as f:
+                      toolchain = json.loads(f.read())
+                  PackageArch = [ item["PackageArch"] for item in models if item["Model"] == model ][0]
+                  PackageKVer = [ toolchain[item][PackageArch] for item in toolchain if item[0:3] == version[0:3] ][0]
+                  platform = PackageArch + "-" + PackageKVer
 
               if iscustom == 'true':
                   lkms = []
                   with open('docs/parameter.json', mode="r", encoding='utf-8') as f:
                       parameter = json.loads(f.read())
                       lkms = parameter['lkm']['options']
-                  lkm = lkm.replace('redpill', '')   # 兼容一下旧issues
                   if lkm == '':
                       lkm = lkms[0]
                   if not lkm in lkms:
@@ -449,13 +461,13 @@ jobs:
                   req.encoding = 'utf-8'
                   gitAddons = json.loads(req.text)
                   curAddons = [ x.strip() for x in re.split(',| |\|', addons) if x.strip() != '' ]
-                  extc = [ x for x in curAddons if x not in gitAddons.keys() and platform not in gitAddons[x]['platforms'].split(',') and '_' not in gitAddons[x]['platforms'] ]
+                  extc = [ x for x in curAddons if x not in gitAddons.keys() or (platform not in gitAddons[x]['platforms'].split(',') and '_' not in gitAddons[x]['platforms']) ]
                   if len(extc) > 0:
                       iscustom = 'false'
                       errinfo = 'ext 参数错误, "{}" 无效, addons 当前仅支持 "{}".'.format(extc, ','.join([x for x in curAddons if x in gitAddons.keys() and (platform in gitAddons[x]['platforms'].split(',') or '_' in gitAddons[x]['platforms'])]))
                   else:
                       dtbs = ['DS920+', 'DS923+', 'DS1520+', 'DS1621+', 'DS1821+', 'DS2422+', 'DVA1622', 'FS2500', 'SA6400']
-                      if platform in dtbs:
+                      if model in dtbs:
                           if dtb == '':
                               if 'dtbstatic' in curAddons:
                                   iscustom = 'false'
@@ -474,7 +486,7 @@ jobs:
                       else:
                           if 'dtbstatic' in curAddons or 'disks' in curAddons or 'dtbpatch' in curAddons:
                               iscustom = 'false'
-                              errinfo = 'addons 参数错误, "dtbstatic / disks / dtbpatch" 无效, "{}" 不需要 "dtb".'.format(platform)
+                              errinfo = 'addons 参数错误, "dtbstatic / disks / dtbpatch" 无效, "{}" 不需要 "dtb".'.format(model)
                       if iscustom == 'true' and addons != '':
                           addons = ','.join(curAddons)
 
@@ -483,7 +495,7 @@ jobs:
                   req.encoding = 'utf-8'
                   gitModules = json.loads(req.text)
                   curModules = [ x.strip() for x in re.split(',| |\|', modules) if x.strip() != '' ]
-                  extc = [ x for x in curModules if x not in gitModules.keys() and platform not in gitModules[x]['platforms'].split(',') and '_' in gitModules[x]['platforms'] ]
+                  extc = [ x for x in curModules if x not in gitModules.keys() or (platform not in gitModules[x]['platforms'].split(',') and '_' not in gitModules[x]['platforms']) ]
                   if len(extc) > 0:
                       iscustom = 'false'
                       errinfo = 'ext 参数错误, "{}" 无效, modules 当前仅支持 "{}".'.format(extc, ','.join([x for x in curModules if x in gitModules.keys() and (platform in gitModules[x]['platforms'].split(',') or '_' in gitModules[x]['platforms'])]))
@@ -498,7 +510,7 @@ jobs:
                       errinfo = 'ext3rds 参数错误, "{}" 无效, ext3rds 当前仅支持 url 地址.'.format(extc)
                   else:
                       ext3rds = ','.join(ext3rds)
-            
+
               if iscustom == 'true' and not dev in ['0', '1']:
                   dev = '0'
 
@@ -508,8 +520,9 @@ jobs:
               set_output('warinfo', warinfo)
 
               set_output('repository', repository)
-              set_output('platform', platform)
+              set_output('model', model)
               set_output('version', version)
+              set_output('platform', platform)
               set_output('lkm', lkm)
 
               set_output('config', config)
@@ -542,8 +555,9 @@ jobs:
           echo warinfo:           '${{ env.warinfo }}'
 
           echo repository:        '${{ env.repository }}'
-          echo platform:          '${{ env.platform }}'
+          echo model:             '${{ env.model }}'
           echo version:           '${{ env.version }}'
+          echo platform:          '${{ env.platform }}'
           echo lkm:               '${{ env.lkm }}'
 
           echo config:            '${{ env.config }}'
@@ -574,7 +588,7 @@ jobs:
           actions: 'add-labels'
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ env.issuenumber }}
-          labels: 'custom,${{ env.platform }}'
+          labels: 'custom,${{ env.model }}'
 
       - name: Update Comment Begin
         if: env.issues == 'true' && env.iscustom == 'true'
@@ -665,8 +679,8 @@ jobs:
 
               dat = []
               if '${{ env.sn }}' == '' or '${{ env.mac }}' == '':
-                  platform = '${{ env.platform }}'
-                  dat = os.popen('bash ./serialnumbergen.sh {}'.format(platform)).readlines()
+                  model = '${{ env.model }}'
+                  dat = os.popen('bash ./serialnumbergen.sh {}'.format(model)).readlines()
 
               if '${{ env.config }}' != '':
                   inconfig = json.loads('${{ env.config }}')
@@ -748,13 +762,13 @@ jobs:
           sudo apt install rename tree -y   # typo 依赖
 
           function exdsmpat() {
-            platform=$1
+            model=$1
             version=$2
 
-            synoplatform=$(echo ${platform,,} | sed 's/+/p/g')                             # DS3622xs+ => ds3622xsp
+            synomodel=$(echo ${model,,} | sed 's/+/p/g')                             # DS3622xs+ => ds3622xsp
             synoversion=$(echo ${version} | awk -F - '{print $2}')                         # 7.0.1-42218 => 42218
             
-            configfile=./config/${platform}/${version}/config.json
+            configfile=./config/${model}/${version}/config.json
             paturl=$(cat ${configfile} | jq -r '.os .pat_url')
 
             cd ./cache
@@ -762,12 +776,12 @@ jobs:
             if [ -f "$GITHUB_WORKSPACE/syno-extractor.sh" ]; then
               sudo chmod +x $GITHUB_WORKSPACE/syno-extractor.sh && sudo $GITHUB_WORKSPACE/syno-extractor.sh ds.pat pat
             else
-              curl -sSkL https://raw.githubusercontent.com/wjz304/Redpill_CustomBuild/main/syno-extractor.sh | sudo bash -s ds.pat pat
+              curl -skL https://raw.githubusercontent.com/wjz304/Redpill_CustomBuild/main/syno-extractor.sh | sudo bash -s ds.pat pat
             fi
 
-            tar -czf ${synoplatform}_${synoversion}.pat -C ./pat/ . --warning=no-file-changed
+            tar -czf ${synomodel}_${synoversion}.pat -C ./pat/ . --warning=no-file-changed
 
-            sha256newpat=$(sha256sum ${synoplatform}_${synoversion}.pat | awk '{print $1}')
+            sha256newpat=$(sha256sum ${synomodel}_${synoversion}.pat | awk '{print $1}')
             sha256zImage=$(sha256sum ./pat/zImage | awk '{print $1}')
             sha256ramdisk=$(sha256sum ./pat/rd.gz | awk '{print $1}')
             isDT=$([ -f "pat/model.dtb" ] && echo true || echo false)
@@ -787,9 +801,9 @@ jobs:
           function setsynoarch() {
             # jq: error: xxxx/0 is not defined at <top-level> : --arg xxxx "${xxxx}" ' ... $xxxx ...
             if [ -f "$GITHUB_WORKSPACE/docs/models.json" ]; then
-              synoarch=$(jq -r --arg platform "${platform}" '. | map(select(.Model == $platform)) | .[].PackageArch' $GITHUB_WORKSPACE/docs/models.json)
+              synoarch=$(jq -r --arg model "$1" '. | map(select(.Model == $model)) | .[].PackageArch' $GITHUB_WORKSPACE/docs/models.json)
             else
-              synoarch=$(curl -skL https://raw.githubusercontent.com/wjz304/Redpill_CustomBuild/main/docs/models.json | jq -r --arg platform "${platform}" '. | map(select(.Model == $platform)) | .[].PackageArch')
+              synoarch=$(curl -skL https://raw.githubusercontent.com/wjz304/Redpill_CustomBuild/main/docs/models.json | jq -r --arg model "$1" '. | map(select(.Model == $model)) | .[].PackageArch')
             fi
             synoarch=${synoarch,,}
             echo ${synoarch}
@@ -826,16 +840,18 @@ jobs:
           cp user_config.json redpill-load/user_config.json
 
           cd redpill-load
-          platform=${{ env.platform }}
+          model=${{ env.model }}
           version=${{ env.version }}
-          synoplatform=$(echo ${platform,,} | sed 's/+/p/g')                             # DS3622xs+ => ds3622xsp
+          platform=${{ env.platform }}
+          synomodel=$(echo ${model,,} | sed 's/+/p/g')                                   # DS3622xs+ => ds3622xsp
           synoversion=$(echo ${version} | awk -F - '{print $2}')                         # 7.0.1-42218 => 42218
-          setsynoarch ${platform}
+          synoarch=$(echo ${platform} | awk -F - '{print $1}')
+          synokver=$(echo ${platform} | awk -F - '{print $2}')
 
           # 7.1 解密PAT
           echo "===========================7.1+ 解密PAT==========================="
           if [[ "${version}" > "7.0.1-42218" ]]; then 
-            exdsmpat ${platform} ${version}
+            exdsmpat ${model} ${version}
           fi
 
           #if [[ "${version}" < "7" ]]; then 
@@ -843,7 +859,7 @@ jobs:
             echo "=========================Download redpill.ko=========================="
             lkmext=https://raw.githubusercontent.com/wjz304/rp-ext/master
             extension=$(curl -skL "${lkmext}/redpill/rpext-index.json")
-            redpilltgz=$(curl -skL "$(echo ${extension} | jq -r .releases.${synoplatform}_${synoversion})" | jq -r '.files[] .url')
+            redpilltgz=$(curl -skL "$(echo ${extension} | jq -r .releases.${synomodel}_${synoversion})" | jq -r '.files[] .url')
             [ "$(echo $redpilltgz | awk '{print $NF}')" != "$redpilltgz" ] && redpilltgz=$(echo $redpilltgz | awk '{print $1}')
             wget ${redpilltgz}
             tar zxvf $(echo ${redpilltgz} | awk -F / '{print $NF}') -C ./ 
@@ -871,7 +887,7 @@ jobs:
           #  TAG=`curl -skL https://api.github.com/repos/fbelavenuto/redpill-lkm/releases/latest | grep "tag_name" | awk '{print substr($2, 2, length($2)-3)}'`
           #  curl -#kL "https://github.com/fbelavenuto/redpill-lkm/releases/download/${TAG}/rp-lkms.zip" -o ./rp-lkms.zip   # curl 新版有毛病, 下载会概率报错 "End-of-central-directory signature not found"
           #  [ -f ./rp-lkms.zip ] && unzip ./rp-lkms.zip -d ./rp-lkms >/dev/null || true
-          #  [ -d ./rp-lkms ] && for file in ./rp-lkms/*; do [ "$(echo ${file} | grep -e -${synoarch}- | grep ${lkm})" != "" ] && gzip -dcv "${file}" > "./redpill.ko" || echo "${file}: No"; done
+          #  [ -d ./rp-lkms ] && for file in ./rp-lkms/*; do [ "$(echo ${file} | grep ${platform}-${lkm})" != "" ] && gzip -dcv "${file}" > "./redpill.ko" || echo "${file}: No"; done
           #  rm -rf ./redpill.ko  # 屏蔽下载， 有待确认
           #  if [ -f ./redpill.ko ]; then
           #    modinfo ./redpill.ko
@@ -881,7 +897,7 @@ jobs:
           #    [ ${{ env.dev }} == '1' ] && lkmrepo="fbelavenuto" || lkmrepo="pocopico"
           #    git clone --recursive https://github.com/${lkmrepo}/redpill-lkm.git redpill-lkm
           #    mkdir redpill-lkm-output && chmod -R 777 redpill-lkm-output
-          #    TOOLKIT_VER="latest"  # "7.1"
+          #    TOOLKIT_VER="latest"  # "7.1"  # "latest"
           #    sudo docker run -u 1000 --rm -t -v "${PWD}/redpill-lkm":/input -v "${PWD}/redpill-lkm-output":/output fbelavenuto/syno-compiler:${TOOLKIT_VER} compile-lkm ${synoarch}
           #    modinfo ./redpill-lkm-output/redpill-${lkm}.ko
           #    RPKOVER=$(modinfo --field=vermagic ./redpill-lkm-output/redpill-${lkm}.ko | awk '{print $1}')
@@ -889,7 +905,7 @@ jobs:
           #    sudo chmod -R +x ./ext/rp-lkm
           #  fi
           #fi
-          if [ "SA6400" == "${platform}" ]; then
+          if [ "SA6400" == "${model}" ]; then
             if [ "${lkm}" == "prod" ]; then
               curl -skL "https://github.com/wjz304/Redpill_CustomBuild/files/10734770/rp-epyc7002-5.10.55-prod.ko.gz" -o "rp-epyc7002-5.10.55-prod.ko.gz"
               gzip -dcv "rp-epyc7002-5.10.55-prod.ko.gz" > "./ext/rp-lkm/redpill-linux-v${RPKOVER}.ko"
@@ -898,14 +914,11 @@ jobs:
               gzip -dcv "rp-epyc7002-5.10.55-dev.ko.gz" > "./ext/rp-lkm/redpill-linux-v${RPKOVER}.ko"
             fi
           fi
-          RPKOOLD=`echo $(grep "@@@EXT@@@/rp-lkm" ./config/${platform}/${version}/config.json | sed -r 's|"@@@EXT@@@/(.*)":(.*)|\1|')`  # `echo $P` 去首尾空格
+          RPKOOLD=`echo $(grep "@@@EXT@@@/rp-lkm" ./config/${model}/${version}/config.json | sed -r 's|"@@@EXT@@@/(.*)":(.*)|\1|')`  # `echo $P` 去首尾空格
           if [ ! "${RPKOOLD}" == "rp-lkm/redpill-linux-v${RPKOVER}.ko" ]; then
-            echo "change ./config/${platform}/${version}/config.json from ${RPKOOLD} to rp-lkm/redpill-linux-v${RPKOVER}.ko"
-            sed -i "s|${RPKOOLD}|rp-lkm/redpill-linux-v${RPKOVER}.ko|" ./config/${platform}/${version}/config.json
+            echo "change ./config/${model}/${version}/config.json from ${RPKOOLD} to rp-lkm/redpill-linux-v${RPKOVER}.ko"
+            sed -i "s|${RPKOOLD}|rp-lkm/redpill-linux-v${RPKOVER}.ko|" ./config/${model}/${version}/config.json
           fi
-
-          PLATFORM_KERNELVERSION="${synoarch}-${RPKOVER/+/}"
-          echo PLATFORM_KERNELVERSION=${PLATFORM_KERNELVERSION}
 
           rpext=https://raw.githubusercontent.com/wjz304/rp-ext/master
 
@@ -964,7 +977,7 @@ jobs:
           # 编译
           echo "==============================编译=============================="
           # sed -i "s|#!/usr/bin/env bash|#!/usr/bin/env -S bash -x|g" ./build-loader.sh
-          sudo ${bArgs} BRP_USER_CFG=user_config.json BRP_PLATFORM_KERNELVERSION=${PLATFORM_KERNELVERSION} ./build-loader.sh "${platform}" "${version}"
+          sudo ${bArgs} BRP_USER_CFG=user_config.json BRP_PLATFORM_KERNELVERSION=${platform} ./build-loader.sh "${model}" "${version}"
 
           ls ./custom/extensions | grep -v txt > exts.txt
           ls -al ./custom/extensions
@@ -980,9 +993,8 @@ jobs:
             echo "👉 issues: [#${{ env.issuenumber }}](${{ github.event.issue.html_url }})" >> $GITHUB_STEP_SUMMARY
           else
             echo "### ${{ github.triggering_actor }}'s Redpill Custom" >> $GITHUB_STEP_SUMMARY
-            echo "👉 "platform": "${{ env.platform }}"  " >> $GITHUB_STEP_SUMMARY
+            echo "👉 "model": "${{ env.model }}"  " >> $GITHUB_STEP_SUMMARY
             echo "👉 "version": "${{ env.version }}"  " >> $GITHUB_STEP_SUMMARY
-            echo "👉 "ext": "${{ env.ext }}"  " >> $GITHUB_STEP_SUMMARY
           fi
 
           if [ '${{ env.warinfo }}' != '' ]; then
@@ -999,7 +1011,7 @@ jobs:
             echo -e "BOOT:\n${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> redpill-load/body#actions.txt
           fi
 
-          configfile=./redpill-load/config/${{ env.platform }}/${{ env.version }}/config.json
+          configfile=./redpill-load/config/${{ env.model }}/${{ env.version }}/config.json
           paturl=$(cat ${configfile} | jq -r '.os .pat_url')
 
           echo -e "\nPAT:\n${paturl}" >> redpill-load/body#${{ env.issuenumber }}.txt
@@ -1008,7 +1020,7 @@ jobs:
         if: env.iscustom == 'true' && success()
         uses: actions/upload-artifact@v3
         with:
-          name: Redpill-${{ env.platform }}-${{ env.version }}-${{ env.release_tag }}
+          name: Redpill-${{ env.model }}-${{ env.version }}-${{ env.release_tag }}
           path: |
             redpill-load/exts.txt
             redpill-load/body*.txt
