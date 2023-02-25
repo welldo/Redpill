@@ -475,7 +475,7 @@ jobs:
                           if 'dtbstatic' in curAddons or 'disks' in curAddons or 'dtbpatch' in curAddons:
                               iscustom = 'false'
                               errinfo = 'addons 参数错误, "dtbstatic / disks / dtbpatch" 无效, "{}" 不需要 "dtb".'.format(platform)
-                      if iscustom == 'true':
+                      if iscustom == 'true' and addons != '':
                           addons = ','.join(curAddons)
 
               if iscustom == 'true' and modules != '':
