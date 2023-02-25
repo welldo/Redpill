@@ -60,8 +60,10 @@
 
       var _parameters = {};
       var _loads = {};
-      var _exts = {};
-
+      var _addons = {};
+      var _modules = {};
+      var _ext3rds = {};
+	  
       //repo = getRepo(repo);
       //dev = getUrlParam("dev");
       url = `./`;
@@ -143,20 +145,29 @@
           _parameters = JSON.parse(result);
           httpGetAsync(url + "loads.json" + "?" + Math.random(), function (result) {
             _loads = JSON.parse(result);
-            httpGetAsync(url + "exts.json" + "?" + Math.random(), function (result) {
-              _exts = JSON.parse(result);
-              $("#inputs").find("div").remove(); //html('');
-              var parameters = "";
-              for (var key in _parameters) {
-                //console.log(key, result[key]);
-                parameters += createInput(_parameters[key]);
-              }
-              $("#inputs").prepend(html + parameters);
-              $("#selectproxy").on("change", changeProxy); 
-              $("#repository").on("change", changeRepository);
-              $("#platform").on("change", changePlatform);
-              $("#version").on("change", changeVersion);
-              changeRepository();
+              httpGetAsync(url + "models.json" + "?" + Math.random(), function (result) {
+              _models = JSON.parse(result);
+                httpGetAsync(url + "toolchain.json" + "?" + Math.random(), function (result) {
+                _toolchain = JSON.parse(result);
+                httpGetAsync("https://raw.githubusercontent.com/wjz304/rp-ext/main/addons.json" + "?" + Math.random(), function (result) {
+                  _addons = JSON.parse(result);
+                  httpGetAsync("https://raw.githubusercontent.com/wjz304/rp-ext/main/modules.json" + "?" + Math.random(), function (result) {
+                    _modules = JSON.parse(result);
+                    $("#inputs").find("div").remove(); //html('');
+                    var parameters = "";
+                    for (var key in _parameters) {
+                      //console.log(key, result[key]);
+                      parameters += createInput(_parameters[key]);
+                    }
+                    $("#inputs").prepend(html + parameters);
+                    $("#selectproxy").on("change", changeProxy); 
+                    $("#repository").on("change", changeRepository);
+                    $("#platform").on("change", changePlatform);
+                    $("#version").on("change", changeVersion);
+                    changeRepository();
+                  });
+                });
+              });
             });
           });
         });
@@ -208,31 +219,37 @@
         if (data.hasOwnProperty("default")) dft = data.default;
         if (data.hasOwnProperty("required")) req = data.required;
         if (data.hasOwnProperty("detailedinfo")) info = data.detailedinfo;
-
-        if (type == "choice") {
-          var par = "";
-          if (req) par = "required";
-          html += `<div class="form-group mt-1 mb-2 ${par}"><div class="form-group-header"><label class="color-fg-default text-mono f6" for="${name}">${name}</label></div><div class="form-group-body">`;
-          html += `<select class="form-select form-control select-sm input-contrast" id="${name}" required="" name="inputs[${name}]" value="'${dft}'">`;
-          var opts = [];
-          if (data.hasOwnProperty("options")) opts = data.options;
-          for (var v in opts) {
-            var addpar = "";
-            if (opts[v] == dft) addpar = 'selected="selected"';
-            html += `<option ${addpar} value="${opts[v]}">${opts[v]}</option>`;
-          }
-          html += `</select>`;
-          html += `<a class="js-navigation-open Link--primary" title="${info}" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" href="#">使用说明：${desc}</a>`;
-          html += `</div></div>`;
-        } else if (type == "string") {
-          var par = "";
-          if (req) par = "required";
-          html += `<div class="form-group mt-1 mb-2 ${par}"><div class="form-group-header"><label class="color-fg-default text-mono f6" for="${name}">${name}</label></div><div class="form-group-body">`;
-          html += `<input class="form-control input-contrast input-sm" type="text" id="${name}" name="inputs[${name}]" value="${dft}" />`;
-          html += `<a class="js-navigation-open Link--primary" title="${info}" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" href="#">使用说明：${desc}</a>`;
-          html += `</div></div>`;
+        
+        if (type == "none") {
+          
         } else {
+          var par = "";
+          if (req) par = "required";
+
+          html += `<div class="form-group mt-1 mb-2 ${par}">`;
+          html += `  <div class="form-group-header"><label class="color-fg-default text-mono f6" for="${name}">${name}</label></div>`;
+          html += `  <div class="form-group-body">`;
+          
+          if (type == "choice") {
+            html += `  <select class="form-select form-control select-sm input-contrast" id="${name}" required="" name="inputs[${name}]" value="'${dft}'">`;
+            var opts = [];
+            if (data.hasOwnProperty("options")) opts = data.options;
+            for (var v in opts) {
+              var addpar = "";
+              if (opts[v] == dft) addpar = 'selected="selected"';
+              html += `    <option ${addpar} value="${opts[v]}">${opts[v]}</option>`;
+            }
+            html += `  </select>`;
+          } else if (type == "string") {
+            html += `  <input class="form-control input-contrast input-sm" type="text" id="${name}" name="inputs[${name}]" value="${dft}" />`;
+          } else {
+          }
+
+          html += `  <a class="js-navigation-open Link--primary" title="${info}" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" href="#">使用说明：${desc}</a>`;
+          html += `  </div>`;
+          html += `</div>`;
         }
+        
         return html;
       }
 
@@ -288,60 +305,52 @@
       }
 
       function changeVersion() {
-        createExtBtn();
+        createExtBtn("addons");
+        createExtBtn("modules");
+      }
+      function getToolChain(platform, version) {
+        for (var model in _models) {
+          if (_models[model]["Model"] == platform) {
+            arch = _models[model]["PackageArch"];
+            for (var toolchain in _toolchain) {
+              if (version.substring(0,3) == toolchain.substring(0,3)) {
+                return arch.toLowerCase() + '-' + _toolchain[toolchain][arch];
+              }
+            }
+            break;
+          }
+        }
+        return "";
       }
 
-      function createExtBtn() {
-        platform = $("#platform").val().replace("+", "p").toLowerCase();
-        version = $("#version").val().split("-")[1];
-        var exts = {};
+      function createExtBtn(rp) {
+        var platform = $("#platform").val();
+        var version = $("#version").val();
+        var toolchain = getToolChain(platform, version);
+        var exts = eval('_'+rp);
 
-        extskey = "pocopico";
-        if (dev == "1") extskey = "wjz304";
-        if (extskey in _exts && platform + "_" + version in _exts[extskey])
-          exts = _exts[extskey][platform + "_" + version];
         var html = "";
+        html += `<div class="form-group-body" id="exts_${$('#'+rp)[0].id}" >`;
         let idx = 1;
-        if (Object.keys(exts).length > 0) {
-          html +=
-            '<span class="pl-mi1">点击驱动名添加/删除 (* 结尾的为无效驱动, # 结尾的为sha256错误驱动, */# 强制添加将编译失败.) </span><br />';
-          html +=
-            '<button type="button" class="btn btn-primary btn-sm mt-2 my-2 lh-condensed-ultra" id="ext_btn_-dtb" onclick="return processext(\'-dtb\')" autofocus="" title="同时加入 \'-dtb,dtbpatch\' 将自动识别已插入硬盘.">-dtb</button>&nbsp;';
-          html +=
-            '<button type="button" class="btn btn-primary btn-sm mt-2 my-2 lh-condensed-ultra" id="ext_btn_-virtio" onclick="return processext(\'-virtio\')" autofocus="" title="Adds VirtIO support for fast network/PCI/SCSI/network/console paravirtualization under QEmu (Proxmox, VirtualBox, virsh, and similar)">-virtio</button>&nbsp;';
-          html +=
-            '<button type="button" class="btn btn-primary btn-sm mt-2 my-2 lh-condensed-ultra" id="ext_btn_-acpid2" onclick="return processext(\'-acpid2\')" autofocus="" title="ACPI Daemon v2 that handles power button events">-acpid2</button>&nbsp;';
-          html +=
-            '<button type="button" class="btn btn-primary btn-sm mt-2 my-2 lh-condensed-ultra" id="ext_btn_-misc" onclick="return processext(\'-misc\')" autofocus="" title="Misc shell">-misc</button>&nbsp;';
-          html +=
-            '<button type="button" class="btn btn-primary btn-sm mt-2 my-2 lh-condensed-ultra" id="ext_btn_-boot-wait" onclick="return processext(\'-boot-wait\')" autofocus="" title="Simple extension which stops the execution early waiting for the boot device to appear">-boot-wait</button>&nbsp;';
-          html +=
-            '<span class="pl-md">(注意: boot-wait, misc, acpid2, virtio, dtb 默认会进行判断添加(不是一定有), 此处以"-" 开头代表删除, 无特殊需求请勿删!!!.)</span><br />';
-        }
         for (var ext in exts) {
           var par = "";
-          if (ext.endsWith("*") || ext.endsWith("#"))
-            par = 'disabled="false"';
-          html += `<button type="button" class="btn btn-primary btn-sm mt-2" id="ext_btn_${ext
-            .replace(/\./g, "·")
-            .replace(
-              /[\*|\#]/g,
-              ""
-            )}" ${par} onclick="return processext('${ext}')" autofocus="" title="${
-            exts[ext]
-          }">${ext}</button>&nbsp;`;
-          if (idx++ % 15 == 0) html += "<br />";
+          if (exts[ext]["platforms"].split(',').indexOf(platform + "_" + version) == -1)
+            if (exts[ext]["platforms"].split(',').indexOf(toolchain) == -1)
+              if (exts[ext]["platforms"].split(',').indexOf("_") == -1)
+                par = 'disabled="false"';
+          html += `<button type="button" class="btn btn-primary btn-sm mt-2" id="ext_btn_${ext}" ${par} onclick="return processext('${rp}', '${ext}')" autofocus="" title="${exts[ext]["description"]}">${ext}</button>&nbsp;`;
+          if (idx++ % 10 == 0) html += "<br />";
         }
-        $("#ext").prop("readonly", true);
-        if (extbase == "")
-          extbase = $($("#ext").parent().parent())[0].innerHTML;
-        if (extbase != "")
-          $($("#ext").parent().parent())[0].innerHTML = extbase + html;
+        html += `</div>`;
+        $('#'+rp).prop("readonly", true);
+
+        $('#'+rp).parent().parent().find(`#exts_${$('#'+rp)[0].id}`).remove();
+        $('#'+rp).parent().after(html);
       }
 
-      function processext(ext) {
-        var obj = $("#ext_btn_" + ext.replace(/\./g, "·"));
-        var exts = $("#ext").val().split(",");
+      function processext(rp, ext) {
+        var obj = $("#ext_btn_" + ext);
+        var exts = $('#'+rp).val().split(",");
         if (obj.hasClass("btn-danger")) {
           //要删除掉已经输入的内容
           exts.map((val, i) => {
@@ -351,9 +360,6 @@
           });
           obj.removeClass("btn-danger");
         } else {
-          if (ext.startsWith("-") || exts.length > 4) {
-            alert("请确认知道该操作的影响.");
-          }
           obj.addClass("btn-danger");
           exts.push(ext);
         }
@@ -362,7 +368,7 @@
             exts.splice(i, 1);
           }
         });
-        $("#ext").val(exts.join(","));
+        $('#'+rp).val(exts.join(","));
       }
 
       function createIssues() {

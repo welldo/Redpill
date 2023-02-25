@@ -192,10 +192,26 @@
         "default": "",
         "type": "string"
     },
-    "ext": {
-        "name": "ext",
-        "description": "请输入需要集成的扩展, 多个请以','间隔(请酌情添加, 太多编不过). eg: r8125, tg3",
-        "detailedinfo": "普通模式默认使用pocopico的驱动库,\ndev模式默认使用我fork的驱动库(如果报 Checksum 错, 请尝试使用(dev)模式)\n第三方驱动请在issues页面手动加入.",
+    "addons": {
+        "name": "addons",
+        "description": "请输入需要集成的扩展, 多个请以','间隔(disks / dtbpatch / dtbstatic 请只选一个, dtbstatic 依赖自定义的dtb文件).",
+        "detailedinfo": "",
+        "required": false,
+        "default": "",
+        "type": "string"
+    },
+    "modules": {
+        "name": "modules",
+        "description": "请输入需要集成的驱动, 多个请以','间隔(请酌情添加, 太多编不过). eg: r8125, tg3",
+        "detailedinfo": "",
+        "required": false,
+        "default": "",
+        "type": "string"
+    },
+    "ext3rds": {
+        "name": "ext3rds",
+        "description": "请输入需要集成的其他驱动(URL), 多个请以','间隔(请酌情添加, 太多编不过).",
+        "detailedinfo": "请输入 http 链接. eg: https://raw.githubusercontent.com/pocopico/rp-ext/master/8139cp/rpext-index.json",
         "required": false,
         "default": "",
         "type": "string"

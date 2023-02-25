@@ -9,7 +9,7 @@
 高度依赖以下大佬的项目, 请给以下各位大佬点赞.
 >源码仓库： [@RedPill-TTG](https://github.com/RedPill-TTG/redpill-load)  
 >编译来源： [@pocopico](https://github.com/pocopico/redpill-load) [@jumkey](https://github.com/jumkey/redpill-load) [@PeterSuh-Q3](https://github.com/PeterSuh-Q3/redpill-load) [@fbelavenuto](https://github.com/fbelavenuto/arpl)  
->驱动来源： [@pocopico](https://github.com/pocopico/rp-ext) [@jim3ma](https://github.com/jim3ma/synology-igc) [@fbelavenuto](https://github.com/fbelavenuto/r8125)  
+>驱动来源： [@pocopico](https://github.com/pocopico/rp-ext) [@jim3ma](https://github.com/jim3ma/synology-igc) [@fbelavenuto](https://github.com/fbelavenuto/arpl-modules)  
 
 在此, 再次, 声明!!!  
 本人只是按照通用编译流程整合各位大佬的redpill-load 进行编译. 我只是解决编译的问题, 任何引导内部问题我都解决不了(当然知道的问题肯定会协助大家解决).  
@@ -57,7 +57,9 @@ diskidxmap       | ×    |-               | 请输入SATA控制器盘序 DiskIdx
 sataportmap      | ×    |-               | 请输入SATA控制器盘数 SataPortMap. <sup>[④]()</sup> DS920+, DS923+, DS1520+, DS1621+, DS2422+, DVA1622 不需要填写. 默认: 无  
 sasidxmap        | ×    |-               | 请输入SAS控制器盘数 SasIdxMap. <sup>[④]()</sup> DS920+, DS923+, DS1520+, DS1621+, DS2422+, DVA1622 不需要填写. 默认: 无  
 dtb              | ×    |-               | 请输入dtb 文件的下载链接(支持的文件类型: .dts,.dtb,.tar.gz,.zip), 仅 DS920+, DS923+, DS1520+, DS1621+, DS2422+, DVA1622 需要填写, 其他型号请勿填写. [#47](https://github.com/wjz304/Redpill_CustomBuild/issues/47)  
-ext              | ×    |-               | 请输入需要集成的扩展, 多个请以 "," 间隔. 支持名字（pocopico库）或者链接，名字参考[exts.json](./docs/exts.json). eg: "r8125, tg3" 
+addons           | ×    |-               | 请输入需要集成的扩展, 多个请以','间隔(disks / dtbpatch / dtbstatic 请只选一个, dtbstatic 依赖自定义的dtb文件). 
+modules          | ×    |-               | 请输入需要集成的驱动, 多个请以','间隔(请酌情添加, 太多编不过). eg: "r8125, tg3" 
+ext3rds          | ×    |-               | 请输入需要集成的其他驱动(URL), 多个请以','间隔(请酌情添加, 太多编不过). 
 \-               | ×    |-               | 高级自定义 <sup>[③]()</sup>  
 
 ```
@@ -71,9 +73,9 @@ ext              | ×    |-               | 请输入需要集成的扩展, 多�
 #### 关于 dtb 现在共3种形式：  
  \  | 参数 |     说明  
 ---|------|---------  
-1 | dtb参数 填写 dtb/dts 的下载链接 | 内部会自动加入 redpill-dtb-static, 并替换自定义的 dtb 到 redpill-dtb-static 中.  
-2 | dtb参数 为空 | 内部会自动加入 redpill-dtb, redpill-dtb 将识别硬盘pci位置自动修改dtb, 支持≤4个硬盘热插拔.  
-3 | dtb参数 为空, ext 加入 "-dtb,dtbpatch" | 内部会加入 dtbpatch, 自动识别已插入硬盘(增加硬盘重启即可).  
+1 | dtb参数 填写 dtb/dts 的下载链接 | 内部会自动加入 dtbstatic, 并替换自定义的 dtb 到 dtbstatic 中.  
+2 | dtb参数 为空 | 内部会自动加入 disks, disks 均自动识别已插入硬盘并修改dtb. 如果磁盘识别有问题,请尝试切换 dtbpatch. 
+
 
 ## 说明
 0. __感谢 [hoping](https://github.com/htmambo) 大佬制作的 WEB 界面.__  
@@ -94,47 +96,47 @@ ext              | ×    |-               | 请输入需要集成的扩展, 多�
 
 ## 举例
 * 普通参数示例:
-  - {"repository":"pocopico_develop", "platform":"DS3622xs+", "version":"7.0.1-42218", "lkm":"redpill", "ext":"r8125, tg3"}  
-  - {"repository": "jumkey_develop", "platform":"DS3622xs+", "version":"7.0.1-42218", "lkm":"redpill", "ext":"r8125, tg3"}  
-  - {"repository":"pocopico_develop", "platform":"DS3622xs+", "version":"7.0.1-42218", "lkm":"redpill", "vid":"0x0525", "pid":"0xa4a5"}  
-  - {"repository":"pocopico_develop", "platform":"DS3622xs+", "version":"7.0.1-42218", "lkm":"redpill", "diskidxmap":"00", "sataportmap":"6", "ext":"r8125"}  
-  - {"repository":"pocopico_develop", "platform":"DS3622xs+", "version":"7.0.1-42218", "lkm":"redpill", "maxdisks":"16", "maxlanport":"7", "ext":"r8125"}  
+  - {"repository":"pocopico_develop", "platform":"DS3622xs+", "version":"7.0.1-42218", "lkm":"dev", "diskidxmap":"00", "sataportmap":"6", "addons":"misc", "modules":"r8125"}  
+  - {"repository":"pocopico_develop", "platform":"DS3622xs+", "version":"7.0.1-42218", "lkm":"dev", "maxdisks":"16", "maxlanport":"7", "addons":"misc", "modules":"r8125"}  
   - {  
       "repository":"pocopico_develop",  
       "platform":"DS3622xs+",  
       "version":"7.0.1-42218",  
-      "lkm":"redpill",  
+      "lkm":"dev",  
       "netif_num":"3",  
-      "ext":"r8125, r8168, e1000e, igb, vmxnet3, ixgbe"  
+      "addons":"misc", 
+      "modules":"r8125, r8168, e1000e, igb, vmxnet3, ixgbe"  
     }  
 * dtb参数示例:  
   - {  
       "repository":"pocopico_develop",  
       "platform":"DS920+",  
       "version":"7.0.1-42218",  
-      "lkm":"redpill",  
+      "lkm":"dev",  
       "dtb": "https://github.com/wjz304/Redpill_CustomBuildfiles/9235785/ds920p.zip",  
-      "ext":"r8125"  
+      "addons":"dtbstatic, misc"  
     }  
-* ext参数链接示例:  
+* ext3rds参数链接示例:  
   - {  
       "repository":"pocopico_develop",  
       "platform":"DS3622xs+",  
       "version":"7.1.1-42962",  
-      "lkm":"redpill",  
-      "ext":"r8125, e1000, e1000e, vmxnet3, https://raw.githubusercontent.com/wjz304/rp-ext/main/rtl8150/rpext-index.json"  
+      "lkm":"dev",  
+      "addons":"dtbstatic, misc",
+      "modules":"r8125, e1000, e1000e, vmxnet3",
+      "ext3rds":"https://raw.githubusercontent.com/wjz304/rp-ext/main/rtl8150/rpext-index.json"  
     }
 * config参数示例:  
   - {  
       "repository":"pocopico_develop",  
       "platform":"DS3622xs+",  
       "version":"7.0.1-42218",  
-      "lkm":"redpill",  
+      "lkm":"dev",  
       "config":{"ramdisk_copy": {}},  
-      "ext":"r8125, e1000, e1000e, vmxnet3"  
+      "addons":"misc"  
     }  
 * 高级自定义示例:
-  - {"repository":"pocopico_develop", "platform":"DS3622xs+", "version":"7.0.1-42218", "lkm":"redpill", "ext":"r8125,e1000e,vmxnet3"}  
+  - {"repository":"pocopico_develop", "platform":"DS3622xs+", "version":"7.0.1-42218", "lkm":"dev", "addons":"misc"}  
     \`\`\`  
     echo "${platform}"  
     \`\`\`  
