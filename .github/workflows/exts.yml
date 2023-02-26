@@ -20,6 +20,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@main
 
+      - name: Set up Python 3
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
       - name: Initialization environment
         run : |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
@@ -27,7 +32,7 @@ jobs:
           sudo timedatectl set-timezone "Asia/Shanghai"
 
           sudo apt install build-essential libtool pkgconf libzstd-dev liblzma-dev libssl-dev
-          pip install requests BeautifulSoup4 kmodule
+          pip install requests BeautifulSoup4
 
 
       - name: Checkout redpill-load s
@@ -86,7 +91,7 @@ jobs:
 
           if __name__ == '__main__':
               loads = {}
-              ignore=['7.0-41222', '7.0-41890', '7.1.0-42550', '7.1.0-42621', '7.1.1-42951']
+              ignore=['6.2.4-25556', '7.0-41222', '7.0-41890', '7.1.0-42550', '7.1.0-42621', '7.1.1-42951']
 
               print('################### pocopico_develop ###################')
               loads["pocopico_develop"] = getloadlist('redpill-load_pocopico_develop', ignore)
@@ -113,7 +118,7 @@ jobs:
                       f.write(json.dumps(loads, indent=4))
 
 
-      - name: Get models and toolchain lsit
+      - name: Get models, toolchain and pats lsit
         shell: python
         run: |
           # -*- coding: utf-8 -*-
@@ -150,7 +155,7 @@ jobs:
               req.encoding = 'utf-8'
               bs=BeautifulSoup(req.text, 'html.parser')
               p = re.compile(r"(.*?)-(.*?)", re.MULTILINE | re.DOTALL)
-              l = bs.find_all('a', text=p)
+              l = bs.find_all('a', string=p)
 
               toolchain = {}
               for i in l:
@@ -158,8 +163,8 @@ jobs:
                   req.encoding = 'utf-8'
                   bs=BeautifulSoup(req.text, 'html.parser')
 
-                  p = re.compile(r"^(.*?)Linux(.*?)\((.*?)\)$", re.MULTILINE | re.DOTALL)
-                  data = bs.find_all('td', text=p)
+                  p = re.compile(r"^(.*?)[L|l]inux(.*?)\((.*?)\)$", re.MULTILINE | re.DOTALL)
+                  data = bs.find_all('td', string=p)
                   for item in data:
                       info = p.search(item.string).groups()
                       if not i.string in toolchain.keys(): toolchain[i.string] = {}
@@ -171,23 +176,46 @@ jobs:
                   f.write(json.dumps(toolchain, indent=4))
 
               # patindo
-              models = {}
-              with open('doc/loads.json', 'r') as f:
-                  models = json.load(f)
-              for model in models.keys():
-                  req = requests.get('https://www.synology.com/api/support/findDownloadInfo?lang=en-us&product={}'.format(model.replace('+','%2B')))
-                  data = json.loads(req.text)
-                  data[]
-              
-              print(toolchain)
-              with open(os.path.join(root, 'docs/toolchain.json'), 'w', encoding='utf-8') as f:
-                  f.write(json.dumps(toolchain, indent=4))
+              loads = {}
+              with open('docs/loads.json', 'r') as f:
+                  loads = json.load(f)
+              #models = list(set(sum(list(list(loads[x].keys()) for x in loads.keys()), [])))
+              pats = {}
+              for load in loads.keys():
+                  for model in loads[load].keys():
+                      if model not in pats.keys():
+                          pats[model] = {}
+                      for version in loads[load][model]:
+                          if version in pats[model].keys():
+                              continue
 
+                          vers = version.split('-')[0].split('.')
+                          if len(vers) == 2:
+                              vers.append('0')
+                          if len(vers) == 3:
+                              (major, minor, micro) = vers
+                          else:
+                              print("{}-{}-error".format(model, version))
+                              (major, minor, micro) = ["7", "1", "1"]
+
+                          req = requests.get('https://www.synology.com/api/support/findDownloadInfo?lang=en-us&product={}&major={}&minor={}&micro={}'.format(model.replace('+','%2B'), major, minor, micro))
+                          data = json.loads(req.text)
+                          try:
+                              pats[model][version] = data["info"]["system"][0]["items"][0]["files"][0]["url"]
+                          except KeyError as e:
+                              print(e)
+                          except IndexError as e:
+                              print(e)
+                    
+
+              print(pats)
+              with open(os.path.join(root, 'docs/pats.json'), 'w', encoding='utf-8') as f:
+                  f.write(json.dumps(pats, indent=4))
 
       - name: Check and Push
         run: |
           git pull
-          status=$(git status -s | grep -E 'loads.json|models.json|toolchain.json' | awk '{printf " %s", $2}')
+          status=$(git status -s | grep -E 'loads.json|models.json|toolchain.json|pats.json' | awk '{printf " %s", $2}')
           if [ -n "${status}" ]; then
             git add ${status}
             git commit -m "update $(date +%Y-%m-%d" "%H:%M:%S)"
