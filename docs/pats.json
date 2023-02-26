@@ -46,8 +46,7 @@
     "DS920+": {
         "7.0.1-42218": "https://global.synologydownload.com/download/DSM/release/7.0.1/42218/DSM_DS920%2B_42218.pat?model=DS920%2B&bays=4&dsm_version=7.0.1&build_number=42218",
         "7.1.0-42661": "https://global.synologydownload.com/download/DSM/release/7.1.1/42962-1/DSM_DS920%2B_42962.pat?model=DS920%2B&bays=4&dsm_version=7.1.1&build_number=42962",
-        "7.1.1-42962": "https://global.synologydownload.com/download/DSM/release/7.1.1/42962-1/DSM_DS920%2B_42962.pat?model=DS920%2B&bays=4&dsm_version=7.1.1&build_number=42962",
-        "7.1-42550": "https://global.synologydownload.com/download/DSM/release/7.1.1/42962-1/DSM_DS920%2B_42962.pat?model=DS920%2B&bays=4&dsm_version=7.1.1&build_number=42962"
+        "7.1.1-42962": "https://global.synologydownload.com/download/DSM/release/7.1.1/42962-1/DSM_DS920%2B_42962.pat?model=DS920%2B&bays=4&dsm_version=7.1.1&build_number=42962"
     },
     "DS923+": {
         "7.1.1-42962": "https://global.synologydownload.com/download/DSM/release/7.1.1/42962/DSM_DS923%2B_42962.pat?model=DS923%2B&bays=4&dsm_version=7.1.1&build_number=42962"
