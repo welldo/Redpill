@@ -742,7 +742,7 @@ jobs:
 
               with open('user_config.json', 'w', encoding="utf-8") as f:
                   f.write(json.dumps(config, indent=4))
-                  
+
       - name: Run Build
         if: env.iscustom == 'true' && success()
         run: |
@@ -768,7 +768,7 @@ jobs:
             model=$1
             version=$2
 
-            synomodel=$(echo ${model,,} | sed 's/+/p/g')                             # DS3622xs+ => ds3622xsp
+            synomodel=$(echo ${model,,} | sed 's/+/p/g')                                   # DS3622xs+ => ds3622xsp
             synoversion=$(echo ${version} | awk -F - '{print $2}')                         # 7.0.1-42218 => 42218
             
             configfile=./config/${model}/${version}/config.json
@@ -857,66 +857,55 @@ jobs:
             exdsmpat ${model} ${version}
           fi
 
-          if [[ "${version}" < "7" ]]; then 
-            # redpill.ko 方式一 
-            echo "=========================Download redpill.ko=========================="
-            lkmext=https://raw.githubusercontent.com/wjz304/rp-ext/master
-            extension=$(curl -skL "${lkmext}/redpill/rpext-index.json")
-            redpilltgz=$(curl -skL "$(echo ${extension} | jq -r .releases.${synomodel}_${synoversion})" | jq -r '.files[] .url')
-            [ "$(echo $redpilltgz | awk '{print $NF}')" != "$redpilltgz" ] && redpilltgz=$(echo $redpilltgz | awk '{print $1}')
-            wget ${redpilltgz}
-            tar zxvf $(echo ${redpilltgz} | awk -F / '{print $NF}') -C ./ 
-            modinfo ./redpill.ko
-            RPKOVER=$(modinfo --field=vermagic ./redpill.ko | awk '{print $1}')
-            cp -fv ./redpill.ko ./ext/rp-lkm/redpill-linux-v${RPKOVER}.ko
-          else
-            # # redpill.ko 方式二 GCC版本需要修改,待优化
-            # echo "===========================Build redpill.ko==========================="
-            # toolkittxz=ds.${synoarch}-${version::3}.dev.txz
-            # toolkitdir=usr/local/x86_64-pc-linux-gnu/x86_64-pc-linux-gnu/sys-root/usr/lib/modules/DSM-${version::3}/build
-            # curl -skL "https://global.download.synology.com/download/ToolChain/toolkit/${version::3}/${synoarch}/${toolkittxz}" -o ${toolkittxz}
-            # mkdir ${synoarch} && tar -C./${synoarch}/ -xf ${toolkittxz} ${toolkitdir}
-            # git clone -b master --depth=1 https://github.com/${repo}/redpill-lkm.git
-            # cd redpill-lkm
-            # # sed -i 's/   -std=gnu89/   -std=gnu89 -fno-pie/' ../${synoarch}/${toolkitdir}/Makefile
-            # make LINUX_SRC=../${synoarch}/${toolkitdir} dev-v${version::1}
-            # modinfo ./redpill.ko
-            # RPKOVER=$(modinfo --field=vermagic ./redpill.ko | awk '{print $1}')
-            # cp -fv ./redpill.ko ../ext/rp-lkm/redpill-linux-v${RPKOVER}.ko
-            # cd ..
-          
-            # redpill.ko 方式三 
-            echo "===========================Arpl redpill.ko==========================="
-            TAG=`curl -skL https://api.github.com/repos/fbelavenuto/redpill-lkm/releases/latest | grep "tag_name" | awk '{print substr($2, 2, length($2)-3)}'`
-            curl -#kL "https://github.com/fbelavenuto/redpill-lkm/releases/download/${TAG}/rp-lkms.zip" -o ./rp-lkms.zip   # curl 新版有毛病, 下载会概率报错 "End-of-central-directory signature not found"
-            [ -f ./rp-lkms.zip ] && unzip ./rp-lkms.zip -d ./rp-lkms >/dev/null || true
-            [ -d ./rp-lkms ] && for file in ./rp-lkms/*; do [ "$(echo ${file} | grep ${platform}-${lkm})" != "" ] && gzip -dcv "${file}" > "./redpill.ko" || echo "${file}: No"; done
-            rm -rf ./redpill.ko  # 屏蔽下载， 有待确认
+          # redpill.ko
+          if [ ! -e ./redpill.ko ]; then
+            echo "======================Download redpill.ko============================="
+            lkmUrl=https://github.com/wjz304/rp-ext/raw/main/
+            rpUrl=$(curl -skL "${lkmUrl}/lkms.json" | jq -r --arg rpko "rp-${platform}-${lkm}.ko.gz" '.[$rpko] | .url')
+            if [ -n "${rpUrl}" ]; then
+              curl -skL "${rpUrl}" -o "rp-${platform}-${lkm}.ko.gz" || true
+              gzip -dcv "rp-${platform}-${lkm}.ko.gz" > "./redpill.ko" || true
+            fi
+          fi
+          if [ ! -e ./redpill.ko ]; then
+            # echo "===========================Arpl redpill.ko==========================="
+            # TAG=`curl -skL https://api.github.com/repos/fbelavenuto/redpill-lkm/releases/latest | grep "tag_name" | awk '{print substr($2, 2, length($2)-3)}'`
+            # curl -#kL "https://github.com/fbelavenuto/redpill-lkm/releases/download/${TAG}/rp-lkms.zip" -o ./rp-lkms.zip
+            # [ -f ./rp-lkms.zip ] && unzip ./rp-lkms.zip -d ./rp-lkms >/dev/null || true
+            # [ -d ./rp-lkms ] && for file in ./rp-lkms/*; do [ "$(echo ${file} | grep ${platform}-${lkm})" != "" ] && gzip -dcv "${file}" > "./redpill.ko" || echo "${file}: No"; done
             if [ -f ./redpill.ko ]; then
-              modinfo ./redpill.ko
-              RPKOVER=$(modinfo --field=vermagic ./redpill.ko | awk '{print $1}')
-              cp -fv ./redpill.ko ./ext/rp-lkm/redpill-linux-v${RPKOVER}.ko
-            else
+              echo "====================Docker Build redpill.ko==========================="
               [ ${{ env.dev }} == '1' ] && lkmrepo="fbelavenuto" || lkmrepo="pocopico"
               git clone --recursive https://github.com/${lkmrepo}/redpill-lkm.git redpill-lkm
               mkdir redpill-lkm-output && chmod -R 777 redpill-lkm-output
               TOOLKIT_VER="latest"  # "7.1"  # "latest"
               sudo docker run -u 1000 --rm -t -v "${PWD}/redpill-lkm":/input -v "${PWD}/redpill-lkm-output":/output fbelavenuto/syno-compiler:${TOOLKIT_VER} compile-lkm ${synoarch}
-              modinfo ./redpill-lkm-output/redpill-${lkm}.ko
-              RPKOVER=$(modinfo --field=vermagic ./redpill-lkm-output/redpill-${lkm}.ko | awk '{print $1}')
-              cp -fv ./redpill-lkm-output/redpill-${lkm}.ko ./ext/rp-lkm/redpill-linux-v${RPKOVER}.ko
-              sudo chmod -R +x ./ext/rp-lkm
+              cp -fv ./redpill-lkm-output/redpill-${lkm}.ko ./redpill.ko || true
             fi
           fi
+          if [ ! -e ./redpill.ko ]; then
+            echo "===========================Build redpill.ko==========================="
+            toolkittxz=ds.${synoarch}-${version::3}.dev.txz
+            toolkitdir=usr/local/x86_64-pc-linux-gnu/x86_64-pc-linux-gnu/sys-root/usr/lib/modules/DSM-${version::3}/build
+            curl -skL "https://global.download.synology.com/download/ToolChain/toolkit/${version::3}/${synoarch}/${toolkittxz}" -o ${toolkittxz}
+            mkdir ${synoarch} && tar -C./${synoarch}/ -xf ${toolkittxz} ${toolkitdir}
+            git clone -b master --depth=1 https://github.com/${repo}/redpill-lkm.git
+            cd redpill-lkm
+            # sed -i 's/   -std=gnu89/   -std=gnu89 -fno-pie/' ../${synoarch}/${toolkitdir}/Makefile
+            make LINUX_SRC=../${synoarch}/${toolkitdir} dev-v${version::1}
+            modinfo ./redpill.ko
+          fi
+
           if [ "SA6400" == "${model}" ]; then
-            if [ "${lkm}" == "prod" ]; then
-              curl -skL "https://github.com/wjz304/Redpill_CustomBuild/files/10734770/rp-epyc7002-5.10.55-prod.ko.gz" -o "rp-epyc7002-5.10.55-prod.ko.gz"
-              gzip -dcv "rp-epyc7002-5.10.55-prod.ko.gz" > "./ext/rp-lkm/redpill-linux-v${RPKOVER}.ko"
-            else
-              curl -skL "https://github.com/wjz304/Redpill_CustomBuild/files/10734771/rp-epyc7002-5.10.55-dev.ko.gz" -o "rp-epyc7002-5.10.55-dev.ko.gz"
-              gzip -dcv "rp-epyc7002-5.10.55-dev.ko.gz" > "./ext/rp-lkm/redpill-linux-v${RPKOVER}.ko"
-            fi
+            curl -skL "https://github.com/wjz304/Redpill_CustomBuild/files/10734770/rp-epyc7002-5.10.55-${lkm}.ko.gz" -o "rp-epyc7002-5.10.55-${lkm}.ko.gz"
+            gzip -dcv "rp-epyc7002-5.10.55-${lkm}.ko.gz" > "./redpill.ko"
           fi
+
+          modinfo ./redpill.ko
+          RPKOVER=$(modinfo --field=vermagic ./redpill.ko | awk '{print $1}')
+          cp -fv ./redpill.ko ./ext/rp-lkm/redpill-linux-v${RPKOVER}.ko
+          sudo chmod -R +x ./ext/rp-lkm
+
           RPKOOLD=`echo $(grep "@@@EXT@@@/rp-lkm" ./config/${model}/${version}/config.json | sed -r 's|"@@@EXT@@@/(.*)":(.*)|\1|')`  # `echo $P` 去首尾空格
           if [ ! "${RPKOOLD}" == "rp-lkm/redpill-linux-v${RPKOVER}.ko" ]; then
             echo "change ./config/${model}/${version}/config.json from ${RPKOOLD} to rp-lkm/redpill-linux-v${RPKOVER}.ko"
