@@ -342,9 +342,9 @@
         let idx = 1;
         for (var ext in exts) {
           var par = "";
-          if (exts[ext]["platforms"].split(',').indexOf(model + "_" + version) == -1)
-            if (exts[ext]["platforms"].split(',').indexOf(toolchain) == -1)
-              if (exts[ext]["platforms"].split(',').indexOf("_") == -1)
+          if (exts[ext]["platforms"].indexOf(model + "_" + version) == -1)
+            if (exts[ext]["platforms"].indexOf(toolchain) == -1)
+              if (exts[ext]["platforms"].indexOf("_") == -1)
                 par = 'disabled="false"';
           html += `<button type="button" class="btn btn-primary btn-sm mt-2" id="ext_btn_${ext}" ${par} onclick="return processext('${rp}', '${ext}')" autofocus="" title="${exts[ext]["description"]}">${ext}</button>&nbsp;`;
           if (idx++ % 10 == 0) html += "<br />";
