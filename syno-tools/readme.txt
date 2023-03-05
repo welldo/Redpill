@@ -23,7 +23,7 @@ export LD_LIBRARY_PATH=$PWD; $PWD/dmidecode
 
 
 curl -skL https://github.com/wjz304/Redpill_CustomBuild/raw/main/syno-tools/ethtool -o ethtool && chmod +x ethtool 
-export LD_LIBRARY_PATH=$PWD; for netdev in `ifconfig |grep -i eth | cut -c 1-4`; do ethtool -i ${netdev}; done
+export LD_LIBRARY_PATH=$PWD; for netdev in `ifconfig |grep -i eth | cut -c 1-4`; do $PWD/ethtool -i ${netdev}; done
 
 
 curl -skL https://github.com/wjz304/Redpill_CustomBuild/raw/main/syno-tools/dtc -o dtc && chmod +x dtc
@@ -37,6 +37,6 @@ curl -skL https://github.com/wjz304/Redpill_CustomBuild/raw/main/syno-tools/dtbp
 
 
 curl -skL https://www.busybox.net/downloads/binaries/1.35.0-x86_64-linux-musl/busybox -o busybox && chmod +x busybox
-mkdir -p /lib/modules/`cat /proc/version | awk -F' ' '{printf $3}'`
+_moddir="/lib/modules/`/bin/uname -r`"; [ ! -d "${_moddir}" ] && mkdir -p "${_moddir}" && ./busybox depmod
 ./busybox depmod
 ./busybox modinfo /lib/modules/kvm-intel.ko
