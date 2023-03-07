@@ -62,13 +62,14 @@
     },
     "lkm": {
         "name": "lkm",
-        "description": "如不了解请保持默认, 请选择 LKM 版本.(目前具体有何区别不详)",
+        "description": "如不了解请保持默认, 请选择 LKM 版本.(DS918+, DS920+, DVA1622 优先选择test, 其他型号优先选择dev)",
         "detailedinfo": "请选择 LKM 版本",
         "required": false,
         "default": "dev",
         "type": "choice",
         "options": [
             "dev",
+            "test",
             "prod"
         ]
     },
@@ -186,24 +187,26 @@
     },
     "dtb": {
         "name": "dtb",
-        "description": "请输入 dtb 文件的下载链接(空:自动), 仅部分型号需要填写(鼠标悬停查看气泡). ",
-        "detailedinfo": "需要填写的型号: DS920+, DS923+, DS1520+, DS1621+, DS1821+, DS2422+, DVA1622, FS2500, SA6400. \n需要自行制作dts/dtb 文件, 制作方法参考主页说明. (支持的文件类型: .dts,.dtb,.tar.gz,.zip)\n该字段可填入三种类型:\n空(不填写): 将自动编译.(适用于硬盘数<=4个 且不需要插满.).\n空(不填写)且ext中加入‘-dtb,dtbpatch’: 将自动编译.(自动识别已插入硬盘（增加硬盘重启即可）).\nURL(dtb的下载链接): 将在编译时植入使用.",
+        "description": "请输入 dtb 文件的下载链接(空:自动), 仅部分型号需要填写(鼠标悬停查看气泡).",
+        "detailedinfo": "需要填写的型号: DS920+, DS923+, DS1520+, DS1621+, DS1821+, DS2422+, DVA1622, FS2500, SA6400. \n需要自行制作dts/dtb 文件, 制作方法参考主页说明. (支持的文件类型: .dts,.dtb,.tar.gz,.zip)",
         "required": false,
         "default": "",
         "type": "string"
     },
     "addons": {
         "name": "addons",
-        "description": "请输入需要集成的扩展, 多个请以','间隔(disks / dtbpatch / dtbstatic 请只选一个, dtbstatic 依赖自定义的dtb文件).",
-        "detailedinfo": "",
+        "description": "请输入需要集成的扩展, 多个请以','间隔(disks / dtbpatch / dtbstatic 请只选一个, dtbstatic 依赖自定义的dtb文件).\n",
+        "detailedinfo": "点击跳转到 addons 描述文件. (boot-wait, misc强烈建议添加, acpid2建议添加.)",
+        "detailedurl": "https://github.com/wjz304/rp-ext/blob/main/addons.json",
         "required": false,
         "default": "",
         "type": "string"
     },
     "modules": {
         "name": "modules",
-        "description": "请输入需要集成的驱动, 多个请以','间隔(请酌情添加, 太多编不过). eg: r8125, tg3",
-        "detailedinfo": "",
+        "description": "请输入需要集成的驱动, 多个请以','间隔(请酌情添加, 太多编不过). eg: r8125, tg3, 双击击跳转到 modules 描述文件.",
+        "detailedinfo": "点击跳转到 modules 描述文件.",
+        "detailedurl": "https://github.com/wjz304/rp-ext/blob/main/modules.json",
         "required": false,
         "default": "",
         "type": "string"

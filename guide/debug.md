@@ -73,6 +73,10 @@
 
 ## 调试
   ```
+  # 驱动相关
+  lsmod                                         # 查看已加载驱动  
+  ls -ld /sys/class/net/*/device/driver         # 查看已加载网卡和对应驱动  
+  
   # 磁盘相关
   fdisk -l                                      # 查看硬盘信息 
   ls /sys/block/                                # 查看块设备  
@@ -88,6 +92,8 @@
   cat /var/log/messages                         # 引导态下操作日志
   ```
 
+
+
 1. 关于硬盘的问题
   * 引导态下查看磁盘信息是否与实际相符, 如果不符基本确定磁盘扩展卡的驱动存在问题,
   * 如果引导态处识别到了, 但是系统内没有识别到，请检查 map三个参数/dtb文件.
@@ -97,3 +103,7 @@
     fdisk -l   # 找到需要格式化的磁盘, 比如 /dev/sata2
     echo -e "m\nd\n1\nm\nd\n2\nm\nd\n3\nm\nw" > fdisk.txt; fdisk /dev/sata2 < fdisk.txt > /dev/null; rm fdisk.txt
     ```
+2. 安装失败的问题
+  * 通过 lsmod 查看 是否存在 redpill 程序的启动. 如果没有基本会卡56%. 引导问题.
+  * 通过 dmesg 查看内核日志中 redpill 的加载是否报错.  起不来.
+  * 通过 linuxrc.syno.log 日志 查看是否有程序加载失败, 驱动不好使.

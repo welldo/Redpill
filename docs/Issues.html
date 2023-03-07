@@ -214,13 +214,14 @@
         var dft = "";
         var req = "";
         var info = "";
+        var durl = "";
         if (data.hasOwnProperty("name")) name = data.name;
         if (data.hasOwnProperty("description")) desc = data.description;
         if (data.hasOwnProperty("type")) type = data.type;
         if (data.hasOwnProperty("default")) dft = data.default;
         if (data.hasOwnProperty("required")) req = data.required;
         if (data.hasOwnProperty("detailedinfo")) info = data.detailedinfo;
-        
+        if (data.hasOwnProperty("detailedurl")) durl = data.detailedurl;
         if (type == "none") {
           
         } else {
@@ -246,7 +247,7 @@
           } else {
           }
 
-          html += `  <a class="js-navigation-open Link--primary" title="${info}" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" href="#">使用说明：${desc}</a>`;
+          html += `  <a class="js-navigation-open Link--primary" title="${info}" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" href="${durl}">使用说明：${desc}</a>`;
           html += `  </div>`;
           html += `</div>`;
         }
