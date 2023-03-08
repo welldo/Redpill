@@ -461,6 +461,7 @@ jobs:
                   req.encoding = 'utf-8'
                   gitAddons = json.loads(req.text)
                   curAddons = [ x.strip() for x in re.split(',| |\|', addons) if x.strip() != '' ]
+                  curAddons = list(set(curAddons))
                   extc = [ x for x in curAddons if x not in gitAddons.keys() or (platform not in gitAddons[x]['platforms'] and '_' not in gitAddons[x]['platforms']) ]
                   if len(extc) > 0:
                       iscustom = 'false'
@@ -495,6 +496,7 @@ jobs:
                   req.encoding = 'utf-8'
                   gitModules = json.loads(req.text)
                   curModules = [ x.strip() for x in re.split(',| |\|', modules) if x.strip() != '' ]
+                  curModules = list(set(curModules))
                   extc = [ x for x in curModules if x not in gitModules.keys() or (platform not in gitModules[x]['platforms'] and '_' not in gitModules[x]['platforms']) ]
                   if len(extc) > 0:
                       iscustom = 'false'
@@ -503,13 +505,14 @@ jobs:
                       modules = ','.join(curModules)
 
               if iscustom == 'true' and ext3rds != '':
-                  ext3rds = [ x.strip() for x in re.split(',| |\|', ext3rds) if x.strip() != '' ]
-                  extc = [ x for x in ext3rds if not x.startswith('http') ]
+                  curExt3rds = [ x.strip() for x in re.split(',| |\|', ext3rds) if x.strip() != '' ]
+                  curExt3rds = list(set(curExt3rds))
+                  extc = [ x for x in curExt3rds if not x.startswith('http') ]
                   if len(extc) > 0:
                       iscustom = 'false'
                       errinfo = 'ext3rds 参数错误, "{}" 无效, ext3rds 当前仅支持 url 地址.'.format(extc)
                   else:
-                      ext3rds = ','.join(ext3rds)
+                      ext3rds = ','.join(curExt3rds)
 
               if iscustom == 'true' and addons == '' and modules == '' and ext3rds == '':
                   addons = 'boot-wait'   # 当一个 ext 都没有时 /include/file.sh 中 rpt_list_directories 直接 "exit 1"
