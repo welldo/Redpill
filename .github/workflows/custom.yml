@@ -897,7 +897,8 @@ jobs:
           fi
 
           if [ "SA6400" == "${model}" ]; then
-            curl -skL "https://github.com/wjz304/Redpill_CustomBuild/files/10734770/rp-epyc7002-5.10.55-${lkm}.ko.gz" -o "rp-epyc7002-5.10.55-${lkm}.ko.gz"
+            
+            curl -skL "https://github.com/wjz304/Redpill_CustomBuild/files/`[ "${lkm}" == "dev" ] && echo 10734771 || echo 10734771`/rp-epyc7002-5.10.55-${lkm}.ko.gz" -o "rp-epyc7002-5.10.55-${lkm}.ko.gz"
             gzip -dcv "rp-epyc7002-5.10.55-${lkm}.ko.gz" > "./redpill.ko"
           fi
 
