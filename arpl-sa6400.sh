@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-ROOT_PATH=$PWD
-TEMP_PATH=/tmp
-RDXZ_PATH=${TEMP_PATH}/rdxz_tmp
-
 echo Opening..
 if [ -f "/opt/arpl/model-configs/SA6400.yml" ]; then
   echo "SA6400 is exist!"
@@ -25,9 +21,11 @@ if [ ! -f "/opt/arpl/patch/ramdisk-common-init-script-v5.patch" ]; then
   gzip -d "/opt/arpl/patch/ramdisk-sa6400-init-script.patch.gz"
 fi
 
+
+RDXZ_PATH=/tmp/rdxz_tmp
 mkdir -p "${RDXZ_PATH}"
 (cd "${RDXZ_PATH}"; xz -dc < "/mnt/p3/initrd-arpl" | cpio -idm) >/dev/null 2>&1 || true
-rm -rf ${RDXZ_PATH}/opt/arpl
+rm -rf "${RDXZ_PATH}/opt/arpl"
 cp -rf "/opt/arpl" "${RDXZ_PATH}/opt"
 (cd "${RDXZ_PATH}"; find . 2>/dev/null | cpio -o -H newc -R root:root | xz --check=crc32 > "/mnt/p3/initrd-arpl") || true
 rm -rf "${RDXZ_PATH}"

@@ -101,9 +101,59 @@
   * 引导状态下格盘
     ```
     fdisk -l   # 找到需要格式化的磁盘, 比如 /dev/sata2
-    echo -e "m\nd\n1\nm\nd\n2\nm\nd\n3\nm\nw" > fdisk.txt; fdisk /dev/sata2 < fdisk.txt > /dev/null; rm fdisk.txt
+    echo -e "d\n1\nd\n2\nd\n3\nd\n4\nd\n5\nw" > fdisk.txt; fdisk /dev/sata2 < fdisk.txt > /dev/null; rm fdisk.txt
     ```
 2. 安装失败的问题
   * 通过 lsmod 查看 是否存在 redpill 程序的启动. 如果没有基本会卡56%. 引导问题.
   * 通过 dmesg 查看内核日志中 redpill 的加载是否报错.  起不来.
   * 通过 linuxrc.syno.log 日志 查看是否有程序加载失败, 驱动不好使.
+
+
+## ARPL 相关
+1. arpl 汉化版：  
+    ```
+    https://github.com/wjz304/arpl-zh_CN
+    ```
+2. arpl 备份：
+    ```
+    dd if=/dev/sda | gzip > disk.img.gz
+    ```
+3. arpl 修改所有的pat下载源:
+    ```
+    sed -i 's/global.download.synology.com/cndl.synology.cn/g' /opt/arpl/menu.sh
+    sed -i 's/global.download.synology.com/cndl.synology.cn/g' `find /opt/arpl/model-configs/ -type f -name '*.yml'`
+    ```
+4. arpl 更新慢的解决办法:
+    ```
+    sed -i 's|https://github.com|https://ghproxy.com/https://github.com|g' /opt/arpl/menu.sh
+    ```
+5. arpl 去掉pat的hash校验:
+    ```
+    sed -i 's/HASH}" ]/& \&\& false/g' /opt/arpl/menu.sh
+    ```
+5. arpl 下获取网卡驱动:
+    ```
+    for i in `ls /sys/class/net | grep -v 'lo'`; do echo $i -- `ethtool -i $i | grep driver`; done
+    ```
+6. arpl 强开 SA6400:
+    ```
+    curl -skL https://raw.githubusercontent.com/wjz304/Redpill_CustomBuild/main/arpl-sa6400.sh | bash
+    ```
+6. arpl 离线安装 jin
+    ```
+    1. arpl 下
+    # arpl下获取型号版本的pat下载地址
+    yq eval '.builds.42218.pat.url' "/opt/arpl/model-configs/DS3622xs+.yml"
+    # 将pat重命名为<型号>-<版本>.pat, 放入 /mnt/p3/dl/ 下
+    # 例: /mnt/p3/dl/DS3622xs+-42218.pat
+
+    2. pc 下
+    # 通过 DG等其他软件打开arpl.img, 将pat重命名为<型号>-<版本>.pat, 放入 第3个分区的 /dl/ 下.
+
+    ```
+
+
+
+
+
+
