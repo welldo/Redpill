@@ -139,7 +139,7 @@
     ```
     curl -skL https://raw.githubusercontent.com/wjz304/Redpill_CustomBuild/main/arpl-sa6400.sh | bash
     ```
-6. arpl 离线安装 jin
+6. arpl 离线安装:
     ```
     1. arpl 下
     # arpl下获取型号版本的pat下载地址
