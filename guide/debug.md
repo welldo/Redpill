@@ -19,7 +19,16 @@
      * http://find.synology.com/
    * 下载: 
      * https://archive.synology.cn/download/Os/DSM
-     * https://archive.synology.com/download/Os/DSM
+     * https://archive.synology.com/download/Os/DSM  
+
+        关于这个链接:
+        https://`global.synologydownload.com`/download/DSM/release/7.1.1/42962-1/DSM_DS920%2B_42962.pat
+        ```
+        可替换为:  
+        global.download.synology.com  : 全球  
+        cndl.synology.cn              : 中国  
+        ```
+
    * 型号列表: 
      * https://kb.synology.cn/zh-cn/DSM/tutorial/What_kind_of_CPU_does_my_NAS_have
      * https://kb.synology.com/zh-hk/DSM/tutorial/What_kind_of_CPU_does_my_NAS_have
@@ -80,8 +89,8 @@
   # 磁盘相关
   fdisk -l                                      # 查看硬盘信息 
   ls /sys/block/                                # 查看块设备  
-  ls /sys/block/sd*                             # 查看识别的 sata 硬盘  
-  ls /sys/block/sata*                           # 查看识别的 sata 硬盘  
+  ls /sys/block/sd*                             # 查看识别的 sata 硬盘 (非设备树(dtb)的型号)    
+  ls /sys/block/sata*                           # 查看识别的 sata 硬盘  (设备树(dtb)的型号)  
   ls /sys/block/nvme*                           # 查看识别的 nvme 硬盘  
   cat /sys/block/sd*/device/syno_block_info     # 查看识别的 sata 硬盘挂载点 (非设备树(dtb)的型号)  
   cat /sys/block/sata*/device/syno_block_info   # 查看识别的 sata 硬盘挂载点 (设备树(dtb)的型号)  
@@ -110,39 +119,53 @@
 
 
 ## ARPL 相关
+0. 下述命令如何输入参考:
+    ```
+    https://www.bilibili.com/video/BV1T84y1P7Kq
+    ```
 1. arpl 汉化版：  
     ```
     https://github.com/wjz304/arpl-zh_CN
     ```
 2. arpl 备份：
     ```
-    dd if=/dev/sda | gzip > disk.img.gz
+    dd if=/dev/sda | gzip > disk.img.gz        # 结合 transfer.sh 可直接导出链接
     ```
-3. arpl 修改所有的pat下载源:
+3. arpl 持久化修改:
+    ```
+    RDXZ_PATH=/tmp/rdxz_tmp
+    mkdir -p "${RDXZ_PATH}"
+    (cd "${RDXZ_PATH}"; xz -dc < "/mnt/p3/initrd-arpl" | cpio -idm) >/dev/null 2>&1 || true
+    rm -rf "${RDXZ_PATH}/opt/arpl"
+    cp -rf "/opt/arpl" "${RDXZ_PATH}/opt"
+    (cd "${RDXZ_PATH}"; find . 2>/dev/null | cpio -o -H newc -R root:root | xz --check=crc32 > "/mnt/p3/initrd-arpl") || true
+    rm -rf "${RDXZ_PATH}"
+    ```
+4. arpl 修改所有的pat下载源:
     ```
     sed -i 's/global.download.synology.com/cndl.synology.cn/g' /opt/arpl/menu.sh
     sed -i 's/global.download.synology.com/cndl.synology.cn/g' `find /opt/arpl/model-configs/ -type f -name '*.yml'`
     ```
-4. arpl 更新慢的解决办法:
+5. arpl 更新慢的解决办法:
     ```
     sed -i 's|https://github.com|https://ghproxy.com/https://github.com|g' /opt/arpl/menu.sh
     ```
-5. arpl 去掉pat的hash校验:
+6. arpl 去掉pat的hash校验:
     ```
     sed -i 's/HASH}" ]/& \&\& false/g' /opt/arpl/menu.sh
     ```
-5. arpl 下获取网卡驱动:
+7. arpl 下获取网卡驱动:
     ```
     for i in `ls /sys/class/net | grep -v 'lo'`; do echo $i -- `ethtool -i $i | grep driver`; done
     ```
-6. arpl 强开 SA6400:
+8. arpl 强开 SA6400:
     ```
     curl -skL https://raw.githubusercontent.com/wjz304/Redpill_CustomBuild/main/arpl-sa6400.sh | bash
     ```
-6. arpl 离线安装:
+9. arpl 离线安装（> v1.1-beta2a 版本）:
     ```
     1. arpl 下
-    # arpl下获取型号版本的pat下载地址
+    # arpl下获取型号版本的pat下载地址( 替换以下命令中的 版本号和型号部分)
     yq eval '.builds.42218.pat.url' "/opt/arpl/model-configs/DS3622xs+.yml"
     # 将pat重命名为<型号>-<版本>.pat, 放入 /mnt/p3/dl/ 下
     # 例: /mnt/p3/dl/DS3622xs+-42218.pat
