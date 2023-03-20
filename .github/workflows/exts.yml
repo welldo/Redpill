@@ -176,36 +176,37 @@ jobs:
                   f.write(json.dumps(toolchain, indent=4))
 
               # patindo
-              loads = {}
-              with open('docs/loads.json', 'r') as f:
-                  loads = json.load(f)
-              #models = list(set(sum(list(list(loads[x].keys()) for x in loads.keys()), [])))
               pats = {}
-              for load in loads.keys():
-                  for model in loads[load].keys():
-                      if model not in pats.keys():
-                          pats[model] = {}
-                      for version in loads[load][model]:
-                          if version in pats[model].keys():
-                              continue
-
-                          vers = version.split('-')[0].split('.')
-                          if len(vers) == 2:
-                              vers.append('0')
-                          if len(vers) == 3:
-                              (major, minor, micro) = vers
-                          else:
-                              print("{}-{}-error".format(model, version))
-                              (major, minor, micro) = ["7", "1", "1"]
-
-                          req = requests.get('https://www.synology.com/api/support/findDownloadInfo?lang=en-us&product={}&major={}&minor={}&micro={}'.format(model.replace('+','%2B'), major, minor, micro))
-                          data = json.loads(req.text)
-                          try:
-                              pats[model][version] = data["info"]["system"][0]["items"][0]["files"][0]["url"]
-                          except KeyError as e:
-                              print(e)
-                          except IndexError as e:
-                              print(e)
+  
+              req = requests.get('https://archive.synology.cn/download/Os/DSM')
+              req.encoding = 'utf-8'
+              bs=BeautifulSoup(req.text, 'html.parser')
+              p = re.compile(r"(.*?)-(.*?)", re.MULTILINE | re.DOTALL)
+              l = bs.find_all('a', string=p)
+              for i in l:
+                  ver = i.attrs['href'].split('/')[-1]
+                  if not any([ver.startswith('6.2.4'), ver.startswith('7')]): continue
+                  req = requests.get('https://archive.synology.cn{}'.format(i.attrs['href']))
+                  req.encoding = 'utf-8'
+                  bs=BeautifulSoup(req.text, 'html.parser')
+                  p = re.compile(r"^(.*?)_(.*?)_(.*?).pat$", re.MULTILINE | re.DOTALL)
+                  data = bs.find_all('a', string=p)
+                  for item in data:
+                      p = re.compile(r"DSM_(.*?)_(.*?).pat", re.MULTILINE | re.DOTALL)
+                      rels = p.search(item.attrs['href'])
+                      if rels != None:
+                          info = p.search(item.attrs['href']).groups()
+                          model = info[0].replace('%2B', '+')
+                          if model not in pats.keys(): pats[model]={}
+                          pats[model][ver] = item.attrs['href']
+  
+              req = requests.get('https://prerelease.synology.cn/webapi/models?event=dsm72_beta')
+              rels = json.loads(req.text)
+              if "models" in rels and len(rels["models"]) > 0:
+                  for i in rels["models"]:
+                      if "name" not in i or "dsm" not in i: continue
+                      if i["name"] not in pats.keys(): pats[i["name"]]={}
+                      pats[i["name"]][i["dsm"]["version"]] = i["dsm"]["url"].split('?')[0]
                     
 
               print(pats)

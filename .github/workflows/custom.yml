@@ -465,7 +465,7 @@ jobs:
                   extc = [ x for x in curAddons if x not in gitAddons.keys() or (platform not in gitAddons[x]['platforms'] and '_' not in gitAddons[x]['platforms']) ]
                   if len(extc) > 0:
                       iscustom = 'false'
-                      errinfo = 'ext 参数错误, "{}" 无效, addons 当前仅支持 "{}".'.format(extc, ','.join([x for x in curAddons if x in gitAddons.keys() and (platform in gitAddons[x]['platforms'] or '_' in gitAddons[x]['platforms'])]))
+                      errinfo = 'ext 参数错误, "{}" 无效, addons 当前仅支持 "{}".'.format(extc, ','.join([x for x in gitAddons if x in gitAddons.keys() and (platform in gitAddons[x]['platforms'] or '_' in gitAddons[x]['platforms'])]))
                   else:
                       dtbs = ['DS920+', 'DS923+', 'DS1520+', 'DS1621+', 'DS1821+', 'DS2422+', 'DVA1622', 'FS2500', 'SA6400']
                       if model in dtbs:
@@ -500,7 +500,7 @@ jobs:
                   extc = [ x for x in curModules if x not in gitModules.keys() or (platform not in gitModules[x]['platforms'] and '_' not in gitModules[x]['platforms']) ]
                   if len(extc) > 0:
                       iscustom = 'false'
-                      errinfo = 'ext 参数错误, "{}" 无效, modules 当前仅支持 "{}".'.format(extc, ','.join([x for x in curModules if x in gitModules.keys() and (platform in gitModules[x]['platforms'] or '_' in gitModules[x]['platforms'])]))
+                      errinfo = 'ext 参数错误, "{}" 无效, modules 当前仅支持 "{}".'.format(extc, ','.join([x for x in gitModules if x in gitModules.keys() and (platform in gitModules[x]['platforms'] or '_' in gitModules[x]['platforms'])]))
                   else:
                       modules = ','.join(curModules)
 
