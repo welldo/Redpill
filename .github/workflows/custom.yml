@@ -144,6 +144,18 @@ jobs:
           def set_output(name, value):
               subprocess.call(["echo '{}={}' >> $GITHUB_ENV".format(name, value)], shell=True)
 
+          def fullversion(ver):
+              out = ver
+              arr = ver.split('-')
+              if len(arr) > 0:
+                  a = arr[0].split('.')[0] if len(arr[0].split('.')) > 0 else '0'
+                  b = arr[0].split('.')[1] if len(arr[0].split('.')) > 1 else '0'
+                  c = arr[0].split('.')[2] if len(arr[0].split('.')) > 2 else '0'
+                  d = arr[1] if len(arr) > 1 else '00000'
+                  e = arr[2] if len(arr) > 2 else '0'
+                  out = '{}.{}.{}-{}-{}'.format(a,b,c,d,e)
+              return out
+
           if __name__ == '__main__':
 
               issues = 'false'
@@ -180,6 +192,7 @@ jobs:
               ext3rds = ''
 
               dev = '0'
+              paturl = ''
 
               try:
                   body = {}
@@ -520,6 +533,21 @@ jobs:
               if iscustom == 'true' and not dev in ['0', '1']:
                   dev = '0'
 
+              if iscustom == 'true':
+                  pats = {}
+                  with open('docs/pats.json', 'r') as f:
+                      pats = json.load(f)
+                  tmp = '0.0.0-00000-0'
+                  url = ''
+                  if model in pats.keys():
+                      for item in pats[model]:
+                          ver = fullversion(item)
+                          if version.split('-')[1] not in ver: continue
+                          if ver > tmp:
+                              tmp = ver
+                              url = pats[model][item]
+                  paturl = url
+
               set_output('issues', issues)
               set_output('iscustom', iscustom)
               set_output('errinfo', errinfo)
@@ -552,6 +580,7 @@ jobs:
               set_output('ext3rds', ext3rds)
               
               set_output('dev', dev)
+              set_output('paturl', paturl)
 
       - name: Echo Build Info
         run: |
@@ -586,6 +615,7 @@ jobs:
           echo modules:           '${{ env.modules }}'
           echo ext3rds:           '${{ env.ext3rds }}'
           echo dev:               '${{ env.dev }}'
+          echo paturl:            '${{ env.paturl }}'
 
       - name: Add Issues labels
         if: env.issues == 'true' && env.iscustom == 'true'
@@ -770,38 +800,69 @@ jobs:
           function exdsmpat() {
             model=$1
             version=$2
+            paturl=${3:-}
 
             synomodel=$(echo ${model,,} | sed 's/+/p/g')                                   # DS3622xs+ => ds3622xsp
             synoversion=$(echo ${version} | awk -F - '{print $2}')                         # 7.0.1-42218 => 42218
-            
+            patname=${synomodel}_${synoversion}
+
             configfile=./config/${model}/${version}/config.json
-            paturl=$(cat ${configfile} | jq -r '.os .pat_url')
+            [ -z "${paturl}" ] && paturl=$(cat ${configfile} | jq -r '.os .pat_url')
 
             cd ./cache
-            curl -#kL ${paturl} -o ds.pat
-            if [ -f "$GITHUB_WORKSPACE/syno-extractor.sh" ]; then
-              sudo chmod +x $GITHUB_WORKSPACE/syno-extractor.sh && sudo $GITHUB_WORKSPACE/syno-extractor.sh ds.pat pat
+            curl -#kL ${paturl} -o ${patname}.pat
+
+            header="$(od -bcN2 ${patname}.pat | head -1 | awk '{print $3}')"
+            case ${header} in
+              105)
+                echo "Uncompressed tar"
+                isencrypted="no"
+                ;;
+              213)
+                echo "Compressed tar"
+                isencrypted="no"
+                ;;
+              255)
+                echo "Encrypted"
+                isencrypted="yes"
+                ;;
+              *)
+                echo "error"
+                return 1
+                ;;
+            esac
+            if [ "${isencrypted}" = "yes" ]; then
+              if [ -f "$GITHUB_WORKSPACE/syno-extractor.sh" ]; then
+                sudo chmod +x $GITHUB_WORKSPACE/syno-extractor.sh && sudo $GITHUB_WORKSPACE/syno-extractor.sh ${patname}.pat ${patname}
+              else
+                curl -skL https://raw.githubusercontent.com/wjz304/Redpill_CustomBuild/main/syno-extractor.sh | sudo bash -s ${patname}.pat ${patname}
+              fi
+              rm -f ${patname}.pat
+              tar -czf ${patname}.pat -C ./${patname}/ . --warning=no-file-changed
             else
-              curl -skL https://raw.githubusercontent.com/wjz304/Redpill_CustomBuild/main/syno-extractor.sh | sudo bash -s ds.pat pat
+              mkdir -p "${patname}"
+              tar -xf "${patname}.pat" -C "${patname}" >/dev/null 2>&1
             fi
 
-            tar -czf ${synomodel}_${synoversion}.pat -C ./pat/ . --warning=no-file-changed
-
-            sha256newpat=$(sha256sum ${synomodel}_${synoversion}.pat | awk '{print $1}')
-            sha256zImage=$(sha256sum ./pat/zImage | awk '{print $1}')
-            sha256ramdisk=$(sha256sum ./pat/rd.gz | awk '{print $1}')
-            isDT=$([ -f "pat/model.dtb" ] && echo true || echo false)
+            sha256newpat=$(sha256sum ${patname}.pat | awk '{print $1}')
+            sha256zImage=$(sha256sum ./${patname}/zImage | awk '{print $1}')
+            sha256ramdisk=$(sha256sum ./${patname}/rd.gz | awk '{print $1}')
+            isDT=$([ -f "${patname}/model.dtb" ] && echo true || echo false)
 
             echo sha256newpat: ${sha256newpat}
             echo sha256zImage: ${sha256zImage} 
             echo sha256ramdisk: ${sha256ramdisk}
             echo isDT: ${isDT}
 
-            sudo rm -rf ds.pat oldpat.tar.gz synoesp pat
+            sudo rm -rf ${patname}
+
             cd ..
 
-            jq -r .os.sha256 ${configfile}
-            sed -i "s/$(jq -r .os.sha256 ${configfile})/${sha256newpat}/g" ${configfile}
+            json="$(jq --arg var "${patname}" '.os.id = $var' ${configfile})" && echo -E "${json}" | jq . >${configfile}
+            json="$(jq --arg var "${paturl}" '.os.pat_url = $var' ${configfile})" && echo -E "${json}" | jq . >${configfile}
+            json="$(jq --arg var "${sha256newpat}" '.os.sha256 = $var' ${configfile})" && echo -E "${json}" | jq . >${configfile}
+            json="$(jq --arg var "${sha256zImage}" '.files.zlinux.sha256 = $var' ${configfile})" && echo -E "${json}" | jq . >${configfile}
+            json="$(jq --arg var "${sha256ramdisk}" '.files.ramdisk.sha256= $var' ${configfile})" && echo -E "${json}" | jq . >${configfile}
           }
 
           function setsynoarch() {
@@ -856,9 +917,7 @@ jobs:
 
           # 7.1 解密PAT
           echo "===========================7.1+ 解密PAT==========================="
-          if [[ "${version}" > "7.0.1-42218" ]]; then 
-            exdsmpat ${model} ${version}
-          fi
+          exdsmpat ${model} ${version} ${{ env.paturl }}
 
           # redpill.ko
           if [ ! -e ./redpill.ko ]; then
