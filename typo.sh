@@ -105,20 +105,6 @@ if [ "${REPO}" == "pocopico" -a "${BRANCH}" == "develop" ]; then
   [ -e ${WORK_PATH}/config/SA6400/7.1.1-42962/config.json ] && curl -sSL https://raw.githubusercontent.com/wjz304/redpill-load/test-dev/config/SA6400/7.1.1-42962/config.json -o ${WORK_PATH}/config/SA6400/7.1.1-42962/config.json
 fi
 
-if [ "${REPO}" == "PeterSuh-Q3" -a "${BRANCH}" == "master" ]; then 
-  # 容错
-  [ -e ${WORK_PATH}/config/DS1520+/7.1.1-42962/config.json ] && sed -i 's/DSM_ds1520p_42962.pat/DSM_DS1520%2B_42962.pat/g' ${WORK_PATH}/config/DS1520+/7.1.1-42962/config.json
-fi
-
-if [ "${REPO}" == "pocopico" -a "${BRANCH}" == "jun" ]; then 
-  # 容错
-  [ -e ${WORK_PATH}/config/DVA3221/7.0.1-42218/config.json ] && sed -i 's/cndl.synology.cn/global.download.synology.com/g' ${WORK_PATH}/config/DVA3221/7.0.1-42218/config.json
-  [ -e ${WORK_PATH}/config/FS6400/7.0.1-42218/config.json  ] && sed -i 's/global.synology.com/global.download.synology.com/g' ${WORK_PATH}/config/FS6400/7.0.1-42218/config.json 
-  [ -e ${WORK_PATH}/config/RS4021xs+/7.0.1-42218/config.json ] && sed -i 's/global.synology.com/global.download.synology.com/g' ${WORK_PATH}/config/RS4021xs+/7.0.1-42218/config.json
-  [ -e ${WORK_PATH}/config/RS4021xs+/7.0.1-42218/config.json ] && sed -i 's/a72076b1a5c148e775e9542916e2f07fe18d8676dc7396ed69355a9a0a38b36c/7afca3970ac7324d7431c1484d4249939bedd4c18ac34187f894c43119edf3a1/g' ${WORK_PATH}/config/RS4021xs+/7.0.1-42218/config.json
-  [ -e ${WORK_PATH}/config/RS4021xs+/7.0.1-42218/config.json ] && sed -i 's/17607e1739c8acc9903272ebd981bccb27b51057cdcb3cc446e5c5149db452d3/b4cc62e9953f226960de98b65887e17dd6df5fa0ad28f665e0b4660dbd5f2fa8/g' ${WORK_PATH}/config/RS4021xs+/7.0.1-42218/config.json
-  [ -e ${WORK_PATH}/config/RS4021xs+/7.0.1-42218/config.json ] && sed -i 's/3aa9d810064747fca6d0a3ab4c979bd82b49fc0d166dfe714261c2a22145cc70/3510afe5b3dfe3662bfe054c1728c8794911da431718b533cd03d2a2c061ffd5/g' ${WORK_PATH}/config/RS4021xs+/7.0.1-42218/config.json
-fi
 
 if [ "${REPO}" == "jumkey" -a "${BRANCH}" == "develop" ]; then 
   # 容错
@@ -132,14 +118,9 @@ if [ "${REPO}" == "jumkey" -a "${BRANCH}" == "develop" ]; then
     curl -sSL https://raw.githubusercontent.com/wjz304/redpill-load/test-jun/config/DVA3221/7.0.1-42218/zImage-001-dav3221-42218-ramdisk-and-header.bsp -o ${WORK_PATH}/config/DVA3221/7.0.1-42218/zImage-001-dav3221-42218-ramdisk-and-header.bsp
     curl -sSL https://raw.githubusercontent.com/wjz304/redpill-load/test-jun/config/DVA3221/7.0.1-42218/config.json -o ${WORK_PATH}/config/DVA3221/7.0.1-42218/config.json
   fi
-  [ -e ${WORK_PATH}/config/DS923+/7.1.1-42962/config.json ] && sed -i 's|file://localhost/root/DSM_DS923%2B_42962.pat|https://global.download.synology.com/download/DSM/release/7.1.1/42962/DSM_DS923%2B_42962.pat|g' ${WORK_PATH}/config/DS923+/7.1.1-42962/config.json
-  [ -e ${WORK_PATH}/config/DS923+/7.1.1-42962/config.json ] && sed -i 's|a2bcfae34eda13f65bc7ee453b63bab982e2db9891a680968bc24ef5035ae8d8|e33b47df446ce0bd99c5613767c9dba977915e25acfb5ccb9f5650b14459458f|g' ${WORK_PATH}/config/DS923+/7.1.1-42962/config.json
+
   rm -rf ${WORK_PATH}/config/DVA1622
   #[ -d ${WORK_PATH}/config/DVA1622/7.1-42661 ] && mv ${WORK_PATH}/config/DVA1622/7.1-42661 ${WORK_PATH}/config/DVA1622/7.1.0-42661
-  #[ -e ${WORK_PATH}/config/DVA1622/7.1.0-42661/config.json ] && sed -i 's|file://localhost/root/content.tar|https://global.download.synology.com/download/DSM/release/7.1/42661-1/DSM_DVA1622_42661.pat|g' ${WORK_PATH}/config/DVA1622/7.1-42661/config.json
-  #[ -e ${WORK_PATH}/config/DVA1622/7.1.0-42661/config.json ] && sed -i 's|99f60f0c2b54c0a2adbc01d79e872273488ba43296a7a74904c462bc423b7dfe|f1484cf302627072ca393293cd73e61dc9e09d479ef028b216eae7c12f7b7825|g' ${WORK_PATH}/config/DVA1622/7.1-42661/config.json
-  #[ -e ${WORK_PATH}/config/DVA1622/7.1.0-42661/config.json ] && sed -i 's|a31e91a62ab6f3ff986bc7fcfde0a56a292c15e17735e7b5fad573d333cf7de4|1d0e5b76e08e3483f6bf06d23b5978ec498b855bde23db1f96f343db4c43337d|g' ${WORK_PATH}/config/DVA1622/7.1-42661/config.json
-  #[ -e ${WORK_PATH}/config/DVA1622/7.1.0-42661/config.json ] && sed -i 's|32ee25e7a806eb481cc858edd7f1e341c85c7627ea03788f8466716432830d33|6290945ba61f652aec83725f81f5a47bd5e4cdbeb86241c33825154140e164ec|g' ${WORK_PATH}/config/DVA1622/7.1-42661/config.json
 fi
 
 exit 0

@@ -50,7 +50,7 @@
       }
     </style>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://cdn.polyfill.io/v1/polyfill.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js"></script>
     <!-- <script src="https://fastly.jsdelivr.net/npm/marked/marked.min.js"></script> -->
     <script type="application/javascript">
       var extbase = "";
@@ -148,8 +148,8 @@
             _loads = JSON.parse(result);
               httpGetAsync(url + "models.json" + "?" + Math.random(), function (result) {
               _models = JSON.parse(result);
-                httpGetAsync(url + "toolchain.json" + "?" + Math.random(), function (result) {
-                _toolchain = JSON.parse(result);
+                httpGetAsync(url + "kernelvers.json" + "?" + Math.random(), function (result) {
+                _kernelvers = JSON.parse(result);
                 httpGetAsync(rpUrl + "addons.json" + "?" + Math.random(), function (result) {
                   _addons = JSON.parse(result);
                   httpGetAsync(rpUrl + "modules.json" + "?" + Math.random(), function (result) {
@@ -317,16 +317,11 @@
         createExtBtn("modules");
       }
 
-      function getToolChain(model, version) {
+      function getPlatform(model, version) {
         for (var idx in _models) {
           if (_models[idx]["Model"] == model) {
             arch = _models[idx]["PackageArch"];
-            for (var toolchain in _toolchain) {
-              if (version.substring(0,3) == toolchain.substring(0,3)) {
-                return arch.toLowerCase() + '-' + _toolchain[toolchain][arch];
-              }
-            }
-            break;
+            return arch.toLowerCase() + '-' + _kernelvers[arch][version];
           }
         }
         return "";
@@ -335,7 +330,7 @@
       function createExtBtn(rp) {
         var model = $("#model").val().replace("+", "p").toLowerCase();;
         var version = $("#version").val().split("-")[1];
-        var toolchain = getToolChain($("#model").val(), $("#version").val());
+        var platform = getPlatform($("#model").val(), $("#version").val());
         var exts = eval('_'+rp);
 
         var html = "";
@@ -344,7 +339,7 @@
         for (var ext in exts) {
           var par = "";
           if (exts[ext]["platforms"].indexOf(model + "_" + version) == -1)
-            if (exts[ext]["platforms"].indexOf(toolchain) == -1)
+            if (exts[ext]["platforms"].indexOf(platform) == -1)
               if (exts[ext]["platforms"].indexOf("_") == -1)
                 par = 'disabled="false"';
           html += `<button type="button" class="btn btn-primary btn-sm mt-2" id="ext_btn_${ext}" ${par} onclick="return processext('${rp}', '${ext}')" autofocus="" title="${exts[ext]["description"]}">${ext}</button>&nbsp;`;

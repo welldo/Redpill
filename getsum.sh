@@ -34,4 +34,5 @@ md5sum "${filename}"
 sha256sum "${filename}"
 sha256sum "${filename%%\.*}/rd.gz"
 sha256sum "${filename%%\.*}/zImage"
-
+echo "`file "${filename%%\.*}/zImage" | awk '{printf $9}' | sed 's/+//g'` kernelver"
+echo "`[ -f "${patname}/model.dtb" ] && echo true || echo false` IsDT"

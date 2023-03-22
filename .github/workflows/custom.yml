@@ -271,11 +271,11 @@ jobs:
                   models = {}
                   with open('docs/models.json', mode="r", encoding='utf-8') as f:
                       models = json.loads(f.read())
-                  toolchain = {}
-                  with open('docs/toolchain.json', mode="r", encoding='utf-8') as f:
-                      toolchain = json.loads(f.read())
+                  kernelvers = {}
+                  with open('docs/kernelvers.json', mode="r", encoding='utf-8') as f:
+                      kernelvers = json.loads(f.read())
                   PackageArch = [ item["PackageArch"] for item in models if item["Model"] == model ][0]
-                  PackageKVer = [ toolchain[item][PackageArch] for item in toolchain if item[0:3] == version[0:3] ][0]
+                  PackageKVer = kernelvers[PackageArch][version]
                   platform = PackageArch + "-" + PackageKVer
 
               if iscustom == 'true':
