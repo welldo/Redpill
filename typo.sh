@@ -81,12 +81,10 @@ if [ "${REPO}" == "pocopico" -a "${BRANCH}" == "develop" ]; then
   sed -i 's/DS3622xs /DS3622xs+ /g; s/-3622xs+/-3622xsp/g' `find ${WORK_PATH}/config/DS3622xs+ -type f -name '*config.json'`
 
   # 容错
-  [ -e ${WORK_PATH}/config/DS1520+/7.1.1-42962/config.json ] && sed -i 's/DSM_ds1520p_42962.pat/DSM_DS1520%2B_42962.pat/g' ${WORK_PATH}/config/DS1520+/7.1.1-42962/config.json
-  [ -e ${WORK_PATH}/redpill-misc/recipes/universal.json ] && sed -i 's/856331415d6980d9ef03a75eae4b9c5c927d1083266e1d7038ad8c62fbc2d570/625daf8507141d055b60b9e5ffd633cde1302d68387d611ac97a98a92f820501/g' ${WORK_PATH}/redpill-misc/recipes/universal.json
-
   [ -e ${WORK_PATH}/config/DS1019+/7.0.1-42218/config.json ] && rm -rf ${WORK_PATH}/config/DS1019+/7.0.1-42218/config.json && curl -sSL https://raw.githubusercontent.com/wjz304/redpill-load/test-dev/config/DS1019+/7.0.1-42218/config.json -o ${WORK_PATH}/config/DS1019+/7.0.1-42218/config.json
   [ -e ${WORK_PATH}/config/DS1520+/7.0.1-42218/config.json ] && rm -rf ${WORK_PATH}/config/DS1520+/7.0.1-42218/config.json && curl -sSL https://raw.githubusercontent.com/wjz304/redpill-load/test-dev/config/DS1520+/7.0.1-42218/config.json -o ${WORK_PATH}/config/DS1520+/7.0.1-42218/config.json
   [ -e ${WORK_PATH}/config/DS1520+/7.1.0-42661/config.json ] && rm -rf ${WORK_PATH}/config/DS1520+/7.1.0-42661/config.json && curl -sSL https://raw.githubusercontent.com/wjz304/redpill-load/test-dev/config/DS1520+/7.1.0-42661/config.json -o ${WORK_PATH}/config/DS1520+/7.1.0-42661/config.json
+  [ -e ${WORK_PATH}/config/DS1520+/7.1.1-42962/config.json ] && rm -rf ${WORK_PATH}/config/DS1520+/7.1.1-42962/config.json && curl -sSL https://raw.githubusercontent.com/wjz304/redpill-load/test-dev/config/DS1520+/7.1.1-42962/config.json -o ${WORK_PATH}/config/DS1520+/7.1.1-42962/config.json
   [ -e ${WORK_PATH}/config/DS1621xs+/7.0.1-42218/config.json ] && rm -rf ${WORK_PATH}/config/DS1621xs+/7.0.1-42218/config.json && curl -sSL https://raw.githubusercontent.com/wjz304/redpill-load/test-dev/config/DS1621xs+/7.0.1-42218/config.json -o ${WORK_PATH}/config/DS1621xs+/7.0.1-42218/config.json
   [ -e ${WORK_PATH}/config/DVA3219/7.0.1-42218/config.json ] && rm -rf ${WORK_PATH}/config/DVA3219/7.0.1-42218/config.json && curl -sSL https://raw.githubusercontent.com/wjz304/redpill-load/test-dev/config/DVA3219/7.0.1-42218/config.json -o ${WORK_PATH}/config/DVA3219/7.0.1-42218/config.json
   [ -e ${WORK_PATH}/config/DVA3219/7.1.0-42661/config.json ] && rm -rf ${WORK_PATH}/config/DVA3219/7.1.0-42661/config.json && curl -sSL https://raw.githubusercontent.com/wjz304/redpill-load/test-dev/config/DVA3219/7.1.0-42661/config.json -o ${WORK_PATH}/config/DVA3219/7.1.0-42661/config.json
@@ -118,9 +116,6 @@ if [ "${REPO}" == "jumkey" -a "${BRANCH}" == "develop" ]; then
     curl -sSL https://raw.githubusercontent.com/wjz304/redpill-load/test-jun/config/DVA3221/7.0.1-42218/zImage-001-dav3221-42218-ramdisk-and-header.bsp -o ${WORK_PATH}/config/DVA3221/7.0.1-42218/zImage-001-dav3221-42218-ramdisk-and-header.bsp
     curl -sSL https://raw.githubusercontent.com/wjz304/redpill-load/test-jun/config/DVA3221/7.0.1-42218/config.json -o ${WORK_PATH}/config/DVA3221/7.0.1-42218/config.json
   fi
-
-  rm -rf ${WORK_PATH}/config/DVA1622
-  #[ -d ${WORK_PATH}/config/DVA1622/7.1-42661 ] && mv ${WORK_PATH}/config/DVA1622/7.1-42661 ${WORK_PATH}/config/DVA1622/7.1.0-42661
 fi
 
 exit 0
