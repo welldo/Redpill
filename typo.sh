@@ -16,12 +16,15 @@ sed -i '/BRP_DEBUG=/a\BRP_PLATFORM_KERNELVERSION=${BRP_PLATFORM_KERNELVERSION:-"
 sed -i 's/rpt_load_bundled_extensions/[ -e "${RPT_BUNDLED_EXTS_CFG}" ] \&\& rpt_load_bundled_extensions/' ${WORK_PATH}/build-loader.sh
 [ -e ${WORK_PATH}/bundled-exts.json ] && rm -f ${WORK_PATH}/bundled-exts.json
 
+# mrp_validate_id()
+sed -i 's/\[A-Za-z0-9._\\-]/\[A-Za-z0-9._+\\-]/'                                                                                                                                              ${WORK_PATH}/ext-manager.sh
+# mrp_validate_platform_id()
 sed -i 's/mrp_validate_platform_id()/mrp_validate_platform_id_bak()/'                                                                                                                         ${WORK_PATH}/ext-manager.sh
 sed -i '/mrp_validate_platform_id_bak()/i\mrp_validate_platform_id()'                                                                                                                         ${WORK_PATH}/ext-manager.sh
 sed -i '/mrp_validate_platform_id_bak()/i\{'                                                                                                                                                  ${WORK_PATH}/ext-manager.sh
 sed -i '/mrp_validate_platform_id_bak()/i\  return 0'                                                                                                                                         ${WORK_PATH}/ext-manager.sh
 sed -i '/mrp_validate_platform_id_bak()/i\}'                                                                                                                                                  ${WORK_PATH}/ext-manager.sh
-
+# mrp_fetch_new_ext_recipe()
 sed -i 's/mrp_fetch_new_ext_recipe()/mrp_fetch_new_ext_recipe_bak()/'                                                                                                                         ${WORK_PATH}/ext-manager.sh
 sed -i '/mrp_fetch_new_ext_recipe_bak()/i\mrp_fetch_new_ext_recipe()'                                                                                                                         ${WORK_PATH}/ext-manager.sh
 sed -i '/mrp_fetch_new_ext_recipe_bak()/i\{'                                                                                                                                                  ${WORK_PATH}/ext-manager.sh
