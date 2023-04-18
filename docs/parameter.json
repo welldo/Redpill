@@ -7,22 +7,6 @@
         "default": "",
         "type": "string"
     },
-    "repository": {
-        "name": "repository",
-        "description": "请选择编译依赖的基础库.(pocopico_develop 以外均为默认jun模式)",
-        "detailedinfo": "请选择编译依赖的基础库.型号和版本均已库支持为准.\nwjz304_test*仅用于编译测试, 请勿选.",
-        "required": true,
-        "default": "pocopico",
-        "type": "choice",
-        "options": [
-            "pocopico_develop",
-            "pocopico_jun",
-            "jumkey_develop",
-            "PeterSuh-Q3_master",
-            "wjz304_test-dev",
-            "wjz304_test-jun"
-        ]
-    },
     "model": {
         "name": "model",
         "description": "请选择你需要编译的型号(具体包含型号以基础库支持为准).",
@@ -32,18 +16,7 @@
         "type": "choice",
         "options": [
             "DS918+",
-            "DS920+",
-            "DS923+",
-            "DS1520+",
-            "DS1621+",
-            "DS2422+",
-            "DS3615xs",
-            "DS3617xs",
-            "DS3622xs+",
-            "DVA1622",
-            "DVA3221",
-            "FS2500",
-            "RS4021xs+"
+            "DS920+"
         ]
     },
     "version": {
@@ -54,10 +27,20 @@
         "default": "7.0.1-42218",
         "type": "choice",
         "options": [
-            "7.1.1-42962",
-            "7.1.0-42661",
             "7.0.1-42218",
             "6.2.4-25556"
+        ]
+    },
+    "jun": {
+        "name": "jun",
+        "description": "请选择是否以jun模式编译.(1: 是; 0: 否)",
+        "detailedinfo": "jun模式支持升级.",
+        "required": true,
+        "default": "1",
+        "type": "choice",
+        "options": [
+            "1",
+            "0"
         ]
     },
     "lkm": {
