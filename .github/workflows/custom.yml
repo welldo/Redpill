@@ -239,13 +239,13 @@ jobs:
                       errinfo = 'model 参数错误, 当前仅支持 {}.'.format(', '.join(models))
 
               if iscustom == 'true':
-                  versions = list(configs[model]["platfrom"].keys())
+                  versions = list(configs[model]["platforms"].keys())
                   if not version in versions:
                       iscustom = 'false'
                       errinfo = 'version 参数错误, 当前仅支持 {}.'.format(', '.join(versions))
 
               if iscustom == 'true':
-                  platform = configs[model]["platfrom"][version]
+                  platform = configs[model]["platforms"][version]
 
               if iscustom == 'true':
                   lkms = parameter['lkm']['options']
@@ -742,6 +742,13 @@ jobs:
           echo "============================编译开始============================"
           jun=${{ env.jun }}
           lkm=${{ env.lkm }}
+          model=${{ env.model }}
+          version=${{ env.version }}
+          platform=${{ env.platform }}
+          synomodel=$(echo ${model,,} | sed 's/+/p/g')                                   # DS3622xs+ => ds3622xsp
+          synoversion=$(echo ${version} | awk -F - '{print $2}')                         # 7.0.1-42218 => 42218
+          synoarch=$(echo ${platform} | awk -F - '{print $1}')
+          synokver=$(echo ${platform} | awk -F - '{print $2}')
 
           bArgs="BRP_DEBUG=1 "
           if [ "${jun}" == "1" ]; then 
@@ -761,16 +768,10 @@ jobs:
 
           cd redpill-load
 
-          model=${{ env.model }}
-          version=${{ env.version }}
-          platform=${{ env.platform }}
-          synomodel=$(echo ${model,,} | sed 's/+/p/g')                                   # DS3622xs+ => ds3622xsp
-          synoversion=$(echo ${version} | awk -F - '{print $2}')                         # 7.0.1-42218 => 42218
-          synoarch=$(echo ${platform} | awk -F - '{print $1}')
-          synokver=$(echo ${platform} | awk -F - '{print $2}')
-
           # make config
-          python syno.py ${model} ${version} ${jun}
+          sudo pip install -r requirements.txt
+          sudo python syno.py ${model} ${version} ${jun}
+          cat config/${model}/${version}/config.json
 
           # redpill.ko
           if [ ! -e ./redpill.ko ]; then

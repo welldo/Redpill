@@ -30,10 +30,11 @@
   <script src="https://polyfill.io/v3/polyfill.min.js"></script>
   <!-- <script src="https://fastly.jsdelivr.net/npm/marked/marked.min.js"></script> -->
   <script type="application/javascript">
-    var extbase = "";
+
     var repo = "wjz304/Redpill_CustomBuild";
     var rlRepo = "wjz304/redpill-load"
     var rpRepo = "wjz304/rp-ext"
+
     var dev = "0";
 
     var _parameters = {};
@@ -99,7 +100,7 @@
         "description": "如果下面显示异常请尝试切换代理设置.",
         "detailedinfo": "如果下面显示异常请尝试切换代理设置.",
         "required": true,
-        "default": "ghproxy.com",
+        "default": "raw.githubusercontent.com",
         "type": "choice",
         "options": [
           "raw.githubusercontent.com",
@@ -135,7 +136,7 @@
               $("#selectproxy").on("change", changeProxy);
               $("#model").on("change", changeModel);
               $("#version").on("change", changeVersion);
-              changeModel();
+              getModels();
             });
           });
         });
@@ -255,11 +256,20 @@
       init();
     }
 
+    function getModels() {
+      var xreleases = Object.keys(_configs).sort();
+      $("#model")[0].options.length = 0;
+      for (var i in xreleases) {
+          $("#model")[0].options.add(new Option(xreleases[i], xreleases[i]));
+      }
+      changeModel();
+    }
+
     function changeModel() {
 
       model = $("#model").val();
 
-      var xreleases = _configs.keys().reverse();
+      var xreleases = Object.keys(_configs[model]["platforms"]).reverse();
       $("#version")[0].options.length = 0;
       for (var i in xreleases) {
         $("#version")[0].options.add(new Option(xreleases[i], xreleases[i]));
