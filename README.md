@@ -8,15 +8,10 @@
 ## 介绍  
 [Redpill_CustomBuild](https://github.com/wjz304/Redpill_CustomBuild)  
 一个自定义配置及驱动并通过 Github Action 编译 DSM redpill 引导的平台.  
-本库并没有实际的技术创新, 仅做了一个参数适配, 使一些定制更简单, 并把过程搬到线上, 依赖微软强大的服务器使其快速得到想要的引导文件.  
-高度依赖以下大佬的项目, 请给以下各位大佬点赞.
->源码仓库： [@RedPill-TTG](https://github.com/RedPill-TTG/redpill-load)  
->编译来源： [@pocopico](https://github.com/pocopico/redpill-load) [@jumkey](https://github.com/jumkey/redpill-load) [@PeterSuh-Q3](https://github.com/PeterSuh-Q3/redpill-load) [@fbelavenuto](https://github.com/fbelavenuto/arpl)  
->驱动来源： [@pocopico](https://github.com/pocopico/rp-ext) [@jim3ma](https://github.com/jim3ma/synology-igc) [@fbelavenuto](https://github.com/fbelavenuto/arpl-modules)  
 
-在此, 再次, 声明!!!  
-本人只是按照通用编译流程整合各位大佬的redpill-load 进行编译. 我只是解决编译的问题, 任何引导内部问题我都解决不了(当然知道的问题肯定会协助大家解决).  
-说通俗点, 我只是相当于一个物流, 你要哪家(大佬)的货(引导)我就给你配送哪家(大佬)的货(引导).
+>源码仓库： [@RedPill-TTG](https://github.com/RedPill-TTG/redpill-load)  
+>编译参考： [@pocopico](https://github.com/pocopico/redpill-load) [@jumkey](https://github.com/jumkey/redpill-load) [@PeterSuh-Q3](https://github.com/PeterSuh-Q3/redpill-load) [@fbelavenuto](https://github.com/fbelavenuto/arpl)  
+>驱动来源： [@pocopico](https://github.com/pocopico/rp-ext) [@jim3ma](https://github.com/jim3ma/synology-igc) [@fbelavenuto](https://github.com/fbelavenuto/arpl-modules)  
 
 
 > 😎 为什么用 GitHub Action？  
@@ -25,11 +20,9 @@
 ## 链接
 ***如果没有魔法，请参考 https://github.com/wjz304/hosts 设置hosts***  
 ***请使用 Chromium 内核浏览器 (Chrome / Edge / 360极速 ...)***  
-[【👉快速创建】](https://wjz304.github.io/Redpill_CustomBuild/Issues.html)  
-[【👉快速创建】(dev)](https://wjz304.github.io/Redpill_CustomBuild/Issues.html?dev=1)  
-`普通模式默认使用pocopico的驱动库, dev模式默认使用我fork的驱动库(如果报 Checksum 错, 请尝试使用(dev)模式), `  
+[【👉快速创建】](https://wjz304.github.io/Redpill_CustomBuild/Issues.html)   
 `并发较多时, 有概率出现curl错误或者 未触发编译的情况, 过几分钟再试...`  
-`如果你看不懂, 或者其他疑难杂症, 请不要浪费时间. 尝试使用arpl构建. https://github.com/fbelavenuto/arpl`
+`如果你看不懂, 或者其他疑难杂症, 请不要浪费时间. 尝试使用arpl构建. https://github.com/wjz304/arpl-i18n`
 
 ## 使用  
 在本项目 Issues 中创建问题(符合下述规范), 按需填写即可发起定制构建[【👉图文说明】](https://github.com/wjz304/Redpill_CustomBuild/blob/main/guide/Issues.md) [【👉注意事项】](https://github.com/wjz304/Redpill_CustomBuild/blob/main/docs/tips.md).  
@@ -41,9 +34,9 @@
 
 参数             | 必选 |     默认值     | 说明  
 -----------------|------|----------------|---------  
-repository       | √    |-               | 请选择编译依赖的基础库. "pocopico_develop", "pocopico_jun", "jumkey_develop", "PeterSuh-Q3_master"  
 model            | √    |-               | 请选择你需要编译的型号. (具体包含型号以基础库支持为准)  
 version          | √    |-               | 请选择你需要编译的版本. (具体包含版本以基础库支持为准)  
+jun              | √    |1               | 请选择是否以jun模式编译.  
 lkm              | ×    |-               | 如不了解请保持默认, 请选择 LKM 版本.(目前具体有何区别不详, 如无必要选默认的 redpill).  
 config           | ×    |-               | 如不了解请保持默认, 设置默认 user_config.json <sup>[①]()</sup>
 maxdisks         | ×    |-               | 如不了解请保持默认, 请输入最大硬盘数 maxdisks. 默认: 无, 范围: 1~32  
@@ -73,7 +66,7 @@ ext3rds          | ×    |-               | 请输入需要集成的其他驱动
   - 在 body 中 以 ```xxx``` 包裹自定义的 shell 命令, 将在 build 前运行. 参考[#3](https://github.com/wjz304/Redpill_CustomBuild/issues/3) 
 ④：详细信息请查看：https://github.com/wjz304/Redpill_CustomBuild/issues/1252#issuecomment-1242677916
 ```
-#### 关于 dtb 现在共3种形式：  
+#### 关于 dtb 现在共两种形式3种方案：  
  \  | 参数 |     说明  
 ---|------|---------  
 1 | dtb参数 填写 dtb/dts 的下载链接 | 内部会自动加入 dtbstatic, 并替换自定义的 dtb 到 dtbstatic 中.  
@@ -89,66 +82,58 @@ ext3rds          | ×    |-               | 请输入需要集成的其他驱动
 5. 驱动的选择请参考[【👉驱动列表】](./drivers.md).     
 6. 根据github官方说明所有的编译结果保留90天，周知.
 7. 如果没有魔法, 参考 https://github.com/wjz304/hosts 设置 hosts.
-8. [【👉问题反馈】](https://github.com/wjz304/Redpill_CustomBuild/issues/807)  交流群 QQ群: [21609194](https://qm.qq.com/cgi-bin/qm/qr?k=8AU8VJ82OR2HB_77g3vsjGKA-rm-p67B&jump_from=webapi)  TG: [https://t.me/Redpill_CustomBuild](https://t.me/Redpill_CustomBuild)  
- `(PS: 在Issues上评论我可能看不到, 邮件太多了, 如长时间未回复请私信.)`  
-9. fork 本项目 Issues 和 Action 使用没有问题的.  
+8. fork 本项目 Issues 和 Action 使用没有问题的.  
   但是快速创建的WEB页面由于 涉及 guthub 的 pages, 且含有CDN加速, 存在一些硬编码, 如要使用, 需要开通pages后方可使用.  
-10. 在Issues下评论 "transfer" 附件转快传 🚲->🏍. (请勿重复发, 转换操作时间 ≈ 该Issue编译成功次数 X 3分钟).
-11. 在Issues下评论 "delete builds" 即可删该Issues的所有历史编译记录.
-12. Web页 Title 后面的红色标签是可以点击的哦!(***PS：只有读到这里的人才会知道.***).  
+9. 在Issues下评论 "transfer" 附件转快传 🚲->🏍. (请勿重复发, 转换操作时间 ≈ 该Issue编译成功次数 X 3分钟).
+10. 在Issues下评论 "delete builds" 即可删该Issues的所有历史编译记录.
+11. Web页 Title 后面的红色标签是可以点击的哦!(***PS：只有读到这里的人才会知道.***).  
+12. [【👉问题反馈】](https://github.com/wjz304/Redpill_CustomBuild/issues/807)  
 
 ## 举例
 * 普通参数示例:
-  - {"repository":"pocopico_develop", "model":"DS3622xs+", "version":"7.0.1-42218", "lkm":"dev", "diskidxmap":"00", "sataportmap":"6", "addons":"misc", "modules":"r8125"}  
-  - {"repository":"pocopico_develop", "model":"DS3622xs+", "version":"7.0.1-42218", "lkm":"dev", "maxdisks":"16", "maxlanport":"7", "addons":"misc", "modules":"r8125"}  
+  - {"model":"DS3622xs+", "version":"7.0.1-42218", "jun":"1", "lkm":"dev", "diskidxmap":"00", "sataportmap":"6", "addons":"misc", "modules":"r8125"}  
+  - {"model":"DS3622xs+", "version":"7.0.1-42218", "jun":"1", "lkm":"dev", "maxdisks":"16", "maxlanport":"7", "addons":"misc", "modules":"r8125"}  
   - {  
-      "repository":"pocopico_develop",  
       "model":"DS3622xs+",  
       "version":"7.0.1-42218",  
-      "lkm":"dev",  
       "netif_num":"3",  
       "addons":"misc", 
       "modules":"r8125, r8168, e1000e, igb, vmxnet3, ixgbe"  
     }  
 * dtb参数示例:  
   - {  
-      "repository":"pocopico_develop",  
       "model":"DS920+",  
       "version":"7.0.1-42218",  
-      "lkm":"dev",  
       "dtb": "https://github.com/wjz304/Redpill_CustomBuildfiles/9235785/ds920p.zip",  
       "addons":"dtbstatic, misc"  
     }  
 * ext3rds参数链接示例:  
   - {  
-      "repository":"pocopico_develop",  
       "model":"DS3622xs+",  
       "version":"7.1.1-42962",  
-      "lkm":"dev",  
       "addons":"dtbstatic, misc",
       "modules":"r8125, e1000, e1000e, vmxnet3",
       "ext3rds":"https://raw.githubusercontent.com/wjz304/rp-ext/main/rtl8150/rpext-index.json"  
     }
 * config参数示例:  
   - {  
-      "repository":"pocopico_develop",  
       "model":"DS3622xs+",  
       "version":"7.0.1-42218",  
-      "lkm":"dev",  
       "config":{"ramdisk_copy": {}},  
       "addons":"misc"  
     }  
 * 高级自定义示例:
-  - {"repository":"pocopico_develop", "model":"DS3622xs+", "version":"7.0.1-42218", "lkm":"dev", "addons":"misc"}  
+  - {"model":"DS3622xs+", "version":"7.0.1-42218", "lkm":"dev", "addons":"misc"}  
     \`\`\`  
     echo "${model}"  
     \`\`\`  
     
-</br>
-<details><summary>🍻打赏一下</summary>  
-<div><img src="https://raw.githubusercontent.com/wjz304/wjz304/master/my/20220908134226.jpg" width="500"></div>  
-</details>  
-</br>
+
+## 打赏一下🍻
+* > ### 作者: Ing  交流群 QQ群: [21609194](https://qm.qq.com/cgi-bin/qm/qr?k=8AU8VJ82OR2HB_77g3vsjGKA-rm-p67B&jump_from=webapi)  TG: [https://t.me/Redpill_CustomBuild](https://t.me/Redpill_CustomBuild)  
+* <div><img src="https://raw.githubusercontent.com/wjz304/wjz304/master/my/20220908134226.jpg" width="500"></div>  
+
+
 
 ## 鸣谢
 https://github.com/RedPill-TTG/redpill-load  
