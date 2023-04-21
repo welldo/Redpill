@@ -804,12 +804,12 @@ jobs:
           modinfo ./redpill.ko
           RPKOVER=$(modinfo --field=vermagic ./redpill.ko | awk '{print $1}')
           cp -fv ./redpill.ko ./ext/rp-lkm/redpill-linux-v${RPKOVER}.ko
-          sudo chmod -R +x ./ext/rp-lkm
+          sudo chmod -R a+x ./ext/rp-lkm
 
           RPKOOLD=`echo $(grep "@@@EXT@@@/rp-lkm" ./config/${model}/${version}/config.json | sed -r 's|"@@@EXT@@@/(.*)":(.*)|\1|')`  # `echo $P` 去首尾空格
           if [ ! "${RPKOOLD}" == "rp-lkm/redpill-linux-v${RPKOVER}.ko" ]; then
             echo "change ./config/${model}/${version}/config.json from ${RPKOOLD} to rp-lkm/redpill-linux-v${RPKOVER}.ko"
-            sed -i "s|${RPKOOLD}|rp-lkm/redpill-linux-v${RPKOVER}.ko|" ./config/${model}/${version}/config.json
+            sudo sed -i "s|${RPKOOLD}|rp-lkm/redpill-linux-v${RPKOVER}.ko|" ./config/${model}/${version}/config.json
           fi
 
           rpext=https://raw.githubusercontent.com/wjz304/rp-ext/master
