@@ -822,7 +822,16 @@ jobs:
             for item in ${exts[@]}
             do
               echo "addons ==> [${item}]"
-              ./ext-manager.sh add "${rpext}/addons/${item}/rpext-index.json"
+              if [ "dtbstatic" == "${item}" -a -n "${{ env.dtb }}" ]; then
+                echo "loacl dtbstatic ..."
+                cp -fv ${{ env.dtb }} ext/dtbstatic/releases/user_model.dtb
+                dtbhash="`sha256sum ext/dtbstatic/releases/user_model.dtb | awk -F' ' '{print$1}'`"
+                sed -i "s|@@@PATH@@@|${PWD}|g" ext/dtbstatic/rpext-index.json ext/dtbstatic/recipes/universal.json
+                sed -i "s|@@@HASH@@@|${dtbhash}|g" ext/dtbstatic/recipes/universal.json
+                ./ext-manager.sh add "file://localhost${PWD}/ext/dtbstatic/rpext-index.json"
+              else
+                ./ext-manager.sh add "${rpext}/addons/${item}/rpext-index.json"
+              fi
             done
           fi
 
