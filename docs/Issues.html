@@ -274,7 +274,13 @@
       for (var i in xreleases) {
         $("#version")[0].options.add(new Option(xreleases[i], xreleases[i]));
       }
+      changeproductsimage();
       changeVersion();
+    }
+
+    function changeproductsimage() {
+      var model = $("#model").val().replace("+","plus");
+      $('#products').html(`<img src="https://www.synology.cn/img/products/detail/${model}/heading.png" width="20%">`);
     }
 
     function changeVersion() {
@@ -283,7 +289,7 @@
     }
 
     function createExtBtn(rp) {
-      var model = $("#model").val().replace("+", "p").toLowerCase();;
+      var model = $("#model").val().replace("+", "p").toLowerCase();
       var version = $("#version").val().split("-")[1];
       var platform = _configs[$("#model").val()]["platforms"][$("#version").val()];
       var exts = eval('_' + rp);
@@ -407,6 +413,9 @@
    ░        ░  ░   ░              ░      ░  ░    ░  ░   ░ ░         ░           ░               ░ ░         ░    ░         ░      ░      ░  ░   ░    
                  ░                                      ░                                                             ░                       ░      
       </pre>
+      <div class="image" id="products">
+        <img src="https://www.synology.cn/img/products/detail/DS920plus/heading.png" width="20%">
+      </div>
     <div class="flex-auto min-width-0 width-fit mr-3">
       <div class="d-flex flex-wrap flex-items-center wb-break-word f3 text-normal">
         <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
