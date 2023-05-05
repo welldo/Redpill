@@ -446,7 +446,7 @@ jobs:
                       iscustom = 'false'
                       errinfo = 'ext 参数错误, "{}" 无效, addons 当前仅支持 "{}".'.format(extc, ','.join([x for x in gitAddons if x in gitAddons.keys() and (platform in gitAddons[x]['platforms'] or '_' in gitAddons[x]['platforms'])]))
                   else:
-                      dtbs = ['DS920+', 'DS923+', 'DS1520+', 'DS1621+', 'DS1821+', 'DS2422+', 'DVA1622', 'FS2500', 'SA6400']
+                      dtbs = [ model for model in configs.keys() if configs[model]["dt"] == True ]
                       if model in dtbs:
                           if dtb == '':
                               if 'dtbstatic' in curAddons:
