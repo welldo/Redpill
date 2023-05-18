@@ -796,11 +796,6 @@ jobs:
             modinfo ./redpill.ko
           fi
 
-          if [ "SA6400" == "${model}" ]; then
-            curl -skL "https://github.com/wjz304/Redpill_CustomBuild/files/`[ "${lkm}" == "dev" ] && echo 10734771 || echo 10734770`/rp-epyc7002-5.10.55-${lkm}.ko.gz" -o "rp-epyc7002-5.10.55-${lkm}.ko.gz"
-            gzip -dcv "rp-epyc7002-5.10.55-${lkm}.ko.gz" > "./redpill.ko"
-          fi
-
           modinfo ./redpill.ko
           RPKOVER=$(modinfo --field=vermagic ./redpill.ko | awk '{print $1}')
           cp -fv ./redpill.ko ./ext/rp-lkm/redpill-linux-v${RPKOVER}.ko
