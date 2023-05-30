@@ -66,7 +66,7 @@
     },
     "maxdisks": {
         "name": "maxdisks",
-        "description": "如不了解请保持默认, 请输入最大硬盘数. 默认: 无, 范围: 1~48",
+        "description": "如不了解请保持默认, 请输入最大硬盘数. 默认: 无, 范围: 1~26",
         "detailedinfo": "请输入最大硬盘数.",
         "required": false,
         "default": "",
@@ -74,7 +74,7 @@
     },
     "maxlanport": {
         "name": "maxlanport",
-        "description": "如不了解请保持默认, 请输入最大网卡索引. 默认: 7, 范围: 0~47",
+        "description": "如不了解请保持默认, 请输入最大网卡索引. 默认: 8, 范围: 1~8",
         "detailedinfo": "请输入最大网卡索引.",
         "required": false,
         "default": "7",
@@ -123,7 +123,7 @@
     "netif_num": {
         "name": "netif_num",
         "description": "请输入网卡数量 netif_num. 默认: 2, 范围: 1~8",
-        "detailedinfo": "请输入网卡数量, netif_num 应小于 maxlanport + 1.",
+        "detailedinfo": "请输入网卡数量, netif_num 应等于 maxlanport.",
         "required": false,
         "default": "2",
         "type": "string"

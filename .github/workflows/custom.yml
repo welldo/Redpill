@@ -271,13 +271,13 @@ jobs:
                           iscustom = 'false'
                           errinfo = 'config 参数错误, 不符合JSON规范 {}.'.format(e)
 
-              if iscustom == 'true' and maxdisks != '' and (not maxdisks.isdigit() or int(maxdisks) < 1 or int(maxdisks) > 48):
+              if iscustom == 'true' and maxdisks != '' and (not maxdisks.isdigit() or int(maxdisks) < 1 or int(maxdisks) > 26):
                   iscustom = 'false'
-                  errinfo = 'maxdisks 参数错误, 请填写 1 - 48 之间的数字.'
+                  errinfo = 'maxdisks 参数错误, 请填写 1 - 26 之间的数字.'
 
-              if iscustom == 'true' and maxlanport != '' and (not maxlanport.isdigit() or int(maxlanport) < 0 or int(maxlanport) > 47):
+              if iscustom == 'true' and maxlanport != '' and (not maxlanport.isdigit() or int(maxlanport) < 1 or int(maxlanport) > 8):
                   iscustom = 'false'
-                  errinfo = 'maxlanport 参数错误, 请填写 0 - 47 之间的数字.'
+                  errinfo = 'maxlanport 参数错误, 请填写 1 - 8 之间的数字.'
 
               if iscustom == 'true' and internalportcfg != '':
                   if len(internalportcfg) > 2 and internalportcfg[:2].lower().startswith('0x') and all(c in string.hexdigits for c in internalportcfg[2:]):
