@@ -43,6 +43,10 @@ function beginArray() {
     permanent="S7R"
     serialstart="2080"
     ;;
+  DS1823xs+)
+    permanent="V5R"
+    serialstart="2280"
+    ;;
   DS923+)
     permanent="TQR"
     serialstart="2270"
@@ -210,6 +214,9 @@ function generateSerial() {
     serialnum=$(toupper "$(echo "$serialstart" | tr ' ' '\n' | sort -R | tail -1)$permanent"$(generateRandomLetter)$(generateRandomValue)$(generateRandomValue)$(generateRandomValue)$(generateRandomValue)$(generateRandomLetter))
     ;;
   DS1621xs+)
+    serialnum=$(toupper "$(echo "$serialstart" | tr ' ' '\n' | sort -R | tail -1)$permanent"$(generateRandomLetter)$(generateRandomValue)$(generateRandomValue)$(generateRandomValue)$(generateRandomValue)$(generateRandomLetter))
+    ;;
+  DS1823xs+)
     serialnum=$(toupper "$(echo "$serialstart" | tr ' ' '\n' | sort -R | tail -1)$permanent"$(generateRandomLetter)$(generateRandomValue)$(generateRandomValue)$(generateRandomValue)$(generateRandomValue)$(generateRandomLetter))
     ;;
   DS1621+)
