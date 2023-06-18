@@ -130,7 +130,10 @@ ext3rds          | ×    |-               | 请输入需要集成的其他驱动
     
 
 ## 打赏一下🍻
-* > ### 作者: Ing  交流群 QQ群: [21609194](https://qm.qq.com/cgi-bin/qm/qr?k=8AU8VJ82OR2HB_77g3vsjGKA-rm-p67B&jump_from=webapi)  QQ频道: redpill2syno  TG: [https://t.me/Redpill_CustomBuild](https://t.me/Redpill_CustomBuild)  
+* > ### 作者: Ing  
+* > QQ群: 21609194 (已解散)
+* > QQ频道: redpill2syno [点击链接加入QQ频道](https://pd.qq.com/s/5nmli9qgn)
+* > TG频道: redpill2syno [点击链接加入TG频道](https://t.me/redpill2syno)
 * <div><img src="https://raw.githubusercontent.com/wjz304/wjz304/master/my/20220908134226.jpg" width="500"></div>  
 
 
