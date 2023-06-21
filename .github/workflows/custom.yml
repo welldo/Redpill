@@ -783,18 +783,6 @@ jobs:
               gzip -dcv "rp-${platform}-${lkm}.ko.gz" > "./redpill.ko" || true
             fi
           fi
-          if [ ! -e ./redpill.ko ]; then
-            echo "===========================Build redpill.ko==========================="
-            toolkittxz=ds.${synoarch}-${version::3}.dev.txz
-            toolkitdir=usr/local/x86_64-pc-linux-gnu/x86_64-pc-linux-gnu/sys-root/usr/lib/modules/DSM-${version::3}/build
-            curl -skL "https://global.download.synology.com/download/ToolChain/toolkit/${version::3}/${synoarch}/${toolkittxz}" -o ${toolkittxz}
-            mkdir ${synoarch} && tar -C./${synoarch}/ -xf ${toolkittxz} ${toolkitdir}
-            git clone -b master --depth=1 https://github.com/${repo}/redpill-lkm.git
-            cd redpill-lkm
-            # sed -i 's/   -std=gnu89/   -std=gnu89 -fno-pie/' ../${synoarch}/${toolkitdir}/Makefile
-            make LINUX_SRC=../${synoarch}/${toolkitdir} dev-v${version::1}
-            modinfo ./redpill.ko
-          fi
 
           modinfo ./redpill.ko
           RPKOVER=$(modinfo --field=vermagic ./redpill.ko | awk '{print $1}')
@@ -814,8 +802,7 @@ jobs:
           if [ -n "${{ env.addons }}" ]; then
             ext=${{ env.addons }}
             exts=(${ext//,/ })
-            for item in ${exts[@]}
-            do
+            for item in ${exts[@]}; do
               echo "addons ==> [${item}]"
               if [ "dtbstatic" == "${item}" -a -n "${{ env.dtb }}" ]; then
                 echo "loacl dtbstatic ..."
@@ -851,8 +838,7 @@ jobs:
           if [ -n "${{ env.modules }}" ]; then
             ext=${{ env.modules }}
             exts=(${ext//,/ })
-            for item in ${exts[@]}
-            do
+            for item in ${exts[@]}; do
               echo "modules ==> [${item}]"
               ./ext-manager.sh add "${rpext}/modules/${item}/rpext-index.json"
             done
@@ -863,8 +849,7 @@ jobs:
           if [ -n "${{ env.ext3rds }}" ]; then
             ext=${{ env.ext3rds }}
             exts=(${ext//,/ })
-            for item in ${exts[@]}
-            do
+            for item in ${exts[@]}; do
               echo "ext3rds ==> [${item}]"
               ./ext-manager.sh add "${item}"
             done
