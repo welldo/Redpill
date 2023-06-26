@@ -53,7 +53,7 @@ diskidxmap       | ×    |-               | 请输入SATA控制器盘序 DiskIdx
 sataportmap      | ×    |-               | 请输入SATA控制器盘数 SataPortMap. <sup>[④]()</sup> DS920+, DS923+, DS1520+, DS1621+, DS2422+, DVA1622 不需要填写. 默认: 无  
 sasidxmap        | ×    |-               | 请输入SAS控制器盘数 SasIdxMap. <sup>[④]()</sup> DS920+, DS923+, DS1520+, DS1621+, DS2422+, DVA1622 不需要填写. 默认: 无  
 dtb              | ×    |-               | 请输入dtb 文件的下载链接(支持的文件类型: .dts,.dtb,.tar.gz,.zip), 仅 DS920+, DS923+, DS1520+, DS1621+, DS2422+, DVA1622 需要填写, 其他型号请勿填写. [#47](https://github.com/wjz304/Redpill_CustomBuild/issues/47)  
-addons           | ×    |-               | 请输入需要集成的扩展, 多个请以','间隔(disks / dtbpatch / dtbstatic 请只选一个, dtbstatic 依赖自定义的dtb文件). 
+addons           | ×    |-               | 请输入需要集成的扩展, 多个请以','间隔(不加 boot-wait, misc 基本会起不来, acpid2也建议添加.). 
 modules          | ×    |-               | 请输入需要集成的驱动, 多个请以','间隔(请酌情添加, 太多编不过). eg: "r8125, tg3" 
 ext3rds          | ×    |-               | 请输入需要集成的其他驱动(URL), 多个请以','间隔(请酌情添加, 太多编不过). 
 \-               | ×    |-               | 高级自定义 <sup>[③]()</sup>  

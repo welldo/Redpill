@@ -178,8 +178,8 @@
     },
     "addons": {
         "name": "addons",
-        "description": "请输入需要集成的扩展, 多个请以','间隔(disks / dtbpatch / dtbstatic 请只选一个, dtbstatic 依赖自定义的dtb文件).\n",
-        "detailedinfo": "点击跳转到 addons 描述文件. (boot-wait, misc强烈建议添加, acpid2建议添加.)",
+        "description": "请输入需要集成的扩展, 多个请以','间隔. (不加 boot-wait, misc 基本会起不来, acpid2也建议添加).",
+        "detailedinfo": "点击跳转到 addons 描述文件. (disks / dtbpatch / dtbstatic 请只选一个, dtbstatic 依赖自定义的dtb文件).",
         "detailedurl": "https://github.com/wjz304/rp-ext/blob/main/addons.json",
         "required": false,
         "default": "",
