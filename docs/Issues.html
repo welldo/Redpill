@@ -279,8 +279,10 @@
     }
 
     function changeproductsimage() {
-      var model = $("#model").val().replace("+","plus");
-      $('#products').html(`<img src="https://www.synology.cn/img/products/detail/${model}/heading.png" width="20%">`);
+      //var model = $("#model").val().replace("#","").replace("+","plus");
+      //$('#products').html(`<img src="https://www.synology.cn/img/products/detail/${model}/heading.png" width="20%">`);
+      var model = $("#model").val().replace("#","").replace("+","%2B");
+      $('#products').html(`<img src="https://www.synology.com/api/products/getPhoto?product=${model}&type=img_s&sort=0" width="20%">`);
     }
 
     function changeVersion() {
