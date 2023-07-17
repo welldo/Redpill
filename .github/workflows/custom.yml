@@ -747,8 +747,6 @@ jobs:
           platform=${{ env.platform }}
           synomodel=$(echo ${model,,} | sed 's/+/p/g')                                   # DS3622xs+ => ds3622xsp
           synoversion=$(echo ${version} | awk -F - '{print $2}')                         # 7.0.1-42218 => 42218
-          synoarch=$(echo ${platform} | awk -F - '{print $1}')
-          synokver=$(echo ${platform} | awk -F - '{print $2}')
 
           bArgs="BRP_DEBUG=1 "
           if [ "${jun}" == "1" ]; then 
