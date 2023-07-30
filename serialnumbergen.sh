@@ -7,6 +7,11 @@ function beginArray() {
     permanent="VKR"
     suffix="alpha"
     ;;
+  DS718+)
+    serialstart="1930"
+    permanent="PEN"
+    suffix="numeric"
+    ;;
   DS720+)
     serialstart="2030 2040 20C0 2150"
     permanent="SBR"
