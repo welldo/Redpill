@@ -70,7 +70,7 @@ ext3rds          | ×    |-               | 请输入需要集成的其他驱动
  \  | 参数 |     说明  
 ---|------|---------  
 1 | dtb参数 填写 dtb/dts 的下载链接 | 内部会自动加入 dtbstatic, 并替换自定义的 dtb 到 dtbstatic 中.  
-2 | dtb参数 为空 | 内部会自动加入 disks, disks 均自动识别已插入硬盘并修改dtb. 如果磁盘识别有问题,请尝试切换 dtbpatch. 
+2 | dtb参数 为空 | 内部会自动加入 disks, disks 均自动识别已插入硬盘并修改dtb. 
 
 
 ## 说明

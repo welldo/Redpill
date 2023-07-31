@@ -452,21 +452,18 @@ jobs:
                               if 'dtbstatic' in curAddons:
                                   iscustom = 'false'
                                   errinfo = 'addons 参数错误, "dtbstatic" 无效, dtbstatic 依赖自定义的 dtb 文件.'
-                              elif 'disks' in curAddons and 'dtbpatch' in curAddons:
-                                  iscustom = 'false'
-                                  errinfo = 'addons 参数错误, "disks" 和 "dtbpatch" 只能选一个.'
-                              elif 'disks' not in curAddons and 'dtbpatch' not in curAddons:
+                              elif 'disks' not in curAddons:
                                   curAddons.append('disks')
                           else:
-                              if 'disks' in curAddons or 'dtbpatch' in curAddons:
+                              if 'disks' in curAddons:
                                   iscustom = 'false'
-                                  errinfo = 'addons 参数错误, "disks / dtbpatch" 无效, 自定义 dtb 文件时只能选 "dtbstatic".'
+                                  errinfo = 'addons 参数错误, "disks" 无效, 自定义 dtb 文件时只能选 "dtbstatic".'
                               elif 'dtbstatic' not in curAddons:
                                   curAddons.append('dtbstatic')
                       else:
-                          if 'dtbstatic' in curAddons or 'disks' in curAddons or 'dtbpatch' in curAddons:
+                          if 'dtbstatic' in curAddons or 'disks' in curAddons:
                               iscustom = 'false'
-                              errinfo = 'addons 参数错误, "dtbstatic / disks / dtbpatch" 无效, "{}" 不需要 "dtb".'.format(model)
+                              errinfo = 'addons 参数错误, "dtbstatic / disks" 无效, "{}" 不需要 "dtb".'.format(model)
                       if iscustom == 'true' and addons != '':
                           addons = ','.join(curAddons)
 
