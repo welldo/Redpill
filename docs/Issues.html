@@ -260,6 +260,8 @@
       var xreleases = Object.keys(_configs).sort();
       $("#model")[0].options.length = 0;
       for (var i in xreleases) {
+          if (xreleases[i].at(0) == '#' ) 
+            continue
           $("#model")[0].options.add(new Option(xreleases[i], xreleases[i]));
       }
       changeModel();
