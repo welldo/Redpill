@@ -66,8 +66,8 @@
     },
     "maxdisks": {
         "name": "maxdisks",
-        "description": "如不了解请保持默认, 请输入最大硬盘数. 默认: 无, 范围: 1~26",
-        "detailedinfo": "请输入最大硬盘数.",
+        "description": "如不了解请保持默认, 请输入最大硬盘索引. 默认: 无, 范围: 1~26",
+        "detailedinfo": "请输入最大硬盘索引.",
         "required": false,
         "default": "",
         "type": "string"
@@ -82,10 +82,10 @@
     },
     "internalportcfg": {
         "name": "internalportcfg",
-        "description": "如不了解请保持默认, 请输入 sata 接口配置 internalportcfg(十六进制数). 默认: 0xffff",
+        "description": "如不了解请保持默认, 请输入 sata 接口配置 internalportcfg(十六进制数). 默认: 无",
         "detailedinfo": "以上数值为16进制, 将其转换为2进制进行理解.\n群晖内使用“1”表示存在这个接口, “0”表示不存在这个接口.\n 0xffff 转为2进制为“1111,1111,1111,1111”, 即 1-16 号硬盘为内部sata硬盘\n与esataportcfg和usbportcfg不应该出现重复.",
         "required": false,
-        "default": "0xffff",
+        "default": "",
         "type": "string"
     },
     "esataportcfg": {
