@@ -371,7 +371,10 @@ jobs:
               dtbs = [ model for model in configs.keys() if configs[model]["dt"] == True ]
               if iscustom == 'true':
                   if model not in dtbs and dtb == '':
-                      pass
+                      if addons != '':
+                        addons += ',disks'
+                      else:
+                          addons += 'disks'
                   elif model not in dtbs and dtb != '':
                       iscustom = 'false'
                       errinfo = 'dtb 参数错误, "{}" 不需要 "dtb".'.format(model)
