@@ -53,9 +53,9 @@ jobs:
           # -w, --write-out FORMAT  完成后输出什么
           # -#/--progress-bar	      用进度条显示当前的传送状态
 
-          curl -L "https://purge.jsdelivr.net/gh/wjz304/Redpill_CustomBuild@main/docs/parameter.json"
-          curl -L "https://purge.jsdelivr.net/gh/wjz304/Redpill_CustomBuild@main/docs/tips.md"
+          curl -L "https://purge.jsdelivr.net/gh/wjz304/rpcb@main/docs/parameter.json"
+          curl -L "https://purge.jsdelivr.net/gh/wjz304/rpcb@main/docs/tips.md"
 
-          curl -L "https://cdn.statically.io/gh/wjz304/Redpill_CustomBuild/main/docs/parameter.json"
-          curl -L "https://cdn.statically.io/gh/wjz304/Redpill_CustomBuild/main/docs/tips.md"
+          curl -L "https://cdn.statically.io/gh/wjz304/rpcb/main/docs/parameter.json"
+          curl -L "https://cdn.statically.io/gh/wjz304/rpcb/main/docs/tips.md"
           
