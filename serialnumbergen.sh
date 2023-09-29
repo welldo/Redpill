@@ -2,6 +2,11 @@
 
 function beginArray() {
   case $1 in
+  DS224+)
+    serialstart="2350"
+    permanent="WBR"
+    suffix="alpha"
+    ;;
   DS423+)
     serialstart="22A0"
     permanent="VKR"
@@ -13,8 +18,8 @@ function beginArray() {
     suffix="numeric"
     ;;
   DS720+)
-    serialstart="2030 2040 20C0 2150"
-    permanent="SBR"
+    serialstart="2010 2110"
+    permanent="QWR"
     suffix="alpha"
     ;;
   DS723+)
@@ -28,7 +33,7 @@ function beginArray() {
     suffix="numeric"
     ;;
   DS918+)
-    serialstart="1780 1790 1860 1980"
+    serialstart="1910"
     permanent="PDN"
     suffix="numeric"
     ;;
@@ -52,14 +57,19 @@ function beginArray() {
     permanent="RYR"
     suffix="alpha"
     ;;
+  DS1522+)
+    serialstart="2270"
+    permanent="TRR"
+    suffix="alpha"
+    ;;
   DS1621+)
     serialstart="2080"
     permanent="S7R"
     suffix="alpha"
     ;;
   DS1621xs+)
-    serialstart="2080"
-    permanent="S7R"
+    serialstart="2070"
+    permanent="RVR"
     suffix="alpha"
     ;;
   DS1819+)
@@ -143,13 +153,13 @@ function beginArray() {
     suffix="alpha"
     ;;
   RS3413xs+)
-    serialstart="2080"
-    permanent="S7R"
+    serialstart="0000"
+    permanent="XXX"
     suffix="numeric"
     ;;
   RS3618xs)
-    serialstart="1130 1230 1330 1430"
-    permanent="ODN"
+    serialstart="0000"
+    permanent="XXX"
     suffix="numeric"
     ;;
   RS3621xs+)
@@ -158,8 +168,13 @@ function beginArray() {
     suffix="alpha"
     ;;
   RS4021xs+)
-    serialstart="2250"
+    serialstart="2160"
     permanent="T2R"
+    suffix="alpha"
+    ;;
+  SA3200D)
+    serialstart="19A0"
+    permanent="S4R"
     suffix="alpha"
     ;;
   SA3400)
@@ -167,9 +182,24 @@ function beginArray() {
     permanent="RJR"
     suffix="alpha"
     ;;
+  SA3400D)
+    serialstart="0000"
+    permanent="XXX"
+    suffix="alpha"
+    ;;
+  SA3410)
+    serialstart="0000"
+    permanent="XXX"
+    suffix="alpha"
+    ;;
   SA3600)
-    serialstart="1920"
-    permanent="RJR"
+    serialstart="0000"
+    permanent="XXX"
+    suffix="alpha"
+    ;;
+  SA3610)
+    serialstart="0000"
+    permanent="XXX"
     suffix="alpha"
     ;;
   SA6400)
