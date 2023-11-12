@@ -3,10 +3,9 @@
 [![](https://img.shields.io/github/issues-search?label=%E5%AE%9A%E5%88%B6%E6%AC%A1%E6%95%B0&query=repo%3Awjz304%2Frpcb%20label%3Acustom)](https://github.com/wjz304/rpcb/issues?q=label%3Acustom)
 [![](https://img.shields.io/github/issues-search?label=%E6%AF%8F%E6%97%A5%E6%9E%84%E5%BB%BA&query=repo%3Awjz304%2Frpcb%20label%3Aschedule)](https://github.com/wjz304/rpcb/issues?q=label%3Aschedule)  
 
-### [rpcb_old (旧版)](https://github.com/wjz304/rpcb_old)
+
 
 ## 介绍  
-[rpcb](https://github.com/wjz304/rpcb)  
 一个自定义配置及驱动并通过 Github Action 编译 DSM redpill 引导的平台.  
 
 >源码仓库： [@RedPill-TTG](https://github.com/RedPill-TTG/redpill-load)  
